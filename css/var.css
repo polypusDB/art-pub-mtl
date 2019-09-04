@@ -1,0 +1,12 @@
+:root {
+    --carte-largeur: 344px;
+    --carte-hauteur: 344px;
+    --carte-hauteur-image : calc(var(--carte-largeur) * 0.5625);
+    --oeuvre-hauteur-image : calc(var(--carte-hauteur-image) * 3);
+    --artiste-hauteur-image : calc(var(--carte-hauteur-image));
+    --main-couleur-lien : #ff1744;
+    --marge-gauche : 84px;
+    
+    --couleur-fond : #00BCD4;
+    --couleur-fond : #f0f0f0;
+}
