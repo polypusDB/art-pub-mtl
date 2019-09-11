@@ -12,8 +12,8 @@
  * 
  */
 class Artiste extends Modele {	
-	const TABLE_ARTISTE = "apm__artiste";
-	const TABLE_LIAISON_ARTISTE_OEUVRE = "apm__oeuvre_artiste";
+	const TABLE_ARTISTE = "artiste";
+	const TABLE_LIAISON_ARTISTE_OEUVRE = "oeuvre_artiste";
 		
 	/**
 	 * Retourne la liste des oeuvres

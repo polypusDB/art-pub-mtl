@@ -37,8 +37,8 @@ class OeuvreControlleur extends Controlleur
         } 
         else 	// Liste des oeuvres
         {
-        	$res = $this->getListeOeuvre();
 			
+        	$res = $this->getListeOeuvre();
         }
 		
 		if(isset($_GET['json']))

@@ -12,9 +12,9 @@
  * 
  */
 class Oeuvre extends Modele {	
-	const TABLE_OEUVRE = "apm__oeuvre";
-	const TABLE_LIAISON_ARTISTE_OEUVRE = "apm__oeuvre_artiste";
-	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
+	const TABLE_OEUVRE = "oeuvre";
+	const TABLE_LIAISON_ARTISTE_OEUVRE = "artiste_oeuvre";
+	// const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
 	
 	/**
 	 * Retourne la liste des oeuvres
@@ -24,29 +24,37 @@ class Oeuvre extends Modele {
 	 */
 	public function getListe() 
 	{
+		
 		$res = Array();
-		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
-					order by id ASC
-				";
-		//echo $query;
-		//SELECT * FROM `apm__oeuvre` Oeu inner join apm__oeuvre_artiste O_A ON Oeu.id = O_A.id_oeuvre
+		$query = "SELECT * , concat(artiste.nom,', ' ,artiste.prenom) nom_artiste
+		FROM oeuvre
+		JOIN artiste_oeuvre
+		ON artiste_oeuvre.id_oeuvre = oeuvre.id_oeuvre
+		JOIN artiste
+		ON artiste_oeuvre.id_artiste = artiste.id_artiste
+		JOIN endroit
+		ON endroit.id_endroit = oeuvre.id_endroit
+        JOIN arrondissement
+        ON arrondissement.id_arrondissement = endroit.id_arrondissement"; 
+
+		// $query = "	SELECT * FROM ". self::TABLE_OEUVRE ." 
+		// 			inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
+		// 			left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
+		// 			inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+		// 			order by id ASC
+		// 		";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
 			{
 				$oeu = end($res);
-				
-				if(isset($oeu) && $oeu['id'] != $oeuvre['id'])
+				if(isset($oeu) && $oeu['id'] != $oeuvre['id_oeuvre'])
 				{
 					
 					$oeuvre['Artistes'] = Array();
 					$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-														"Nom"=> $oeuvre['Nom'],
-														"Prenom"=> $oeuvre['Prenom'],
-														"NomCollectif"=> $oeuvre['NomCollectif']
+														"Nom"=> $oeuvre['nom_artiste'],
+														"NomCollectif"=> $oeuvre['nom_collectif']
 													);
 					unset($oeuvre['id_artiste']);
 					unset($oeuvre['Nom']);
@@ -57,16 +65,20 @@ class Oeuvre extends Modele {
 				}
 				else if(isset($oeu) && $oeu['id'] == $oeuvre['id'])
 				{
+					
 					$i = count($res)-1;
 					$res[$i]['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-														"Nom"=> $oeuvre['Nom'],
-														"Prenom"=> $oeuvre['Prenom'],
+														"Nom"=> $oeuvre['nom_artiste'],
 														"NomCollectif"=> $oeuvre['NomCollectif']
 													);
+													
 				}
 				
-				  
+				//   var_dump($oeuvre);
 			}
+		}
+		else{
+			
 		}
 		return $res;
 	}
