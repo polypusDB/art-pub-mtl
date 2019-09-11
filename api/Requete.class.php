@@ -29,8 +29,9 @@ class Requete
 						
 		$this->parseIncomingParams();
 		
-		$this->ressource = $this->url_elements[0]; 
-		array_splice($this->url_elements, 0, 1);
+        $this->ressource = $this->url_elements[0]; 
+        
+        array_splice($this->url_elements, 0, 1);
         return true;
 	}
 	

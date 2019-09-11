@@ -35,10 +35,9 @@ class OeuvreControlleur extends Controlleur
             $res = $this->getOeuvre($id_oeuvre);
             
         } 
-        else 	// Liste des oeuvres
+        else 	// La liste des oeuvres est a affiché
         {
         	$res = $this->getListeOeuvre();
-			
         }
 		
 		if(isset($_GET['json']))
@@ -47,11 +46,8 @@ class OeuvreControlleur extends Controlleur
 		}
 		else
 		{
-				
-			
 			$oVue = new Vue();
 			$oVue->afficheHead();
-			$oVue->afficheEntete();
 			
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{
@@ -63,7 +59,6 @@ class OeuvreControlleur extends Controlleur
 				$oVue->afficheOeuvres($res);
 			}	
 			
-			$oVue->affichePied();
 			
 		}
 			
