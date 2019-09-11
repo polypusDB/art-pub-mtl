@@ -48,28 +48,17 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheEntete() {
-		include("VueHeader.html.php");		
+		include("VueEntete.php");		
 	}
 
 
 	/**
-	 * Affiche les oeuvres
+	 * Affiche le pied de page
 	 * @access public
 	 * @return void
 	 */
 	public function affichePied() {
-		?>
-	
-			<footer>
-				Certains droits réservés @ Jonathan Martel (2019)<br>
-				Sous licence Creative Commons (BY-NC 3.0)
-			</footer>
-		</main>
-	</body>
-</html>
-
-		<?php
-		
+		include("VuePied.php");
 	}
 	
 
@@ -99,8 +88,9 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheOeuvres($aData = Array()) {
-		
+		$this->afficheEntete();
 		include("VueListeOeuvre.html.php");
+		$this->affichePied();
 		
 	}
 

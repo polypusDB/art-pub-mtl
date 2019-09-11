@@ -19,7 +19,6 @@
  
 class ArtisteControlleur extends Controlleur 
 {
-	
 	// GET : 
 	// 		/artiste/ - Liste des oeuvres
 	// 		/artiste/{id}/ - Une oeuvre
@@ -28,7 +27,6 @@ class ArtisteControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		// var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
 		{
             $id_artiste = (int)$requete->url_elements[0];
@@ -70,11 +68,7 @@ class ArtisteControlleur extends Controlleur
 		
 		
 	}
-	
-	
-	
-	
-		
+
 	protected function getArtiste($id_artiste)
 	{
 		$oArtiste= new Artiste();

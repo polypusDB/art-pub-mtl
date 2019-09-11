@@ -18,7 +18,9 @@
 									foreach($Artistes as $artiste){
 										extract($artiste);
 										?>
-									<p class="auteur"><a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a></p>
+									<p class="auteur">
+										<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
+									</p>
 									<?php
 									}
 
