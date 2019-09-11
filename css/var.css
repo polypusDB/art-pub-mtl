@@ -1,4 +1,5 @@
 :root {
+    --hauteur-entete: 120px;
     --carte-largeur: 344px;
     --carte-hauteur: 344px;
     --carte-hauteur-image : calc(var(--carte-largeur) * 0.5625);
