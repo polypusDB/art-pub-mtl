@@ -1,0 +1,77 @@
+
+/*caroussel --------------------------*/
+.caroussel{
+    width: 100%;
+    height: auto; 
+}
+
+/*section Artiste --------------------------*/
+.artiste{
+        background-color: #81CEC5;
+    }
+
+.listeArtiste{
+    padding-top: 3%;
+}
+
+.listeArtiste a{
+    text-decoration: underline;
+}
+
+.artiste h1{
+        color: white;
+    }
+
+.artiste h2{
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
+    font-weight: 600;   
+}
+
+.artiste a{
+    color: white;
+    font-weight: 600;
+} 
+
+/*Artiste à l'honneur --------------------------*/
+.honneur{
+    max-width: auto;
+    height: 50%;
+}
+.honneur img{
+    position: absolute;
+    z-index: 1;
+}
+
+.honneur h1{
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    padding: 2%;
+}
+
+
+
+/* media queries: mobile --------------------------------------------------*/
+@media screen and (max-width:667px){
+    
+    /*section à propos --------------------------*/
+    .apm div h1{
+        margin: 3% 0% 3% 0%;
+    }
+    
+    .propos{
+        font-size: 70%;
+        color: darkgrey;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
