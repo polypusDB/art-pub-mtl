@@ -1,15 +1,37 @@
 /* Basé sur les sources de muicss*/
-
 /**
  * Body CSS
  */
 
+/* CSS reset -------------------------------------------------------------- */
 html,
-body {
+body,
+img,
+p,
+h1,
+h2,
+h3,
+ul,
+li,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* règles générales -------------------------------------------------------- */
+* {
+    box-sizing:border-box;
+}
+html, body {
+    width: 100%;
     height: 100%;
     font-family: Arial,Verdana,Tahoma;
     background-color: var(--couleur-fond);
-    margin:0px 0px 0px 0px;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #5F5F5F;
 }
 
 html,
@@ -175,7 +197,7 @@ buttons {
 .carte-info  .texte h2
 {
     margin: 0px;
-    padding 0px;
+    padding: 0px;
     font-size: 14px;  
 }
 

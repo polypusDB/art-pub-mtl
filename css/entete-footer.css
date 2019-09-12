@@ -1,0 +1,147 @@
+.entete{
+    background-color: #fff;
+    padding: 20px 15px;
+    box-shadow: 0 3px 5px rgb(10, 21, 38, 0.3);
+    width: 100%;
+    height: var(--hauteur-entete);
+    top:0px;
+    display: flex;
+    flex-direction: row;
+}
+.entete .logo{
+    height: auto;
+}
+.entete .logo:hover{
+    opacity: .5;
+}
+.flexgrow{
+    flex-grow: 1;
+}
+.entete nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.entete ul li{
+    list-style: none;
+}
+.entete nav a{
+    font-size: 14px;
+    padding: 12px;
+}
+.entete nav span a{
+    padding: 5px;
+}
+.entete nav span a .fab{
+    color: #162b4d;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 6px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.3;
+}
+.entete .icoRes .fab:hover{
+    opacity: 0.9;
+    transition: opacity 200ms;
+}
+.entete nav a.actif {
+    background-color: #1c3a69;
+    color: white;
+    padding: 25px 12px;
+}
+.entete nav a:hover:not(.icoRes) {
+    color: white;
+    padding: 26px 12px;
+    background-color: #11223c;
+}
+.entete .menu-burger {
+    display: none;
+    padding: 0px;
+    margin-top: 5px;
+    margin-right: 12px;
+    justify-content: center;
+    align-content: center;
+}
+.entete .menu-burger i{
+    height: 24px;
+    width: 24px;
+}
+
+
+
+
+
+/* media queries: mobile --------------------------------------------------*/
+@media screen and (max-width:667px){
+    /* Menu --------------------------------------------------*/
+    .entete{
+        position: fixed;
+        top: 0;
+        transition: top 0.3s;
+    }
+    .entete .menu-burger {
+        display: inherit;
+    }
+    .entete .menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        background-color: #162b4d;
+        position: absolute;
+        top:var(--hauteur-entete);
+        left: 0px;
+        transform-origin: top right;
+        transform: scale(0,0);
+        transition: transform 200ms;
+        height: calc(100vh - (var(--hauteur-entete)));
+        z-index: -10;
+    }
+    /* la class .ouvert est la class qu'on a creé dans menu.js*/
+    .entete .menu.ouvert {
+        height: calc(100vh - (var(--hauteur-entete)));
+        /*transform: translate(0px, 0px);*/
+        transform: scale(1,1);
+        transform-origin: top right;
+        transition: transform 200ms;
+    }
+    .entete .menu a {
+        color: #fff;
+    }
+    .entete .menu ~ .menu-burger i.fa-bars{
+        transform-origin: center center;
+    }
+    .entete .menu.ouvert ~ .menu-burger i.fa-bars{
+        display: none;
+    }
+    .entete .menu ~ .menu-burger i.fa-times{
+        display: none;
+    }
+    .entete .menu.ouvert ~ .menu-burger i.fa-times{
+        display: inherit;
+    }
+    .entete nav a:not(.icoRes){
+        width: 100%;
+        padding: 26px 15px;
+        border-bottom: 1px solid #0c1729;
+    }
+    .entete nav span a:nth-of-type(1){
+        margin-right: 150px;
+    }
+    .entete nav span a .fab{
+        padding: 8px;
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+    .entete nav a.actif {
+        background-color: transparent;
+        color: rgba(209, 39, 103);
+    }
+    .entete nav a:hover:not(.icoRes) {
+        padding: 26px 15px;
+    }
+}
