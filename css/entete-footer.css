@@ -20,39 +20,17 @@
 .entete nav {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
 }
-.entete ul li{
-    list-style: none;
+.entete nav span{
+    align-self: flex-start;
+    order: 1;
 }
 .entete nav a{
     font-size: 14px;
     padding: 12px;
 }
-.entete nav span a{
-    padding: 5px;
-}
-.entete nav span a .fab{
-    color: #162b4d;
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 6px;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-    font-size: 14px;
-    opacity: 0.3;
-}
-.entete .icoRes .fab:hover{
-    opacity: 0.9;
-    transition: opacity 200ms;
-}
-.entete nav a.actif {
-    background-color: #1c3a69;
-    color: white;
-    padding: 25px 12px;
-}
-.entete nav a:hover:not(.icoRes) {
+.entete nav a:hover:not(.chercher) {
     color: white;
     padding: 26px 12px;
     background-color: #11223c;
@@ -77,39 +55,57 @@
 /* media queries: mobile --------------------------------------------------*/
 @media screen and (max-width:667px){
     /* Menu --------------------------------------------------*/
+    .entete .logo {
+        z-index: -20;
+    }
+    .entete .logo img{
+        height: 60px;
+    }
+    .entete nav i.fas{
+        color: white;
+        margin-right: 5%;
+    }
     .entete{
         position: fixed;
         top: 0;
         transition: top 0.3s;
+        height: 90px;
     }
     .entete .menu-burger {
         display: inherit;
+        color: #F3D331;
+        font-size: 22px;
     }
     .entete .menu{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         width: 100%;
-        background-color: #162b4d;
+        background-color: #E26F39;
         position: absolute;
-        top:var(--hauteur-entete);
+        top:0;
         left: 0px;
-        transform-origin: top right;
-        transform: scale(0,0);
+        transform-origin: center right;
+        /*transform: scale(0,0);*/
+        transform: translate(100vw, 0px);
         transition: transform 200ms;
-        height: calc(100vh - (var(--hauteur-entete)));
+        height: 100vh;
         z-index: -10;
+    }
+    .entete nav span{
+        order: 0;
     }
     /* la class .ouvert est la class qu'on a creé dans menu.js*/
     .entete .menu.ouvert {
-        height: calc(100vh - (var(--hauteur-entete)));
-        /*transform: translate(0px, 0px);*/
-        transform: scale(1,1);
-        transform-origin: top right;
+        height: 100vh;
+        transform: translate(50px, 0px);
+        /*transform: scale(1,1);*/
+        transform-origin: center right;
         transition: transform 200ms;
     }
     .entete .menu a {
         color: #fff;
+        font-size: larger;
     }
     .entete .menu ~ .menu-burger i.fa-bars{
         transform-origin: center center;
@@ -123,25 +119,29 @@
     .entete .menu.ouvert ~ .menu-burger i.fa-times{
         display: inherit;
     }
-    .entete nav a:not(.icoRes){
+    .entete nav a, .entete nav span{
         width: 100%;
         padding: 26px 15px;
-        border-bottom: 1px solid #0c1729;
     }
-    .entete nav span a:nth-of-type(1){
-        margin-right: 150px;
+    .entete nav span a{
+        padding: 0;
     }
-    .entete nav span a .fab{
-        padding: 8px;
-        width: 34px;
-        height: 34px;
-        font-size: 18px;
+    .entete nav a:hover:not(.chercher) {
+        background-color: #F08243;
     }
-    .entete nav a.actif {
+    .entete nav span input{
         background-color: transparent;
-        color: rgba(209, 39, 103);
+        border: 1px solid white;
+        padding: 10px;
+        font-size: inherit;
+        color: white;
     }
-    .entete nav a:hover:not(.icoRes) {
-        padding: 26px 15px;
+    ::placeholder{
+        color: white;
+        opacity: .5;
+    }
+    :-ms-input-placeholder /*IE 10-11*/{
+        color: white;
+        opacity: .5;
     }
 }
