@@ -70,6 +70,7 @@
         top: 0;
         transition: top 0.3s;
         height: 90px;
+        z-index: 500;
     }
     .entete .menu-burger {
         display: inherit;

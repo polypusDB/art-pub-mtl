@@ -49,8 +49,8 @@ class ArtisteControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			$oVue->afficheHead();
-			$oVue->afficheEntete();
+			//$oVue->afficheHead();
+			//$oVue->afficheEntete();
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{
 				//var_dump($res);
@@ -61,7 +61,7 @@ class ArtisteControlleur extends Controlleur
 				$oVue->afficheArtistes($res);
 			}	
 			
-			$oVue->affichePied();
+			//$oVue->affichePied();
 			
 		}
 			
