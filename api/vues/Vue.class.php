@@ -21,24 +21,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheHead() {
-		?>
-		<!DOCTYPE html>
-		<html lang="fr">
-		
-		<head>
-		    <title>L'art public à Montréal</title>
-		    <meta charset="utf-8">
-		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		    <meta name="description" content="">
-		    <meta name="viewport" content="width=device-width">
-		    
-			<link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
-		    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
-		    <!--<script src="../../js/plugins.js"></script>-->
-		    <script src="../js/main.js"></script>
-		</head>
-		<?php
+		include("VueEntete.php");
 		
 	}
 
@@ -48,7 +31,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheEntete() {
-		include("VueEntete.php");		
+		include("VueNavigation.php");	
 	}
 
 
@@ -88,6 +71,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheOeuvres($aData = Array()) {
+		$this->afficheHead();
 		$this->afficheEntete();
 		include("VueListeOeuvre.html.php");
 		$this->affichePied();
@@ -145,8 +129,10 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtistes($aData = Array()) {
+		$this->afficheHead();
 		$this->afficheEntete();
 		include("VueListeArtiste.html.php");
+		$this->affichePied();
 	}
 
 
@@ -156,6 +142,8 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtiste($aData = Array()) {
+		$this->afficheHead();
+		$this->afficheEntete();
 		extract($aData);
 		?>
 		 <section class="contenu uneOeuvre flex flex-col">
@@ -169,7 +157,7 @@ class Vue {
         </section>
 			
 		<?php
-		
+		$this->affichePied();
 	}
 
 
