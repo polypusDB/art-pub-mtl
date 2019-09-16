@@ -204,10 +204,14 @@ class Oeuvre extends Modele {
 	}
 
 	public function deleteOeuvre($id){
-		$query = "DELETE *
+		
+		$query = "DELETE 
 		FROM oeuvre 
-		WHERE id-oeuvre = $id";
+		WHERE id_oeuvre = $id";
 
+		// a tester -----------------------------------------
+		$res = $this->_db->query($query);
+		
 	}
 	
 }
