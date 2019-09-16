@@ -2,6 +2,7 @@
          	<section class="recherche"></section>
             <section class="oeuvres flex wrap">
 						<?php
+						// var_dump($aData);
 						foreach ($aData as $cle => $oeuvre) {
 							extract($oeuvre);
 							?>

@@ -203,6 +203,12 @@ class Oeuvre extends Modele {
 		}
 		return (count($res) >0 ? true : false);
 	}
+
+	public function deleteOeuvre($id){
+		$query "DELETE *
+		FROM oeuvre 
+		WHERE id-oeuvre = $id";
+	}
 	
 }
 
