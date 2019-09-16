@@ -82,7 +82,7 @@ class Vue {
 		var_dump($aData);
 		?>
 		 <section class="contenu uneOeuvre flex flex-col">
-		 	<section class="retour"><a href="/art-pub-mtl/api/oeuvre"> Retour à la liste  </a></section>
+		 	<section class="retour"><a href="/art-pub-mtl/api/oeuvre/"> Retour à la liste  </a></section>
             <section class="oeuvre flex wrap">
                 <header class="image dummy">
                 	<img src="/art-pub-mtl/img/placeholder_640_480.jpg" />

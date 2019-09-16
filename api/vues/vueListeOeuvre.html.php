@@ -9,9 +9,10 @@
 			foreach ($aData as $cle => $oeuvre) {
 			extract($oeuvre);
 			?>
+			
 				<section class="oeuvre carte">
 					<header class="image dummy">
-						<a href=""><img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
+						<a href="oeuvre/<?=$id_oeuvre ?>"><img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
 					</header>
 					<section class="texte">
 						<h2 class="titre"><?php echo $titre?></h2>
@@ -25,6 +26,11 @@
 						<?php
 						}
 						?>
+						<form>
+						
+						<!-- <input type="submit" value="supprimer" action="/sup"> -->
+						<a href="oeuvre/sup/<?=$id_oeuvre ?>">supprimer</a>
+						</form>
 					</section>
 						
 					<!--<footer class="barre-action">-->
