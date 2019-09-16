@@ -10,12 +10,14 @@
         
         <link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
         <link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="../css/entete-footer.css" type="text/css" media="screen">
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
         <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/entete-footer.css" type="text/css" media="screen">
         <!--<script src="../../js/plugins.js"></script>-->
         <script src="../js/main.js"></script>
+        <script src="../js/menu.js"></script>
+        <script src="../js/responsive.js"></script>
 
         <!-- Code Fontawesome -->
         <script src="https://kit.fontawesome.com/178b5a49f1.js"></script>

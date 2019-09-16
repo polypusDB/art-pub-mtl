@@ -65,6 +65,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheOeuvres($aData = Array()) {
+		$this->afficheHead();
 		$this->afficheEntete();
 		include("VueListeOeuvre.html.php");
 		$this->affichePied();
@@ -119,8 +120,10 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtistes($aData = Array()) {
+		$this->afficheHead();
 		$this->afficheEntete();
 		include("VueListeArtiste.html.php");
+		$this->affichePied();
 	}
 
 
@@ -130,6 +133,8 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtiste($aData = Array()) {
+		$this->afficheHead();
+		$this->afficheEntete();
 		extract($aData);
 		?>
 		 <section class="contenu uneOeuvre flex flex-col">
@@ -143,7 +148,7 @@ class Vue {
         </section>
 			
 		<?php
-		
+		$this->affichePied();
 	}
 
 

@@ -32,12 +32,6 @@ html, body {
     background-color: white;
 }
 
-h1{
-    color: #F08243;
-    font-size: 1.4em;
-    font-weight:400;
-    text-transform: uppercase;
-}
 
 a {
     text-decoration: none;
@@ -57,6 +51,27 @@ section{
 
 
 
+h1{
+    color: #F08243;
+    font-weight:400;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+h2{
+    font-size: 20px;
+}
+h3{
+    font-size: 18px;
+}
+h4{
+    font-size: 16px;
+}
+h5{
+    font-size: 14px;
+}
+h5{
+    font-size: 12px;
+}
 html,
 body,
 input,
@@ -71,12 +86,8 @@ buttons {
     position: relative;
     width: var(--carte-largeur);
     height: var(--carte-hauteur);
-    background-color: #fafafa;
     margin: 8px;
-    
-    border-radius: 2px;
     overflow: hidden;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
 .carte .image   
 {
@@ -106,8 +117,11 @@ buttons {
 }
 .carte .image.dummy
 {
-    background-image: url("../img/placeholder_640_480.jpg");
-    
+    background-color: #F08243;  
+}
+.carte .image img
+{
+    width: 100%;
 }
 .carte .image > .titre
 {
@@ -126,12 +140,15 @@ buttons {
 .carte  .texte
 {
     margin-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
     text-align: justify;
     width: 100%;
     box-sizing: border-box;
     
+}
+.carte .texte .titre
+{
+    color: #E26F39;
+    text-transform: uppercase;
 }
 .carte  .texte > .description
 {
@@ -238,6 +255,7 @@ section p.arrondissement{
     margin: 10px 0 0;
 }
 
+/* Oeuvres -------------------------------------------------------- */
 .oeuvre .auteur a
 {
     color: #000;
@@ -385,21 +403,28 @@ section p.arrondissement{
 }
 
 /**
- * contenu
+ * contenu general
  */
 
 .contenu {
     padding-left: var(--marge-gauche);
     min-height: 100%;
     padding-top: 64px;
-        
     display: flex;
     flex-wrap: wrap;
     /* sticky footer */
     margin-bottom: -100px;
     padding-bottom: 100px;
 }
-
+.contenu .titreListe{
+    margin: 8px;
+}
+.contenu .titreListe h1{
+    text-transform: uppercase;
+}
+.contenu .titreListe h4{
+    margin: 0;
+}
 
 
 /**
@@ -423,4 +448,21 @@ main > footer {
 .hidden
 {
     display: none;
+}
+
+
+
+
+
+/* media queries: mobile --------------------------------------------------*/
+@media screen and (max-width:667px){
+    .contenu {
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: var(--hauteur-entete);
+    }
+    .carte .texte .titre{
+        font-size: 18px;
+    }
+
 }
