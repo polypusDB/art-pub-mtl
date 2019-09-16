@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
         <link rel="stylesheet" href="../css/entete-footer.css" type="text/css" media="screen">
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
         <!--<script src="../../js/plugins.js"></script>-->
         <script src="../js/main.js"></script>
 

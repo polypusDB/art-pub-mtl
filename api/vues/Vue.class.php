@@ -21,24 +21,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheHead() {
-		?>
-		<!DOCTYPE html>
-		<html lang="fr">
-		
-		<head>
-		    <title>L'art public à Montréal</title>
-		    <meta charset="utf-8">
-		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		    <meta name="description" content="">
-		    <meta name="viewport" content="width=device-width">
-		    
-			<link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
-		    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
-		    <!--<script src="../../js/plugins.js"></script>-->
-		    <script src="../js/main.js"></script>
-		</head>
-		<?php
+	   include("VueEntete.php");
 		
 	}
 
@@ -48,7 +31,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheEntete() {
-		include("VueEntete.php");		
+		include("VueNavigation.php");		
 	}
 
 
@@ -67,18 +50,12 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheAccueil($aData = Array()) {
-		
-		?>
-		<section class="contenu listeOeuvres">
-			<h1>Bienvenue sur le site Art public Montréal</h1>
-			<ul>
-				<li><a href="/art-pub-mtl/api/oeuvre">Voir les oeuvres</a></li>
-				<li><a href="/art-pub-mtl/api/artiste">Voir les artistes</a></li>
-			</ul>
-		</section>
-			
-		<?php
+	public function afficheAccueil() {
+        $this->afficheHead();
+        $this->afficheEntete();
+        include("VueHome.php");
+        $this->affichePied();
+        
 		
 	}
 	
@@ -131,11 +108,8 @@ class Vue {
             </section>
 
         </section>
-        
-							
-			
+
 		<?php
-		
 	}
 
 
