@@ -34,7 +34,10 @@ class ArtisteControlleur extends Controlleur
             
             $res = $this->getArtiste($id_artiste);
             
-        } 
+		} // si sup on regarde l'id et on supprime
+		else if(isset($requete->url_elements[0]) == "sup"){
+			$this->supArtiste((int)$requete->url_elements[1]);
+		} 
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeArtiste();
@@ -54,7 +57,7 @@ class ArtisteControlleur extends Controlleur
 			//$oVue->afficheEntete();
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{
-				//var_dump($res);
+				// var_dump($res);
 				$oVue->afficheArtiste($res);	
 			}
 			else
@@ -87,6 +90,12 @@ class ArtisteControlleur extends Controlleur
 		$aArtiste = $oArtiste->getListe();
 		
 		return $aArtiste;
+	}
+
+	protected function supArtiste($id_artiste){
+		echo "je delete l'artiste";
+		$oArtiste= new Artiste();
+		$aArtiste = $oArtiste->deleteArtiste($id_artiste);
 	}
 	
 	

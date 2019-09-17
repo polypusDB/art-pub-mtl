@@ -8,7 +8,7 @@
 			                    <header class="">
 			                        <a href="artiste/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; } ?></h2></a> 
 								</header>
-								<input type="submit" value="supprimer" action="art-pub-mtl/api/oeuvre/sup/id="<?php $id_oeuvre ?>>
+								<a href="artiste/sup/<?=$id_artiste ?>">supprimer</a>
 			                </section>
 							<?php
 						}
