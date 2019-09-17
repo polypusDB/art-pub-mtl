@@ -8,7 +8,9 @@
 			                    <header class="">
 			                        <a href="artiste/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; } ?></h2></a> 
 								</header>
-								<a href="artiste/sup/<?=$id_artiste ?>">supprimer</a>
+								<div class="boutons">
+									<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+								</div>
 			                </section>
 							<?php
 						}
