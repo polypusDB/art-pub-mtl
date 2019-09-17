@@ -1,10 +1,4 @@
-   <!-- il est temporaire-->
-    <head>
-		<meta name="viewport" content="width=device-width">
-		<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="../../css/formulaires.css" type="text/css" media="screen">
-	</head>
-	<!-- il est temporaire-->
+
 
 <div class="container">
     <div class="contenu-form">
@@ -14,10 +8,10 @@
             {            
         ?>  
         <h1>Formulaire de Connexion</h1>
-        <form action="" method="POST">	
+        <form action="/art-pub-mtl/api/connection/login" method="POST">	
 			<div>
 				<label for="name">Login:</label>
-				<input type="text" id="name" name="login">
+				<input type="text" id="name" name="user">
 			</div>
 			<div>
 				<label for="mdp">Mot de passe:</label>
