@@ -1,18 +1,21 @@
-<?php 
-    /*include "../vues/commun/entete.php";*/
-?>
+    <!-- il est temporaire-->
+    <head>
+        <meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="../../css/formulaires.css" type="text/css" media="screen">
+	</head>
+	<!-- il est temporaire-->
+
+
 <div class="container">
-    <?php 
-      /*include "../vues/commun/navigation.php"; */
-    ?>
-    <div class="contenu">
+    <div class="contenu-form">
         <h1>Formulaire ajouter un oeuvre</h1>
         <form action="" method="POST">
             Titre : <input type="text" name="titre" /><br>
-            Dimension : <input type="text" name="dimension" /><br>
-            Material : <input type="text" name="material" /><br>
+            Dimension (m) : <input type="text" name="dimension" /><br>
+            Material (a,b,c) : <input type="text" name="material" /><br>
             Technique : <input type="text" name="technique" /><br>
-            Categorie:
+            Categorie :
             <select name="categorie">
                 <option value="choix">Choisir</option>
                 <?php 
@@ -61,6 +64,3 @@
         </form>
     </div>
 </div>
-<?php 
-    /*include "../vues/commun/pied.php";*/
-?>

@@ -196,12 +196,22 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
-		echo $query;
 		if($mrResultat = $this->_db->query($query))
 		{
 			$res = $mrResultat->fetch_assoc();
 		}
 		return (count($res) >0 ? true : false);
+	}
+
+	public function deleteOeuvre($id){
+		
+		$query = "DELETE 
+		FROM oeuvre 
+		WHERE id_oeuvre = $id";
+
+		// a tester -----------------------------------------
+		$res = $this->_db->query($query);
+		
 	}
 	
 }

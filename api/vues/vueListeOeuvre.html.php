@@ -1,48 +1,38 @@
 <section class="contenu listeOeuvres">
-	<!--<section class="recherche"></section>-->
-	<section class="titreListe">
+	<div class="titreListe">
 		<h1>Oeuvres</h1>
 		<h4>Découvrez la grande collection</h4>
-	</section>
-		<section class="oeuvres flex wrap">
-			<?php
-			foreach ($aData as $cle => $oeuvre) {
-			extract($oeuvre);
-			?>
-				<section class="oeuvre carte">
-					<header class="image dummy">
-						<a href=""><img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
-					</header>
-					<section class="texte">
-						<h2 class="titre"><?php echo $titre?></h2>
-						<?php 
-						foreach($Artistes as $artiste){
-							extract($artiste);
-							?>
-						<p class="auteur">
-							<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
-						</p>
-						<?php
-						}
+	</div>
+	<section class="oeuvres flex wrap">
+		<?php
+		foreach ($aData as $cle => $oeuvre) {
+		extract($oeuvre);
+		?>
+			<div class="oeuvre carte">
+				<div class="image dummy">
+					<a href="oeuvre/<?=$id_oeuvre ?>"><img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
+				</div>
+				<div class="texte">
+					<h2 class="titre"><a href="oeuvre/<?=$id_oeuvre ?>"><?php echo $titre?></a></h2>
+					<?php 
+					foreach($Artistes as $artiste){
+						extract($artiste);
 						?>
-					</section>
-						
-					<!--<footer class="barre-action">-->
-					<!--<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</a>	-->
-					<!--<button class="ouvrir-oeuvre" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</button>-->
-					<!--</footer>-->
-
-				</section>
-							
-				<?php
-				/*
-					<section class="oeuvre">
-					<h2 class="titre"><a href="/artPublic/api/oeuvre/<?php echo $oeuvre['id'] ?>"><?php echo $oeuvre['Titre']?></a></h2>	
-				</section>
-					*/
-				}
-				?>
-		</section>
+					<div class="auteur">
+						<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
+					</div>
+					<div class="boutons">
+						<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+					</div>
+					<?php
+					}
+					?>
+				</div>
+				</div>
+			<?php
+			}
+			?>
+	</section>
 				
 </section>
 			

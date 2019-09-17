@@ -29,6 +29,11 @@
 
 
 /*section Artiste --------------------------*/
+.apm h1{
+    color: #F08243;
+    font-weight:400;
+    text-transform: uppercase;
+}
 .artiste{
         background-color: #81CEC5;
     }
