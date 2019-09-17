@@ -13,14 +13,14 @@ window.addEventListener("load", function()
     });
 
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_hide_scroll
-    // cette facon de faire le menu-scroll, c'était la facon plus claire que j'ai trouvé et que j'ai compris.
+    // une facon de faire le menu-scroll
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
             document.querySelector(".entete").style.top = "0";
         } else {
-            document.querySelector(".entete").style.top = "-72px";
+            document.querySelector(".entete").style.top = "-10px";
             document.querySelector(".menu").classList.remove("ouvert");
         }
         prevScrollpos = currentScrollPos;
