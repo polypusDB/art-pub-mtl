@@ -1,0 +1,110 @@
+
+/*caroussel --------------------------*/
+.caroussel{
+    position: relative;
+    width: 100%;
+    height: auto; 
+}
+
+.caroussel img{
+    height: auto;
+    width: 100%;
+}
+
+.caroussel div {
+    position: absolute;
+    right:-4em;
+    bottom: 50px;
+}
+
+.caroussel div h1 {
+    color: white;
+}
+
+.caroussel h2{
+    background-color: white;
+    padding: 2%;
+}
+
+
+/*section Artiste --------------------------*/
+.apm h1{
+    color: #F08243;
+    font-weight:400;
+    text-transform: uppercase;
+}
+.artiste{
+        background-color: #81CEC5;
+    }
+
+.listeArtiste{
+    padding-top: 3%;
+}
+
+.listeArtiste a{
+    text-decoration: underline;
+}
+
+.artiste h1{
+        color: white;
+    }
+
+.artiste h2{
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
+    font-weight: 600;   
+}
+
+.artiste a{
+    color: white;
+    font-weight: 600;
+} 
+
+/*Artiste à l'honneur --------------------------*/
+.honneur{
+    width: 100%;
+    position: relative;
+}
+
+.honneur img{
+    height: auto;
+    width: 100%;
+}
+
+.honneur h2{
+    position: absolute;
+    left: -10px;
+    bottom: 2em;
+    background-color: white;
+    padding: 2% 2% 2% 5%;
+}
+
+
+
+/* media queries: mobile --------------------------------------------------*/
+@media screen and (max-width:667px){
+    
+    /*section à propos --------------------------*/
+    .apm div h1{
+        margin: 3% 0% 3% 0%;
+    }
+    
+    .propos{
+        font-size: 70%;
+        color: darkgrey;
+    }
+    
+    body{
+        margin-top: 120px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}

@@ -28,13 +28,17 @@ class OeuvreControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		//var_dump($requete->url_elements);
+		// var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 		{
 			$id_oeuvre = (int)$requete->url_elements[0];            
-            $res = $this->getOeuvre($id_oeuvre);
+			$res = $this->getOeuvre($id_oeuvre);
+			
             
-        } 
+		}
+		else if(isset($requete->url_elements[0]) == "sup" && is_numeric($requete->url_elements[1])){
+			$res = $this->supOeuvre($requete->url_elements[1]);
+		}
         else 	// La liste des oeuvres est a affiché
         {
         	$res = $this->getListeOeuvre();
@@ -85,6 +89,16 @@ class OeuvreControlleur extends Controlleur
 		$aOeuvre = $oOeuvre->getListe();
 		
 		return $aOeuvre;
+	}
+
+	protected function supOeuvre($id_oeuvre){
+		echo "allo";
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
+		header("Location:/art-pub-mtl/api/oeuvre");
+		
+		// $oVue = new Vue();
+		// $oVue->afficherOeuvre();
 	}
 	
 	

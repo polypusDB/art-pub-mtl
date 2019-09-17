@@ -18,10 +18,12 @@
 					foreach($Artistes as $artiste){
 						extract($artiste);
 						?>
-					<p class="auteur">
+					<div class="auteur">
 						<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
-					</p>
-					<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+					</div>
+					<div class="boutons">
+						<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+					</div>
 					<?php
 					}
 					?>

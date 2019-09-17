@@ -21,7 +21,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheHead() {
-		include("VueEntete.php");
+	   include("VueEntete.php");
 		
 	}
 
@@ -31,7 +31,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheEntete() {
-		include("VueNavigation.php");	
+		include("VueNavigation.php");		
 	}
 
 
@@ -50,18 +50,12 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheAccueil($aData = Array()) {
-		
-		?>
-		<section class="contenu listeOeuvres">
-			<h1>Bienvenue sur le site Art public Montréal</h1>
-			<ul>
-				<li><a href="/art-pub-mtl/api/oeuvre">Voir les oeuvres</a></li>
-				<li><a href="/art-pub-mtl/api/artiste">Voir les artistes</a></li>
-			</ul>
-		</section>
-			
-		<?php
+	public function afficheAccueil() {
+        $this->afficheHead();
+        $this->afficheEntete();
+        include("VueHome.php");
+        $this->affichePied();
+        
 		
 	}
 	
@@ -88,7 +82,7 @@ class Vue {
 		var_dump($aData);
 		?>
 		 <section class="contenu uneOeuvre flex flex-col">
-		 	<section class="retour"><a href="/art-pub-mtl/api/oeuvre"> Retour à la liste  </a></section>
+		 	<section class="retour"><a href="/art-pub-mtl/api/oeuvre/"> Retour à la liste  </a></section>
             <section class="oeuvre flex wrap">
                 <header class="image dummy">
                 	<img src="/art-pub-mtl/img/placeholder_640_480.jpg" />
@@ -115,11 +109,8 @@ class Vue {
             </section>
 
         </section>
-        
-							
-			
+
 		<?php
-		
 	}
 
 
