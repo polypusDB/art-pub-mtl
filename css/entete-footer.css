@@ -49,6 +49,28 @@
     width: 24px;
 }
 
+footer section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+/*   text-align: center;*/
+}
+
+footer img{
+    width: 85px;
+}
+
+footer div{
+    padding: 2%;
+}
+
+footer p{
+    text-align: center;
+    font-size: 10px;
+}
+
 
 
 

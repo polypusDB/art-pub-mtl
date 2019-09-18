@@ -30,6 +30,7 @@ html, body {
     font-weight: 100;
     color: #5F5F5F;
 }
+
 a {
     text-decoration: none;
     cursor: pointer;
@@ -57,6 +58,11 @@ h5{
 h5{
     font-size: 12px;
 }
+
+section {
+    padding:5%;
+}
+
 html,
 body,
 input,
