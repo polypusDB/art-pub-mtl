@@ -36,7 +36,7 @@ class OeuvreControlleur extends Controlleur
 			
             
 		}
-		else if(isset($requete->url_elements[0]) == "sup" && is_numeric($requete->url_elements[1])){
+		else if(isset($requete->url_elements[0]) == "sup"){
 			$res = $this->supOeuvre($requete->url_elements[1]);
 		}
         else 	// La liste des oeuvres est a affiché

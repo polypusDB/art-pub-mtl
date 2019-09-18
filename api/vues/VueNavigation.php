@@ -14,7 +14,7 @@
                 <!-- <a href=""><i class="fas fa-hand-holding-heart"></i>Partenariat</a> -->
                 <a href="/art-pub-mtl/api/vues/VueApropos.php"><i class="fas fa-spray-can"></i>À Propos</a>
                 <!-- <a href=""><i class="fas fa-comment"></i>Francais | English</a> -->
-                <a href="/art-pub-mtl/api/vues/formConnexion.php"><i class="fas fa-sign-in-alt"></i>Login</a>
+                <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-in-alt"></i>Login</a>
             </nav>
             <a href="#" class="menu-burger">
                 <i class="fas fa-bars"></i>
