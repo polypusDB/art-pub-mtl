@@ -1,4 +1,4 @@
-<body>
+
     <div class="caroussel">
         <img  src="../img/oeuvres/acceuil.jpg" alt="">
         <div>
@@ -26,4 +26,4 @@
         <img src="../img/oeuvres/1668_1.jpg" alt="">
         <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
     </div>
-</body>       
+   
