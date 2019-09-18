@@ -1,7 +1,7 @@
 </body>    
    <footer>
        <section>
-           <i class="fa fa-facebook" aria-hidden="true"></i>
+           <a><i class="fa fa-facebook"></i></a>
            <i class="fa fa-twitter" aria-hidden="true"></i>
            <i class="fa fa-youtube" aria-hidden="true"></i>
            <i class="fa fa-instagram" aria-hidden="true"></i>
