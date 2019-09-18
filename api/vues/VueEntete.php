@@ -19,6 +19,7 @@
         <script src="../js/main.js"></script>
         <script src="../js/menu.js"></script>
         <script src="../js/responsive.js"></script>
+        <script src="../js/lienDelete.js"></script>
 
         <!-- Code Fontawesome -->
         <script src="https://kit.fontawesome.com/178b5a49f1.js"></script>

@@ -37,10 +37,18 @@ class OeuvreControlleur extends Controlleur
             
 		}
 		else if(isset($requete->url_elements[0]) == "sup"){
-			$res = $this->supOeuvre($requete->url_elements[1]);
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$res = $this->supOeuvre($requete->url_elements[1]);
+			}
+			else{
+				echo "vous devez etre connecté en tant qu'admin";
+				
+			}
+			
 		}
         else 	// La liste des oeuvres est a affiché
         {
+			// var_dump($_SESSION["utilisateur"]["type_acces"]);
         	$res = $this->getListeOeuvre();
         }
 		

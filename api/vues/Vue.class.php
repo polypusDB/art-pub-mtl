@@ -114,16 +114,27 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtiste($aData = Array()) {
-		$this->afficheHead();
+		// $this->afficheHead();
 		$this->afficheEntete();
+		
 		extract($aData);
+
 		?>
-		 <section class="contenu uneOeuvre flex flex-col">
-		 	<p>vue.class</p>
-            <section class="artiste flex wrap">
-                <header class="">
-                    <h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; }?></h2>
+		 <section>
+		 	
+            <section >
+                <header>
+                    <h2><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; }?></h2>
                 </header>
+				<h2>Oeuvres produites par cet artiste</h2>
+				<?php
+					foreach($oeuvres as $oeuvre){
+						extract($oeuvre)
+						?>
+						<a href = "/art-pub-mtl/api/oeuvre/<?= $id_oeuvre?>"><?=$titre ?></a><br>
+					<?php
+					}
+				?>
             </section>
 
         </section>
