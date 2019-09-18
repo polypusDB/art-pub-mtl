@@ -151,6 +151,14 @@ class Vue {
 		$this->affichePied();
 	}
 
+	public function afficherFormConnexion(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("vues/formConnexion.php");
+		$this->affichePied();
+
+	}
+
 
 }
 ?>

@@ -83,42 +83,58 @@ class Oeuvre extends Modele {
 	public function getOeuvre($id) 
 	{
 		$res = Array();
-		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
-					where id=". $id;
-				
+		$query = "SELECT o.titre, o.dimension, o.description, CONCAT(a.prenom, ', ', a.nom), e.adresse, ar.nom as NomArrondissement, s.nom_francais, c.nom_francais
+		FROM oeuvre o 
+		join artiste_oeuvre ao
+		on ao.id_oeuvre = o.id_oeuvre
+		join artiste a
+        on a.id_artiste = ao.id_artiste
+        JOIN endroit e
+        ON e.id_endroit = o.id_endroit
+        JOIN arrondissement ar
+        ON ar.id_arrondissement = e.id_arrondissement
+        join type_support s
+        on s.id_support = o.id_support
+        join categorie c 
+        on c.id_categorie = o.id_categorie
+		WHERE o.id_oeuvre = '$id'";
+		
+
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($oeuvre = $mrResultat->fetch_assoc())
-			{
-				//$oeu = $res;
+			$oeuvre = $mrResultat->fetch_assoc();
+			var_dump($oeuvre);
+			extract($oeuvre);
+			echo "<br>";
+			echo $titre;
+			// while($oeuvre = $mrResultat->fetch_assoc())
+			// {
+			// 	//$oeu = $res;
 				
-				if(count($res) == 0)
-				{
-					$oeuvre['Artistes'] = Array();
-					$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-														"Nom"=> $oeuvre['Nom'],
-														"Prenom"=> $oeuvre['Prenom'],
-														"NomCollectif"=> $oeuvre['NomCollectif']
-													);
-					unset($oeuvre['id_artiste']);
-					unset($oeuvre['Nom']);
-					unset($oeuvre['Prenom']);
-					unset($oeuvre['NomCollectif']);
-					$res = $oeuvre;
-				}
-				else
-				{
+			// 	if(count($res) == 0)
+			// 	{
+			// 		$oeuvre['Artistes'] = Array();
+			// 		$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
+			// 											"Nom"=> $oeuvre['titre'],
+			// 											"Prenom"=> $oeuvre['Prenom'],
+			// 											"NomCollectif"=> $oeuvre['NomCollectif']
+			// 										);
+			// 		unset($oeuvre['id_artiste']);
+			// 		unset($oeuvre['Nom']);
+			// 		unset($oeuvre['Prenom']);
+			// 		unset($oeuvre['NomCollectif']);
+			// 		$res = $oeuvre;
+			// 	}
+			// 	else
+			// 	{
 					
-					$res['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-														"Nom"=> $oeuvre['Nom'],
-														"Prenom"=> $oeuvre['Prenom'],
-														"NomCollectif"=> $oeuvre['NomCollectif']
-													);
-				}
-			}
+			// 		$res['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
+			// 											"Nom"=> $oeuvre['Nom'],
+			// 											"Prenom"=> $oeuvre['Prenom'],
+			// 											"NomCollectif"=> $oeuvre['NomCollectif']
+			// 										);
+			// 	}
+			// }
 			
 		}
 		return $res;
@@ -156,52 +172,54 @@ class Oeuvre extends Modele {
 	 * @param int $id Identifiant de l'oeuvre
 	 * @return Array
 	 */
-	public function modifOeuvre($id, $aData) 
-	{
-		$resQuery = false;
-		$res = Array();
-		if($this->verifDonneesExterne($id))
-		{
-			if(isset($aData['Description']) && isset($aData['Categorie']))
-			{
-				foreach ($aData as $cle => $valeur) {
-					$aSet[] = ($cle . "= '".$valeur. "'");
-				}
-				if(count($aSet) > 0)
-				{
-					$query = "Update ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." SET ";
-					$query .= join(", ", $aSet);
+
+
+	// public function modifOeuvre($id, $aData) 
+	// {
+	// 	$resQuery = false;
+	// 	$res = Array();
+	// 	if($this->verifDonneesExterne($id))
+	// 	{
+	// 		if(isset($aData['Description']) && isset($aData['Categorie']))
+	// 		{
+	// 			foreach ($aData as $cle => $valeur) {
+	// 				$aSet[] = ($cle . "= '".$valeur. "'");
+	// 			}
+	// 			if(count($aSet) > 0)
+	// 			{
+	// 				$query = "Update ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." SET ";
+	// 				$query .= join(", ", $aSet);
 					
-					$query .= (" WHERE id_oeuvre = ". $id); 
-					$resQuery = $this->_db->query($query);
-					echo $query;
-				}
-			}
-		}
-		else 
-		{
-			if(extract($aData) > 0)
-			{
-				$query = "INSERT INTO ". self::TABLE_OEUVRE_DONNEES_EXTERNES ."  (`id_oeuvre`, `Description`, `Categorie`, `cote`) 
-				VALUES ('".$id. "','". $Description. "','". $Categorie. "','1')";
-				$resQuery = $this->_db->query($query);
-				echo $query;
-			}
-		}
+	// 				$query .= (" WHERE id_oeuvre = ". $id); 
+	// 				$resQuery = $this->_db->query($query);
+	// 				echo $query;
+	// 			}
+	// 		}
+	// 	}
+	// 	else 
+	// 	{
+	// 		if(extract($aData) > 0)
+	// 		{
+	// 			$query = "INSERT INTO ". self::TABLE_OEUVRE_DONNEES_EXTERNES ."  (`id_oeuvre`, `Description`, `Categorie`, `cote`) 
+	// 			VALUES ('".$id. "','". $Description. "','". $Categorie. "','1')";
+	// 			$resQuery = $this->_db->query($query);
+	// 			echo $query;
+	// 		}
+	// 	}
 	
-		return ($resQuery ? $id : 0);
-	}
+	// 	return ($resQuery ? $id : 0);
+	// }
 	
-	private function verifDonneesExterne($id)
-	{
-		$res = Array();
-		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
-		if($mrResultat = $this->_db->query($query))
-		{
-			$res = $mrResultat->fetch_assoc();
-		}
-		return (count($res) >0 ? true : false);
-	}
+	// private function verifDonneesExterne($id)
+	// {
+	// 	$res = Array();
+	// 	$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
+	// 	if($mrResultat = $this->_db->query($query))
+	// 	{
+	// 		$res = $mrResultat->fetch_assoc();
+	// 	}
+	// 	return (count($res) >0 ? true : false);
+	// }
 
 	public function deleteOeuvre($id){
 		
