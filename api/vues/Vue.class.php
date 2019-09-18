@@ -55,8 +55,18 @@ class Vue {
         $this->afficheEntete();
         include("VueHome.php");
         $this->affichePied();
-        
-		
+	}
+
+	/**
+	 * Affiche la page à propos
+	 * @access public
+	 * @return void
+	 */
+	public function afficheApropos() {
+        $this->afficheHead();
+        $this->afficheEntete();
+        include("VueApropos.php");
+        $this->affichePied();
 	}
 	
 	/**
@@ -78,39 +88,10 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheOeuvre($aData = Array()) {
-		extract($aData);
-		var_dump($aData);
-		?>
-		 <section class="contenu uneOeuvre flex flex-col">
-		 	<section class="retour"><a href="/art-pub-mtl/api/oeuvre/"> Retour à la liste  </a></section>
-            <section class="oeuvre flex wrap">
-                <header class="image dummy">
-                	<img src="/art-pub-mtl/img/placeholder_640_480.jpg" />
-                    <h2 class="titre"><?php echo $Titre?></h2>
-                </header>
-                    
-                        
-                <section class="texte">
-					<p class="description"><?php echo $Description ?></p>
-						<?php
-						foreach($Artistes as $artiste){
-							extract($artiste);
-							?>
-							<p class="auteur">Par : <a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom .", ". $Prenom; } else { echo $NomCollectif; } ?></a></p>
-
-						<?php
-						}
-
-						?>
-                   
-			    	<p class="arrondissement"><?php echo $Arrondissement?></p>
-                </section>
-                
-            </section>
-
-        </section>
-
-		<?php
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("VueDetailOeuvre.html.php");
+		$this->affichePied();
 	}
 
 
