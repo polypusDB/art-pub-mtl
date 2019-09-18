@@ -134,17 +134,16 @@ class Vue {
 	 */
 	public function afficheArtiste($aData = Array()) {
 		// $this->afficheHead();
-		// $this->afficheEntete();
+		$this->afficheEntete();
+		
 		extract($aData);
 
-		var_dump($oeuvres[1]);
-		
 		?>
-		 <section class="contenu uneOeuvre flex flex-col">
+		 <section>
 		 	
-            <section class="artiste flex wrap">
-                <header class="">
-                    <h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; }?></h2>
+            <section >
+                <header>
+                    <h2><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; }?></h2>
                 </header>
 				<h2>Oeuvres produites par cet artiste</h2>
 				<?php
@@ -160,7 +159,7 @@ class Vue {
         </section>
 			
 		<?php
-		// $this->affichePied();
+		$this->affichePied();
 	}
 
 	public function afficherFormConnexion(){

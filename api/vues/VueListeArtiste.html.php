@@ -8,9 +8,15 @@
 			                    <header class="">
 			                        <a href="artiste/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; } ?></h2></a> 
 								</header>
+								<?php
+									if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+								?>
 								<div class="boutons">
 									<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
 								</div>
+								<?php
+									}
+								?>
 			                </section>
 							<?php
 						}

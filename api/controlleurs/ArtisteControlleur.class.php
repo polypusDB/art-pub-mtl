@@ -35,7 +35,13 @@ class ArtisteControlleur extends Controlleur
             
 		} // si sup on regarde l'id et on supprime
 		else if(isset($requete->url_elements[0]) == "sup"){
-			$this->supArtiste((int)$requete->url_elements[1]);
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$this->supArtiste((int)$requete->url_elements[1]);
+			}
+			else{
+				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
+			}
+			
 		} 
         else 	// Liste des oeuvres
         {
@@ -55,11 +61,9 @@ class ArtisteControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			//$oVue->afficheHead();
-			//$oVue->afficheEntete();
+
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{
-				// print_r($res);
 				$oVue->afficheArtiste($res);	
 			}
 			else
@@ -67,7 +71,6 @@ class ArtisteControlleur extends Controlleur
 				$oVue->afficheArtistes($res);
 			}	
 			
-			//$oVue->affichePied();
 			
 		}
 			
