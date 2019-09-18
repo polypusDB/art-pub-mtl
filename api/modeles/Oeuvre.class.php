@@ -57,7 +57,7 @@ class Oeuvre extends Modele {
 					
 					$res[] = $oeuvre;
 				}
-				else if(isset($oeu) && $oeu['id'] == $oeuvre['id'])
+				else if(isset($oeu) && $oeu['id_oeuvre'] == $oeuvre['id_oeuvre'])
 				{
 					
 					$i = count($res)-1;
@@ -83,7 +83,7 @@ class Oeuvre extends Modele {
 	public function getOeuvre($id) 
 	{
 		$res = Array();
-		$query = "SELECT o.titre, o.dimension, o.description, CONCAT(a.prenom, ', ', a.nom), e.adresse, ar.nom as NomArrondissement, s.nom_francais, c.nom_francais
+		$query = "SELECT o.titre, o.dimension, o.description, a.id_artiste, CONCAT(a.prenom, ', ', a.nom) as nomA, e.adresse, ar.nom as NomArrondissement, s.nom_francais, c.nom_francais
 		FROM oeuvre o 
 		join artiste_oeuvre ao
 		on ao.id_oeuvre = o.id_oeuvre
@@ -102,39 +102,37 @@ class Oeuvre extends Modele {
 
 		if($mrResultat = $this->_db->query($query))
 		{
-			$oeuvre = $mrResultat->fetch_assoc();
-			var_dump($oeuvre);
-			extract($oeuvre);
-			echo "<br>";
-			echo $titre;
-			// while($oeuvre = $mrResultat->fetch_assoc())
-			// {
-			// 	//$oeu = $res;
+
+	
+			while($oeuvre = $mrResultat->fetch_assoc())
+			{
+				// var_dump($oeuvre);
+				extract($oeuvre);
+				echo count($mrResultat);
+
+				echo $titre;
+
+				//$oeu = $res;
 				
-			// 	if(count($res) == 0)
-			// 	{
-			// 		$oeuvre['Artistes'] = Array();
-			// 		$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-			// 											"Nom"=> $oeuvre['titre'],
-			// 											"Prenom"=> $oeuvre['Prenom'],
-			// 											"NomCollectif"=> $oeuvre['NomCollectif']
-			// 										);
-			// 		unset($oeuvre['id_artiste']);
-			// 		unset($oeuvre['Nom']);
-			// 		unset($oeuvre['Prenom']);
-			// 		unset($oeuvre['NomCollectif']);
-			// 		$res = $oeuvre;
-			// 	}
-			// 	else
-			// 	{
+				if(count($res) == 0)
+				{
+					$oeuvre['Artistes'] = Array();
+					$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
+														"nomA"=> $oeuvre['nomA']
+													);
+					unset($oeuvre['id_artiste']);
+					unset($oeuvre['nomA']);
+					$res = $oeuvre;
+				}
+				else
+				{
 					
-			// 		$res['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-			// 											"Nom"=> $oeuvre['Nom'],
-			// 											"Prenom"=> $oeuvre['Prenom'],
-			// 											"NomCollectif"=> $oeuvre['NomCollectif']
-			// 										);
-			// 	}
-			// }
+					$res['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
+													"nomA"=> $oeuvre['nomA']
+													);
+				}
+			}
+
 			
 		}
 		return $res;
@@ -150,19 +148,24 @@ class Oeuvre extends Modele {
 	public function getOeuvresParArtiste($id) 
 	{
 		$res = Array();
-		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					where id_artiste=". $id;
+		$query = "	SELECT o.titre, o.id_oeuvre
+		FROM oeuvre o
+		JOIN artiste_oeuvre ao
+		on ao.id_oeuvre = o.id_oeuvre
+		WHERE ao.id_artiste = '$id'";
 				
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
 			{
 				$res[] = $oeuvre;
+				// var_dump($res);
 			}
 		}
 		return $res;
 	}
+
+
 	
 	
 	
@@ -222,12 +225,11 @@ class Oeuvre extends Modele {
 	// }
 
 	public function deleteOeuvre($id){
-		
+
+		echo "je supprime";
 		$query = "DELETE 
 		FROM oeuvre 
 		WHERE id_oeuvre = $id";
-
-		// a tester -----------------------------------------
 		$res = $this->_db->query($query);
 		
 	}

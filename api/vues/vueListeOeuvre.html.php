@@ -21,17 +21,21 @@
 					<div class="auteur">
 						<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
 					</div>
+					<?php
+						if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+					?>
 					<div class="boutons">
-						<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+						<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
 					</div>
 					<?php
+						}
 					}
 					?>
 				</div>
-				</div>
-			<?php
-			}
-			?>
+			</div>
+		<?php
+		}
+		?>
 	</section>
 				
 </section>
