@@ -28,10 +28,10 @@
 					}
 					?>
 				</div>
-				</div>
-			<?php
-			}
-			?>
+			</div>
+		<?php
+		}
+		?>
 	</section>
 				
 </section>
