@@ -1,25 +1,32 @@
-	<!-- il est temporaire-->
-	<head>
-        <meta name="viewport" content="width=device-width">
-		<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen">
-	</head>
-	<!-- il est temporaire-->
-
 <section class="contenu listeOeuvres">
 	<div class="titreListe">
 		<h1>Oeuvres</h1>
 	</div>
 		<section class="oeuvres flex wrap">
 			<?php
-			//foreach ($aData as $cle => $oeuvre) {
-			//extract($oeuvre);
+			if(!empty($aData)){
+				// var_dump($aData);
+				
+				extract($aData);
+				// var_dump($Artistes);
+				foreach($Artistes as $Artiste){
+					extract($Artiste);
+				
+					echo $nomA;
+				}
+				extract($Artiste);
+			foreach ($aData as $cle => $oeuvre) {
+			// extract($oeuvre);
+			
+			echo "<br/>";
+			// var_dump($oeuvre);
 			?>
-				<div class="oeuvre carte">
+				<!-- <div class="oeuvre carte">
 					<div class="image dummy">
-						<a href="oeuvre/<?=$id_oeuvre ?>"><img src="../../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
+						<img src="../../img/placeholder_640_480.jpg" alt="Art Public Montreal">
 					</div>
 					<div class="texte">
-						<h2 class="titre">titre</h2>
+						<h2 class="titre"><?php echo $titre?></h2>
 						<h4>Artiste</h4>
 						<p>Lorem ipsum</p>
 						<h4>Description</h4>
@@ -31,11 +38,12 @@
 						<h4>Support</h4>
 						<p>Proin in odio laoreet</p>
 						<h4>Endroit</h4>
-						<p>Bibendum neque</p>
+						<p>Bibendum neque</p> -->
 			<?php
-			//}
+			}
+			}
 			?>
 					</div>
 				</div>
 		</section>
-		</section>
+</section>
