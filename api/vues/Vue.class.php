@@ -55,8 +55,18 @@ class Vue {
         $this->afficheEntete();
         include("VueHome.php");
         $this->affichePied();
-        
-		
+	}
+
+	/**
+	 * Affiche la page à propos
+	 * @access public
+	 * @return void
+	 */
+	public function afficheApropos() {
+        $this->afficheHead();
+        $this->afficheEntete();
+        include("VueApropos.php");
+        $this->affichePied();
 	}
 	
 	/**
