@@ -1,49 +1,44 @@
-<section class="contenu listeOeuvres">
+<section class="contenu uneOeuvre flex flex-col">
+	<div class="retour">
+		<i class="fas fa-arrow-circle-left"></i>
+		<a href="/art-pub-mtl/api/oeuvre"> Retour à la liste  </a>
+	</div>
 	<div class="titreListe">
 		<h1>Oeuvres</h1>
 	</div>
-		<section class="oeuvres flex wrap">
-			<?php
-			if(!empty($aData)){
-				// var_dump($aData);
-				
-				extract($aData);
-				// var_dump($Artistes);
-				foreach($Artistes as $Artiste){
-					extract($Artiste);
-				
-					echo $nomA;
-				}
-				extract($Artiste);
-			foreach ($aData as $cle => $oeuvre) {
-			// extract($oeuvre);
+	<section class="oeuvres">
+		<?php
+		if(!empty($aData)){
+			extract($aData);
+		?>
 			
-			echo "<br/>";
-			// var_dump($oeuvre);
-			?>
-				<!-- <div class="oeuvre carte">
-					<div class="image dummy">
-						<img src="../../img/placeholder_640_480.jpg" alt="Art Public Montreal">
-					</div>
-					<div class="texte">
-						<h2 class="titre"><?php echo $titre?></h2>
-						<h4>Artiste</h4>
-						<p>Lorem ipsum</p>
-						<h4>Description</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in odio laoreet, bibendum neque at, pharetra quam. Nunc ac pulvinar dolor. Duis malesuada sapien et viverra fermentum. Duis interdum mi id tempus iaculis. Pellentesque at lectus mollis, accumsan sapien eu, malesuada tellus.</p>
-						<h4>Dimension</h4>
-						<p>100x100</p>
-						<h4>Categorie</h4>
-						<p>Consectetur adipiscing</p>
-						<h4>Support</h4>
-						<p>Proin in odio laoreet</p>
-						<h4>Endroit</h4>
-						<p>Bibendum neque</p> -->
-			<?php
-			}
-			}
-			?>
-					</div>
-				</div>
-		</section>
+			<div class="image dummy">
+				<!-- <img src="/art-pub-mtl/img/placeholder_640_480.jpg" alt="Art Public Montreal"> -->
+				<h2 class="titre"><?php echo $titre?></h2>
+			</div>
+			<div class="texte">
+				<h4>Artiste</h4>
+					<?php
+						foreach($Artistes as $Artiste){
+							extract($Artiste);
+							echo $nomA;
+						}
+					?>
+				<h4>Description</h4>
+				<p><?php echo $description?></p>
+				<h4>Dimension</h4>
+				<p><?php echo $dimension?></p>
+				<h4>Categorie</h4>
+				<p><?php echo $NomCategorie?></p>
+				<h4>Support</h4>
+				<p><?php echo $NomSupport?></p>
+				<h4>Endroit</h4>
+				<p><?php echo $adresse?></p>
+				<p><?php echo $NomArrondissement?></p>
+		<?php
+		}
+		?>
+			</div>
+			
+	</section>
 </section>

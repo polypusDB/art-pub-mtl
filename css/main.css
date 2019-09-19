@@ -60,7 +60,7 @@ h5{
 }
 
 section {
-    padding:5%;
+    padding:0;
 }
 
 html,
@@ -292,10 +292,6 @@ section p.arrondissement{
 {
     width: 100%;
 }
-.contenu.uneOeuvre
-{
-    padding-left: 0px;
-}
 .uneOeuvre > .oeuvre
 {
     width: 900px;
@@ -344,8 +340,6 @@ section p.arrondissement{
 {
     width: 100%;
 }
-
-
 .uneOeuvre > .retour
 {
     display: flex;
@@ -355,7 +349,6 @@ section p.arrondissement{
     font-size: 24px;
     margin-left: var(--marge-gauche);
     text-decoration: none;
-    background: url("/artPublic/img/icons/ic_keyboard_backspace_white_48px.svg") no-repeat;
     height: 48px;
 }
 
@@ -428,7 +421,7 @@ section p.arrondissement{
 .contenu {
     padding-left: var(--marge-gauche);
     min-height: 100%;
-    padding-top: 64px;
+    padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
     /* sticky footer */
@@ -436,7 +429,7 @@ section p.arrondissement{
     padding-bottom: 100px;
 }
 .contenu .titreListe{
-    margin: 8px;
+    margin: 0;
 }
 .contenu .titreListe h1{
     text-transform: uppercase;
@@ -499,7 +492,7 @@ main > footer {
     .contenu {
         padding-left: 7%;
         padding-right: 7%;
-        padding-top: 0;
+        padding-top: 30%;
     }
     .carte .texte .titre{
         font-size: 18px;
