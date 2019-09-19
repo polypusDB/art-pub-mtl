@@ -1,11 +1,10 @@
 </body>    
    <footer>
-       <section>
-           <a><i class="fa fa-facebook"></i></a>
-           <i class="fa fa-twitter" aria-hidden="true"></i>
-           <i class="fa fa-youtube" aria-hidden="true"></i>
-           <i class="fa fa-instagram" aria-hidden="true"></i>
-       </section>
+       <div class="reseaux">
+           <a href="https://www.facebook.com/artpublicmtl?ref=hl"><i class="fab fa-facebook-f"></i></a>
+           <a href="https://twitter.com/ArtPMTL"><i class="fab fa-twitter"></i></a>
+           <a href="https://www.youtube.com/channel/UCDWAUgqPbvtf8-AnCbsgijw"><i class="fab fa-youtube"></i></a>
+       </div>
        <section>
            <a href="http://ville.montreal.qc.ca/portal/page?_pageid=5017,15631571&_dad=portal&_schema=PORTAL"><img  src="../img/logo_footer/MMC.png" alt=""></a>
             <a href="http://ville.montreal.qc.ca"><img  src="../img/logo_footer/MTL.png" alt=""></a>

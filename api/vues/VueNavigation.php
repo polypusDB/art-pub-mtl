@@ -1,6 +1,6 @@
     <body>
         <header class="entete">
-            <a href="/art-pub-mtl/api" class="logo"><img src="../img/logoAPM.png" alt="Art Public Montreal"></a>
+            <a href="/art-pub-mtl/api" class="logo"><img src="/art-pub-mtl/img/logoAPM.png" alt="Art Public Montreal"></a>
             <span class="flexgrow"></span>
             <nav class="menu">
                 <span>

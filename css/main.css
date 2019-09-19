@@ -467,23 +467,6 @@ section p.arrondissement{
 }
 
 
-/**
- * Footer CSS
- */
-
-main > footer {
-    padding-left: var(--marge-gauche);
-    height: 35px;
-    background-color: #eee;
-    
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-}
-
-
 
 .hidden
 {
