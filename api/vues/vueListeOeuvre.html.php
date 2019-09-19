@@ -21,12 +21,12 @@
 					<div class="auteur">
 						<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
 					</div>
-					<div class="boutons">
-						<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
-					</div>
 					<?php
 					}
 					?>
+					<div class="boutons">
+						<a href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+					</div>
 				</div>
 			</div>
 		<?php
