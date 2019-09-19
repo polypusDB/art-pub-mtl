@@ -36,6 +36,9 @@ a {
     cursor: pointer;
     color: #979797;
 }
+a:hover{
+    color: #E26F39;
+}
 p{
     text-align: left;
     line-height: 1.5;
@@ -77,7 +80,7 @@ buttons {
     position: relative;
     width: var(--carte-largeur);
     height: var(--carte-hauteur);
-    margin: 8px;
+    margin: 20px 20px 20px 0;
     overflow: hidden;
 }
 .carte .image   
@@ -334,33 +337,31 @@ section p.arrondissement{
     width: 100%;
     color: #ffffff;
 }
-
-
-.uneOeuvre > .oeuvre .texte
-{
-    width: 100%;
+.uneOeuvre .oeuvres .titre{
+    color: #E26F39;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 20px 0 0;
+}
+.uneOeuvre .oeuvres h4{
+    margin-bottom: 5px;
 }
 .uneOeuvre > .retour
 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #FFF;
-    font-size: 24px;
-    margin-left: var(--marge-gauche);
+    font-size: 15px;
     text-decoration: none;
     height: 48px;
+    justify-content: flex-end;
 }
 
 .uneOeuvre > .retour a
 {
     text-decoration: none;
-    color: #FFF;
-    padding-left: 48px;
+    padding-left: 10px;
 }
-
-
-
 .lien-pager
 {
     margin-left: 5px;
@@ -493,6 +494,9 @@ main > footer {
         padding-left: 7%;
         padding-right: 7%;
         padding-top: 30%;
+    }
+    .carte {
+        height: auto;
     }
     .carte .texte .titre{
         font-size: 18px;
