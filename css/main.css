@@ -75,6 +75,37 @@ buttons {
     -moz-osx-font-smoothing: grayscale;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
+/* Boutons admin ---------------------------------------- */
+.boutons{
+    padding: 2%;
+    color: white;
+    width: auto;
+    text-align: center;
+    margin: 20px 0 10px 0;
+    -webkit-box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
+    box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
+}
+.boutons a{
+    color: white;
+}
+.boutons:hover{
+    cursor: pointer;
+}
+.bt-blue{
+    background-color: #81CEC5;
+}
+.bt-blue:hover{
+    background-color: #8FE3DA;
+}
+.bt-jaune{
+    background-color: #F3D331;
+}
+.bt-jaune:hover{
+    background-color: #F9DB45;
+}
+/* Boutons admin fin ---------------------------------------- */
+
 .carte
 {
     position: relative;
@@ -155,25 +186,7 @@ buttons {
 {
     color: #FCB797;
 }
-.boutons{
-    background-color: #81CEC5;
-    padding: 2%;
-    color: white;
-    width: 50%;
-    align-self: center;
-    text-align: center;
-    margin: 20px 0 0 0;
-    -webkit-box-shadow: 2px 4px 4px 0px rgba(0,0,0,0.28);
-    -moz-box-shadow: 2px 4px 4px 0px rgba(0,0,0,0.28);
-    box-shadow: 2px 4px 4px 0px rgba(0,0,0,0.28);
-}
-.boutons a{
-    color: white;
-}
-.boutons:hover{
-    cursor: pointer;
-    background-color: #8FE3DA;
-}
+
 .carte  .texte > .description
 {
     max-height: 50px;
@@ -279,7 +292,11 @@ section p.arrondissement{
     margin: 10px 0 0;
 }
 
-/* Oeuvres -------------------------------------------------------- */
+/* Oeuvre -------------------------------------------------------- */
+.listeOeuvres .boutons.bt-jaune{
+    width: auto;
+    margin-bottom: 30px;
+}
 .oeuvre .auteur a
 {
     text-decoration: none;
@@ -500,6 +517,9 @@ main > footer {
     }
     .carte .texte .titre{
         font-size: 18px;
+    }
+    .contenu .titreListe {
+        width: 100%;
     }
 
     /* À propos -------------- */
