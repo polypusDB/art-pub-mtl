@@ -14,7 +14,21 @@
                 <!-- <a href=""><i class="fas fa-hand-holding-heart"></i>Partenariat</a> -->
                 <a href="/art-pub-mtl/api/apropos"><i class="fas fa-spray-can"></i>À Propos</a>
                 <!-- <a href=""><i class="fas fa-comment"></i>Francais | English</a> -->
-                <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-in-alt"></i>Login</a>
+                <?php
+                if(!isset($_SESSION["utilisateur"])){
+                ?>
+                <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-in-alt"></i>Connexion</a>
+                <?php
+                }
+                else{
+                    $username = $_SESSION["utilisateur"]["nom_connexion"];
+                    ?>
+                    <a href="#"><i class="fas fa-sign-in-alt"></i><?php echo $username?></a>
+                    <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-in-alt"></i>Déconnexion</a>
+                    <?php
+                }
+                ?>
+                
             </nav>
             <a href="#" class="menu-burger">
                 <i class="fas fa-bars"></i>
