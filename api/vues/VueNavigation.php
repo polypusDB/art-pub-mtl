@@ -12,7 +12,7 @@
                 <a href="/art-pub-mtl/api/oeuvre"><i class="fas fa-brush"></i>Oeuvres</a>
                 <!-- <a href=""><i class="fas fa-map-marker-alt"></i>Parcours</a> -->
                 <!-- <a href=""><i class="fas fa-hand-holding-heart"></i>Partenariat</a> -->
-                <a href="/art-pub-mtl/api/Apropos"><i class="fas fa-spray-can"></i>À Propos</a>
+                <a href="/art-pub-mtl/api/apropos"><i class="fas fa-spray-can"></i>À Propos</a>
                 <!-- <a href=""><i class="fas fa-comment"></i>Francais | English</a> -->
                 <?php
                 if(!isset($_SESSION["utilisateur"])){

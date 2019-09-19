@@ -159,6 +159,7 @@ footer p{
         padding: 10px;
         font-size: inherit;
         color: white;
+        width: auto;
     }
     ::placeholder{
         color: white;

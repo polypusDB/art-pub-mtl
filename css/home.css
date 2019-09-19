@@ -5,6 +5,7 @@
     position: relative;
     width: 100%;
     height: auto; 
+    margin-top: 80px;
 }
 
 .caroussel img{
@@ -40,7 +41,7 @@
         background-color: #81CEC5;
     }
 
-.listeArtiste{
+.artiste div .listeArtiste{
     padding-top: 3%;
 }
 
@@ -92,17 +93,13 @@
     .apm div h1{
         margin: 3% 0% 3% 0%;
     }
-    
     .propos{
         font-size: 70%;
         color: darkgrey;
     }
-    
-    body{
-        margin-top: 80px;
+    .apm, .artiste{
+        padding: 5%;
     }
-    
-    
     
     
     
