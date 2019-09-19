@@ -152,5 +152,20 @@ class Vue {
 	}
 
 
+	public function getFormAjoutOeuvre(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("formAjouterOeuvres.php");
+		$this->affichePied();
+	}
+
+	public function getFormAjoutArtiste(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("formAjouterArtistes.php");
+		$this->affichePied();
+	}
+
+
 }
 ?>
