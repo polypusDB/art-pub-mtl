@@ -23,6 +23,8 @@ class OeuvreControlleur extends Controlleur
 	// GET : 
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre
+	// 		/oeuvre/sup/{id}/ - supprime une oeuvre
+	// 		/oeuvre/ajouter - ajoute une oeuvre
 	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
 	
 	public function getAction(Requete $requete)
@@ -33,10 +35,12 @@ class OeuvreControlleur extends Controlleur
 		{
 			$id_oeuvre = (int)$requete->url_elements[0];            
 			$res = $this->getOeuvre($id_oeuvre);
+			$oVue = new vue;
+			$oVue->afficheOeuvre($res);
 			
             
 		}
-		else if(isset($requete->url_elements[0]) == "sup"){
+		else if(isset($requete->url_elements[0]) == "sup" && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				$res = $this->supOeuvre($requete->url_elements[1]);
 			}
@@ -44,38 +48,22 @@ class OeuvreControlleur extends Controlleur
 				echo "vous devez etre connecté en tant qu'admin";
 				
 			}
-			
+		}
+		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$this->getFormAjout();
+			}
+			else{
+				echo "vous devez etre connecté en tant qu'admin";
+				
+			}
 		}
         else 	// La liste des oeuvres est a affiché
         {
-			// var_dump($_SESSION["utilisateur"]["type_acces"]);
-        	$res = $this->getListeOeuvre();
-        }
-		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
-		}
-		else
-		{
-			$oVue = new Vue();
-			//$oVue->afficheHead();
-			
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
-			{
-				
-				$oVue->afficheOeuvre($res);	
-			}
-			else
-			{
-				$oVue->afficheOeuvres($res);
-			}	
-			
-			
-		}
-			
-		
-		
+			$res = $this->getListeOeuvre();
+			$oVue = new vue;
+			$oVue->afficheOeuvres($res);
+		}		
 	}
 	
 	
@@ -92,10 +80,8 @@ class OeuvreControlleur extends Controlleur
 	
 	protected function getListeOeuvre()
 	{
-		
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
-		
 		return $aOeuvre;
 	}
 
@@ -104,9 +90,11 @@ class OeuvreControlleur extends Controlleur
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
 		header("Location:/art-pub-mtl/api/oeuvre");
-		
-		// $oVue = new Vue();
-		// $oVue->afficherOeuvre();
+	}
+
+	protected function getFormAjout(){
+		$oVue = new Vue();
+		$oVue->getFormAjoutOeuvre();
 	}
 	
 	

@@ -1,5 +1,11 @@
 <section class="contenu listeOeuvres">
 	<div class="titreListe">
+	<?php if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"]){
+		?>
+		<a href="/art-pub-mtl/api/oeuvre/ajouter">Ajouter une oeuvre</a>
+		<?php 
+			}
+		?>
 		<h1>Oeuvres</h1>
 		<h4>Découvrez la grande collection</h4>
 	</div>

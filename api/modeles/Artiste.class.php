@@ -55,15 +55,22 @@ class Artiste extends Modele {
 	}
 
 	public function deleteArtiste($id){
-		$query = "DELETE *
+		$query = "DELETE
 		FROM artiste 
 		WHERE id_artiste = $id";
 
-		$this->_db->query($query);
+		var_dump($this->_db->query($query));
 
 	}
 
 
+	public function AjouterArtiste($aData){
+		extract($aData);
+		$query = "INSERT INTO artiste (nom, prenom, nom_collectif, biographie)
+		VALUES ('$nom','$prenom', '$nom_collectif','$biographie')";
+		echo "$query";
+		$this->_db->query($query);
+	}
 
 	
 }

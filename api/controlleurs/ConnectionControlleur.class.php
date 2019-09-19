@@ -22,7 +22,8 @@ class ConnectionControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		if(isset($_SESSION["utilisateur"])){
-			echo "je suis connecté";
+			$this->deconnection();
+			header("Location: /art-pub-mtl/api");
 		}
 		else{
 			$oVue = new Vue();
@@ -42,12 +43,7 @@ class ConnectionControlleur extends Controlleur
 		{
 			if(isset($_POST["user"]) && isset($_POST["mdp"])){
 				if(trim($_POST["user"]) != "" && trim($_POST["mdp"])){
-					$oConnection = new Connection();
-					$utilisateur = $oConnection->getConnectionUser($_POST["user"], $_POST["mdp"]);
-					// var_dump($utilisateur);
-					
-					$_SESSION["utilisateur"] = $utilisateur;
-					// var_dump($_SESSION["utilisateur"]["type_acces"]);
+					$this->connection($_POST["user"], $_POST["mdp"]);
 					header("Location: /art-pub-mtl/api");
 				}
 				else{
@@ -57,9 +53,17 @@ class ConnectionControlleur extends Controlleur
 			else{
 				echo "vous n'arrivez pas d'un formulaire";
 			}
+		}
+	}
 
-            
-        }
+	protected function deconnection(){
+		session_destroy();
+	}
+
+	protected function connection(){
+		$oConnection = new Connection();
+		$utilisateur = $oConnection->getConnectionUser($_POST["user"], $_POST["mdp"]);
+		$_SESSION["utilisateur"] = $utilisateur;
 	}
 }
 ?>
