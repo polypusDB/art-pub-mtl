@@ -27,22 +27,30 @@ class ArtisteControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
 		{
             $id_artiste = (int)$requete->url_elements[0];
             
-            $res = $this->getArtiste($id_artiste);
+			$res = $this->getArtiste($id_artiste);
             
 		} // si sup on regarde l'id et on supprime
 		else if(isset($requete->url_elements[0]) == "sup"){
-			$this->supArtiste((int)$requete->url_elements[1]);
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$this->supArtiste((int)$requete->url_elements[1]);
+			}
+			else{
+				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
+			}
+			
 		} 
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeArtiste();
 			
-        }
+		}
+		
+
+
 		
 		if(isset($_GET['json']))
 		{
@@ -53,11 +61,9 @@ class ArtisteControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			//$oVue->afficheHead();
-			//$oVue->afficheEntete();
+
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{
-				// var_dump($res);
 				$oVue->afficheArtiste($res);	
 			}
 			else
@@ -65,7 +71,6 @@ class ArtisteControlleur extends Controlleur
 				$oVue->afficheArtistes($res);
 			}	
 			
-			//$oVue->affichePied();
 			
 		}
 			
@@ -93,10 +98,16 @@ class ArtisteControlleur extends Controlleur
 	}
 
 	protected function supArtiste($id_artiste){
-		echo "je delete l'artiste";
 		$oArtiste= new Artiste();
 		$aArtiste = $oArtiste->deleteArtiste($id_artiste);
 	}
+
+
+	// protected function getArtisteOeuvre($id){
+	// 	 $oOeuvre = new Oeuvre();
+	// 	 $aOeuvre = $oOeuvre->getOeuvresParArtiste($id);
+	// 	 return $aOeuvre;
+	// }
 	
 	
 	

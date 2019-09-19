@@ -137,19 +137,24 @@ class Oeuvre extends Modele {
 	public function getOeuvresParArtiste($id) 
 	{
 		$res = Array();
-		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					where id_artiste=". $id;
+		$query = "	SELECT o.titre, o.id_oeuvre
+		FROM oeuvre o
+		JOIN artiste_oeuvre ao
+		on ao.id_oeuvre = o.id_oeuvre
+		WHERE ao.id_artiste = '$id'";
 				
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
 			{
 				$res[] = $oeuvre;
+				// var_dump($res);
 			}
 		}
 		return $res;
 	}
+
+
 	
 	
 	
@@ -209,12 +214,11 @@ class Oeuvre extends Modele {
 	// }
 
 	public function deleteOeuvre($id){
-		
+
+		echo "je supprime";
 		$query = "DELETE 
 		FROM oeuvre 
 		WHERE id_oeuvre = $id";
-
-		// a tester -----------------------------------------
 		$res = $this->_db->query($query);
 		
 	}

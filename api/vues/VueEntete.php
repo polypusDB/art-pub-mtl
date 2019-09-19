@@ -13,13 +13,14 @@
         <link rel="stylesheet" href="/art-pub-mtl/css/main.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/home.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/formulaires.css" type="text/css" media="screen">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/art-pub-mtl/css/entete-footer.css" type="text/css" media="screen">
-        <!--<script src="/art-pub-mtl//art-pub-mtl/js/plugins.js"></script>-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
+        
+        <!--<script src="/art-pub-mtl/js/plugins.js"></script>-->
         <script src="/art-pub-mtl/js/main.js"></script>
         <script src="/art-pub-mtl/js/menu.js"></script>
         <script src="/art-pub-mtl/js/responsive.js"></script>
-
+        <script src="/art-pub-mtl/js/lienDelete.js"></script>
         <!-- Code Fontawesome -->
         <script src="https://kit.fontawesome.com/178b5a49f1.js"></script>
     </head>
