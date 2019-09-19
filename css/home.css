@@ -1,11 +1,8 @@
-
-
 /*caroussel --------------------------*/
 .caroussel{
     position: relative;
     width: 100%;
     height: auto; 
-    margin-top: 80px;
 }
 
 .caroussel img{
@@ -30,28 +27,46 @@
     padding: 2%;
 }
 
+/*section À propos --------------------------*/
+.apm, .artiste{
+    padding: 5%;
+}
 
-/*section Artiste --------------------------*/
-.apm h1{
+.apm h1, .apm h1 a{
     color: #F08243;
     font-weight:400;
     text-transform: uppercase;
 }
+
+.apm h1 a:hover{
+    color: #FCB797;
+}
+
+.apm .savoir{
+    text-align: right;
+    margin: 15px 0;
+}
+
+/*section Artiste --------------------------*/
 .artiste{
-        background-color: #81CEC5;
-    }
+    background-color: #81CEC5;
+}
 
 .artiste div .listeArtiste{
     padding-top: 3%;
 }
 
-.listeArtiste a{
+.artiste .listeArtiste a{
     text-decoration: underline;
 }
 
+.artiste .listeArtiste a:hover{
+    text-decoration: none;
+}
+
 .artiste h1{
-        color: white;
-    }
+    color: white;
+}
 
 .artiste h2{
     font-size: 1.2em;
@@ -63,6 +78,10 @@
 .artiste a{
     color: white;
     font-weight: 600;
+} 
+
+.artiste a:hover{
+    text-decoration: underline;
 } 
 
 /*Artiste à l'honneur --------------------------*/
@@ -90,6 +109,9 @@
 @media screen and (max-width:667px){
     
     /*section à propos --------------------------*/
+    .caroussel{
+        margin-top: 80px;
+    }
     .apm div h1{
         margin: 3% 0% 3% 0%;
     }
@@ -97,14 +119,6 @@
         font-size: 70%;
         color: darkgrey;
     }
-    .apm, .artiste{
-        padding: 5%;
-    }
     
-    
-    
-    
-    
-    
-    
+  
 }

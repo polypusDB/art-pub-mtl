@@ -36,6 +36,9 @@ a {
     cursor: pointer;
     color: #979797;
 }
+a:hover{
+    color: #E26F39;
+}
 p{
     text-align: left;
     line-height: 1.5;
@@ -72,12 +75,43 @@ buttons {
     -moz-osx-font-smoothing: grayscale;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
+/* Boutons admin ---------------------------------------- */
+.boutons{
+    padding: 2%;
+    color: white;
+    width: auto;
+    text-align: center;
+    margin: 20px 0 10px 0;
+    -webkit-box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
+    box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
+}
+.boutons a{
+    color: white;
+}
+.boutons:hover{
+    cursor: pointer;
+}
+.bt-blue{
+    background-color: #81CEC5;
+}
+.bt-blue:hover{
+    background-color: #8FE3DA;
+}
+.bt-jaune{
+    background-color: #F3D331;
+}
+.bt-jaune:hover{
+    background-color: #F9DB45;
+}
+/* Boutons admin fin ---------------------------------------- */
+
 .carte
 {
     position: relative;
     width: var(--carte-largeur);
     height: var(--carte-hauteur);
-    margin: 8px;
+    margin: 20px 20px 20px 0;
     overflow: hidden;
 }
 .carte .image   
@@ -152,25 +186,7 @@ buttons {
 {
     color: #FCB797;
 }
-.boutons{
-    background-color: #81CEC5;
-    padding: 2%;
-    color: white;
-    width: 50%;
-    align-self: center;
-    text-align: center;
-    margin: 20px 0 0 0;
-    -webkit-box-shadow: 2px 4px 4px 0px rgba(0,0,0,0.28);
-    -moz-box-shadow: 2px 4px 4px 0px rgba(0,0,0,0.28);
-    box-shadow: 2px 4px 4px 0px rgba(0,0,0,0.28);
-}
-.boutons a{
-    color: white;
-}
-.boutons:hover{
-    cursor: pointer;
-    background-color: #8FE3DA;
-}
+
 .carte  .texte > .description
 {
     max-height: 50px;
@@ -276,7 +292,11 @@ section p.arrondissement{
     margin: 10px 0 0;
 }
 
-/* Oeuvres -------------------------------------------------------- */
+/* Oeuvre -------------------------------------------------------- */
+.listeOeuvres .boutons.bt-jaune{
+    width: auto;
+    margin-bottom: 30px;
+}
 .oeuvre .auteur a
 {
     text-decoration: none;
@@ -334,33 +354,31 @@ section p.arrondissement{
     width: 100%;
     color: #ffffff;
 }
-
-
-.uneOeuvre > .oeuvre .texte
-{
-    width: 100%;
+.uneOeuvre .oeuvres .titre{
+    color: #E26F39;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 20px 0 0;
+}
+.uneOeuvre .oeuvres h4{
+    margin-bottom: 5px;
 }
 .uneOeuvre > .retour
 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #FFF;
-    font-size: 24px;
-    margin-left: var(--marge-gauche);
+    font-size: 15px;
     text-decoration: none;
     height: 48px;
+    justify-content: flex-end;
 }
 
 .uneOeuvre > .retour a
 {
     text-decoration: none;
-    color: #FFF;
-    padding-left: 48px;
+    padding-left: 10px;
 }
-
-
-
 .lien-pager
 {
     margin-left: 5px;
@@ -494,8 +512,14 @@ main > footer {
         padding-right: 7%;
         padding-top: 30%;
     }
+    .carte {
+        height: auto;
+    }
     .carte .texte .titre{
         font-size: 18px;
+    }
+    .contenu .titreListe {
+        width: 100%;
     }
 
     /* À propos -------------- */

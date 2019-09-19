@@ -3,10 +3,10 @@
             <a href="/art-pub-mtl/api" class="logo"><img src="/art-pub-mtl/img/logoAPM.png" alt="Art Public Montreal"></a>
             <span class="flexgrow"></span>
             <nav class="menu">
-                <span>
+                <!-- <span>
                     <a class="chercher" href=""><i class="fas fa-search"></i></a>
                     <input type="search" placeholder="Chercher">
-                </span>
+                </span> -->
                 <a href="/art-pub-mtl/api"><i class="fas fa-home"></i>Accueil</a>
                 <a href="/art-pub-mtl/api/artiste"><i class="fas fa-paint-brush"></i>Artistes</a>
                 <a href="/art-pub-mtl/api/oeuvre"><i class="fas fa-brush"></i>Oeuvres</a>
@@ -23,8 +23,8 @@
                 else{
                     $username = $_SESSION["utilisateur"]["nom_connexion"];
                     ?>
-                    <a href="#"><i class="fas fa-sign-in-alt"></i><?php echo $username?></a>
-                    <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-in-alt"></i>Déconnexion</a>
+                    <a href="#"><i class="fas fa-grin-wink"></i><?php echo $username?></a>
+                    <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                     <?php
                 }
                 ?>

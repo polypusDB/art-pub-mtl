@@ -12,16 +12,20 @@
 			extract($aData);
 		?>
 			
-			<div class="image dummy">
-				<!-- <img src="/art-pub-mtl/img/placeholder_640_480.jpg" alt="Art Public Montreal"> -->
+			<div class="img-page dummy">
+				<img src="/art-pub-mtl/img/placeholder_640_480.jpg" alt="Art Public Montreal">
 				<h2 class="titre"><?php echo $titre?></h2>
 			</div>
 			<div class="texte">
-				<h4>Artiste</h4>
+				<h4>Artiste(s)</h4>
 					<?php
 						foreach($Artistes as $Artiste){
 							extract($Artiste);
-							echo $nomA;
+					?>	
+						<a href="artiste/<?php echo $id_artiste ?>"> 
+							<?php echo $nomA."<br>";?>
+						</a>
+					<?php 
 						}
 					?>
 				<h4>Description</h4>
