@@ -16,19 +16,21 @@
 					<h2 class="titre"><a href="oeuvre/<?=$id_oeuvre ?>"><?php echo $titre?></a></h2>
 					<?php 
 					foreach($Artistes as $artiste){
-						extract($artiste);
-						?>
-					<div class="auteur">
-						<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
-					</div>
-					<?php
-						if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+					extract($artiste);
 					?>
-					<div class="boutons">
-						<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
-					</div>
+						<div class="auteur">
+							<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
+						</div>
 					<?php
-						}
+					}
+					?>
+					<?php
+					if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+					?>
+						<div class="boutons">
+							<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+						</div>
+					<?php
 					}
 					?>
 				</div>

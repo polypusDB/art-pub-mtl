@@ -83,7 +83,7 @@ class Oeuvre extends Modele {
 	public function getOeuvre($id) 
 	{
 		$res = Array();
-		$query = "SELECT o.titre, o.dimension, o.description, a.id_artiste, CONCAT(a.prenom, ', ', a.nom) as nomA, e.adresse, ar.nom as NomArrondissement, s.nom_francais, c.nom_francais
+		$query = "SELECT o.titre, o.dimension, o.description, a.id_artiste, CONCAT(a.prenom, ', ', a.nom) as nomA, e.adresse, ar.nom as NomArrondissement, s.nom_francais as NomSupport, c.nom_francais as NomCategorie
 		FROM oeuvre o 
 		join artiste_oeuvre ao
 		on ao.id_oeuvre = o.id_oeuvre
@@ -102,18 +102,9 @@ class Oeuvre extends Modele {
 
 		if($mrResultat = $this->_db->query($query))
 		{
-
-	
 			while($oeuvre = $mrResultat->fetch_assoc())
 			{
-				// var_dump($oeuvre);
-				extract($oeuvre);
-				echo count($mrResultat);
-
-				echo $titre;
-
-				//$oeu = $res;
-				
+				//extract($oeuvre);
 				if(count($res) == 0)
 				{
 					$oeuvre['Artistes'] = Array();
@@ -132,8 +123,6 @@ class Oeuvre extends Modele {
 													);
 				}
 			}
-
-			
 		}
 		return $res;
 	}

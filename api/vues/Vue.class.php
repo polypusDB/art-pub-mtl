@@ -21,7 +21,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheHead() {
-	   include("VueEntete.php");
+	   include "VueEntete.php";
 		
 	}
 
@@ -31,7 +31,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheEntete() {
-		include("VueNavigation.php");		
+		include "VueNavigation.php";		
 	}
 
 
@@ -41,7 +41,7 @@ class Vue {
 	 * @return void
 	 */
 	public function affichePied() {
-		include("VuePied.php");
+		include "VuePied.php";
 	}
 	
 

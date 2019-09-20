@@ -21,7 +21,6 @@
         <script src="/art-pub-mtl/js/menu.js"></script>
         <script src="/art-pub-mtl/js/responsive.js"></script>
         <script src="/art-pub-mtl/js/lienDelete.js"></script>
-
         <!-- Code Fontawesome -->
         <script src="https://kit.fontawesome.com/178b5a49f1.js"></script>
     </head>
