@@ -8,6 +8,15 @@
             Biographie : <input type="text" name="biographie" /><br>
             <input type="hidden" name="action" value=''/>
             <input type="submit" value="Ajouter"/>
+            <div>
+            <?php
+            
+            if($msgErreur != ""){
+                echo $msgErreur;
+            }
+            ?>
+            </div>
         </form>
+
     </div>
 </div>

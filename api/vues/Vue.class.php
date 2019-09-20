@@ -114,7 +114,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtiste($aData = Array()) {
-		// $this->afficheHead();
+		$this->afficheHead();
 		$this->afficheEntete();
 		
 		extract($aData);
@@ -124,7 +124,7 @@ class Vue {
 		 	
             <section >
                 <header>
-                    <h2><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; }?></h2>
+                    <h2><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; }?></h2>
                 </header>
 				<h2>Oeuvres produites par cet artiste</h2>
 				<?php
@@ -159,7 +159,7 @@ class Vue {
 		$this->affichePied();
 	}
 
-	public function getFormAjoutArtiste(){
+	public function getFormAjoutArtiste($msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formAjouterArtistes.php");

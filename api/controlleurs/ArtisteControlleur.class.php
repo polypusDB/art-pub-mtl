@@ -27,6 +27,7 @@ class ArtisteControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
+		$msgErreur="";
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
 		{
             $id_artiste = (int)$requete->url_elements[0];
@@ -47,7 +48,7 @@ class ArtisteControlleur extends Controlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$this->getFormAjout();				
+				$this->getFormAjout($msgErreur);				
 			}
 			else{
 				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
@@ -78,13 +79,34 @@ class ArtisteControlleur extends Controlleur
 	public function postAction(Requete $requete){
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
-				echo "allo";
-				$aData = Array();
-				foreach($_POST as $cle=>$value){
-					$aData[$cle] = $value;
+				$msgErreur ="";
+
+				if(empty(trim($_POST["nom_collectif"]))){
+					if(empty(trim($_POST["nom"])) && empty(trim($_POST["prenom"]))){
+						$msgErreur.= "Vous devez remplir le champ nom collectif ou nom et prenom. <br>";
+					}
+					else if(empty(trim($_POST["nom"])) || empty(trim($_POST["prenom"]))){
+						$msgErreur.= "Vous devez remplir le champ prenom et prénom ou un nom collectif. <br>";
+					}
 				}
-				$this->AjouterData($aData);
-				header("Location: /art-pub-mtl/api/artiste");
+				if(empty($_POST["biographie"])){
+					$msgErreur .= "Vous devez remplir le champ biographie. <br>";
+				}
+
+				// Si le message d'erreur est vide on lance l'ajout, sinon on affiche le message
+				if($msgErreur == ""){
+					$aData = Array();
+					foreach($_POST as $cle=>$value){
+						$aData[$cle] = $value;
+					}
+						$this->AjouterData($aData);
+						header("Location: /art-pub-mtl/api/artiste");
+				}
+				else{
+					
+					$this->getFormAjout($msgErreur);
+				}
+
 			}
 
 		}
@@ -116,9 +138,9 @@ class ArtisteControlleur extends Controlleur
 	}
 
 	
-	protected function getFormAjout(){
+	protected function getFormAjout($msgErreur){
 		$oVue = new Vue;
-		$oVue->getFormAjoutArtiste();
+		$oVue->getFormAjoutArtiste($msgErreur);
 	}
 
 	protected function AjouterData($aData){

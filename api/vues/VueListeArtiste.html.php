@@ -10,13 +10,13 @@
 						?>
 				<section class="artiste-carte">
 				<header class="">
-				<a href="artiste/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $NomCollectif; } ?></h2></a> 
+				<a href="artiste/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; } ?></h2></a> 
 				</header>
 				<?php
 					if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				?>
 				<div class="boutons">
-				<a class="btnSup" href="artiste/sup/<?=$id_artiste ?>">Supprimer</a>
+				<a class="btnSup" href="/art-pub-mtl/api/artiste/sup/<?=$id_artiste ?>">Supprimer</a>
 				</div>
 				<?php
 					}
