@@ -1,5 +1,13 @@
 <section class="contenu listeOeuvres">
 	<div class="titreListe">
+	<?php if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"]){
+		?>
+		<div class="boutons bt-jaune">
+			<a href="/art-pub-mtl/api/oeuvre/ajouter">Ajouter une oeuvre</a>
+		</div>
+		<?php 
+			}
+		?>
 		<h1>Oeuvres</h1>
 		<h4>Découvrez la grande collection</h4>
 	</div>
@@ -27,7 +35,7 @@
 					<?php
 					if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 					?>
-						<div class="boutons">
+						<div class="boutons bt-blue">
 							<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
 						</div>
 					<?php

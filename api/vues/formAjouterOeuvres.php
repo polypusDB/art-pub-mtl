@@ -1,15 +1,6 @@
-    <!-- il est temporaire-->
-    <head>
-        <meta name="viewport" content="width=device-width">
-		<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="../../css/formulaires.css" type="text/css" media="screen">
-	</head>
-	<!-- il est temporaire-->
-
-
 <div class="container">
     <div class="contenu-form">
-        <h1>Formulaire ajouter un oeuvre</h1>
+        <h1>Formulaire ajouter une oeuvre</h1>
         <form action="" method="POST">
             Titre : <input type="text" name="titre" /><br>
             Dimension (m) : <input type="text" name="dimension" /><br>
