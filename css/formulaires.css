@@ -42,3 +42,13 @@ form select{
     margin: 10px 0;
     background: #F8F8F8;
 }
+
+
+@media screen and (max-width:667px){
+    .contenu-form {
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: 30%;
+    }
+    
+}

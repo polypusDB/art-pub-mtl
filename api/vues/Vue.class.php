@@ -6,7 +6,7 @@
  * @author Jonathan Martel
  * @version 1.1
  * @update 2013-12-11
- * @update 2016-01-22 : Adaptation du code aux standards de codage du département de TIM
+ * @update 2016-01-22 : Adaptation du code aux standards de codage du département de TIMf
  * @license MIT
  * @license http://opensource.org/licenses/MIT
  * 
@@ -116,30 +116,7 @@ class Vue {
 	public function afficheArtiste($aData = Array()) {
 		$this->afficheHead();
 		$this->afficheEntete();
-		
-		extract($aData);
-
-		?>
-		 <section>
-		 	
-            <section >
-                <header>
-                    <h2><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; }?></h2>
-                </header>
-				<h2>Oeuvres produites par cet artiste</h2>
-				<?php
-					foreach($oeuvres as $oeuvre){
-						extract($oeuvre)
-						?>
-						<a href = "/art-pub-mtl/api/oeuvre/<?= $id_oeuvre?>"><?=$titre ?></a><br>
-					<?php
-					}
-				?>
-            </section>
-
-        </section>
-			
-		<?php
+        include("VueDetailArtiste.html.php");
 		$this->affichePied();
 	}
 

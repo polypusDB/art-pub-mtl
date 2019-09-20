@@ -176,6 +176,7 @@ buttons {
     color: #E26F39;
     text-transform: uppercase;
     font-weight: 500;
+    text-align: left;
 }
 .carte .texte .titre a
 {
@@ -197,18 +198,87 @@ buttons {
     /* Cacher pour le sprint zero la description A.S.---------------------------------------- */
     display: none;
 }
-  
+
+/* Liste des artistes ----------------------------------------------------------------------- */
+.artiste-bouton h4{
+    margin: 0;
+    font-weight: 100;
+}
+
+.artiste-bouton h1{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #000;
+}
+
+.artiste-bouton{
+    margin-top: 30px;
+}
+
+.listeArtiste div h1{
+    padding-top: 20px;
+}
+
+.listeArtiste div h4{
+    padding-bottom: 20px;
+}
+
+.listeArtiste .flex{
+    display: block;
+}
+
 .artiste-carte{
-    text-decoration: none;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    width: 30%;
+    
+    /* bordure de défilement de la liste des artistes*/
+    border-left: solid 2px;
+    border-left-color: #F3D331;
+    padding: 30px; 
+    position: relative;
+
 }
 
-.artiste-carte a {
-    text-decoration: none;
+.artiste-carte header a {
     color: black;
+    text-transform: uppercase;
+    font-weight: 400;
 }
+
+.boutons .bt-bluea a .btnSup {
+    color: white;
+}
+
+.rectangle{
+    width: 12px;
+    height: 12px;
+    background-color: #F3D331;
+    position: absolute;
+    left: -7px;
+}
+
+/* Détails Artiste -------------------------------------------------------------------- */
+.nom-artiste h2{
+    color: #E26F39;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.oeuvre .artiste-detail h2{
+    color: black;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 20px 0 0;
+}
+
+.artiste_detail {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
 
 .carte .barre-action a, .carte .barre-action button {
     border: none;
@@ -478,23 +548,6 @@ section p.arrondissement{
 }
 
 
-/**
- * Footer CSS
- */
-
-main > footer {
-    padding-left: var(--marge-gauche);
-    height: 35px;
-    background-color: #eee;
-    
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-}
-
-
 
 .hidden
 {
@@ -526,4 +579,9 @@ main > footer {
     .img-page {
         height: auto;
     }
+    
+    .artiste-carte{
+    width: 80%;
+    }
 }
+

@@ -49,17 +49,18 @@
     width: 24px;
 }
 
+
+/* Réglages footer -------------------------------------------------- */
 footer section{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-/*   text-align: center;*/
 }
 
 footer img{
-    width: 85px;
+    width: 130px;
 }
 
 footer div{
@@ -69,6 +70,20 @@ footer div{
 footer p{
     text-align: center;
     font-size: 10px;
+}
+
+.reseaux{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.reseaux a{
+    text-align: center;
+    padding: 5%;
+    font-size: 35px;
 }
 
 
@@ -168,5 +183,17 @@ footer p{
     :-ms-input-placeholder /*IE 10-11*/{
         color: white;
         opacity: .5;
+    }
+    
+    
+    /* Réglages footer -------------------------------------------------- */
+    footer img{
+    width: 80px;
+    }
+    
+    .reseaux a{
+    text-align: center;
+    padding: 5%;
+    font-size: 25px;
     }
 }
