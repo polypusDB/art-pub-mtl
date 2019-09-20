@@ -114,7 +114,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheArtiste($aData = Array()) {
-		// $this->afficheHead();
+		$this->afficheHead();
 		$this->afficheEntete();
 		
 		extract($aData);

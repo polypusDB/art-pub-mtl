@@ -22,7 +22,7 @@
 						foreach($Artistes as $Artiste){
 							extract($Artiste);
 					?>	
-						<a href="artiste/<?php echo $id_artiste ?>"> 
+						<a href="/art-pub-mtl/api/artiste/<?php echo $id_artiste ?>"> 
 							<?php echo $nomA."<br>";?>
 						</a>
 					<?php 
