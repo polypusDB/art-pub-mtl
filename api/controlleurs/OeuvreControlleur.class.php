@@ -35,14 +35,23 @@ class OeuvreControlleur extends Controlleur
 		{
 			$id_oeuvre = (int)$requete->url_elements[0];            
 			$res = $this->getOeuvre($id_oeuvre);
-			$oVue = new vue;
+			$oVue = new Vue();
 			$oVue->afficheOeuvre($res);
 			
             
 		}
-		else if(isset($requete->url_elements[0]) == "sup" && $requete->url_elements[0] == "sup"){
+		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				$res = $this->supOeuvre($requete->url_elements[1]);
+			}
+			else{
+				echo "vous devez etre connecté en tant qu'admin";
+				
+			}
+		}
+		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$this->getFormMod();
 			}
 			else{
 				echo "vous devez etre connecté en tant qu'admin";
@@ -61,7 +70,7 @@ class OeuvreControlleur extends Controlleur
         else 	// La liste des oeuvres est a affiché
         {
 			$res = $this->getListeOeuvre();
-			$oVue = new vue;
+			$oVue = new Vue();
 			$oVue->afficheOeuvres($res);
 		}		
 	}
@@ -96,6 +105,11 @@ class OeuvreControlleur extends Controlleur
 	protected function getFormAjout(){
 		$oVue = new Vue();
 		$oVue->getFormAjoutOeuvre();
+	}
+
+	protected function getFormMod(){
+		$oVue = new Vue();
+		$oVue->getFormModifierOeuvre();
 	}
 	
 	

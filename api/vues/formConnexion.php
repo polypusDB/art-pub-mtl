@@ -15,11 +15,18 @@
 			</div>
 			<div>
 				<label for="mdp">Mot de passe:</label>
-				<input type="mdp" id="mdp" name="mdp">
+				<input type="password" id="mdp" name="mdp">
 			</div>
 			<div>
 				<input type="submit" id="envoyer" value="ENVOYER">
-			</div>		
+			</div>
+            <?php
+                if(isset($msg) && $msg != "")
+                {   
+                    echo "<p>$msg</p>";
+                    
+                }
+            ?>
 		</form>
 		<?php
             }
@@ -29,12 +36,6 @@
 				echo "<h3>Vous êtes déjà connecté!</h3>"; 
 				echo "<a href=''>Se Déconnecter </a>";                            
             }  
-            
-            if(isset($msgErreur))
-            {   
-                echo "<p>$msgErreur</p>";
-                
-            }
         ?>
 	</div>
 </div>
