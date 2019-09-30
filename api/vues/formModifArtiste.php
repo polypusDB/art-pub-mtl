@@ -14,7 +14,6 @@
             <input type="submit" value="Modifier"/>
             <div>
             <?php
-            $msgErreur = ""; // suprimmer pour la gestion des messages d'erreurs
             if($msgErreur != ""){
                 echo $msgErreur;
             }

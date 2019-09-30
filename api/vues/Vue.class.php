@@ -150,7 +150,7 @@ class Vue {
 		$this->affichePied();
 	}
 
-	public function getFormModifArtiste($aData){
+	public function getFormModifArtiste($aData, $msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formModifArtiste.php");
