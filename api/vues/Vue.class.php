@@ -120,7 +120,7 @@ class Vue {
 		$this->affichePied();
 	}
 
-	public function afficherFormConnexion(){
+	public function afficherFormConnexion($msg){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("vues/formConnexion.php");
@@ -140,6 +140,20 @@ class Vue {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formAjouterArtistes.php");
+		$this->affichePied();
+	}
+
+	public function getFormModifierOeuvre(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("formModifOeuvre.php");
+		$this->affichePied();
+	}
+
+	public function getFormModifArtiste($aData){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("formModifArtiste.php");
 		$this->affichePied();
 	}
 

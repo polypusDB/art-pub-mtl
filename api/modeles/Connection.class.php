@@ -19,18 +19,22 @@ class Connection extends Modele {
 	 */
 	
     public function getConnectionUser($user, $mdp){
-        $query = "SELECT u.nom, u.prenom,u.nom_connexion, r.type_acces
+        $query = "SELECT u.nom, u.prenom,u.nom_connexion,u.mot_passe, r.type_acces
         from usager u
         join role r 
         on r.id_role = u.id_role
-        where u.nom_connexion= '$user' and u.mot_passe = '$mdp'";
+        where u.nom_connexion= '$user'";
         if($mrResultat = $this->_db->query($query)){
             $utilisateur = $mrResultat->fetch_assoc();
             if($utilisateur == ""){
                 echo "mauvaise combinaison username mdp";
             }
             else{
-                return $utilisateur;
+                // var_dump($utilisateur);
+                if(password_verify($mdp, $utilisateur["mot_passe"])){
+                    return $utilisateur;
+                }else{
+                }
             }
            
         }else{

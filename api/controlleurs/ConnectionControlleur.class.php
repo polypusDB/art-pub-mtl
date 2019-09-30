@@ -27,9 +27,8 @@ class ConnectionControlleur extends Controlleur
 		}
 		else{
 			$oVue = new Vue();
-			// echo "je ne suis pas connecte.";
-			
-			$oVue->afficherFormConnexion();
+			$msg= "";			
+			$oVue->afficherFormConnexion($msg);
 			
 		}
 
@@ -43,11 +42,14 @@ class ConnectionControlleur extends Controlleur
 		{
 			if(isset($_POST["user"]) && isset($_POST["mdp"])){
 				if(trim($_POST["user"]) != "" && trim($_POST["mdp"])){
-					$this->connection($_POST["user"], $_POST["mdp"]);
+					$mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
+					$this->connection($_POST["user"], $mdp);
 					header("Location: /art-pub-mtl/api");
 				}
 				else{
-					echo "les champs requis ne sont pas remplis";
+					$msg = "les champs requis ne sont pas remplis";
+					$oVue = new Vue();
+					$oVue->afficherFormConnexion($msg);
 				}
 			}
 			else{

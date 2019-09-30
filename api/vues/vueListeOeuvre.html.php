@@ -2,9 +2,9 @@
 	<div class="titreListe">
 	<?php if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"]){
 		?>
-		<div class="boutons bt-jaune">
-			<a href="/art-pub-mtl/api/oeuvre/ajouter">Ajouter une oeuvre</a>
-		</div>
+		<!-- <div class="boutons bt-jaune"> -->
+			<!-- <a href="/art-pub-mtl/api/oeuvre/ajouter">Ajouter une oeuvre</a> -->
+		<!-- </div> -->
 		<?php 
 			}
 		?>
@@ -37,6 +37,9 @@
 					?>
 						<div class="boutons bt-blue">
 							<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
+						</div>
+						<div class="boutons bt-blue">
+							<a class="btnMod" href="oeuvre/mod/<?=$id_oeuvre ?>">Modifier</a>
 						</div>
 					<?php
 					}

@@ -27,6 +27,9 @@
 				<div class="boutons bt-blue">
 				    <a class="btnSup" href="/art-pub-mtl/api/artiste/sup/<?=$id_artiste ?>">Supprimer</a>
 				</div>
+                <div class="boutons bt-blue">
+                <a class="btnMod" href="artiste/mod/<?=$id_artiste ?>">Modifier</a>
+                </div>
 				<?php
 					}
 				?>

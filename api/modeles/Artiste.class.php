@@ -68,7 +68,18 @@ class Artiste extends Modele {
 		extract($aData);
 		$query = "INSERT INTO artiste (nom, prenom, nom_collectif, biographie)
 		VALUES ('$nom','$prenom', '$nom_collectif','$biographie')";
-		echo "$query";
+		$this->_db->query($query);
+	}
+
+	public function modifierArtiste($aData){
+		extract($aData);
+		$query = "UPDATE artiste
+		SET nom = '$nom',
+		prenom = '$prenom',
+		nom_collectif = '$nom_collectif',
+		biographie = '$biographie'
+		WHERE id_artiste = '$id'";
+
 		$this->_db->query($query);
 	}
 
