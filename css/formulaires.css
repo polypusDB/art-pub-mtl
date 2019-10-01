@@ -1,3 +1,5 @@
+/* CSS Formulaires -------------------------------------------------------------------- */
+
 .contenu-form{
     padding: 5%;
 }
@@ -8,7 +10,7 @@ form{
     border: 1px solid #B8B8B8;
     padding: 20px;
 }
-input{
+input, textarea{
     width: 100%;
     padding: 15px;
     padding-right: 0;
@@ -42,13 +44,23 @@ form select{
     margin: 10px 0;
     background: #F8F8F8;
 }
-
+label#texte-mdp{
+    display: block;
+    font-size: 11px;
+    color: #AFAFAF;
+}
+input[type="checkbox"] {
+    width: 3%;
+}
 
 @media screen and (max-width:667px){
     .contenu-form {
         padding-left: 7%;
         padding-right: 7%;
         padding-top: 30%;
+    }
+    input[type="checkbox"] {
+        width: 10%;
     }
     
 }
