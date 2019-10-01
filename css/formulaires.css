@@ -43,6 +43,9 @@ form select{
     padding-right: 0;
     margin: 10px 0;
     background: #F8F8F8;
+    font-size: 14px;
+    color: #AFAFAF;
+    font-family: 'Raleway', sans-serif;
 }
 label#texte-mdp{
     display: block;
@@ -51,6 +54,15 @@ label#texte-mdp{
 }
 input[type="checkbox"] {
     width: 3%;
+}
+.chercherForm{
+    margin: 10px 0;
+}
+input[type="search"] {
+    width: 40%;
+    margin-left: 10px;
+    border: 1px solid rgb(169, 169, 169);
+    color: #AFAFAF;
 }
 
 @media screen and (max-width:667px){
@@ -61,6 +73,10 @@ input[type="checkbox"] {
     }
     input[type="checkbox"] {
         width: 10%;
+    }
+    input[type="search"] {
+        width: 100%;
+        margin-left: 0;
     }
     
 }
