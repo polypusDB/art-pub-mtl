@@ -150,13 +150,20 @@ class Vue {
 		$this->affichePied();
 	}
 
-	public function getFormModifArtiste($aData){
+	public function getFormModifArtiste($aData, $msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formModifArtiste.php");
 		$this->affichePied();
 	}
 
+
+	public function afficheAccueilAdmin(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueAccueil.php");
+		$this->affichePied();
+	}
 
 }
 ?>

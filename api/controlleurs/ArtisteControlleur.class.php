@@ -49,7 +49,7 @@ class ArtisteControlleur extends Controlleur
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				$aData = $this->getArtiste((int)$requete->url_elements[1]);
-				$this->getFormModif($aData);
+				$this->getFormModif($aData, $msgErreur="");
 				
 				
 			}
@@ -123,8 +123,31 @@ class ArtisteControlleur extends Controlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
-				$this->modifData($_POST);
-				header("Location: /art-pub-mtl/api/artiste");
+				$msgErreur ="";
+				if(empty(trim($_POST["nom_collectif"]))){
+					if(empty(trim($_POST["nom"])) && empty(trim($_POST["prenom"]))){
+						$msgErreur.= "Vous devez remplir le champ nom collectif ou nom et prenom. <br>";
+					}
+					else if(empty(trim($_POST["nom"])) || empty(trim($_POST["prenom"]))){
+						$msgErreur.= "Vous devez remplir le champ prenom et prénom ou un nom collectif. <br>";
+					}
+				}
+				if(empty($_POST["biographie"])){
+					$msgErreur .= "Vous devez remplir le champ biographie. <br>";
+				}
+
+				if($msgErreur == ""){
+					$aData = Array();
+					foreach($_POST as $cle=>$value){
+						$aData[$cle] = $value;
+					}
+					$this->modifData($aData, $msgErreur);
+					header("Location: /art-pub-mtl/api/artiste");
+				}
+				else{
+					$this->getFormModif($_POST, $msgErreur);
+				}
+
 			}
 		}
 	}
@@ -164,9 +187,9 @@ class ArtisteControlleur extends Controlleur
 		$oArtiste->AjouterArtiste($aData);
 	}
 
-	protected function getFormModif($aData){
+	protected function getFormModif($aData, $msgErreur){
 		$oVue = new Vue();
-		$oVue->getFormModifArtiste($aData);
+		$oVue->getFormModifArtiste($aData, $msgErreur);
 	}
 
 	protected function modifData($aData){

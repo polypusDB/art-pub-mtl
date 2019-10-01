@@ -27,7 +27,8 @@ class Connection extends Modele {
         if($mrResultat = $this->_db->query($query)){
             $utilisateur = $mrResultat->fetch_assoc();
             if($utilisateur == ""){
-                echo "mauvaise combinaison username mdp";
+                $res = false;
+                return $res;
             }
             else{
                 // var_dump($utilisateur);
