@@ -43,8 +43,7 @@ class ConnectionControlleur extends Controlleur
 			if(isset($_POST["user"]) && isset($_POST["mdp"])){
 				if(trim($_POST["user"]) != "" && trim($_POST["mdp"])){
 					$mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
-					$this->connection($_POST["user"], $mdp);
-					header("Location: /art-pub-mtl/api");
+					$this->connection($_POST["user"], $mdp);					
 				}
 				else{
 					$msg = "les champs requis ne sont pas remplis";
@@ -65,7 +64,27 @@ class ConnectionControlleur extends Controlleur
 	protected function connection(){
 		$oConnection = new Connection();
 		$utilisateur = $oConnection->getConnectionUser($_POST["user"], $_POST["mdp"]);
-		$_SESSION["utilisateur"] = $utilisateur;
+		if($utilisateur == false){
+			$msg = "mauvaise combinaison mot de passe et nom d'usagé";
+			$oVue = new Vue();
+			$oVue->afficherFormConnexion($msg);
+		}
+		else{
+			$_SESSION["utilisateur"] = $utilisateur;
+			
+			$this->detecConnexion($utilisateur);
+		}
+		
+	}
+
+
+	protected function detecConnexion($user){
+		if($user["type_acces"] == "admin"){
+			header("location: /art-pub-mtl/api/admin");
+		}
+		else{
+			echo "je ne suis pas un admin";
+		}
 	}
 }
 ?>
