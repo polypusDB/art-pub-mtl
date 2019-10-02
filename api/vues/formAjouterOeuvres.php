@@ -9,17 +9,23 @@
     <div class="contenu-form">
         <h1>Formulaire ajouter une oeuvre</h1>
         <form action="" method="POST">
+        <fieldset>
+            <legend>Caractéristiques principales :</legend>
             Titre : <input type="text" name="titre" />
             Dimension (m) : <input type="text" name="dimension" />
-            Material (a,b,c) : <input type="text" name="material" />
-            Technique : <input type="text" name="technique" />
+            Matériel (français) : <input type="text" name="mateFR" />
+            Material (english) : <input type="text" name="mateEN" />
+            Technique (français) : <input type="text" name="techFR" />
+            Technical (english) : <input type="text" name="techEN" />
+            Support (français) : <input type="text" name="suppFR" />
+            Support (english) : <input type="text" name="suppEN" />
             Description (français) :
             <textarea rows="4" cols="50" name="descFR"></textarea>
             Description (english) :
             <textarea rows="4" cols="50" name="descEN"></textarea>
-            Categorie :
+            Catégorie :
             <select name="categorie">
-                <option value="choix">Choisir</option>
+                <option value="choix">Choisir une catégorie</option>
                 <?php 
                     if(!empty($liste)){
                         foreach($liste as $li){
@@ -28,10 +34,16 @@
                     }
                 ?>
             </select>
-             
-            Support:
-            <select name="support">
-                <option value="choix">Choisir</option>
+        </fieldset>
+        <fieldset>
+            <legend>Artiste :</legend>
+            <div class="chercherForm">
+                <i class="fas fa-search"></i>
+                <input type="search" placeholder="Chercher une artiste">
+            </div>
+            ou
+            <select name="artiste">
+                <option value="choix">Choisir une artiste</option>
                 <?php 
                     if(!empty($liste)){
                         foreach($liste as $li){
@@ -40,10 +52,17 @@
                     }
                 ?>
             </select>
-             
-            Endroit:
-            <select name="endroit">
-                <option value="choix">Choisir</option>
+        </fieldset>
+        <fieldset>
+            <legend>Endroit :</legend>
+            Parc : <input type="text" name="parc" />
+            Batiment : <input type="text" name="batiment" />
+            Adresse : <input type="text" name="adresse" />
+            Latitude : <input type="text" name="latitude" />
+            Longitude : <input type="text" name="longitude" />
+            Arrondisement :
+            <select name="categorie">
+                <option value="choix">Choisir un arrondisement</option>
                 <?php 
                     if(!empty($liste)){
                         foreach($liste as $li){
@@ -52,14 +71,13 @@
                     }
                 ?>
             </select>
-             
-            Description : <input type="text" name="description" /> 
-            Description : <input type="text" name="description" /> 
-
+        </fieldset>
             <!--Télécharger une image-->
-            Image : 
+        <fieldset>
+            <legend>Image :</legend>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000" />
             <input name="uploadedfile" type="file" />
+        </fieldset>
             <!--Fin Télécharger une image-->
              
             <input type="hidden" name="action" value=''/>
