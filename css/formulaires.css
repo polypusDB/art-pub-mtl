@@ -64,6 +64,12 @@ input[type="search"] {
     border: 1px solid rgb(169, 169, 169);
     color: #AFAFAF;
 }
+fieldset{
+    margin: 20px 0;
+}
+legend{
+    margin-bottom: 15px;
+}
 
 @media screen and (max-width:667px){
     .contenu-form {

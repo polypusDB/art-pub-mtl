@@ -9,6 +9,8 @@
     <div class="contenu-form">
         <h1>Formulaire ajouter une oeuvre</h1>
         <form action="" method="POST">
+        <fieldset>
+            <legend>Caractéristiques principales :</legend>
             Titre : <input type="text" name="titre" />
             Dimension (m) : <input type="text" name="dimension" />
             Matériel (français) : <input type="text" name="mateFR" />
@@ -32,10 +34,12 @@
                     }
                 ?>
             </select>
-            Artiste:
+        </fieldset>
+        <fieldset>
+            <legend>Artiste :</legend>
             <div class="chercherForm">
                 <i class="fas fa-search"></i>
-                Chercher une artiste<input type="search" placeholder="Chercher">
+                <input type="search" placeholder="Chercher une artiste">
             </div>
             ou
             <select name="artiste">
@@ -48,6 +52,9 @@
                     }
                 ?>
             </select>
+        </fieldset>
+        <fieldset>
+            <legend>Endroit :</legend>
             Parc : <input type="text" name="parc" />
             Batiment : <input type="text" name="batiment" />
             Adresse : <input type="text" name="adresse" />
@@ -64,10 +71,13 @@
                     }
                 ?>
             </select>
+        </fieldset>
             <!--Télécharger une image-->
-            Image : 
+        <fieldset>
+            <legend>Image :</legend>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000" />
             <input name="uploadedfile" type="file" />
+        </fieldset>
             <!--Fin Télécharger une image-->
              
             <input type="hidden" name="action" value=''/>
