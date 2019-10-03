@@ -58,10 +58,10 @@
 			<script>
 				function initMap() {
   						// The location of Uluru
-						  let long = document.querySelector(".longitude").innerHTML;
-						  let lati = document.querySelector(".latitude").innerHTML;
-						  long = parseFloat(long);
-						  lati = parseFloat(lati);
+						let long = document.querySelector(".longitude").innerHTML;
+						let lati = document.querySelector(".latitude").innerHTML;
+						long = parseFloat(long);
+						lati = parseFloat(lati);
   						var uluru = {lat: lati, lng: long};
   						// The map, centered at Uluru
   						var map = new google.maps.Map(

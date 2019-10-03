@@ -44,7 +44,18 @@ class Connection extends Modele {
 
     }
 
+
     
+    public function inscription($aData){
+        extract($aData);
+        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+        $query = "INSERT into usager (nom_connexion, mot_passe, courriel, id_role)
+        VALUES  ('$user', '$mdp', '$courriel', '3')";
+
+        $res = $this->_db->query($query);
+        return $res;
+        
+    }
     
 }
 

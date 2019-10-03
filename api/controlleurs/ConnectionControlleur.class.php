@@ -25,10 +25,11 @@ class ConnectionControlleur extends Controlleur
 			$this->deconnection();
 			header("Location: /art-pub-mtl/api");
 		}
-		else{
+		else{ 
+			$action = "connexion";
 			$oVue = new Vue();
 			$msg= "";			
-			$oVue->afficherFormConnexion($msg);
+			$oVue->afficherFormConnexion($msg, $action);
 			
 		}
 
@@ -38,21 +39,37 @@ class ConnectionControlleur extends Controlleur
 
 	public function postAction(Requete $requete){
 		
-		if(isset($requete->url_elements[0])&& $requete->url_elements[0] ="login")	// Normalement l'id de l'oeuvre 
+		if(isset($requete->url_elements[0])&& $requete->url_elements[0] =="login")
 		{
+			echo "<br>";
+			echo $requete->url_elements[0];
 			if(isset($_POST["user"]) && isset($_POST["mdp"])){
 				if(trim($_POST["user"]) != "" && trim($_POST["mdp"])){
-					$mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
-					$this->connection($_POST["user"], $mdp);					
+					$this->connection($_POST["user"]);	
+									
 				}
 				else{
 					$msg = "les champs requis ne sont pas remplis";
+					$action = "connexion";
 					$oVue = new Vue();
-					$oVue->afficherFormConnexion($msg);
+					$oVue->afficherFormConnexion($msg, $action);
 				}
 			}
 			else{
 				echo "vous n'arrivez pas d'un formulaire";
+			}
+		}
+		else if(isset($requete->url_elements[0])&& $requete->url_elements[0] =="inscription"){
+			
+			$res = $this->inscription($_POST);
+			if($res == true){
+				$this->connection();
+			}
+			else{
+				$action = "inscription";
+				$msg = "Le nom sélectionné est déjà utilisé!";
+				$oVue = new Vue();
+				$oVue->afficherFormConnexion($msg, $action);
 			}
 		}
 	}
@@ -65,9 +82,10 @@ class ConnectionControlleur extends Controlleur
 		$oConnection = new Connection();
 		$utilisateur = $oConnection->getConnectionUser($_POST["user"], $_POST["mdp"]);
 		if($utilisateur == false){
+			$action = "connexion";
 			$msg = "mauvaise combinaison mot de passe et nom d'usagé";
 			$oVue = new Vue();
-			$oVue->afficherFormConnexion($msg);
+			$oVue->afficherFormConnexion($msg, $action);
 		}
 		else{
 			$_SESSION["utilisateur"] = $utilisateur;
@@ -77,14 +95,19 @@ class ConnectionControlleur extends Controlleur
 		
 	}
 
-
 	protected function detecConnexion($user){
 		if($user["type_acces"] == "admin"){
 			header("location: /art-pub-mtl/api/admin");
 		}
-		else{
-			echo "je ne suis pas un admin";
+		else if($user["type_acces"] == "usager"){
+			header("location: /art-pub-mtl/api");
 		}
+	}
+
+	protected function inscription($aData){
+		$oConnection = new Connection();
+		$res = $oConnection->inscription($aData);
+		return $res;
 	}
 }
 ?>

@@ -5,7 +5,11 @@
             if(!isset($_SESSION["login"]))
             {            
         ?>  
-        <div class="formConnexion">
+        <div class="formConnexion <?php
+            if($action == "inscription"){
+                echo "cacher";
+            }
+        ?>">
             <h1>Formulaire de Connexion</h1>
             <form action="/art-pub-mtl/api/connection/login" method="POST">	
                 <div>
@@ -32,9 +36,13 @@
             </form>
         </div>
 
-        <div class="formInscription">
+        <div class="formInscription"<?php
+            if($action == "connexion"){
+                echo "cacher";
+            }
+        ?>>
             <h1>Formulaire d'inscription</h1>
-            <form class="form2" action="" method="POST">	
+            <form class="form2" action="/art-pub-mtl/api/connection/inscription" method="POST">	
                 <div>
                     <label for="name">Nom d'usager:</label>
                     <input type="text" id="nom" name="user">
