@@ -1,196 +1,195 @@
-/* Basé sur les sources de muicss*/
-
-:root {
-    --carte-largeur: 344px;
-    --carte-hauteur-image : calc(var(--carte-largeur) * 0.5625);
-    --oeuvre-hauteur-image : calc(var(--carte-hauteur-image) * 3);
-    --main-couleur-lien : #ff1744;
-    --marge-gauche : 84px;
-    
-    --couleur-fond : #00BCD4;
-    --couleur-fond : #f0f0f0;
-}
-
-
-/**
- * Body CSS
- */
-
-html,
-body {
-    height: 100%;
-    font-family: Arial,Verdana,Tahoma;
-    background-color: var(--couleur-fond);
-    margin:0px 0px 0px 0px;
-}
-
+/* CSS reset -------------------------------------------------------------- */
 html,
 body,
-input,
-textarea,
-buttons {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+img,
+p,
+h1,
+h2,
+h3,
+ul,
+li,
+figure {
+    margin: 0;
+    padding: 0;
 }
 
-.oeuvres
-{
-    width: 300px;
-    height: 600px;
-    overflow-y: scroll;
+/* règles générales -------------------------------------------------------- */
+* {
+    box-sizing:border-box;
 }
-.oeuvres .oeuvre
-{
-    margin-top: 3px;
-    margin-bottom: 3px;
-    height: 36px;
+html{
+    background-color: #f6f6f6;
 }
-
-.tri
-{
-    font-weight: bold;
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    color: #5F5F5F;
+    background-color: white;
+    width: 97%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
 }
-.oeuvre > .zoneTitre
-{
-    width: 280px;
-}
-.oeuvre .titre
-{
-    width: 280px;
-    color: #000;
-    font-weight: bold;
-}
-
-.oeuvre > .description
-{
-    width: 200px;
-    text-overflow: ellipsis;
-    max-height: 25px;
-    white-space: nowrap;
-    overflow: hidden;
-    
-}
-.oeuvre > .auteur
-{
-    width: 150px;
-}
-.oeuvre > .auteur a
-{
-    color: var(--main-couleur-lien);
+a {
     text-decoration: none;
+    cursor: pointer;
+    color: #979797;
+}
+a:hover{
+    color: #E26F39;
 }
 
-.oeuvre > .arrondissement
-{
-    width: 200px;
+/* Entete Admin -------------------------------------------------------- */
+.entete.admin{
+    padding: 10px;
+}
+.admin a img{
+    width: 60%;
 }
 
-.oeuvre > .action
-{
-    
-}
-
-
-.listeOeuvres .recherche
-{
-    width: 100%;
-}
-
-.pager
-{
-    width: 100%;
-}
-
-.pager > .lien-pager
-{
-    margin-left: 15px;
-}
-
-.modifierOeuvre .oeuvres
-{
-    width: 900px;
-}
-.modifierOeuvre .oeuvre
-{
-    width: 900px;
-}
-
-.modifierOeuvre .oeuvre .item label
-{
-    width: 200px;
-    display: inline-block;
-}
-
-.modifierOeuvre .uneOeuvre .action
-{
-    margin-top : 50px;
-}
-
-
-
-
-
-/**
- * appbar
- */
-
-.appbar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-    height: 64px;
-    background-color: #CCCCCC;
-    color: #FFFFFF;
-    
-    padding-left: var(--marge-gauche);
+/* Navigation Admin -------------------------------------------------------- */
+.container{
     display: flex;
 }
-.appbar h1
-{
-    
-    font-size: 24px;
+body ul{
+    width: 230px;
+    background: #81CEC5;
+    list-style-type: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.container ul li a{
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: white;
+    padding: 20px 10px 20px 19px;
+    display: flex;
+    border-bottom: 1px solid #8FE3DA;
+}
+.container ul li a:hover{
+    background: #8FE3DA;
+    border-bottom: 1px solid #F9DB45;
+}
+.contenu{
+    flex-grow: 2;
+    padding: 20px 20px 20px 40px;
 }
 
-/**
- * contenu
- */
-
-.contenu {
-    padding-left: var(--marge-gauche);
-    min-height: 100%;
-    padding-top: 64px;
-        
+/* Accueil Admin -------------------------------------------------------- */
+.contenu h1{
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.home-info{
+    background: #F3D331;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin: 30px 0 50px;
     display: flex;
     flex-wrap: wrap;
-    /* sticky footer */
-    margin-bottom: -100px;
-    padding-bottom: 100px;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.infoIco{
+    background: #fff;
+    width: 100px;
+    height: 100px;
+    margin-right: 30px;
+}
+.infoTexte{
+    flex-grow: 2;
+}
+.infoTexte h2{
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+.infoTexte p{
+    font-weight: 100;
+    font-size: 30px;
+    color: white;
+}
+.infoTexte p:last-child{
+    color: black;
+    font-size: 14px;
+}
+a .infobt{
+    border: 1px solid white;
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+a .infobt:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+.home-cont{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.home-cont section{
+    width: 30%;
+    height: 200px;
+    margin-right: 5%;
+    border: 1px solid #ddd;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 3px 5px rgb(10, 21, 38, 0.3);
+}
+.home-cont section:last-child{
+    margin-right: 0;
+}
+section h3{
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #F3D331;
+}
+section table{
+    border: none;
+    font-size: 12px;
+}
+section td{
+    border: none;
 }
 
-
-
-/**
- * Footer CSS
- */
-
-main > footer {
-    padding-left: var(--marge-gauche);
-    height: 35px;
-    background-color: #eee;
-    
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
+/* Tables Admin -------------------------------------------------------- */
+table a{
+    width: auto;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+}
+table {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+td {
+    width: 20%;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    padding: 0.3em;
+}
+tr:nth-child(even) {
+    background: #F8F8F6;
+}
+td:nth-child(2) {
+    width: 60%;
+}
+td:nth-child(3), td:nth-child(4) {
+    width: 10%;
+    font-size: 14px;
+    color: rgb(133, 154, 160);
 }
 
-
-
-.hidden
-{
-    display: none;
+/* Footer -------------------------------------------------------- */
+.container footer{
+    margin-top: 50px;
 }
