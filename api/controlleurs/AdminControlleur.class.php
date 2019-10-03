@@ -32,8 +32,6 @@ class AdminControlleur extends Controlleur
 			echo "tu n'est pas un admin";
 		}
 
-		// var_dump($_SESSION);
-
 
 	}
 	

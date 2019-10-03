@@ -1,4 +1,11 @@
 <section class="contenu uneOeuvre flex flex-col">
+			<!-- a enlever plus tard -->
+			<style>
+				.map{
+					height: 400px;  /* The height is 400 pixels */
+        			width: 100%;  /* The width is the width of the web page */
+				}
+			</style>
 	<div class="retour">
 		<i class="fas fa-arrow-circle-left"></i>
 		<a href="/art-pub-mtl/api/oeuvre"> Retour à la liste  </a>
@@ -39,10 +46,33 @@
 				<h4>Endroit</h4>
 				<p><?php echo $adresse?></p>
 				<p><?php echo $NomArrondissement?></p>
+				<p class = "longitude"><?php echo $longitude?></p>
+				<p class = "latitude"><?php echo $latitude?></p>
 		<?php
 		}
 		?>
 			</div>
-			
+			<div class = "map">
+				
+			</div>
+			<script>
+				function initMap() {
+  						// The location of Uluru
+						  let long = document.querySelector(".longitude").innerHTML;
+						  let lati = document.querySelector(".latitude").innerHTML;
+						  long = parseFloat(long);
+						  lati = parseFloat(lati);
+  						var uluru = {lat: lati, lng: long};
+  						// The map, centered at Uluru
+  						var map = new google.maps.Map(
+      					document.querySelector('.map'), {zoom: 15, center: uluru}); // rajouter le style pour la carte ici comme ceci : ({zoom: 15, center: uluru , RAJOUTER LA BALISE STYLE ICI});)
+  						// The marker, positioned at Uluru
+  						var marker = new google.maps.Marker({position: uluru, map: map});
+				}
+			</script>
+			    <!-- <script async defer
+    				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXx618pZgGovbT1ZNDB7y22Ulx9-4CLqs&callback=initMap">
+    			</script> -->
+
 	</section>
 </section>
