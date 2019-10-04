@@ -25,7 +25,7 @@ class MonSQL extends mysqli{
 	 * @return void
 	 * @private
 	 */
-	private function __construct($host, $user, $password, $database) 
+	public function __construct($host, $user, $password, $database) 
 	{
 		parent::__construct($host, $user, $password, $database);
 

@@ -66,6 +66,7 @@
 				<input type="text" class="commentaire" placeholder ="Commentez ici!" name ="commentaire"/>
 				<input type="hidden" class="idOeuvre" name ="id_oeuvre" value = "<?=$id_oeuvre ?>"/>
 				<input type="hidden" class="idUser" name ="id_user" value="<?=$_SESSION["utilisateur"]["id_usager"] ?>"/>
+				<input type="hidden" class="user" name ="user" value="<?=$_SESSION["utilisateur"]["nom_connexion"] ?>"/>
 				<input type="button" value ="Commentez" class="btnCom"/>
 			</form>
 			</div>

@@ -1,10 +1,5 @@
 <?php
 
-if(isset($_POST)){
-    // $com = $_POST["text"];
-
-    var_dump($_POST);
-}
 /**
  * Class Commentaire
  * 
@@ -39,9 +34,7 @@ class Commentaire extends Modele {
     }
 
     public function postAction(){
-        if(isset($_POST)){
-            var_dump($_POST);
-        } 
+
     }
 }
 
