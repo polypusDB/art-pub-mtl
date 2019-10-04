@@ -27,10 +27,27 @@ class CommentaireControlleur extends Controlleur
 	}
 
 	public function postAction(Requete $requete){
+
         
-		var_dump($requete->parametres);
+        $this->insertCommentaire($requete->parametres);
+
+        $com = array(
+            "texte" => $requete->parametres["text"],
+            "id_user" => $requete->parametres["id_user"],
+            "nom_connexion" => $_SESSION["utilisateur"]["nom_connexion"]
+        );
+
+
+        $com = json_encode($com);
+        echo($com);
+
 	}
-	
+    
+    
+    protected function insertCommentaire($aData){
+        $oCommentaire = new Commentaire;
+        $res = $oCommentaire->insertCommentaire($aData);
+    }
 	
 	
 }

@@ -49,6 +49,7 @@
 				<p class = "longitude"><?php echo $longitude?></p>
 				<p class = "latitude"><?php echo $latitude?></p>
 				<h4>Commentaires</h4>
+				<div class ="test">
 				<?php
 					foreach($commentaires as $commentaire){
 						extract($commentaire);
@@ -61,7 +62,7 @@
 					}
 		}
 		?>
-		<div class ="test"></div>
+		</div>
 			<form action="" method="POST">
 				<input type="text" class="commentaire" placeholder ="Commentez ici!" name ="commentaire"/>
 				<input type="hidden" class="idOeuvre" name ="id_oeuvre" value = "<?=$id_oeuvre ?>"/>

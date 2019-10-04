@@ -36,6 +36,13 @@ class Commentaire extends Modele {
     public function postAction(){
 
     }
+
+    public function insertCommentaire($aData){
+        extract($aData);
+        $query = "INSERT into commentaire (id_usager, id_oeuvre, texte)
+        VALUES ('$id_user','$id_oeuvre', '$text')";
+        $res = $this->_db->query($query);
+    }
 }
 
 
