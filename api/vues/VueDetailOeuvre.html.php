@@ -48,9 +48,26 @@
 				<p><?php echo $NomArrondissement?></p>
 				<p class = "longitude"><?php echo $longitude?></p>
 				<p class = "latitude"><?php echo $latitude?></p>
-		<?php
+				<h4>Commentaires</h4>
+				<?php
+					foreach($commentaires as $commentaire){
+						extract($commentaire);
+						?>
+							<div>
+								<p><?=$nom_connexion ?></p>
+								<p><?=$texte ?></p>
+							</div>
+						<?php
+					}
 		}
 		?>
+		<div class ="test"></div>
+			<form action="" method="POST">
+				<input type="text" class="commentaire" placeholder ="Commentez ici!" name ="commentaire"/>
+				<input type="hidden" class="idOeuvre" name ="id_oeuvre" value = "<?=$id_oeuvre ?>"/>
+				<input type="hidden" class="idUser" name ="id_user" value="<?=$_SESSION["utilisateur"]["id_usager"] ?>"/>
+				<input type="button" value ="Commentez" class="btnCom"/>
+			</form>
 			</div>
 			<div class = "map">
 				

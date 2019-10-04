@@ -19,7 +19,7 @@ class Connection extends Modele {
 	 */
 	
     public function getConnectionUser($user, $mdp){
-        $query = "SELECT u.nom, u.prenom,u.nom_connexion,u.mot_passe, r.type_acces
+        $query = "SELECT u.nom, u.prenom,u.nom_connexion,u.mot_passe, r.type_acces, u.id_usager
         from usager u
         join role r 
         on r.id_role = u.id_role

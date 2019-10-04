@@ -74,6 +74,10 @@ class OeuvreControlleur extends Controlleur
 			$oVue->afficheOeuvres($res);
 		}		
 	}
+
+	public function postAction(){
+		var_dump($_POST);
+	}
 	
 	
 	
@@ -84,7 +88,9 @@ class OeuvreControlleur extends Controlleur
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getOeuvre($id_oeuvre);
-		
+
+		$oCommentaire = new Commentaire();
+		$aOeuvre["commentaires"] = $oCommentaire->ListeCommentairesParOeuvreID($id_oeuvre);
 		return $aOeuvre;
 	}
 	
