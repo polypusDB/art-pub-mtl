@@ -40,33 +40,6 @@ class OeuvreControlleur extends Controlleur
 			
             
 		}
-		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
-			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$res = $this->supOeuvre($requete->url_elements[1]);
-			}
-			else{
-				echo "vous devez etre connecté en tant qu'admin";
-				
-			}
-		}
-		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
-			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$this->getFormMod();
-			}
-			else{
-				echo "vous devez etre connecté en tant qu'admin";
-				
-			}
-		}
-		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
-			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$this->getFormAjout();
-			}
-			else{
-				echo "vous devez etre connecté en tant qu'admin";
-				
-			}
-		}
         else 	// La liste des oeuvres est a affiché
         {
 			$res = $this->getListeOeuvre();
@@ -79,10 +52,6 @@ class OeuvreControlleur extends Controlleur
 		// var_dump($_POST);
 		var_dump(json_decode($_POST));
 	}
-	
-	
-	
-	
 	
 		
 	protected function getOeuvre($id_oeuvre)
@@ -102,24 +71,6 @@ class OeuvreControlleur extends Controlleur
 		return $aOeuvre;
 	}
 
-	protected function supOeuvre($id_oeuvre){
-		echo "allo";
-		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
-		header("Location:/art-pub-mtl/api/oeuvre");
-	}
-
-	protected function getFormAjout(){
-		$oVue = new Vue();
-		$oVue->getFormAjoutOeuvre();
-	}
-
-	protected function getFormMod(){
-		$oVue = new Vue();
-		$oVue->getFormModifierOeuvre();
-	}
-	
-	
 	
 }
 ?>

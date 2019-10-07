@@ -157,13 +157,5 @@ class Vue {
 		$this->affichePied();
 	}
 
-
-	public function afficheAccueilAdmin(){
-		$this->afficheHead();
-		$this->afficheEntete();
-		include("admin/VueAccueil.php");
-		$this->affichePied();
-	}
-
 }
 ?>

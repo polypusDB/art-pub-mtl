@@ -1,11 +1,12 @@
 <div class="container">
     <div class="contenu-form">
-        <h1>Formulaire ajouter un artiste</h1>
+        <a href="/art-pub-mtl/api/artisteAdmin">Retour à la liste</a>
+        <h1>Formulaire modifier un artiste</h1>
         <?php
             extract($aData);
             // var_dump($aData);
         ?>
-        <form action="/art-pub-mtl/api/artiste/mod/insert" method="POST">
+        <form action="/art-pub-mtl/api/artisteAdmin/mod/insert" method="POST">
             Nom : <input type="text" name="nom" value="<?=$nom ?>"/><br>
             Prenom : <input type="text" name="prenom" value="<?=$prenom ?>"/><br>
             Nom Collectif : <input type="text" name="nom_collectif" value="<?=$nom_collectif ?>"/><br>

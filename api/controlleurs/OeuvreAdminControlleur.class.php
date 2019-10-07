@@ -10,118 +10,109 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
  
- /*
- * TODO : Commenter selon les standards du département.
- *
- */
 
- 
- 
 class OeuvreAdminControlleur extends OeuvreControlleur 
 {
-	
-	// GET : 
-	// 		/oeuvre/ - Liste des oeuvres
-	// 		/oeuvre/{id}/ - Une oeuvre
-	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
+	 /*
+	* GET :
+	* /oeuvre/ - Liste des oeuvres
+	* /oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
+	*/	
 	
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		//var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
-		{
-            $id_oeuvre = (int)$requete->url_elements[0];
-            
-            $res = $this->getOeuvre($id_oeuvre);
-            
-        } 
-		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "miseajour")
-		{
-			$res = $this->mettreAJour();
-		}
-        else 	// Liste des oeuvres
-        {
-        	$res = $this->getListeOeuvre();
-			
-        }
 		
-		if(isset($_GET['json']))
+		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// l'id de l'oeuvre 
 		{
-			echo json_encode($res);	
-		}
-		else
-		{
-				
-			
+			$id_oeuvre = (int)$requete->url_elements[0];            
+			$res = $this->getOeuvre($id_oeuvre);
 			$oVue = new AdminVue();
-			$oVue->afficheHead();
-			$oVue->afficheEntete();
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
-			{
-				//var_dump($res);
-				$oVue->afficheOeuvre($res);	
-			}
-			else
-			{
-				$oVue->afficheOeuvres($res);
-			}	
+			$oVue->afficheOeuvre($res);
 			
-			$oVue->affichePied();
-			
+            
 		}
-			
+		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$res = $this->supOeuvre($requete->url_elements[1]);
+				header("Location:/art-pub-mtl/api/OeuvreAdmin");
+			}
+			else{
+				echo "vous devez etre connecté en tant qu'admin";
+				
+			}
+		}
+		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$this->getFormMod();
+			}
+			else{
+				echo "vous devez etre connecté en tant qu'admin";
+				
+			}
+		}
+		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
+			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
+				$this->getFormAjout();
+			}
+			else{
+				echo "vous devez etre connecté en tant qu'admin";
+				
+			}
+		}
+        else 	// La liste des oeuvres est a affiché
+        {
+			$res = $this->getListeOeuvre();
+			$oVue = new AdminVue();
+			$oVue->afficheOeuvres($res);
+		}		
 		
 		
 	}
-	
-	
+
 	public function postAction(Requete $requete)
 	{
-		$res = array();
-		//var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
-		{
-            $id_oeuvre = (int)$requete->url_elements[0];
-            //var_dump($requete->parametres);
-            $res = $this->modifOeuvre($id_oeuvre, $requete->parametres);
-            
-        } 
-		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
+		var_dump($requete->url_elements[0]);
+		if (isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
+			// modification de l'oeuvre ici!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		}
+		
 		
 	}
 	
-	protected function modifOeuvre($id_oeuvre, $param)
+	protected function getOeuvre($id_oeuvre)
 	{
 		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->modifOeuvre($id_oeuvre, $param);
+		$aOeuvre = $oOeuvre->getOeuvre($id_oeuvre);
 		
 		return $aOeuvre;
 	}
 	
-	/**
-	 * Fait l'importation et la mise à jour des oeuvres et des artistes 
-	 * @access private
-	 * @TODO Ajouter la mise à jour des artistes
-	 */
-	private function mettreAJour()
+	protected function getListeOeuvre()
 	{
-		$oImportation = new Importation();
-		$oImportation->importerOeuvre();
-		$oImportation->mettreAJour();
-		
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getListe();
+		return $aOeuvre;
+	}
+
+	protected function supOeuvre($id_oeuvre){
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
+	}
+
+	protected function getFormAjout(){
+		$oVue = new AdminVue();
+		$oVue->getFormAjoutOeuvre();
+	}
+
+	protected function getFormMod(){
+		$oVue = new AdminVue();
+		$oVue->getFormModifierOeuvre();
 	}
 	
-	private function getImages($id_oeuvre)
-	{
-		$oImportation = new Importation();
-		$aImage = $oImportation->telechargementImages($id_oeuvre);
-		
-	}
+
+	
+	
 	
 }
 ?>

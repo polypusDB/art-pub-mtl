@@ -20,21 +20,20 @@
 class AdminControlleur extends Controlleur 
 {
 	
-	// GET : 
-	
 	public function getAction(Requete $requete)
 	{
+		$res = array();
+		$msgErreur="";
 		if($_SESSION["utilisateur"]["type_acces"] == "admin"){
-			$oVue = new Vue();
+			$oVue = new AdminVue();
 			$oVue->afficheAccueilAdmin();
 		}
 		else{
 			echo "tu n'est pas un admin";
 		}
-
-
+		
 	}
-	
-	
+
+
 }
 ?>

@@ -15,105 +15,90 @@
 
 class AdminVue {
 
-/**
+	/**
 	 * Affiche le head html
-	 * @access public
-	 * @return void
 	 */
 	public function afficheHead() {
-		?>
-		<!DOCTYPE html>
-		<html lang="fr">
-		
-		<head>
-		    <title>L'art public à Montréal - admin</title>
-		    <meta charset="utf-8">
-		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		    <meta name="description" content="">
-		    <meta name="viewport" content="width=device-width">
-		    
-		    <link rel="stylesheet" href="<?php echo BASE_URL."css/flex.css"?>" type="text/css" media="screen">
-		    <link rel="stylesheet" href="<?php echo BASE_URL."css/adminmain.css"?>" type="text/css" media="screen">
-		    
-		    <script src="<?php echo BASE_URL."js/define.js"?>"></script>
-		    <script src="<?php echo BASE_URL."js/admin.js"?>"></script>
-		</head>
-		<?php
-		
+		include "admin/VueEnteteAdmin.php";
 	}
 
 	/**
-	 * Affiche entetes
-	 * @access public
-	 * @return void
+	 * Affiche navigation
 	 */
 	public function afficheEntete() {
-		?>
-	<body>
-	    <main>
-	        <header class="appbar">
-	            <h1><a href="/art-pub-mtl/api/admin">L'art public à Montréal (Admin)</a></h1> 
-	        </header>
-			
-		<?php
-		
+		include "admin/VueNavigationAdmin.php";	
 	}
 
-
 	/**
-	 * Affiche les oeuvres
-	 * @access public
-	 * @return void
+	 * Affiche le pied de page
 	 */
 	public function affichePied() {
-		?>
-	
-			<footer>
-				Certains droits réservés @ Jonathan Martel (2019)<br>
-				Sous licence Creative Commons (BY-NC 3.0)
-			</footer>
-		</main>
-	</body>
-</html>
-
-		<?php
-		
+		include "admin/VuePiedAdmin.php";
 	}
 	
+	/**
+	 * Affiche la page d'accueil
+	 */
+	public function afficheAccueilAdmin() {
+        $this->afficheHead();
+        $this->afficheEntete();
+        include "admin/VueAccueil.php";
+	}
 
-	
+	/**
+	 * Affiche la liste des artistes
+	 */
+	public function afficheArtistes($aData = Array()) {
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueListeArtisteAdmin.php");
+	}
+
+	/**
+	 * Affiche le détails d'un artiste
+	 */
+	public function afficheArtiste($aData = Array()) {
+		$this->afficheHead();
+		$this->afficheEntete();
+        include("admin/VueDetailArtisteAdmin.php");
+	}
+
+	/**
+	 * Affiche le Formulaire pour ajouter un artiste
+	 */
+	public function getFormAjoutArtiste(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/formAjouterArtistes.php");
+		
+	}
+
+	/**
+	 * Affiche le Formulaire pour modifier un artiste
+	 */
+	public function getFormModifArtiste($aData, $msgErreur){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/formModifArtiste.php");
+	}
+
 	/**
 	 * Affiche la liste des oeuvres
-	 * @access public
-	 * @return void
 	 */
 	public function afficheOeuvres($aData = Array()) {
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueListeOeuvreAdmin.php");
 		
-		?>
-		 <section class="contenu listeOeuvres">
-         	<section class="recherche"></section>
-            <section class="oeuvres flex flex-col">
-						<?php
-						foreach ($aData as $cle => $oeuvre) {
-							extract($oeuvre);
-							?>
-							<section class="oeuvre flex flex-row">
-			                    <span class="titre"><?php echo $Titre?></span>
-			                    <span class ="description"> <?php echo $Description ?> </span>
-			                    <span class="arrondissement"><?php echo $Arrondissement?></span>
-			                    <!-- <span class="action flex-droite">[x] <a href="/artPublic/api/admin/oeuvre/<?php echo $id ?>">[modif]</a></span> -->
-			                    
-			                </section>
+	}
 
-							<?php
-						}
-						?>
-					</section>
-				
-			</section>
-			
-		<?php
-		
+	/**
+	 * Affiche le Formulaire pour ajouter un oeuvres
+	 */
+	public function getFormModifierOeuvre(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/formModifOeuvre.php");
 	}
 
 }
