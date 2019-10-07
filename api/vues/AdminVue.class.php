@@ -64,13 +64,41 @@ class AdminVue {
 	}
 
 	/**
-	 * Affiche le détails d'un artiste
+	 * Affiche le Formulaire pour ajouter un artiste
 	 */
 	public function getFormAjoutArtiste(){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/formAjouterArtistes.php");
 		
+	}
+
+	/**
+	 * Affiche le Formulaire pour modifier un artiste
+	 */
+	public function getFormModifArtiste($aData, $msgErreur){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/formModifArtiste.php");
+	}
+
+	/**
+	 * Affiche la liste des oeuvres
+	 */
+	public function afficheOeuvres($aData = Array()) {
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueListeOeuvreAdmin.php");
+		
+	}
+
+	/**
+	 * Affiche le Formulaire pour ajouter un oeuvres
+	 */
+	public function getFormModifierOeuvre(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/formModifOeuvre.php");
 	}
 
 }

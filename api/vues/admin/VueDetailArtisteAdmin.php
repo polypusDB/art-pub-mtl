@@ -1,7 +1,7 @@
 <section class="contenu uneOeuvre flex flex-col">
     <div class="retour">
 		<i class="fas fa-arrow-circle-left"></i>
-		<a href="/art-pub-mtl/api/artiste">Retour à la liste</a>
+		<a href="/art-pub-mtl/api/admin/artistes">Retour à la liste</a>
 	</div>
 <?php
     extract($aData);
@@ -20,6 +20,8 @@
 					<?php
 					}
 				?>
+				<a class="btnSup" href="/art-pub-mtl/api/artistes/sup/<?=$id_artiste ?>">Supprimer</a>
+                <a class="btnMod" href="artistes/mod/<?=$id_artiste ?>">Modifier</a>
             </section>
 
         </section>

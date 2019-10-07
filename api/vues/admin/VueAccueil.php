@@ -1,4 +1,4 @@
-    <div class="contenu">
+<div class="contenu">
         <h1>Bienvenue
         <?php
             echo $_SESSION["utilisateur"]["nom_connexion"];

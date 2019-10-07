@@ -1,7 +1,7 @@
 <div class="container">
     <div class="contenu-form">
         <h1>Formulaire de modification d'une oeuvre</h1>
-        <form action="" method="POST">
+        <form action="/art-pub-mtl/api/oeuvreAdmin/mod" method="POST">
             Titre : <input type="text" name="titre" /><br>
             Dimension (m) : <input type="text" name="dimension" /><br>
             Material (a,b,c) : <input type="text" name="material" /><br>
@@ -50,7 +50,7 @@
             <input name="uploadedfile" type="file" />
             <!--Fin Télécharger une image-->
             <br>
-            <input type="hidden" name="action" value=''/>
+            <input type="hidden" name="id" value='5'/> <!-- mettre l'id ici -->
             <input type="submit" value="Ajouter"/>
         </form>
     </div>

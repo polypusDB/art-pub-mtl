@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="contenu-form">
+<div class="contenu-form admin">
+        <a href="/art-pub-mtl/api/artisteAdmin">Retour à la liste</a>
         <h1>Formulaire ajouter un artiste</h1>
-        <form action="/art-pub-mtl/api/artiste/ajouter/insert" method="POST">
+        <form action="/art-pub-mtl/api/artisteAdmin/ajouter/insert" method="POST">
             Nom : <input type="text" name="nom" /><br>
             Prenom : <input type="text" name="prenom" /><br>
             Nom Collectif : <input type="text" name="nom_collectif" /><br>
@@ -17,6 +17,8 @@
             ?> -->
             </div>
         </form>
-
+        <?php
+        include "VuePiedAdmin.php";
+        ?>
     </div>
 </div>
