@@ -13,12 +13,7 @@
 
 class OeuvreAdminControlleur extends OeuvreControlleur 
 {
-	 /*
-	* GET :
-	* /oeuvre/ - Liste des oeuvres
-	* /oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
-	*/	
-	
+
 	public function getAction(Requete $requete)
 	{
 		$res = array();
@@ -29,8 +24,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			$res = $this->getOeuvre($id_oeuvre);
 			$oVue = new AdminVue();
 			$oVue->afficheOeuvre($res);
-			
-            
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
@@ -39,7 +32,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			}
 			else{
 				echo "vous devez etre connecté en tant qu'admin";
-				
 			}
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
@@ -48,7 +40,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			}
 			else{
 				echo "vous devez etre connecté en tant qu'admin";
-				
 			}
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
@@ -57,10 +48,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			}
 			else{
 				echo "vous devez etre connecté en tant qu'admin";
-				
 			}
 		}
-        else 	// La liste des oeuvres est a affiché
+		//La liste des oeuvres est a affiché
+        else 
         {
 			$res = $this->getListeOeuvre();
 			$oVue = new AdminVue();
@@ -80,16 +71,14 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		
 	}
 	
-	protected function getOeuvre($id_oeuvre)
-	{
+	// Section Oeuvres
+	protected function getOeuvre($id_oeuvre){
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getOeuvre($id_oeuvre);
-		
 		return $aOeuvre;
 	}
 	
-	protected function getListeOeuvre()
-	{
+	protected function getListeOeuvre(){
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
 		return $aOeuvre;

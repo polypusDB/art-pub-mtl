@@ -1,5 +1,5 @@
-window.addEventListener("load", function()
-                        { 
+window.addEventListener("load", function(){ 
+    //Menu Principal
     // on selectione l'icone menu-burger pour le donner à .menu une class .ouvert
     let menu_burger = document.querySelector(".menu-burger");
     menu_burger.addEventListener("click", function(e){
@@ -25,4 +25,5 @@ window.addEventListener("load", function()
         }
         prevScrollpos = currentScrollPos;
     }
+    
 });

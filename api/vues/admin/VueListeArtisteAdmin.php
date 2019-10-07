@@ -3,8 +3,13 @@
         <h1>Artistes</h1>
         <?php if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"]){
             ?>
-            <div class="bt-ajouter">
-                <a href="/art-pub-mtl/api/artisteAdmin/ajouter">Ajouter un artiste</a>
+            <div class="bts-principal">
+                <div class="bt-ajouter">
+                    <a href="/art-pub-mtl/api/artisteAdmin/ajouter"><i class="fas fa-plus-circle"></i></a>
+                </div>
+                <div class="bt-supprimer">
+                    <a href="/art-pub-mtl/api/artisteAdmin/sup/"><i class="fas fa-trash-alt"></i></a>
+                </div>
             </div>
         <?php 
 		}
@@ -15,8 +20,9 @@
             <thead>
             <tr>
                 <th></th>
-                <th>Titre</th>
-                <th>Editer</th>
+                <th>Nom</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
         <?php
@@ -24,26 +30,19 @@
             extract($artiste);
         ?>      
             <tr>
-                <td>
-                    <input type="checkbox" name="" value="">
-                </td>
-                <td>  
-                    <a href="artistes/mod/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; } ?></h2></a>    
-                </td>
-                <td>
-                    <a class="btnSup" href="/art-pub-mtl/api/artisteAdmin/sup/<?=$id_artiste ?>">Supprimer</a>
-                    <a class="btnMod" href="/art-pub-mtl/api/artisteAdmin/mod/<?=$id_artiste ?>">Modifier</a>
-                </td>
+                <td><input type="checkbox" name="" value=""></td>
+                <td> <a href="/art-pub-mtl/api/artisteAdmin/mod/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; } ?></h2></a></td>
+                <td><a class="btnMod" href="/art-pub-mtl/api/artisteAdmin/mod/<?=$id_artiste ?>"><i class="fas fa-pencil-alt"></i></a></td>
+                <td><a class="btnSup" href="/art-pub-mtl/api/artisteAdmin/sup/<?=$id_artiste ?>"><i class="fas fa-trash-alt"></i></a></td>  
             </tr>
-                <?php
-                    }
-				?>
+        <?php
+            }
+        ?>
         </table>
     </section>
     <?php
         include "VuePiedAdmin.php";
     ?>
-    </div>
 </div>
 
 

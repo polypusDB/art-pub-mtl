@@ -1,9 +1,10 @@
 <div class="contenu">
-        <h1>Bienvenue
+        <h1>Bienvenue <span>
         <?php
             echo $_SESSION["utilisateur"]["nom_connexion"];
         ?> 
-        !
+        </span>
+        à ton Tableau de Bord!
         </h1>
         <div class="home-info">
             <div class="infoIco"></div>
@@ -28,44 +29,51 @@
         </div>
         <div class="home-cont">
             <section>
-                <h3><a href="">Artistes</a></h3>
-                <div class="table-responsive">
+                <h3>Dernières Oeuvres</h3>
+                <div class="table-accueil">
                     <table class="table">
+                    <?php
+                    foreach ($aDataOeu as $cle => $oeuvre) {
+                        extract($oeuvre);
+                    ?>
                         <tr>
-                            <td>Titre</td>
-                            <td>Editer</td>
+                            <td>
+                                <h2 class="titre"><a href="/art-pub-mtl/api/oeuvreAdmin/mod/<?=$id_oeuvre ?>"><?php echo $titre?></a></h2>
+                            </td>
+                            <td>
+                            <a class="btnMod" href="/art-pub-mtl/api/oeuvreAdmin/mod/<?=$id_oeuvre ?>"><i class="fas fa-pencil-alt"></i></a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>Titre</td>
-                            <td>Editer</td>
-                        </tr>
-                        <tr>
-                            <td>Titre</td>
-                            <td>Editer</td>
-                        </tr>
-                        <tr>
-                            <td>Titre</td>
-                            <td>Editer</td>
-                        </tr>
+                    <?php
+                    }
+                    ?>
                     </table>
                 </div>
             </section>
             <section>
-                <h3><a href="">Oeuvres</a></h3>
-                <div class="table-responsive">
+                <h3>Derniers Artistes</h3>
+                <div class="table-accueil">
                     <table class="table">
+                    <?php
+                    foreach ($aDataArt as $cle => $artiste) {
+                        extract($artiste);
+                    ?> 
                         <tr>
-                            <td>Titre</td>
-                            <td>Editer</td>
+                            <td>
+                                <a href="/art-pub-mtl/api/artisteAdmin/mod/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; } ?></h2></a>    
+                            </td>
+                            <td>
+                            <a class="btnMod" href="/art-pub-mtl/api/artisteAdmin/mod/<?=$id_artiste ?>"><i class="fas fa-pencil-alt"></i></a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>Titre</td>
-                            <td>Editer</td>
-                        </tr>
+                    <?php
+                        }
+                    ?>
                     </table>
                 </div>
             </section>
-            <section>
+            
+            <!-- <section>
                 <h3><a href="">Parcours</a></h3>
                 <div class="table-responsive">
                     <table class="table">
@@ -79,7 +87,7 @@
                         </tr>
                     </table>
                 </div>
-            </section>
+            </section> -->
         </div>
        
 
