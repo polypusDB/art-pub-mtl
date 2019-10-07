@@ -24,7 +24,7 @@ class MonSQL {
 	 * @param void
 	 * @return void
 	 */
-	private function __construct($host, $user, $password, $database) 
+	public function __construct($host, $user, $password, $database) 
 	{
 		
 	}

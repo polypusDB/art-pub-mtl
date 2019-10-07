@@ -19,7 +19,7 @@ class Connection extends Modele {
 	 */
 	
     public function getConnectionUser($user, $mdp){
-        $query = "SELECT u.nom, u.prenom,u.nom_connexion,u.mot_passe, r.type_acces
+        $query = "SELECT u.nom, u.prenom,u.nom_connexion,u.mot_passe, r.type_acces, u.id_usager
         from usager u
         join role r 
         on r.id_role = u.id_role
@@ -44,7 +44,18 @@ class Connection extends Modele {
 
     }
 
+
     
+    public function inscription($aData){
+        extract($aData);
+        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+        $query = "INSERT into usager (nom_connexion, mot_passe, courriel, id_role)
+        VALUES  ('$user', '$mdp', '$courriel', '3')";
+
+        $res = $this->_db->query($query);
+        return $res;
+        
+    }
     
 }
 
