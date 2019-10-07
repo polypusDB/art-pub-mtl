@@ -120,7 +120,7 @@ class Vue {
 		$this->affichePied();
 	}
 
-	public function afficherFormConnexion($msg){
+	public function afficherFormConnexion($msg, $action){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("vues/formConnexion.php");

@@ -47,13 +47,20 @@ class OeuvreControlleur extends Controlleur
 			$oVue->afficheOeuvres($res);
 		}		
 	}
+
+	public function postAction(){
+		// var_dump($_POST);
+		var_dump(json_decode($_POST));
+	}
 	
 		
 	protected function getOeuvre($id_oeuvre)
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getOeuvre($id_oeuvre);
-		
+
+		$oCommentaire = new Commentaire();
+		$aOeuvre["commentaires"] = $oCommentaire->ListeCommentairesParOeuvreID($id_oeuvre);
 		return $aOeuvre;
 	}
 	
