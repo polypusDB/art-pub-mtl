@@ -14,8 +14,6 @@
 class ArtisteAdminControlleur extends Controlleur 
 {
 
-
-
 	public function getAction(Requete $requete)
 	{
 		$res = array();
@@ -50,7 +48,8 @@ class ArtisteAdminControlleur extends Controlleur
 				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
 			}
 		}
-        else 	// Liste des oeuvres
+		// Liste des oeuvres
+        else 	
         {
 			$res = $this->getListeArtiste();
 			$oVue = new AdminVue;
@@ -89,10 +88,7 @@ class ArtisteAdminControlleur extends Controlleur
 					
 					$this->getFormAjout($msgErreur);
 				}
-
 			}
-			
-
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
@@ -120,56 +116,50 @@ class ArtisteAdminControlleur extends Controlleur
 				else{
 					$this->getFormModif($_POST, $msgErreur);
 				}
-
 			}
 		}
-
-
-
-
 	}
 
 
+	// Section Artistes
 	protected function getListeArtiste(){
 		$oArtiste = new Artiste();
 		$aArtiste = $oArtiste->getListe();
 		return $aArtiste;
 	}
 
-	protected function supArtiste($id_artiste){
-
-		$oArtiste= new Artiste();
-		$aArtiste = $oArtiste->deleteArtiste($id_artiste);
-	}
-
-
-	protected function getFormAjout(){
-		$oVue = new AdminVue();
-		$oVue->getFormAjoutArtiste();
-	}
-	
-
-	protected function getFormModif($aData, $msgErreur){
-		$oVue = new AdminVue();
-		$oVue->getFormModifArtiste($aData, $msgErreur);
-	}
-
-	protected function getArtiste($id_artiste)
-	{
+	protected function getArtiste($id_artiste){
 		$oArtiste= new Artiste();
 		$aArtiste = $oArtiste->getArtiste($id_artiste);		
 		return $aArtiste;
 	}
 
+	protected function supArtiste($id_artiste){
+		$oArtiste= new Artiste();
+		$aArtiste = $oArtiste->deleteArtiste($id_artiste);
+	}
+
+	// Section Ajouter
+	protected function getFormAjout(){
+		$oVue = new AdminVue();
+		$oVue->getFormAjoutArtiste();
+	}
 
 	protected function AjouterData($aData){
 		$oArtiste = new Artiste();
 		$oArtiste->AjouterArtiste($aData);
+	}
+	
+	// Section Modifier
+	protected function getFormModif($aData, $msgErreur){
+		$oVue = new AdminVue();
+		$oVue->getFormModifArtiste($aData, $msgErreur);
 	}
 
 	protected function modifData($aData){
 		$oArtiste = new Artiste();
 		$oArtiste->modifierArtiste($aData);
 	}
+	
 }
 ?>

@@ -1,14 +1,7 @@
-<!--Temporaire --------->
-<?php
- include "VueEntete.php";
- include "VueNavigation.php";
-?>
-<!--Temporaire --------->
-
-<div class="container">
-    <div class="contenu-form">
-        <h1>Formulaire ajouter une oeuvre</h1>
-        <form action="" method="POST">
+<div class="contenu-form admin">
+    <a href="/art-pub-mtl/api/oeuvreAdmin">Retour à la liste</a>
+    <h1>Formulaire ajouter une oeuvre</h1>
+    <form action="/art-pub-mtl/api/oeuvreAdmin/ajouter/insert" method="POST">
         <fieldset>
             <legend>Caractéristiques principales :</legend>
             Titre : <input type="text" name="titre" />
@@ -79,9 +72,9 @@
             <input name="uploadedfile" type="file" />
         </fieldset>
             <!--Fin Télécharger une image-->
-             
+                
             <input type="hidden" name="action" value=''/>
             <input type="submit" value="Ajouter"/>
-        </form>
-    </div>
+    </form>
 </div>
+
