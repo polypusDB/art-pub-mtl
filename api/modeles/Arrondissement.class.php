@@ -11,10 +11,7 @@
  * 
  * 
  */
-class Arrondissement extends Modele {	
-	const TABLE_ARROND = "apm__arrondissement";
-	//const TABLE_LIAISON_ARTISTE_OEUVRE = "apm__oeuvre_artiste";
-		
+class Arrondissement extends Modele {		
 	/**
 	 * Retourne la liste des arrondissement
 	 * @access public
@@ -23,7 +20,7 @@ class Arrondissement extends Modele {
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select * from ". self::TABLE_ARROND;
+		$query = "select id_arrondissement, nom as nom_arrondissement from arrondissement";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($arrond = $mrResultat->fetch_assoc())

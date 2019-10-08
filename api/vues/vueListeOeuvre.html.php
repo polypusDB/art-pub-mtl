@@ -11,6 +11,21 @@
 		<h1>Oeuvres</h1>
 		<h4>Découvrez la grande collection</h4>
 	</div>
+	<div class ="filtre">
+			<h3>Filtre</h3>
+
+			 <select> 	<!--Section pour les filtres -->
+
+			<?php
+				 foreach($arrondissements as $arrondissement){
+					 extract($arrondissement);
+					 ?>
+					 <option class= "sArrondissement" value = "<?=$id_arrondissement ?>"><?=$nom_arrondissement ?></option>
+					 <?php
+				 }
+				 ?>
+			</select>
+	<div>
 	<section class="oeuvres flex wrap">
 		<?php
 		foreach ($aData as $cle => $oeuvre) {

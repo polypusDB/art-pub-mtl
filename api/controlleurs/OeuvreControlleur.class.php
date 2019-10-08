@@ -35,6 +35,7 @@ class OeuvreControlleur extends Controlleur
 		{
 			$id_oeuvre = (int)$requete->url_elements[0];            
 			$res = $this->getOeuvre($id_oeuvre);
+			
 			$oVue = new Vue();
 			$oVue->afficheOeuvre($res);
 			
@@ -43,8 +44,9 @@ class OeuvreControlleur extends Controlleur
         else 	// La liste des oeuvres est a affiché
         {
 			$res = $this->getListeOeuvre();
+			$arrondissements = $this->getArrondissement();
 			$oVue = new Vue();
-			$oVue->afficheOeuvres($res);
+			$oVue->afficheOeuvres($res, $arrondissements);
 		}		
 	}
 
@@ -69,6 +71,14 @@ class OeuvreControlleur extends Controlleur
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
 		return $aOeuvre;
+	}
+
+
+	protected function getArrondissement()
+	{
+		$oArrondissement = new Arrondissement();
+		$aArrondissement = $oArrondissement->getListe();
+		return $aArrondissement;
 	}
 
 	
