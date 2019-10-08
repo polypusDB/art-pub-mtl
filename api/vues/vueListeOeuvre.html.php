@@ -13,18 +13,32 @@
 	</div>
 	<div class ="filtre">
 			<h3>Filtre</h3>
+				<div class ="filtres">
 
-			 <select> 	<!--Section pour les filtres -->
+				</div>
+			 <ul> 	<!--Section pour les filtres -->
 
 			<?php
 				 foreach($arrondissements as $arrondissement){
 					 extract($arrondissement);
 					 ?>
-					 <option class= "sArrondissement" value = "<?=$id_arrondissement ?>"><?=$nom_arrondissement ?></option>
+					 <li class= "arrondissement" data-id="<?=$id_arrondissement ?>"><?=$nom_arrondissement ?></li>
 					 <?php
 				 }
 				 ?>
-			</select>
+			</ul>
+			<h3>Filtre</h3>
+			<ul> 	<!--Section pour les filtres -->
+
+		<?php
+	 	foreach($materiaux as $materiel){
+			extract($materiel);
+		 ?>
+		 	<li class= "materiaux" data-id="<?=$id_materiaux ?>"><?=$nom_francais ?></li>
+		 	<?php
+	 }
+	 ?>
+</ul>
 	<div>
 	<section class="oeuvres flex wrap">
 		<?php
@@ -43,18 +57,6 @@
 					?>
 						<div class="auteur">
 							<a href="artiste/<?php echo $id_artiste ?>"><?php if($Nom != '' || $Prenom != '') { echo $Nom; } else { echo $NomCollectif; } ?></a>
-						</div>
-					<?php
-					}
-					?>
-					<?php
-					if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-					?>
-						<div class="boutons bt-blue">
-							<a class="btnSup" href="oeuvre/sup/<?=$id_oeuvre ?>">Supprimer</a>
-						</div>
-						<div class="boutons bt-blue">
-							<a class="btnMod" href="oeuvre/mod/<?=$id_oeuvre ?>">Modifier</a>
 						</div>
 					<?php
 					}

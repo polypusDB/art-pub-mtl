@@ -22,7 +22,7 @@ class Oeuvre extends Modele {
 	 * @return Array
 	 * @TODO Modifier le query afin de tenir compte des oeuvres à plusieurs artistes.
 	 */
-	public function getListe() 
+	public function getListe($filtre = "") 
 	{
 		
 		$res = Array();
@@ -34,8 +34,8 @@ class Oeuvre extends Modele {
 		ON artiste_oeuvre.id_artiste = artiste.id_artiste
 		JOIN endroit
 		ON endroit.id_endroit = oeuvre.id_endroit
-        JOIN arrondissement
-        ON arrondissement.id_arrondissement = endroit.id_arrondissement"; 
+        JOIN arrondissement a
+        ON a.id_arrondissement = endroit.id_arrondissement $filtre"; 
 
 		if($mrResultat = $this->_db->query($query))
 		{
