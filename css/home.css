@@ -27,25 +27,41 @@
     padding: 2%;
 }
 
-/*section À propos --------------------------*/
-.apm, .artiste{
-    padding: 5%;
+/* section À LA UNE ------------------------*/
+.une{
+    padding: 10%;
 }
 
-.apm h1, .apm h1 a{
-    color: #F08243;
-    font-weight:400;
+.une .BlocUne{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.une h1{
     text-transform: uppercase;
+    font-size: 28px;
+    color:#E26F39;
+    border-left: solid 5px #E26F39;
+    padding-left: 3%;
+    flex-wrap: nowrap;
 }
 
-.apm h1 a:hover{
-    color: #FCB797;
-}
-
-.apm .savoir{
+.une h2{
+    font-weight: 600;
+    font-size: 16px;
     text-align: right;
-    margin: 15px 0;
+    padding-right: 3%;
 }
+
+.une p{
+    padding-top:5%;
+}
+
+.btnArtiste{
+    background-color: #F9DB45;
+    color: white;
+}
+
 
 /*section Artiste --------------------------*/
 .artiste{
@@ -66,6 +82,7 @@
 
 .artiste h1{
     color: white;
+    font-weight: 400; 
 }
 
 .artiste h2{
@@ -103,6 +120,30 @@
     padding: 2% 2% 2% 5%;
 }
 
+
+/*section À propos --------------------------*/
+.apm p{
+    text-align: center;
+}
+.apm, .artiste{
+    padding: 10%;
+}
+
+.apm h1, .apm h1 a{
+    color: #F08243;
+    font-weight:400;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.apm h1 a:hover{
+    color: #FCB797;
+}
+
+.apm .savoir{
+    text-align: center;
+    margin: 15px 0;
+}
 
 
 /* media queries: mobile --------------------------------------------------*/
