@@ -65,7 +65,7 @@ a:hover{
 .entete.admin{
     padding: 10px;
 }
-.admin a img{
+.entete.admin a img{
     width: 60%;
 }
 
@@ -82,18 +82,41 @@ body ul{
     flex-wrap: wrap;
     margin: 0;
 }
-.container ul li a{
+.container ul li{
     width: 100%;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 12px;
     color: white;
     padding: 20px 10px 20px 19px;
-    display: flex;
     border-bottom: 1px solid #8FE3DA;
+    cursor: pointer;
+    outline: none;
 }
-.container ul li a:hover{
+.container ul li a{
+    display: flex;
+    color: white;
+    border-bottom: none;
+}
+.container ul li:hover:not(.dropdown-container){
     background: #8FE3DA;
+    border-bottom: 1px solid #F9DB45;
+}
+.active {
+    background-color: #8FE3DA;
+    color: white;
+}
+.container ul li.dropdown-container {
+    display: none;
+    background-color: #5F5F5F;
+    padding: 0;
+}
+.container ul li.dropdown-container a{
+    padding: 20px 10px 20px 19px;
+    border-bottom: 1px solid rgb(58, 58, 58);
+}
+.container ul li.dropdown-container a:hover{
+    background: rgb(58, 58, 58);
     border-bottom: 1px solid #F9DB45;
 }
 .contenu{
@@ -103,6 +126,12 @@ body ul{
 
 /* Accueil Admin -------------------------------------------------------- */
 .contenu h1{
+    color: #000;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.contenu h1 span{
+    color: #E26F39;
     font-weight: 400;
     text-transform: uppercase;
 }
@@ -156,8 +185,8 @@ a .infobt:hover{
     flex-direction: row;
 }
 .home-cont section{
-    width: 30%;
-    height: 200px;
+    width: 47%;
+    height: 300px;
     margin-right: 5%;
     border: 1px solid #ddd;
     background: white;
@@ -173,10 +202,26 @@ section h3{
     text-transform: uppercase;
     margin-bottom: 15px;
     border-bottom: 1px solid #F3D331;
+    line-height: 40px;
+    color: black;
 }
-section table{
+.table-accueil{
+    height: 200px;
+    overflow: hidden;
+}
+.table-accueil table{
     border: none;
-    font-size: 12px;
+}
+.table-accueil table td{
+    border-left: none;
+    border-bottom: none;
+    width: auto;
+}
+.table-accueil table td h2{
+    font-size: 13px;
+}
+.table-accueil table td:nth-child(even){
+    border-right: none;
 }
 
 /* Tables Admin -------------------------------------------------------- */
@@ -195,9 +240,9 @@ th{
     padding: 10px;
     border: 1px solid #ddd;
     font-size: 17px;
-    font-weight: 400;
+    font-weight: 600;
     text-align: left;
-    color: #81CEC5;
+    color: #000;
 }
 td {
     width: 3%;
@@ -214,10 +259,16 @@ tr:nth-child(even) {
 td:nth-child(2) {
     width: auto;
 }
-td:nth-child(3) {
-    width: auto;
-    font-size: 14px;
-    color: rgb(133, 154, 160);
+td:nth-child(3), td:nth-child(4) {
+    width: 10%;
+    font-size: 15px;
+    text-align: center;
+}
+td:nth-child(4) a{
+    color: #E26F39;
+}
+td:nth-child(4) a:hover{
+    color: #000;
 }
 td input[type="checkbox"] {
     width: auto;
@@ -225,6 +276,7 @@ td input[type="checkbox"] {
 td h2{
     font-weight: 600;
     font-size: 17px;
+    text-transform: capitalize;
 }
 
 /* Tables Admin Artiste -------------------------------------------------------- */
@@ -240,25 +292,37 @@ td h2{
     font-weight: 600;
     color: #000;
 }
-.bt-ajouter{
-    background-color: #F3D331;
-    padding: 15px;
+.bts-principal{
+    font-size: 30px;
     text-align: center;
     color: white;
+    display: flex;
+}
+.bts-principal div{
     -webkit-box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
     -moz-box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
     box-shadow: 0 2px 2px 0px rgba(0,0,0,0.28);
-
+    padding: 10px 15px;
 }
-.bt-ajouter a{
+.bts-principal div a{
     color: white;
+}
+.bt-ajouter{
+    background-color: #F3D331;
 }
 .bt-ajouter:hover{
     background-color: #F9DB45;
 }
+.bt-supprimer{
+    background-color: #E26F39;
+    margin-left: 15px;
+}
+.bt-supprimer:hover{
+    background-color: #F08243;
+}
 
 /* Forms -------------------------------------------------------- */
-.contenu-form .admin {
+.contenu-form.admin {
     padding: 5%;
     width: 100%;
 }

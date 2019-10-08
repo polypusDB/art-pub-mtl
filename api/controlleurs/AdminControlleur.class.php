@@ -10,28 +10,34 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
  
- /*
- * TODO : Commenter selon les standards du département.
- *
- */
 
- 
- 
 class AdminControlleur extends Controlleur 
 {
 	
-	public function getAction(Requete $requete)
-	{
+	public function getAction(Requete $requete){
 		$res = array();
-		$msgErreur="";
 		if($_SESSION["utilisateur"]["type_acces"] == "admin"){
+			$resArt = $this->getListeArtiste();
+			$resOeu = $this->getListeOeuvre();
 			$oVue = new AdminVue();
-			$oVue->afficheAccueilAdmin();
+			$oVue->afficheAccueilAdmin($resArt, $resOeu);
 		}
 		else{
 			echo "tu n'est pas un admin";
 		}
 		
+	}
+
+	protected function getListeArtiste(){
+		$oArtiste = new Artiste();
+		$aArtiste = $oArtiste->getListe();
+		return $aArtiste;
+	}
+
+	protected function getListeOeuvre(){
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getListe();
+		return $aOeuvre;
 	}
 
 

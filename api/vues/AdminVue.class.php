@@ -39,13 +39,14 @@ class AdminVue {
 	/**
 	 * Affiche la page d'accueil
 	 */
-	public function afficheAccueilAdmin() {
+	public function afficheAccueilAdmin($aDataArt, $aDataOeu) {
         $this->afficheHead();
         $this->afficheEntete();
         include "admin/VueAccueil.php";
 	}
 
 	/**
+	 * ARTISTES
 	 * Affiche la liste des artistes
 	 */
 	public function afficheArtistes($aData = Array()) {
@@ -70,7 +71,6 @@ class AdminVue {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/formAjouterArtistes.php");
-		
 	}
 
 	/**
@@ -83,17 +83,26 @@ class AdminVue {
 	}
 
 	/**
+	 * OEUVRES
 	 * Affiche la liste des oeuvres
 	 */
 	public function afficheOeuvres($aData = Array()) {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/VueListeOeuvreAdmin.php");
-		
 	}
 
 	/**
-	 * Affiche le Formulaire pour ajouter un oeuvres
+	 * Affiche le Formulaire pour ajouter un oeuvre
+	 */
+	public function getFormAjoutOeuvre(){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/formAjouterOeuvres.php");
+	}
+
+	/**
+	 * Affiche le Formulaire pour modifier un oeuvre
 	 */
 	public function getFormModifierOeuvre(){
 		$this->afficheHead();
@@ -101,5 +110,6 @@ class AdminVue {
 		include("admin/formModifOeuvre.php");
 	}
 
+	
 }
 ?>
