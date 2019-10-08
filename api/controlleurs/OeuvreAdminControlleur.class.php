@@ -55,7 +55,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         {
 			$res = $this->getListeOeuvre();
 			$oVue = new AdminVue();
-			$oVue->afficheOeuvres($res);
+			$oVue->afficheOeuvres($res, $msgErreur = "");
 		}		
 		
 		
@@ -63,11 +63,39 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 
 	public function postAction(Requete $requete)
 	{
-		var_dump($requete->url_elements[0]);
-		if (isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
-			// modification de l'oeuvre ici!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		}
+		// var_dump($requete->url_elements[0]);
+		// if (isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
+		// 	// modification de l'oeuvre ici!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		// }
+
 		
+		//Validation supprimer avec le Checkbox
+		if (isset($_POST['supp'])) {
+			$msgErreur ="";
+			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
+				$selected = '';
+				$num_checks = count($_POST['checks']);
+				$current = 0;
+				foreach ($_POST['checks'] as $key => $value) {
+					if ($current != $num_checks-1)
+						$selected .= $value.', ';
+					else
+						$selected .= $value;
+					$current++;
+				}
+			}
+			if (empty($selected)){
+				$msgErreur = 'Aucune oeuvre sélectionnée';
+				$res = $this->getListeOeuvre();
+				$oVue = new AdminVue();
+				$oVue->afficheOeuvres($res, $msgErreur);
+			}
+
+			if($msgErreur == ""){
+				echo 'Sélectionnée: '.$selected;
+			}
+		
+		}    
 		
 	}
 	
@@ -98,8 +126,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$oVue = new AdminVue();
 		$oVue->getFormModifierOeuvre();
 	}
-	
-
 	
 	
 	

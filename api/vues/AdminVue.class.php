@@ -86,7 +86,7 @@ class AdminVue {
 	 * OEUVRES
 	 * Affiche la liste des oeuvres
 	 */
-	public function afficheOeuvres($aData = Array()) {
+	public function afficheOeuvres($aData = Array(), $msgErreur) {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/VueListeOeuvreAdmin.php");

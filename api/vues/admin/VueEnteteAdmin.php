@@ -24,7 +24,7 @@
     
     <body>
     <header class="entete admin">
-        <a href="/art-pub-mtl/api" target="_blank" class="logo"><img src="/art-pub-mtl/img/logoAPM.png" alt="Art Public Montreal"></a>
+        <a href="/art-pub-mtl/api/admin" target="_blank" class="logo"><img src="/art-pub-mtl/img/logoAPM.png" alt="Art Public Montreal"></a>
         <span class="flexgrow"></span>
         <nav class="menu">
             <?php
@@ -38,6 +38,7 @@
                 ?>
                 <a href="/art-pub-mtl/api/admin"><i class="fas fa-grin-wink"></i><?php echo $username?></a>
                 <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+                <a href="/art-pub-mtl/api"></i><i class="fas fa-home"></i></a>
                 <?php
             }
             ?>

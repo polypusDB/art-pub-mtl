@@ -1,6 +1,6 @@
 <div class="contenu listeArtiste">
     <div class="titreListe">
-        <h1>Artistes</h1>
+        <h1>Liste des Artistes</h1>
         <?php if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"]){
             ?>
             <div class="bts-principal">
