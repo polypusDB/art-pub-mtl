@@ -12,7 +12,7 @@
     <div>
         <div class="BlocUne">
         <h1>À la une</h1>
-        <h2>Chaque semaine, un artiste ou une oeuvre est mis en évidence.</h2>
+        <h2 class="texteUne">Chaque semaine, un artiste ou une oeuvre est mis en évidence.</h2>
         </div>
         <section class="oeuvres flex wrap">
             <div class="oeuvre carte">
@@ -43,12 +43,26 @@
                 </div>
             </div>
     </section>
-    <div class="honneur">
-        <a href="/art-pub-mtl/api/artiste">
-            <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
-            <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
-        </a>
-    </div>
+    <section class="listeParcours" >
+        <div class="honneur">
+            <a href="/art-pub-mtl/api/artiste">
+                <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
+                <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
+            </a>
+        </div>
+        <div class="honneur">
+            <a href="/art-pub-mtl/api/artiste">
+                <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
+                <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
+            </a>
+        </div>
+        <div class="honneur">
+            <a href="/art-pub-mtl/api/artiste">
+                <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
+                <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
+            </a>
+        </div>
+    </section>
     <section class="apm">
         <div>
             <p class="propos">À PROPOS</p>

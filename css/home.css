@@ -34,23 +34,26 @@
 
 .une .BlocUne{
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
+   
+    
 }
 .une h1{
     text-transform: uppercase;
-    font-size: 28px;
+    font-size: 50px;
     color:#E26F39;
-    border-left: solid 5px #E26F39;
-    padding-left: 3%;
+    letter-spacing: 3px;
+/*    border-right: solid 8px #E26F39;*/
     flex-wrap: nowrap;
+    width: 180px;
 }
 
-.une h2{
+.texteUne{
     font-weight: 600;
     font-size: 16px;
-    text-align: right;
-    padding-right: 3%;
+    text-align: left;
+    padding-left: 3%;
+    border-left: solid 6px #E26F39;
 }
 
 .une p{
@@ -102,20 +105,30 @@
 } 
 
 /*Artiste à l'honneur --------------------------*/
+
+.listeParcours{
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
 .honneur{
+    height: 10%;
     width: 100%;
     position: relative;
+    margin-bottom: 0;
 }
 
 .honneur img{
-    height: auto;
     width: 100%;
+    margin-bottom: 0;
 }
 
 .honneur h2{
     position: absolute;
     left: -10px;
-    bottom: 2em;
+    bottom: 0em;
     background-color: white;
     padding: 2% 2% 2% 5%;
 }
@@ -161,5 +174,17 @@
         color: darkgrey;
     }
     
-  
+    .une h1{
+    font-size: 30px;
+    width: 250px;
+    }
+    
+    .texteUne{
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 3%;
+    border-left: solid 5px #E26F39;
+    }
 }
+
