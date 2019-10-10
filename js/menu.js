@@ -5,11 +5,15 @@ window.addEventListener("load", function(){
     menu_burger.addEventListener("click", function(e){
         let menu = document.querySelector(".menu");
         menu.classList.toggle("ouvert");
+
+        let menuAdmin = document.querySelector(".menuadmin");
+        menuAdmin.classList.toggle("ouvert");
     });
 
     // chaque fois qu'il fait "resize" la class .ouvert est effacée
     window.addEventListener("resize", function(e){
-        document.querySelector(".menu").classList.remove("ouvert");          
+        document.querySelector(".menu").classList.remove("ouvert");    
+        document.querySelector(".menuadmin").classList.remove("ouvert");          
     });
 
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_hide_scroll

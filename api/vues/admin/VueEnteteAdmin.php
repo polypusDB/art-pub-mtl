@@ -36,9 +36,9 @@
             else{
                 $username = $_SESSION["utilisateur"]["nom_connexion"];
                 ?>
-                <a href="/art-pub-mtl/api/admin"><i class="fas fa-grin-wink"></i><?php echo $username?></a>
+                <div class="user">Salut <i class="fas fa-grin-wink"></i><?php echo $username?></div>
+                <a href="/art-pub-mtl/api" target="_blank" >Aller au site</a>
                 <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
-                <a href="/art-pub-mtl/api" target="_blank" ></i><i class="fas fa-home"></i></a>
                 <?php
             }
             ?>
