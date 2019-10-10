@@ -28,7 +28,7 @@ class Vue {
 	/**
 	 * Affiche entetes
 	 * @access public
-	 * @return void
+	 * @return void 
 	 */
 	public function afficheEntete() {
 		include "VueNavigation.php";		
@@ -107,7 +107,6 @@ class Vue {
 		$this->affichePied();
 	}
 
-
 /**
 	 * Affiche le détails d'un artiste
 	 * @access public
@@ -119,6 +118,13 @@ class Vue {
         include("VueDetailArtiste.html.php");
 		$this->affichePied();
 	}
+    
+    public function afficheParcours() {
+		$this->afficheHead();
+		$this->afficheEntete();
+        include("VueParcours.html.php");
+		$this->affichePied();
+	}
 
 	public function afficherFormConnexion($msg, $action){
 		$this->afficheHead();
@@ -127,7 +133,6 @@ class Vue {
 		$this->affichePied();
 
 	}
-
 
 	public function getFormAjoutOeuvre(){
 		$this->afficheHead();

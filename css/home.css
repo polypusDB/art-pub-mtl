@@ -65,6 +65,10 @@
     color: white;
 }
 
+.btnArtiste:hover{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 /*section Artiste --------------------------*/
 .artiste{
@@ -90,7 +94,7 @@
 
 .artiste h2{
     font-size: 1.2em;
-    color: white;
+    color: white; 
     text-align: center;
     font-weight: 600;   
 }
@@ -112,25 +116,53 @@
     flex-wrap: wrap;
 }
 
-
 .honneur{
+    display: inherit;
     height: 10%;
-    width: 100%;
+    width: 33.3%;
     position: relative;
     margin-bottom: 0;
 }
 
+.honneur a{
+    height: 250px;
+    width: 100%;
+}
+
 .honneur img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+     filter: brightness(60%);
+     -webkit-filter: brightness(60%);
+}
+
+.honneur img:hover{
     width: 100%;
     margin-bottom: 0;
+    filter: brightness(100%);
+     -webkit-filter: brightness(100%);
+     transition: 0.5s;
 }
 
 .honneur h2{
     position: absolute;
-    left: -10px;
     bottom: 0em;
     background-color: white;
-    padding: 2% 2% 2% 5%;
+    padding: 2% 4% 2% 4%;
+    color: black;
+    font-weight: 400;
+}
+
+.btnVisite{
+    color: white;
+    background-color: #81CEC5;
+    margin: 5% 25% 0% 25%;
+}
+
+.btnVisite:hover{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 
@@ -185,6 +217,19 @@
     text-align: left;
     padding-left: 3%;
     border-left: solid 5px #E26F39;
+    }
+    
+    .honneur{
+    display: inherit;
+    height: 10%;
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+    }
+    
+    .honneur a{
+    height: 130px;
+    width: 100%;
     }
 }
 

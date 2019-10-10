@@ -26,9 +26,9 @@
                         <div class="auteur"><a href="">Muraliste</a></div>
                     </div>
                     <p>Art public Montréal est une initiative de la Ville de Montréal visant à rassembler, au sein d’un partenariat unique, les propriétaires d’œuvres d’art public présentes sur le territoire montréalais et les acteurs du rayonnement de la métropole.</p>
-                    <input class="btnArtiste" type="button" href="" value="Découvrir d'avantage">
                 </section>
 				</div>
+                <input class="btnArtiste" type="button" href="" value="Découvrir d'avantage">
             </div>
         </section>
     </div>
@@ -39,29 +39,30 @@
                 <h1><a href="/art-pub-mtl/api/artiste">PARCOURS</a></h1>
                 <div class="listeArtiste">
                     <h2>+ de 850 Oeuvres d’art Public et d’artistes + Phillip ADAMS + SBUONE + Harlan JOHNSON + INTI + Suzan VACHON +  
-                    <a href="/art-pub-mtl/api/artiste">plein d’autres encore</a></h2>
+                    <a href="/art-pub-mtl/api/parcours">plein d’autres encore</a></h2>
                 </div>
             </div>
     </section>
     <section class="listeParcours" >
         <div class="honneur">
             <a href="/art-pub-mtl/api/artiste">
-                <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
-                <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
+                <img src="/art-pub-mtl/img/oeuvres/fontaine.jpg" alt="">
+                <h2>Sculptures - Fontaines</h2>
             </a>
         </div>
         <div class="honneur">
             <a href="/art-pub-mtl/api/artiste">
-                <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
-                <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
+                <img src="/art-pub-mtl/img/oeuvres/mile-end.jpg" alt="">
+                <h2>Mini-circuit - Mile End</h2>
             </a>
         </div>
         <div class="honneur">
             <a href="/art-pub-mtl/api/artiste">
-                <img src="/art-pub-mtl/img/oeuvres/1668_1.jpg" alt="">
-                <h2>Le village imaginé - <br/>PIERRE BOURGAULT</h2>
+                <img src="/art-pub-mtl/img/oeuvres/bleue.jpg" alt="">
+                <h2>Suivre la ligne bleue</h2>
             </a>
         </div>
+        <input class="btnVisite" type="button" href="/art-pub-mtl/api/parcours" value="Planifier votre visite">
     </section>
     <section class="apm">
         <div>
