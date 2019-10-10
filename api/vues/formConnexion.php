@@ -13,7 +13,7 @@
             <h1>Formulaire de Connexion</h1>
             <form action="/art-pub-mtl/api/connection/login" method="POST">	
                 <div>
-                    <label for="name">Login:</label>
+                    <label for="name">Nom d'usager:</label>
                     <input type="text" id="name" name="user">
                 </div>
                 <div>

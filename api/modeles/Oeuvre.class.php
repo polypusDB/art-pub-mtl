@@ -228,7 +228,46 @@ class Oeuvre extends Modele {
 		$res = $this->_db->query($query);
 		
 	}
-	
+    // À effacer dans le sprint 2 ou 3. Utiliser dans la table d'Importation mais cela supprimer quand je vais optimiser le code.?
+    public function ajouterUnOeuvre($titre,$dimension,$description,$id_categorie,$id_support,$id_endroit)
+    {
+		$resQuery = false;
+		$res = Array();
+        $query = "INSERT INTO ". self::TABLE_OEUVRE ."  (`titre`, `dimension`,`description`, `id_categorie`, `id_support`, `id_endroit`) VALUES ('".$titre."', '".$dimension."', '".$description."', '".$id_categorie."', '".$id_support."', '".$id_endroit."')";
+		$resQuery = $this->_db->query($query); 
+        
+		return $resQuery;
+    }
+    
+	public function ajouterOeuvre($aData)
+    {
+        $resQuery = false;
+		extract($aData);
+        $query = "INSERT INTO ". self::TABLE_OEUVRE ."  (`titre`, `dimension`,`description`,`id_categorie`, `id_support`, `id_endroit`) VALUES ('".$titre."', '".$dimension."', '".$description."', '".$id_categorie."', '".$id_support."', '".$id_endroit."')";
+		$resQuery = $this->_db->query($query); 
+        
+		return $resQuery;
+	}
+    
+    public function verifierOeuvreExistant($titre)
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select * from ". self::TABLE_OEUVRE." where titre = '".$titre."'"))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;        
+    }
+ 
+    public function getDernierEnregistrement()
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select max(id_oeuvre) as dernier from ". self::TABLE_OEUVRE))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;        
+    }    	
 }
 
 

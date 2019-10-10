@@ -11,9 +11,11 @@
  * 
  * 
  */
-class Categorie extends Modele {		
+class Categorie extends Modele {	
+	const TABLE_CATEGORIE = "categorie";
+		
 	/**
-	 * Retourne la liste des Materiaux
+	 * Retourne la liste des catégories
 	 * @access public
 	 * @return Array
 	 */
@@ -30,6 +32,26 @@ class Categorie extends Modele {
 		}
 		return $res;
 	}
+    
+    public function ajouterCategorie($nom_francais,$nom_anglais)
+    {
+		$resQuery = false;
+		$res = Array();
+        $query = "INSERT INTO ". self::TABLE_CATEGORIE ."  (`nom_francais`, `nom_anglais`) VALUES ('".$nom_francais. "', '".$nom_anglais. "')";
+		$resQuery = $this->_db->query($query); 
+        
+		return $resQuery;
+    }
+    
+    public function verifierCategorieFrancaisExistant($nom_francais)
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select * from ". self::TABLE_CATEGORIE." where nom_francais = '".$nom_francais."'"))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;
+    }
 	
 }
 
