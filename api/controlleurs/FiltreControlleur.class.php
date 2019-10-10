@@ -32,23 +32,24 @@ class FiltreControlleur extends Controlleur
         // var_dump($requete->parametres);
         $arrondissement = $requete->parametres["arrondissements"];
         $materiaux = $requete->parametres["materiaux"];
+        $categories = $requete->parametres["categorie"];
+        $recherche = $requete->parametres["recherche"];
+        $limit = $requete->parametres["oeuvrePresent"];
+
+        // echo json_encode($limit);
 
 
-        // $filtres = array(
-        //     "texte" => $requete->parametres["text"],
-        //     "id_user" => $requete->parametres["id_user"],
-        //     "nom_connexion" => $_SESSION["utilisateur"]["nom_connexion"]
-        // );
 
-        $this->filtrerOeuvre($arrondissement, $materiaux);
-        
+        $this->filtrerOeuvre($arrondissement, $materiaux, $categories, $recherche, $limit);
+
+
 
 	}
     
     
-    public function filtrerOeuvre($arrondissement, $materiaux){
+    public function filtrerOeuvre($arrondissement, $materiaux, $categories, $recherche, $limit){
         $oFiltre = new Filtre();
-        $aFiltre = $oFiltre->OeuvreFiltre($arrondissement, $materiaux);
+        $aFiltre = $oFiltre->OeuvreFiltre($arrondissement, $materiaux, $categories, $recherche, $limit);
     }
 	
 	

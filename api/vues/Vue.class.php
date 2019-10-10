@@ -74,7 +74,7 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheOeuvres($aData = Array(), $arrondissements, $materiaux) {
+	public function afficheOeuvres($aData = Array(), $arrondissements, $materiaux, $categories) {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("VueListeOeuvre.html.php");

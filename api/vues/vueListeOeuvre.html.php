@@ -11,6 +11,8 @@
 		<h1>Oeuvres</h1>
 		<h4>Découvrez la grande collection</h4>
 	</div>
+
+	<input type="text" class="recherche" placeholder="rechercher"/><input type="button" value="rechercher" />
 	<div class ="filtre">
 			<h3>Filtre</h3>
 				<div class ="filtres">
@@ -35,6 +37,18 @@
 			extract($materiel);
 		 ?>
 		 	<li class= "materiaux" data-id="<?=$id_materiaux ?>"><?=$nom_francais ?></li>
+		 	<?php
+	 }
+	 ?>
+</ul>
+			<h3>categories</h3>
+			<ul> 	<!--Section pour les filtres -->
+
+		<?php
+	 	foreach($categories as $categorie){
+			extract($categorie);
+		 ?>
+		 	<li class= "categorie" data-id="<?=$id_categorie ?>"><?=$nom_francais ?></li>
 		 	<?php
 	 }
 	 ?>

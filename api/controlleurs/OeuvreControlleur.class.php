@@ -32,8 +32,9 @@ class OeuvreControlleur extends Controlleur
 			$res = $this->getListeOeuvre();
 			$arrondissements = $this->getArrondissement();
 			$materiaux = $this->getMateriaux();
+			$categories = $this->getCategories();
 			$oVue = new Vue();
-			$oVue->afficheOeuvres($res, $arrondissements, $materiaux);
+			$oVue->afficheOeuvres($res, $arrondissements, $materiaux, $categories);
 		}		
 	}
 		
@@ -66,6 +67,12 @@ class OeuvreControlleur extends Controlleur
 		$oMateriaux = new Materiaux();
 		$aMateriaux = $oMateriaux->getListe();
 		return $aMateriaux;
+	}
+
+	protected function getCategories(){
+		$oCategories = new Categorie();
+		$aCategories = $oCategories->getListe();
+		return $aCategories;
 	}
 	
 }

@@ -20,12 +20,12 @@ class Categorie extends Modele {
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "SELECT id_materiaux, nom_francais FROM materiaux order by nom_francais asc";
+		$query = "SELECT id_categorie, nom_francais FROM categorie";
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($arrond = $mrResultat->fetch_assoc())
+			while($categorie = $mrResultat->fetch_assoc())
 			{
-				$res[] = $arrond;
+				$res[] = $categorie;
 			}
 		}
 		return $res;
