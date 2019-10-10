@@ -1,7 +1,6 @@
 <div class="container">
     <div class="contenu-form">
         <?php
-        var_dump($action);
             //si je ne suis pas authentifié, on affiche le formulaire de login
             if(!isset($_SESSION["login"]))
             {            
@@ -25,7 +24,7 @@
                     <input type="submit" id="envoyer" value="ENVOYER">
                 </div>
                 <div>
-                 <label id="texte-mdp">Vous n'avez pas encore de compte ? <a href="">Créez-en un !</a></label>
+                    <label id="texte-mdp">Vous n'avez pas encore de compte ? <span class="btInscription">Créez-en un !</span></label>
                 </div>
                 <?php
                     if(isset($msg) && $msg != "")
@@ -60,6 +59,9 @@
                 </div>
                 <div>
                     <input type="submit" id="envoyer" value="ENVOYER">
+                </div>
+                <div>
+                    <label id="texte-mdp">Vous avez un compte ? <span class="btConnexion">Se conecter !</span></label>
                 </div>
                 <?php
                     if(isset($msg) && $msg != "")
