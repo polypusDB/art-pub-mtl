@@ -16,28 +16,32 @@ class AdminControlleur extends Controlleur
 	
 	public function getAction(Requete $requete){
 		$res = array();
-		if($_SESSION["utilisateur"]["type_acces"] == "admin"){
-			if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "usagers"){
-				if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "sup"){
-					$aData[] = $requete->url_elements[2];
-					$string = $this->ArrayToString($aData);
-					$this->supUsager($string);
-					header("Location:/art-pub-mtl/api/admin/usagers");
+		if(isset($_SESSION["utilisateur"])){
+			if($_SESSION["utilisateur"]["type_acces"] == "admin"){
+				if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "usagers"){
+					if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "sup"){
+						$aData[] = $requete->url_elements[2];
+						$string = $this->ArrayToString($aData);
+						$this->supUsager($string);
+						header("Location:/art-pub-mtl/api/admin/usagers");
+					}else{
+						$resUsagers = $this->getListeUsagersFun();
+						$oVue = new AdminVue();
+						$oVue->afficheListeUsagers($resUsagers, $msgErreur = "");
+					}
 				}else{
-					$resUsagers = $this->getListeUsagersFun();
+					$resArt = $this->getListeArtiste();
+					$resOeu = $this->getListeOeuvre();
 					$oVue = new AdminVue();
-					$oVue->afficheListeUsagers($resUsagers, $msgErreur = "");
+					$oVue->afficheAccueilAdmin($resArt, $resOeu);
 				}
-			}else{
-				$resArt = $this->getListeArtiste();
-				$resOeu = $this->getListeOeuvre();
-				$oVue = new AdminVue();
-				$oVue->afficheAccueilAdmin($resArt, $resOeu);
 			}
 		}
-		
 		else{
-			echo "tu n'est pas un admin";
+			$action = "connexion";
+			$oVue = new Vue();
+			$msg= "";			
+			$oVue->afficherFormConnexion($msg, $action);
 		}
 		
 	}

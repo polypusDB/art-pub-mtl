@@ -38,7 +38,11 @@
     align-self: flex-start;
     order: 1;
 }
-.entete nav .user, .entete .menuadmin a.user{
+.entete nav .user{
+    color: #F08243;
+    font-weight: 600;
+}
+.entete .menuadmin a.user{
     color: #fff;
     font-weight: 600;
 }

@@ -78,6 +78,9 @@ a:hover{
     display: inline;
     font-size: 20px;
 }
+.entete.admin nav  {
+    align-items: flex-end;
+}
 body ul{
     width: 230px;
     background: #81CEC5;
