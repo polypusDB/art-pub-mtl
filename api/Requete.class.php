@@ -67,8 +67,11 @@ class Requete
 	
 	private function aseptiserParametre($valeur)
 	{
-		$valeur = $this->_db->real_escape_string($valeur);
-		$valeur = htmlspecialchars($valeur);
+        if(is_string($valeur)){
+            $valeur = $this->_db->real_escape_string($valeur);
+            $valeur = htmlspecialchars($valeur);
+        }
+        
 		return $valeur;
 	} 	
 }

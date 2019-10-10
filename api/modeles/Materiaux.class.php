@@ -22,7 +22,7 @@ class Materiaux extends Modele {
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select * from ". self::TABLE_MATERIAUX;
+		$query = "SELECT id_materiaux, nom_francais FROM materiaux order by nom_francais asc";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($arrond = $mrResultat->fetch_assoc())

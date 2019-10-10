@@ -1,10 +1,10 @@
 <?php
 /**
- * Class Categorie
+ * Class Materiaux
  * 
- * @author Michel Plamondon
- * @version 2.0
- * @update 2019-09-17
+ * @author Jonathan Martel
+ * @version 1.0
+ * @update 2016-11-25
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
@@ -22,12 +22,12 @@ class Categorie extends Modele {
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select * from ". self::TABLE_CATEGORIE;
+		$query = "SELECT id_categorie, nom_francais FROM categorie";
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($arrond = $mrResultat->fetch_assoc())
+			while($categorie = $mrResultat->fetch_assoc())
 			{
-				$res[] = $arrond;
+				$res[] = $categorie;
 			}
 		}
 		return $res;

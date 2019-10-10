@@ -64,11 +64,24 @@
 		?>
 		</div>
 			<form action="" method="POST">
-				<input type="text" class="commentaire" placeholder ="Commentez ici!" name ="commentaire"/>
-				<input type="hidden" class="idOeuvre" name ="id_oeuvre" value = "<?=$id_oeuvre ?>"/>
-				<input type="hidden" class="idUser" name ="id_user" value="<?=$_SESSION["utilisateur"]["id_usager"] ?>"/>
-				<input type="hidden" class="user" name ="user" value="<?=$_SESSION["utilisateur"]["nom_connexion"] ?>"/>
-				<input type="button" value ="Commentez" class="btnCom"/>
+			<?php
+				if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["nom_connexion"] != ""){
+					?>
+					<input type="text" class="commentaire" placeholder ="Commentez ici!" name ="commentaire"/>
+					<input type="hidden" class="idOeuvre" name ="id_oeuvre" value = "<?=$id_oeuvre ?>"/>
+					<input type="hidden" class="idUser" name ="id_user" value="<?=$_SESSION["utilisateur"]["id_usager"] ?>"/>
+					<input type="hidden" class="user" name ="user" value="<?=$_SESSION["utilisateur"]["nom_connexion"] ?>"/>
+					<input type="button" value ="Commentez" class="btnCom"/>
+					<?php
+				}else{
+					?>
+					<input type="text" class="commentaire" placeholder ="Vous devez être connecter pour commenter" name ="commentaire"/>
+					<input type="button" value ="Commentez" class="btnCom" disabled = true/>
+					<?php
+				}
+			?>
+
+				<!-- <input type="button" value ="Commentez" class="btnCom"/> -->
 			</form>
 			</div>
 			<div class = "map">

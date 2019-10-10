@@ -22,7 +22,7 @@ class Arrondissement extends Modele {
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select * from ". self::TABLE_ARRONDISSEMENT;
+		$query = "select id_arrondissement, nom as nom_arrondissement from arrondissement";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($arrond = $mrResultat->fetch_assoc())
