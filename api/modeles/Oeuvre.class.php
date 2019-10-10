@@ -22,8 +22,9 @@ class Oeuvre extends Modele {
 	 * @return Array
 	 * @TODO Modifier le query afin de tenir compte des oeuvres à plusieurs artistes.
 	 */
-	public function getListe() 
+	public function getListe($filtre = "", $limit = 20) 
 	{
+
 		
 		$res = Array();
 		$query = "SELECT * , concat(artiste.nom,', ' ,artiste.prenom) nom_artiste
@@ -34,8 +35,13 @@ class Oeuvre extends Modele {
 		ON artiste_oeuvre.id_artiste = artiste.id_artiste
 		JOIN endroit
 		ON endroit.id_endroit = oeuvre.id_endroit
-        JOIN arrondissement
-        ON arrondissement.id_arrondissement = endroit.id_arrondissement"; 
+        JOIN arrondissement a
+        ON a.id_arrondissement = endroit.id_arrondissement
+		JOIN oeuvre_materiaux om
+		on om.id_oeuvre = oeuvre.id_oeuvre $filtre 
+		group by oeuvre.id_oeuvre
+		ORDER BY oeuvre.titre
+		limit $limit";
 
 		if($mrResultat = $this->_db->query($query))
 		{
@@ -216,11 +222,48 @@ class Oeuvre extends Modele {
 	public function deleteOeuvre($res){
 		$query = "DELETE FROM oeuvre $res";
 		$res = $this->_db->query($query);
-		echo $query;
-	
-}
-
-	
+		
+	}
+    // À effacer dans le sprint 2 ou 3. Utiliser dans la table d'Importation mais cela supprimer quand je vais optimiser le code.?
+    public function ajouterUnOeuvre($titre,$dimension,$description,$id_categorie,$id_support,$id_endroit)
+    {
+		$resQuery = false;
+		$res = Array();
+        $query = "INSERT INTO ". self::TABLE_OEUVRE ."  (`titre`, `dimension`,`description`, `id_categorie`, `id_support`, `id_endroit`) VALUES ('".$titre."', '".$dimension."', '".$description."', '".$id_categorie."', '".$id_support."', '".$id_endroit."')";
+		$resQuery = $this->_db->query($query); 
+        
+		return $resQuery;
+    }
+    
+	public function ajouterOeuvre($aData)
+    {
+        $resQuery = false;
+		extract($aData);
+        $query = "INSERT INTO ". self::TABLE_OEUVRE ."  (`titre`, `dimension`,`description`,`id_categorie`, `id_support`, `id_endroit`) VALUES ('".$titre."', '".$dimension."', '".$description."', '".$id_categorie."', '".$id_support."', '".$id_endroit."')";
+		$resQuery = $this->_db->query($query); 
+        
+		return $resQuery;
+	}
+    
+    public function verifierOeuvreExistant($titre)
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select * from ". self::TABLE_OEUVRE." where titre = '".$titre."'"))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;        
+    }
+ 
+    public function getDernierEnregistrement()
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select max(id_oeuvre) as dernier from ". self::TABLE_OEUVRE))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;        
+    }    	
 }
 
 

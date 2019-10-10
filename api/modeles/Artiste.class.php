@@ -80,7 +80,16 @@ class Artiste extends Modele {
 		$this->_db->query($query);
 	}
 
-	
+    public function verifierArtisteExistant($aData)
+    {
+		$res = Array();
+        extract($aData);
+		if($mrResultat = $this->_db->query("select * from ". self::TABLE_ARTISTE." where nom = '".$nom."' and prenom = '".$prenom."' and nom_collectif = '".$nom_collectif."'"))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;
+    }	
 }
 
 
