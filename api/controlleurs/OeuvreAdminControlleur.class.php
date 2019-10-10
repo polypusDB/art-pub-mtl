@@ -27,7 +27,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$res = $this->supOeuvre($requete->url_elements[1]);
+				$aData[] = $requete->url_elements[1];
+				$string = $this->ArrayToString($aData);
+				$this->supOeuvre($string);
 				header("Location:/art-pub-mtl/api/OeuvreAdmin");
 			}
 			else{
@@ -61,8 +63,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		
 	}
 
-	public function postAction(Requete $requete)
-	{
+	public function postAction(Requete $requete){
 		// var_dump($requete->url_elements[0]);
 		// if (isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
 		// 	// modification de l'oeuvre ici!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -73,15 +74,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		if (isset($_POST['supp'])) {
 			$msgErreur ="";
 			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
-				$selected = '';
+				$selected = array();
 				$num_checks = count($_POST['checks']);
-				$current = 0;
 				foreach ($_POST['checks'] as $key => $value) {
-					if ($current != $num_checks-1)
-						$selected .= $value.', ';
-					else
-						$selected .= $value;
-					$current++;
+						$selected[] = $value;
 				}
 			}
 			if (empty($selected)){
@@ -92,7 +88,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			}
 
 			if($msgErreur == ""){
-				echo 'Sélectionnée: '.$selected;
+				$string = $this->ArrayToString($selected);
+				$this->supOeuvre($string);
+				header("Location:/art-pub-mtl/api/OeuvreAdmin");
 			}
 		
 		}    
@@ -112,11 +110,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
 	}
 
-	protected function supOeuvre($id_oeuvre){
-		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
-	}
-
 	protected function getFormAjout(){
 		$oVue = new AdminVue();
 		$oVue->getFormAjoutOeuvre();
@@ -127,7 +120,28 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$oVue->getFormModifierOeuvre();
 	}
 	
-	
-	
+	// Section Supprimer Oeuvres
+	protected function supOeuvre($aData){
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->deleteOeuvre($aData);
+	}
+
+	protected function ArrayToString($aData){
+		
+		if($msgErreur == ""){
+			$premier = true;
+
+			foreach($aData as $id){
+				if($premier == true){
+					$res= "WHERE id_oeuvre = ". $id;
+				}
+				else{
+					$res .=" OR  id_oeuvre = ". $id;
+				}
+				$premier = false;
+			}
+			return $res;
+		}
+	}
 }
 ?>

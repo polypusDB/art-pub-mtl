@@ -7,6 +7,7 @@
                     <a class="chercher" href=""><i class="fas fa-search"></i></a>
                     <input type="search" placeholder="Chercher">
                 </span> -->
+                
                 <a href="/art-pub-mtl/api"><i class="fas fa-home"></i>Accueil</a>
                 <a href="/art-pub-mtl/api/artiste"><i class="fas fa-paint-brush"></i>Artistes</a>
                 <a href="/art-pub-mtl/api/oeuvre"><i class="fas fa-brush"></i>Oeuvres</a>
@@ -24,6 +25,7 @@
                     $username = $_SESSION["utilisateur"]["nom_connexion"];
                     ?>
                     <a href="#"><i class="fas fa-grin-wink"></i><?php echo $username?></a>
+                    <a href="/art-pub-mtl/api/admin"><i class="fas fa-home"></i>Tableau de Bord</a>
                     <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                     <?php
                 }

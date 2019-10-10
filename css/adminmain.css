@@ -151,7 +151,7 @@ body ul{
     align-items: flex-end;
 }
 .infoIco{
-    background: #fff;
+    background: url("../img/icons/address-book-bl.svg") no-repeat center;;
     width: 100px;
     height: 100px;
     margin-right: 30px;

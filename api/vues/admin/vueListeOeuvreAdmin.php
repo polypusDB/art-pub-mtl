@@ -1,6 +1,6 @@
 <div class="contenu listeOeuvres">
 	<div class="titreListe">
-		<h1>Liste des Oeuvres</h1>
+		<h1 id="ancre">Liste des Oeuvres</h1>
 	</div>
 	<section>
 		<form action="" method="POST">
@@ -40,7 +40,15 @@
 			}
 			?>
 			</table>
-			
+			<a href="#ancre">Remonter</a>
+			<div class="bts-principal">
+				<div class="bt-ajouter">
+					<a href="/art-pub-mtl/api/oeuvreAdmin/ajouter"><i class="fas fa-plus-circle"></i></a>
+				</div>
+				<div class="bt-supprimer">
+					<input type="submit" name="supp" value="" />
+				</div>
+			</div>
 		</form>
 	</section>
 	<?php
