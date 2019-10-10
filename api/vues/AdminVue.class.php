@@ -49,19 +49,10 @@ class AdminVue {
 	 * ARTISTES
 	 * Affiche la liste des artistes
 	 */
-	public function afficheArtistes($aData = Array()) {
+	public function afficheArtistes($aData = Array(), $msgErreur) {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/VueListeArtisteAdmin.php");
-	}
-
-	/**
-	 * Affiche le détails d'un artiste
-	 */
-	public function afficheArtiste($aData = Array()) {
-		$this->afficheHead();
-		$this->afficheEntete();
-        include("admin/VueDetailArtisteAdmin.php");
 	}
 
 	/**
@@ -86,7 +77,7 @@ class AdminVue {
 	 * OEUVRES
 	 * Affiche la liste des oeuvres
 	 */
-	public function afficheOeuvres($aData = Array()) {
+	public function afficheOeuvres($aData = Array(), $msgErreur) {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/VueListeOeuvreAdmin.php");
@@ -110,6 +101,15 @@ class AdminVue {
 		include("admin/formModifOeuvre.php");
 	}
 
+	/**
+	 * USAGERS
+	 * Affiche les Usagers
+	 */
+	public function afficheListeUsagers($aData, $msgErreur){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueListeUsagersAdmin.php");
+	}
 	
 }
 ?>

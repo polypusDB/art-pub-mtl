@@ -4,12 +4,13 @@
     padding: 5%;
 }
 .contenu-form h1{
-    font-weight: 400;
     text-transform: uppercase;
+    font-weight: 400;
+    color: #000;
     margin-bottom: 15px;
 }
 form{
-    border: 1px solid #B8B8B8;
+    border: 1px solid #f1f1f1;
     padding: 20px;
 }
 input, textarea{
@@ -68,6 +69,7 @@ input[type="search"] {
 }
 fieldset{
     margin: 20px 0;
+    border: 1px solid #B8B8B8;
 }
 legend{
     margin-bottom: 15px;

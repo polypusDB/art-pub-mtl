@@ -21,9 +21,15 @@ class ArtisteAdminControlleur extends Controlleur
 		 // si sup on regarde l'id et on supprime
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$this->supArtiste((int)$requete->url_elements[1]);
-				$res = $this->getListeArtiste();
+				$aData[] = $requete->url_elements[1];
+				$string = $this->ArrayToString($aData);
+				$this->supArtiste($string);
 				header("Location:/art-pub-mtl/api/artisteAdmin");
+				
+				
+				// $this->supArtiste((int)$requete->url_elements[1]);
+				// $res = $this->getListeArtiste();
+				
 			}
 			else{
 				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
@@ -48,12 +54,12 @@ class ArtisteAdminControlleur extends Controlleur
 				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
 			}
 		}
-		// Liste des oeuvres
+		// Liste des artistes
         else 	
         {
 			$res = $this->getListeArtiste();
 			$oVue = new AdminVue;
-			$oVue->afficheArtistes($res);
+			$oVue->afficheArtistes($res, $msgErreur = "");
 			
 		}
 	}
@@ -118,6 +124,30 @@ class ArtisteAdminControlleur extends Controlleur
 				}
 			}
 		}
+		//Validation supprimer avec le Checkbox
+		else if (isset($_POST['suppArt'])) {
+			$msgErreur ="";
+			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
+				$selected = array();
+				$num_checks = count($_POST['checks']);
+				foreach ($_POST['checks'] as $key => $value) {
+						$selected[] = $value;
+				}
+			}
+			if (empty($selected)){
+				$msgErreur = 'Aucune artiste sélectionné';
+				$res = $this->getListeArtiste();
+				$oVue = new AdminVue();
+				$oVue->afficheArtistes($res, $msgErreur);
+			}
+
+			if($msgErreur == ""){
+				$string = $this->ArrayToString($selected);
+				$this->supArtiste($string);
+				header("Location:/art-pub-mtl/api/artisteAdmin");
+			}
+		
+		}
 	}
 
 
@@ -132,11 +162,6 @@ class ArtisteAdminControlleur extends Controlleur
 		$oArtiste= new Artiste();
 		$aArtiste = $oArtiste->getArtiste($id_artiste);		
 		return $aArtiste;
-	}
-
-	protected function supArtiste($id_artiste){
-		$oArtiste= new Artiste();
-		$aArtiste = $oArtiste->deleteArtiste($id_artiste);
 	}
 
 	// Section Ajouter
@@ -161,5 +186,28 @@ class ArtisteAdminControlleur extends Controlleur
 		$oArtiste->modifierArtiste($aData);
 	}
 	
+	// Section Supprimer
+	protected function supArtiste($aData){
+		$oArtiste= new Artiste();
+		$aArtiste = $oArtiste->deleteArtiste($aData);
+	}
+
+	protected function ArrayToString($aData){
+		
+		if($msgErreur == ""){
+			$premier = true;
+
+			foreach($aData as $id){
+				if($premier == true){
+					$res= "WHERE id_artiste = ". $id;
+				}
+				else{
+					$res .=" OR  id_artiste = ". $id;
+				}
+				$premier = false;
+			}
+			return $res;
+		}
+	}
 }
 ?>

@@ -2,7 +2,7 @@
 .entete{
     z-index: 100;
     background-color: #fff;
-    padding: 20px 15px;
+    padding: 10px 15px;
     box-shadow: 0 3px 5px rgb(10, 21, 38, 0.3);
     width: 100%;
     height: var(--hauteur-entete);
@@ -22,28 +22,57 @@
 .flexgrow{
     flex-grow: 1;
 }
+.entete .menuadmin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: #81CEC5;
+}
 .entete nav {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    justify-content: flex-end;
 }
 .entete nav span{
     align-self: flex-start;
     order: 1;
 }
-.entete nav a{
+.entete nav .user{
+    color: #F08243;
+    font-weight: 600;
+}
+.entete .menuadmin a.user{
+    color: #fff;
+    font-weight: 600;
+}
+.entete nav a, .entete nav .user{
     font-size: 14px;
     padding: 12px;
     text-transform: uppercase;
     border-bottom: 2px solid transparent;
+    border-right: 1px solid #f1f1f1;
 }
-.entete nav i.fas{
+.entete .menuadmin a{
+    font-size: 12px;
+    color: #fff;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.entete .menuadmin a:hover{
+    color: rgb(58, 95, 91);
+}
+.entete nav a:last-child{
+    border-right: 1px solid transparent;
+}
+.entete nav i.fas, .entete .menuadmin i.fas{
     display: none;
 }
 .entete nav a:hover:not(.chercher) {
     color: #F08243;
     padding: 15px 12px;
     border-bottom: 2px solid #81CEC5;
+    border-right: 1px solid transparent;
 }
 .entete .menu-burger {
     display: none;
@@ -67,20 +96,16 @@ footer section{
     justify-content: center;
     align-items: center;
 }
-
 footer img{
     width: 130px;
 }
-
 footer div{
     padding: 2%;
 }
-
 footer p{
     text-align: center;
     font-size: 10px;
 }
-
 .reseaux{
     display: flex;
     flex-direction: row;
@@ -88,7 +113,6 @@ footer p{
     justify-content: center;
     align-items: center;
 }
-
 .reseaux a{
     text-align: center;
     padding: 5%;
@@ -106,9 +130,9 @@ footer p{
         z-index: -20;
     }
     .entete .logo img{
-        height: 60px;
+        width: 55%;
     }
-    .entete nav i.fas{
+    .entete nav i.fas, .entete .menuadmin i.fas{
         display: inline;
         color: white;
         margin-right: 5%;
@@ -125,7 +149,7 @@ footer p{
         color: #F3D331;
         font-size: 22px;
     }
-    .entete .menu{
+    .entete .menu, .entete .menuadmin{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -135,48 +159,66 @@ footer p{
         top:0;
         left: 0px;
         transform-origin: center right;
-        /*transform: scale(0,0);*/
         transform: translate(100vw, 0px);
         transition: transform 200ms;
-        height: 100vh;
+        height: 70vh;
         z-index: -10;
+    }
+    .entete .menuadmin{
+        background-color: #F08243;
+        top: 70vh;
+        height: 30vh;
     }
     .entete nav span{
         order: 0;
     }
     /* la class .ouvert est la class qu'on a creé dans menu.js*/
-    .entete .menu.ouvert {
-        height: 100vh;
+    .entete .menu.ouvert, .entete .menuadmin.ouvert {
+        height: 70vh;
         transform: translate(50px, 0px);
-        /*transform: scale(1,1);*/
         transform-origin: center right;
         transition: transform 200ms;
     }
-    .entete .menu a {
-        color: #fff;
-        font-size: larger;
+    .entete .menuadmin.ouvert {
+        height: 30vh;
     }
-    .entete .menu ~ .menu-burger i.fa-bars{
+    .entete .menu a, .entete .menuadmin a {
+        color: #fff;
+        font-size: large;
+    }
+    .entete .menuadmin a{
+        font-size: medium;
+    }
+    .entete .grandmenu .menu ~ .menu-burger i.fa-bars{
         transform-origin: center center;
     }
-    .entete .menu.ouvert ~ .menu-burger i.fa-bars{
+    .entete .grandmenu .menu.ouvert ~ .menu-burger i.fa-bars{
         display: none;
     }
-    .entete .menu ~ .menu-burger i.fa-times{
+    .entete .grandmenu .menu ~ .menu-burger i.fa-times{
         display: none;
     }
-    .entete .menu.ouvert ~ .menu-burger i.fa-times{
+    .entete .grandmenu .menu.ouvert ~ .menu-burger i.fa-times{
         display: inherit;
     }
-    .entete nav a, .entete nav span{
+    .entete nav a, .entete nav span, .entete .menuadmin a{
         width: 100%;
-        padding: 26px 15px;
+        padding: 15px 15px;
     }
     .entete nav span a{
         padding: 0;
     }
     .entete nav a:hover:not(.chercher) {
         background-color: #F08243;
+        color: #fff;
+        border-bottom: 2px solid #fff;
+        padding: 15px 15px;
+    }
+    .entete .menuadmin a:hover{
+        background-color: #E26F39;
+        color: #fff;
+        border-bottom: 2px solid #fff;
+        padding: 15px 15px;
     }
     .entete nav span input{
         background-color: transparent;
