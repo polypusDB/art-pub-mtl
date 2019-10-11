@@ -147,6 +147,9 @@ class Filtre extends Modele {
             $res .= "artiste.nom like '%$rec%' OR artiste.prenom like '%$rec%' OR artiste.nom_collectif like '%$rec%'";
 
         }
+        else{
+            $res = "";
+        }
         $oArtiste = new Artiste();
         $aArtiste = $oArtiste->getListe($res, $limit);
         echo json_encode($aArtiste);

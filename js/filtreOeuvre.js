@@ -1,6 +1,7 @@
 window.addEventListener("load", function(){
     if(document.querySelector(".recherche") != null){
-        let arrondissement = document.querySelectorAll(".arrondissement");
+        let arrondissement = document.querySelectorAll(".unArrondissement");
+        console.log(arrondissement);
         let materiaux = document.querySelectorAll(".materiaux");
         let categories = document.querySelectorAll(".categorie");
         let barRecherche = document.querySelector(".recherche");
@@ -26,13 +27,24 @@ window.addEventListener("load", function(){
         *   EVENT POUR LES ARRONDISSEMENTS
         */
         let arr = [];
-        for(let i=0; i<arrondissement.length;  i++){
-            arrondissement[i].addEventListener("click", function(){
+        // for(let i=0; i<arrondissement.length;  i++){
+        //     // console.log(arrondissement[i]);
+        //     arrondissement[i].addEventListener("click", function(){
+        //         console.log("click");
+        //         let nArr = "";
+        //         nArr = arrondissement[i].dataset.id
+        //         // ajoutFiltreArrondissement(nArr);
+        //     });
+        // }
+        arrondissement.forEach(function(arrond){
+            // console.log(arrondissement[i]);
+            arrond.addEventListener("click", function(){
+                console.log("click");
                 let nArr = "";
-                nArr = arrondissement[i].dataset.id
-                ajoutFiltreArrondissement(nArr);
+                nArr = arrond.dataset.id;
+                // ajoutFiltreArrondissement(nArr);
             });
-        }
+        });
     
     
        /*
@@ -68,7 +80,8 @@ window.addEventListener("load", function(){
         /*
         * AJOUT FILTRES ARRONDISSEMENTS
         */
-        function ajoutFiltreArrondissement(nArr){       
+        function ajoutFiltreArrondissement(nArr){   
+              
            if(arr.includes(nArr) == false){
                arr.push(nArr);
            }
@@ -141,7 +154,6 @@ window.addEventListener("load", function(){
             aData.recherche = recherche;
             aData.oeuvrePresent = oeuvrePresent;
      
-            // console.log(aData);
             let jsonData = JSON.stringify(aData);
             filtrer(jsonData);
         }

@@ -39,6 +39,13 @@ class FiltreControlleur extends Controlleur
         else if($requete->parametres["filtre"] == "userArtiste"){
             $recherche = $requete->parametres["recherche"];
             $limit = $requete->parametres["limit"];
+            // if($recherche == ""){
+            //     echo json_encode("vide");
+            // }
+            // else{
+            //     echo json_encode("pas vide");
+            // }
+            
             $this->filtrerArtiste($recherche, $limit);
         }
         else if($requete->parametres["filtre"] == "userOeuvre"){

@@ -1,0 +1,94 @@
+.filtres{
+    width: 100%;
+    border:2px #81CEC5 solid;
+}
+
+.filtres h3{
+    padding: 20px;
+    background-color: #81CEC5;
+    color: white;
+    font-weight: 400;
+}
+
+.filtres label{
+    font-size: 14px;
+    padding-top:5px ;
+    color: #5f5f5f;
+}
+.filtres .unArrondissement:hover{
+    color: white;
+}
+
+.filtresArr{
+    display: block;
+    height: 30vh;
+    overflow: scroll;
+}
+
+.filtresArr.cacher{
+    display: none;
+}
+
+  .arrondissement {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+
+    user-select: none;
+  }
+
+  .unArrondissement{
+      align-items: center;
+      display: flex;
+      padding: 10px;
+  }
+  
+  .arrondissement input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+
+  /*marqueur crochet custum */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 1px #81CEC5 solid ;
+  }
+  
+  .arrondissement:hover input ~ .checkmark {
+    background-color: #eee;
+  }
+  
+  .arrondissement input:checked ~ .checkmark {
+    background-color: #81CEC5;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .arrondissement input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .arrondissement .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
