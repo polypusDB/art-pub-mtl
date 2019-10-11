@@ -6,7 +6,7 @@
     --oeuvre-hauteur-image : calc(var(--carte-hauteur-image) * 3);
     --artiste-hauteur-image : calc(var(--carte-hauteur-image));
     --main-couleur-lien : #5F5F5F;
-    --marge-gauche : 30px;
+    --marge : 30px;
     
     --couleur-fond : #00BCD4;
     --couleur-fond : #f0f0f0; 

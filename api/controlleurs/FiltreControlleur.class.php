@@ -27,20 +27,45 @@ class FiltreControlleur extends Controlleur
 	}
 
 	public function postAction(Requete $requete){
+        
+        if($requete->parametres["filtre"] == "adminArtiste"){
+            $recherche = $requete->parametres["recherche"];
+            $this->filtrerAdminArtiste($recherche);
+        }
+        else if($requete->parametres["filtre"] == "adminOeuvre"){
+            $recherche = $requete->parametres["recherche"];
+            $this->filtrerAdminOeuvre($recherche);
+        }
+        else if($requete->parametres["filtre"] == "userArtiste"){
+            $recherche = $requete->parametres["recherche"];
+            $limit = $requete->parametres["limit"];
+            // if($recherche == ""){
+            //     echo json_encode("vide");
+            // }
+            // else{
+            //     echo json_encode("pas vide");
+            // }
+            
+            $this->filtrerArtiste($recherche, $limit);
+        }
+        else if($requete->parametres["filtre"] == "userOeuvre"){
+            $arrondissement = $requete->parametres["arrondissements"];
+            $materiaux = $requete->parametres["materiaux"];
+            $categories = $requete->parametres["categorie"];
+            $recherche = $requete->parametres["recherche"];
+            $limit = $requete->parametres["oeuvrePresent"];
+
+            $this->filtrerOeuvre($arrondissement, $materiaux, $categories, $recherche, $limit);
+        }
 
         
         // var_dump($requete->parametres);
-        $arrondissement = $requete->parametres["arrondissements"];
-        $materiaux = $requete->parametres["materiaux"];
-        $categories = $requete->parametres["categorie"];
-        $recherche = $requete->parametres["recherche"];
-        $limit = $requete->parametres["oeuvrePresent"];
+
 
         // echo json_encode($limit);
 
 
 
-        $this->filtrerOeuvre($arrondissement, $materiaux, $categories, $recherche, $limit);
 
 
 
@@ -50,6 +75,21 @@ class FiltreControlleur extends Controlleur
     public function filtrerOeuvre($arrondissement, $materiaux, $categories, $recherche, $limit){
         $oFiltre = new Filtre();
         $aFiltre = $oFiltre->OeuvreFiltre($arrondissement, $materiaux, $categories, $recherche, $limit);
+    }
+
+    public function filtrerAdminArtiste($recherche){
+        $oFiltre = new Filtre();
+        $aFiltre = $oFiltre->filtrerArtisteAdmin($recherche);
+    }
+
+
+    public function filtrerAdminOeuvre($recherche){
+        $oFiltre = new Filtre();
+        $aFiltre = $oFiltre->filtrerOeuvreAdmin($recherche);
+    }
+    public function filtrerArtiste($recherche, $limit){
+        $oFiltre = new Filtre();
+        $aFiltre = $oFiltre->filtrerArtiste($recherche, $limit);
     }
 	
 	
