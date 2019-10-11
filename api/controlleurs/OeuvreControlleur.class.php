@@ -10,89 +10,70 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
  
- /*
- * TODO : Commenter selon les standards du département.
- *
- */
-
- 
  
 class OeuvreControlleur extends Controlleur 
 {
-	
-	// GET : 
-	// 		/oeuvre/ - Liste des oeuvres
-	// 		/oeuvre/{id}/ - Une oeuvre
-	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
-	
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		//var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
+		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// l'id de l'oeuvre 
 		{
 			$id_oeuvre = (int)$requete->url_elements[0];            
-            $res = $this->getOeuvre($id_oeuvre);
-            
-        } 
-        else 	// Liste des oeuvres
-        {
-        	$res = $this->getListeOeuvre();
-			
-        }
-		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
-		}
-		else
-		{
-				
+			$res = $this->getOeuvre($id_oeuvre);
 			
 			$oVue = new Vue();
-			$oVue->afficheHead();
-			$oVue->afficheEntete();
+			$oVue->afficheOeuvre($res);
 			
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
-			{
-				
-				$oVue->afficheOeuvre($res);	
-			}
-			else
-			{
-				$oVue->afficheOeuvres($res);
-			}	
-			
-			$oVue->affichePied();
-			
+            
 		}
-			
-		
-		
+		// La liste des oeuvres est a affiché
+        else 
+        {
+			$res = $this->getListeOeuvre();
+			$arrondissements = $this->getArrondissement();
+			$materiaux = $this->getMateriaux();
+			$categories = $this->getCategories();
+			$oVue = new Vue();
+			$oVue->afficheOeuvres($res, $arrondissements, $materiaux, $categories);
+		}		
 	}
-	
-	
-	
-	
 		
 	protected function getOeuvre($id_oeuvre)
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getOeuvre($id_oeuvre);
-		
+
+		$oCommentaire = new Commentaire();
+		$aOeuvre["commentaires"] = $oCommentaire->ListeCommentairesParOeuvreID($id_oeuvre);
 		return $aOeuvre;
 	}
 	
 	protected function getListeOeuvre()
 	{
-		
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
-		
 		return $aOeuvre;
 	}
-	
-	
+
+
+	protected function getArrondissement()
+	{
+		$oArrondissement = new Arrondissement();
+		$aArrondissement = $oArrondissement->getListe();
+		return $aArrondissement;
+	}
+
+	protected function getMateriaux(){
+		$oMateriaux = new Materiaux();
+		$aMateriaux = $oMateriaux->getListe();
+		return $aMateriaux;
+	}
+
+	protected function getCategories(){
+		$oCategories = new Categorie();
+		$aCategories = $oCategories->getListe();
+		return $aCategories;
+	}
 	
 }
 ?>

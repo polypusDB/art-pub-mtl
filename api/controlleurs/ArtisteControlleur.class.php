@@ -19,7 +19,6 @@
  
 class ArtisteControlleur extends Controlleur 
 {
-	
 	// GET : 
 	// 		/artiste/ - Liste des oeuvres
 	// 		/artiste/{id}/ - Une oeuvre
@@ -28,53 +27,37 @@ class ArtisteControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		//var_dump($requete->url_elements);
+		$msgErreur="";
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
 		{
             $id_artiste = (int)$requete->url_elements[0];
+			$res = $this->getArtiste($id_artiste);
+			$oVue = new Vue;
+			$oVue->afficheArtiste($res);
             
-            $res = $this->getArtiste($id_artiste);
-            
-        } 
+		}
         else 	// Liste des oeuvres
         {
-        	$res = $this->getListeArtiste();
+			$res = $this->getListeArtiste();
+			$oVue = new Vue;
+			$oVue->afficheArtistes($res);
 			
-        }
+		}
 		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
-		}
-		else
-		{
-				
-			
-			$oVue = new Vue();
-			$oVue->afficheHead();
-			$oVue->afficheEntete();
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
-			{
-				//var_dump($res);
-				$oVue->afficheArtiste($res);	
-			}
-			else
-			{
-				$oVue->afficheArtistes($res);
-			}	
-			
-			$oVue->affichePied();
-			
-		}
+		
+
+
+		
+		// if(isset($_GET['json']))
+		// {
+		// 	echo json_encode($res);	
+		// }
+
 			
 		
 		
 	}
-	
-	
-	
-	
-		
+
 	protected function getArtiste($id_artiste)
 	{
 		$oArtiste= new Artiste();
@@ -87,13 +70,14 @@ class ArtisteControlleur extends Controlleur
 	
 	protected function getListeArtiste()
 	{
-		
 		$oArtiste= new Artiste();
 		$aArtiste = $oArtiste->getListe();
 		
 		return $aArtiste;
 	}
 	
+
+
 	
 	
 }

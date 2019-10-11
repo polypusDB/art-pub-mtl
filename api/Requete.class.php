@@ -29,8 +29,10 @@ class Requete
 						
 		$this->parseIncomingParams();
 		
-		$this->ressource = $this->url_elements[0]; 
-		array_splice($this->url_elements, 0, 1);
+        $this->ressource = $this->url_elements[0]; 
+        
+        array_splice($this->url_elements, 0, 1);
+        
         return true;
 	}
 	
@@ -65,8 +67,11 @@ class Requete
 	
 	private function aseptiserParametre($valeur)
 	{
-		$valeur = $this->_db->real_escape_string($valeur);
-		$valeur = htmlspecialchars($valeur);
+        if(is_string($valeur)){
+            $valeur = $this->_db->real_escape_string($valeur);
+            $valeur = htmlspecialchars($valeur);
+        }
+        
 		return $valeur;
 	} 	
 }

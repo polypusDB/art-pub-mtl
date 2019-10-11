@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set('display_errors', 1);
 error_reporting(~0);
 /**
@@ -59,8 +60,8 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 	
 	$nomControlleur = ucfirst($oReq->ressource) . 'Controlleur';
 	
-	
 		if (class_exists($nomControlleur)) {
+			
 			$reflectionClass = new ReflectionClass($nomControlleur);
     		
 			if($reflectionClass->isInstantiable()){
@@ -73,7 +74,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 			}	
 		}
 	
-	
+		
 	
 	
 	//http://www.lornajane.net/posts/2012/building-a-restful-php-server-understanding-the-request				
