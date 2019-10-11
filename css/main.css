@@ -58,7 +58,7 @@ h4{
 h5{
     font-size: 14px;
 }
-h5{
+h6{
     font-size: 12px;
 }
 
@@ -75,6 +75,32 @@ buttons {
     -moz-osx-font-smoothing: grayscale;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
+
+/* contenu general -------------------------------------------------------- */
+.contenu {
+    padding-left: var(--marge);
+    padding-right: var(--marge);
+    min-height: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    /* sticky footer */
+    margin-bottom: -100px;
+    padding-bottom: 100px;
+}
+.contenu .titreListe{
+    margin: 0;
+}
+.contenu .titreListe h1{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #000;
+}
+.contenu .titreListe h4{
+    margin: 0;
+    font-weight: 100;
+}
+
 /* Boutons admin ---------------------------------------- */
 .boutons{
     padding: 2%;
@@ -98,12 +124,6 @@ buttons {
 .bt-blue:hover{
     background-color: #8FE3DA;
 }
-.bt-jaune{
-    background-color: #F3D331;
-}
-.bt-jaune:hover{
-    background-color: #F9DB45;
-}
 /* Boutons admin fin ---------------------------------------- */
 
 .carte
@@ -121,16 +141,13 @@ buttons {
     position: relative;
     overflow: hidden;
 }
-
-
 .carte:hover .image  > img
 {
     width: 100%;
     filter: none;
     transform: scale(1.02);
     transition : filter 500ms, transform 500ms;
-    -webkit-transition : -webkit-filter 500ms, transform 500ms;
-    
+    -webkit-transition : -webkit-filter 500ms, transform 500ms;  
 }
 .carte .image  > img
 {
@@ -138,7 +155,6 @@ buttons {
     filter: grayscale(100%);
     transition : filter 500ms , transform 500ms;
     -webkit-transition : -webkit-filter 500ms, transform 500ms ;
-    
 }
 .carte .image.dummy
 {
@@ -363,66 +379,39 @@ section p.arrondissement{
 }
 
 /* Oeuvre -------------------------------------------------------- */
-.listeOeuvres .boutons.bt-jaune{
-    width: auto;
-    margin-bottom: 30px;
-}
-.oeuvre .auteur a
-{
-    text-decoration: none;
-    display: block;
-}
-.oeuvre .auteur a:hover
-{
-    color: #000;
-    text-decoration: none;
-    display: block;
-}
-.oeuvres
-{
+.oeuvres{
     width: 100%;
-}
-.uneOeuvre > .oeuvre
-{
-    width: 900px;
-    
     display: flex;
-    background-color: #FFF;
-    margin: 0px auto;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
-.uneOeuvre > .oeuvre > .image
-{
+.uneOeuvre a{
+    font-weight: 600;
+    border-bottom: 1px solid #F3D331;
+}
+.uneOeuvre a:hover{
+    color: black;
+    font-weight: 600;
+}
+.uneOeuvre > .oeuvres .dummy{
+    width: 60%;
+    margin-top: 60px;
+}
+.uneOeuvre > .oeuvres .dummy img{
     width: 100%;
-    height: var(--oeuvre-hauteur-image);
-    position: relative;
-    overflow: hidden;
+    border: 1px solid #f1f1f1;
+    padding: 10px;
 }
-.uneOeuvre > .oeuvre > .image > img
-{
-    width: 100%;
-    
-    position: relative;
+.uneOeuvre > .oeuvres .dummy h5{
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
 }
-
-
-.uneOeuvre > .oeuvre .image.dummy
-{
-    background: url("../img/placeholder_640_480.jpg") no-repeat center;
-    background-size: cover;
-}
-  
-.uneOeuvre > .oeuvre .image > .titre
-{
-    position: absolute;
-    bottom: 0px;
-    padding: 0px;
-    margin: 0px;
-    padding-left: 16px;
-    padding-right: 8px;
-    margin-top: 24px;
-    margin-bottom: 16px;
-    width: 100%;
-    color: #ffffff;
+.uneOeuvre > .oeuvres .dummy h5 span{
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
 }
 .uneOeuvre .oeuvres .titre{
     color: #E26F39;
@@ -430,11 +419,37 @@ section p.arrondissement{
     text-transform: uppercase;
     margin: 20px 0 0;
 }
-.uneOeuvre .oeuvres h4{
+.uneOeuvre > .oeuvres .texte{
+    width: 30%;
+}
+.uneOeuvre > .oeuvres .texte h4{
     margin-bottom: 5px;
 }
-.uneOeuvre > .retour
-{
+.uneOeuvre > .oeuvres .texte a{
+    margin-bottom: 5px;
+}
+.uneOeuvre > .oeuvres .texte ul{
+    list-style: none;
+    padding:0;
+    margin-top:20px;
+}
+.uneOeuvre > .oeuvres .texte li { 
+    padding-left: 1em; 
+    text-indent: -.7em;
+    line-height: 150%;
+}
+.uneOeuvre > .oeuvres .texte li h4{
+    display: inline;
+}
+.uneOeuvre > .oeuvres .texte li p{
+    padding-left: 1em; 
+}
+.uneOeuvre > .oeuvres .texte li:before {
+    content: "• ";
+    color: #E26F39;
+    font-size: xx-large;
+}
+.uneOeuvre > .retour{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -443,11 +458,39 @@ section p.arrondissement{
     height: 48px;
     justify-content: flex-end;
 }
-
-.uneOeuvre > .retour a
-{
+.uneOeuvre > .retour a{
     text-decoration: none;
     padding-left: 10px;
+}
+.form-comment{
+    margin-top: 10%;
+    border: 1px solid #81CEC5;
+    padding: 20px;
+}
+.form-comment h2{
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    font-weight: 600;
+}
+.list-comment{
+    margin-bottom: 40px;
+}
+.list-comment div{
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.list-comment div:nth-child(even){
+    background-color: #f1f1f1;
+}
+.list-comment div p:first-child{
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #81CEC5;
+}
+.titreComment{
+    color: black;
+    margin-bottom: 10px;
 }
 .lien-pager
 {
@@ -468,7 +511,6 @@ section p.arrondissement{
 /**
  * Recherche
  */
-
 .recherche
 {
     margin-top: 16px;
@@ -500,33 +542,6 @@ section p.arrondissement{
     color: #FFF;
     font-size: 24px;
     text-decoration: none;
-}
-
-/**
- * contenu general
- */
-
-.contenu {
-    padding-left: var(--marge-gauche);
-    min-height: 100%;
-    padding-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    /* sticky footer */
-    margin-bottom: -100px;
-    padding-bottom: 100px;
-}
-.contenu .titreListe{
-    margin: 0;
-}
-.contenu .titreListe h1{
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #000;
-}
-.contenu .titreListe h4{
-    margin: 0;
-    font-weight: 100;
 }
 
 /* À propos -------------------------------------------------------- */
@@ -579,9 +594,30 @@ section p.arrondissement{
     .img-page {
         height: auto;
     }
-    
     .artiste-carte{
     width: 80%;
+    }
+
+    /* Oeuvres -------------- */
+    .oeuvres{
+        width: 100%;
+        display: block;
+    }
+    .uneOeuvre > .oeuvres .dummy{
+        width: 100%;
+        margin-top: 20px;
+    }
+    .uneOeuvre > .oeuvres .dummy h5{
+        display: none;
+    }
+    .uneOeuvre > .oeuvres .texte {
+        width: 100%;
+    }
+    .form-comment h2 {
+        margin-bottom: 20px;
+    }
+    .titreComment {
+        text-align: center;
     }
 }
 
