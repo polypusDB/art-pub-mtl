@@ -24,10 +24,22 @@ class ParcoursControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-		$oVue = new Vue();
-		$oVue->afficheParcours();				
+		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
+		{
+            //var_dump($requete->url_elements[0]);
+            $oVue = new Vue();
+            $oVue->afficheDetailParcours();
+            
+		}
+        else 	// Liste des oeuvres
+        {
+            $oVue = new Vue();
+            $oVue->afficheParcours();
+			
+		}
+		
+
 	}
-	
 	
 }
 ?>
