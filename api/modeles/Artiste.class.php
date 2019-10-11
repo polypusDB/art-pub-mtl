@@ -2,13 +2,13 @@
 /**
  * Class Oeuvre
  * 
- * @author Jonathan Martel
+ * @author Jonathan Martel modifié par Saul Turbide et Michel Plamondon
  * @version 1.0
- * @update 2014-09-11
+ * @update 2019-10-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
- * 
+ * Cette classe sert à gérer les artistes dans la base de données. 
  * 
  */
 class Artiste extends Modele {	
@@ -16,9 +16,9 @@ class Artiste extends Modele {
 	const TABLE_LIAISON_ARTISTE_OEUVRE = "oeuvre_artiste";
 		
 	/**
-	 * Retourne la liste des oeuvres
+	 * Retourne la liste des artistes
 	 * @access public
-	 * @return Array
+	 * @return Array Liste des artistes contenus dans la base de données.
 	 */
 	public function getListe($filtre = "", $limit = 20) 
 	{
@@ -42,10 +42,10 @@ class Artiste extends Modele {
 	}
 	
 	/**
-	 * Récupère une oeuvre avec son id
+	 * Récupère les informations sur un artiste
 	 * @access public
-	 * @param int $id Identifiant de l'oeuvre
-	 * @return Array
+	 * @param int $id Identifiant de l'artiste
+	 * @return Array Tableau contenant les informations sur un artiste.
 	 */
 	public function getArtiste($id) 
 	{
@@ -57,13 +57,23 @@ class Artiste extends Modele {
 		return $res;
 	}
 
+ 	/**
+	 * Supprime un artiste
+	 * @access public
+	 * @param int $id Identifiant de l'artiste à supprimer
+	 */
 	public function deleteArtiste($res){
 		$query = "DELETE FROM artiste $res";
 		$res = $this->_db->query($query);
 		echo $query;
 	}
 
-
+ 	/**
+	 * Ajouter un artiste dans la base de données.
+	 * @access public
+	 * @param Array $aData Tableau contenant les données à ajouter dans la base de données.
+	 * @return Boolean Retourne une valeur booléenne pour déterminer si l'artiste a été ajouté dans la base de données.
+	 */  
 	public function AjouterArtiste($aData){
 		extract($aData);
 		$query = "INSERT INTO artiste (nom, prenom, nom_collectif, biographie)
@@ -71,6 +81,11 @@ class Artiste extends Modele {
 		$this->_db->query($query);
 	}
 
+ 	/**
+	 * Modifier un artiste dans la base de données.
+	 * @access public
+	 * @param Array $aData Tableau contenant les données à modifier dans la base de données.
+	 */ 
 	public function modifierArtiste($aData){
 		extract($aData);
 		$query = "UPDATE artiste
@@ -83,6 +98,12 @@ class Artiste extends Modele {
 		$this->_db->query($query);
 	}
 
+  	/**
+	 * Vérifie si un artiste existe dans la base de données.
+	 * @access public
+	 * @param Array $aData Tableau contenant les données à vérifier dans la base de données.
+     * @return Array Tableau contenant les informations sur un artiste.
+	 */    
     public function verifierArtisteExistant($aData)
     {
 		$res = Array();
@@ -92,6 +113,21 @@ class Artiste extends Modele {
 			$res = $mrResultat->fetch_assoc();
 		}
 		return $res;
+    }
+
+  	/**
+	 * Récupére le dernier id d'un artiste.
+	 * @access public
+     * @return Array Tableau contenant le dernier id d'un artiste.
+	 */  
+    public function getDernierEnregistrement()
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select max(id_artiste) as dernier from ". self::TABLE_ARTISTE))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;        
     }	
 }
 
