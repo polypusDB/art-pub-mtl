@@ -10,7 +10,11 @@ window.addEventListener("load", function(){
             let user = document.querySelector(".user").value;
             let aData = { "text" : text, "id_user" : idUser, "id_oeuvre" : idOeuvre, "nom_connexion" : user};
             let newDATA = JSON.stringify(aData);
+<<<<<<< HEAD
+            let sectionCom = document.querySelector(".test");
+=======
             let sectionCom = document.querySelector(".list-comment");
+>>>>>>> 147cffc67d49fa43239b1724230226dfcc829926
     
     
             if(text.value != ""){

@@ -8,7 +8,7 @@
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
- * 
+ *  Cette classe sert à gérer les techniques dans la base de données.
  * 
  */
 class Technique extends Modele {	
@@ -17,7 +17,7 @@ class Technique extends Modele {
 	/**
 	 * Retourne la liste des techniques
 	 * @access public
-	 * @return Array
+	 * @return Array Liste des techniques contenus dans la base de données.
 	 */
 	public function getListe() 
 	{
@@ -32,7 +32,14 @@ class Technique extends Modele {
 		}
 		return $res;
 	}
-    
+ 
+ 	/**
+	 * Ajouter une technique dans la base de données.
+	 * @access public
+	 * @param String $nom_francais Chaîne de caractères représentant le nom de la technique en français.
+     * @param String $nom_anglais Chaîne de caractères représentant le nom de la technique en anglais.
+	 * @return Boolean Retourne une valeur booléenne pour déterminer si la technique a été ajoutée dans la base de données.
+	 */ 
     public function ajouterTechnique($nom_francais,$nom_anglais)
     {
 		$resQuery = false;
@@ -43,6 +50,13 @@ class Technique extends Modele {
 		return $resQuery;
     }
     
+  
+  	/**
+	 * Vérifie si une technique existe dans la base de données.
+	 * @access public
+	 * @param String $nom_francais Chaîne de caractères contenant le nom en français de la technique.
+     * @return Array Tableau contenant les informations sur une technique.
+	 */ 
     public function verifierTechniqueFrancaisExistant($nom_francais)
     {
 		$res = Array();
@@ -52,14 +66,19 @@ class Technique extends Modele {
 		}
 		return $res;
     }
-    
-//    public function getDernierEnregistrement()
-//    {
-//		$res = Array();
-//		if($mrResultat = $this->_db->query("select max(id_oeuvre) as dernier from ". self::TABLE_TECHNIQUE))
-//		{
-//			$res = $mrResultat->fetch_assoc();
-//		}
-//		return $res;        
-//    }  
+
+  	/**
+	 * Récupére le dernier id d'une technique.
+	 * @access public
+     * @return Array Tableau contenant le dernier id d'une technique.
+	 */     
+    public function getDernierEnregistrement()
+    {
+		$res = Array();
+		if($mrResultat = $this->_db->query("select max(id_technique) as dernier from ". self::TABLE_TECHNIQUE))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;        
+    }   
 }
