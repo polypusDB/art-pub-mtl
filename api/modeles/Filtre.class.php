@@ -116,6 +116,43 @@ class Filtre extends Modele {
 
         
     }
+
+    public function filtrerArtisteAdmin($rec = ""){
+        
+        if($rec != ""){
+            $res = "WHERE ";
+            $res .= "artiste.nom like '%$rec%' OR artiste.prenom like '%$rec%' OR artiste.nom_collectif like '%$rec%'";
+
+        }
+        $oArtiste = new Artiste();
+        $aArtiste = $oArtiste->getListe($res);
+        echo json_encode($aArtiste);
+    }
+
+    public function filtrerOeuvreAdmin($rec){
+        if($rec != ""){
+            $res = "WHERE ";
+            $res .= " oeuvre.titre like'%$rec%'";
+
+        }
+        $oOeuvre = new Oeuvre();
+        $aOeuvre = $oOeuvre->getListe($res);
+        echo json_encode($aOeuvre);
+    }
+
+
+    public function filtrerArtiste($rec, $limit){
+        if($rec != ""){
+            $res = "WHERE ";
+            $res .= "artiste.nom like '%$rec%' OR artiste.prenom like '%$rec%' OR artiste.nom_collectif like '%$rec%'";
+
+        }
+        $oArtiste = new Artiste();
+        $aArtiste = $oArtiste->getListe($res, $limit);
+        echo json_encode($aArtiste);
+    }
+
+
     
 }
 

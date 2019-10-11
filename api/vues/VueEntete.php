@@ -27,7 +27,8 @@
         <script src="/art-pub-mtl/js/responsive.js"></script>
         <script src="/art-pub-mtl/js/lienDelete.js"></script>
         <script src="/art-pub-mtl/js/commentaire.js"></script>
-        <script src="/art-pub-mtl/js/filtreArrondissement.js"></script>
+        <script src="/art-pub-mtl/js/filtreOeuvre.js"></script>
+        <script src="/art-pub-mtl/js/filtreArtiste.js"></script>
 
     </head>
     <body>
