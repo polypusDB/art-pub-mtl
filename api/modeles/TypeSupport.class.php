@@ -37,7 +37,7 @@ class TypeSupport extends Modele {
 	 * Ajouter un type de support dans la base de données.
 	 * @access public
 	 * @param String $nom_francais Chaîne de caractères représentant le nom du type de support en français.
-              String $nom_anglais Chaîne de caractères représentant le nom du type de support en anglais.
+     * @param String $nom_anglais Chaîne de caractères représentant le nom du type de support en anglais.
 	 * @return Boolean Retourne une valeur booléenne pour déterminer si la technique a été ajoutée dans la base de données.
 	 */ 
     public function ajouterTypeSupport($nom_francais,$nom_anglais)

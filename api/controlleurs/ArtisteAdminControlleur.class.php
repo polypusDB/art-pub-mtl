@@ -116,12 +116,10 @@ class ArtisteAdminControlleur extends Controlleur
 					foreach($_POST as $cle=>$value){
 						$aData[$cle] = $value;
 					}
-
-                    
 					$this->modifData($aData, $msgErreur);
 					header("Location: /art-pub-mtl/api/artisteAdmin");
 				}
-				else{                   
+				else{
 					$this->getFormModif($_POST, $msgErreur);
 				}
 			}

@@ -37,7 +37,7 @@ class Categorie extends Modele {
 	 * Ajouter une catégorie dans la base de données.
 	 * @access public
 	 * @param String $nom_francais Chaîne de caractères représentant le nom de la catégorie en français.
-              String $nom_anglais Chaîne de caractères représentant le nom de la catégorie en anglais.   
+     * @param String $nom_anglais Chaîne de caractères représentant le nom de la catégorie en anglais.   
 	 * @return Boolean Retourne une valeur booléenne pour déterminer si la catégorie a été ajoutée dans la base de données.
 	 */ 
     public function ajouterCategorie($nom_francais,$nom_anglais)
