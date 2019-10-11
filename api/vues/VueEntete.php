@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="/art-pub-mtl/css/home.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/formulaires.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/entete-footer.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="/art-pub-mtl/css/filtres.css" type="text/css" media="screen">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
@@ -27,6 +28,9 @@
         <script src="/art-pub-mtl/js/responsive.js"></script>
         <script src="/art-pub-mtl/js/lienDelete.js"></script>
         <script src="/art-pub-mtl/js/commentaire.js"></script>
-        <script src="/art-pub-mtl/js/filtreArrondissement.js"></script>
+        <script src="/art-pub-mtl/js/filtreOeuvre.js"></script>
+        <script src="/art-pub-mtl/js/filtreArtiste.js"></script>
+        <script src="/art-pub-mtl/js/apparritionFiltres.js"></script>
+
     </head>
     <body>

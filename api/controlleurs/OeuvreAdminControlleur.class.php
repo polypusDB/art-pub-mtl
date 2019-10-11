@@ -124,7 +124,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		//La liste des oeuvres est affichée.
         else 
         {
-			$res = $this->getListeOeuvre();
+			$filtre = "";
+			$limit = 500;
+			$res = $this->getListeOeuvre($filtre, $limit);
 			$oVue = new AdminVue();
 			$oVue->afficheOeuvres($res, $msgErreur = "");
 		}
@@ -282,9 +284,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
 	}
 	
-	protected function getListeOeuvre(){
+	protected function getListeOeuvre($filtre = "", $limit=20 ){
 		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->getListe();
+		$aOeuvre = $oOeuvre->getListe($filtre, $limit);
 		return $aOeuvre;
 	}
 

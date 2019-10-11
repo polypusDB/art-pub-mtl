@@ -26,6 +26,7 @@ window.addEventListener("load", function(){
         } else {
             document.querySelector(".entete").style.top = "-10px";
             document.querySelector(".menu").classList.remove("ouvert");
+            document.querySelector(".menuadmin").classList.remove("ouvert");
         }
         prevScrollpos = currentScrollPos;
     }

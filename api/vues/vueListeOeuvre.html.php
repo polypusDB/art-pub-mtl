@@ -13,24 +13,28 @@
 	</div>
 
 	<input type="text" class="recherche" placeholder="rechercher"/><input type="button" value="rechercher" />
-	<div class ="filtre">
-			<h3>Filtre</h3>
-				<div class ="filtres">
-
-				</div>
-			 <ul> 	<!--Section pour les filtres -->
-
+	<div class ="filtres">
+	
+		<div class="arrondissements">
+			<h3 class="titreArron">Arrondissement</h3>
+			 <!--Section pour les filtres -->
+			 <div class ="filtresArr">
 			<?php
 				 foreach($arrondissements as $arrondissement){
 					 extract($arrondissement);
 					 ?>
-					 <li class= "arrondissement" data-id="<?=$id_arrondissement ?>"><?=$nom_arrondissement ?></li>
+					 <div class ="unArrondissement">
+					 <label class= "arrondissement" data-id="<?=$id_arrondissement ?>"><input type="checkbox"/><?=$nom_arrondissement ?><span class="checkmark" data-id="<?=$id_arrondissement ?>"></span></label>
+					 </div>
 					 <?php
 				 }
 				 ?>
-			</ul>
+			</div>
+		</div>
+	</div>
 			<h3>Filtre</h3>
-			<ul> 	<!--Section pour les filtres -->
+			<ul> 	
+			<!--Section pour les filtres -->
 
 		<?php
 	 	foreach($materiaux as $materiel){

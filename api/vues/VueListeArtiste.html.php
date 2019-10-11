@@ -1,16 +1,10 @@
  <section class="contenu listeArtiste">
      <div class="titreListe">
-     <?php if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"]){
-            ?>
-        <div class="boutons bt-jaune">
-            <a href="/art-pub-mtl/api/artiste/ajouter">Ajouter un artiste</a>
-        </div>
-        <?php 
-		}
-        ?>
+
             <h1>Artistes</h1>
             <h4>Les acteurs d'Art Public Montréal</h4>
         </div>
+        <input type= "text" class = "searchArtiste"/><input type="button" class ="btnRecherche" value = "chercher">
     <section class="oeuvres flex wrap">
         <?php
         foreach ($aData as $cle => $artiste) {

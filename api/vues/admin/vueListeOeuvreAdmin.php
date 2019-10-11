@@ -3,6 +3,8 @@
 		<h1 id="ancre">Liste des Oeuvres</h1>
 	</div>
 	<section>
+	<input type= "text" class = "adminSearchOeuvre"/><input type="button" class = "btnRecherche" value = "chercher">
+
 		<form action="" method="POST">
 			<div class="bts-principal">
 				<div class="bt-ajouter">

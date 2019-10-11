@@ -20,10 +20,13 @@ class Artiste extends Modele {
 	 * @access public
 	 * @return Array Liste des artistes contenus dans la base de données.
 	 */
-	public function getListe() 
+	public function getListe($filtre = "", $limit = 20) 
 	{
 		$res = Array();
-		$query = "select * from ". self::TABLE_ARTISTE;
+		$query = "select * from ". self::TABLE_ARTISTE . " $filtre 
+		group by artiste.id_artiste
+		order by artiste.nom
+		limit $limit";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($artiste = $mrResultat->fetch_assoc())
