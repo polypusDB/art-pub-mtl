@@ -24,13 +24,13 @@ input, textarea{
     color: #AFAFAF;
     font-family: 'Raleway', sans-serif;
 }
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
     background: #81CEC5;
     color: white;
     text-transform: uppercase;
     cursor: pointer;
 }
-input[type="submit"]:hover {
+input[type="submit"]:hover, input[type="button"]:hover {
     background: #8FE3DA;
 }
 input[readonly="readonly"] {
