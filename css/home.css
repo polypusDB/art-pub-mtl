@@ -27,25 +27,48 @@
     padding: 2%;
 }
 
-/*section À propos --------------------------*/
-.apm, .artiste{
-    padding: 5%;
+/* section À LA UNE ------------------------*/
+.une{
+    padding: 10%;
 }
 
-.apm h1, .apm h1 a{
-    color: #F08243;
-    font-weight:400;
+.une .BlocUne{
+    display: flex;
+    align-items: center;
+   
+    
+}
+.une h1{
     text-transform: uppercase;
+    font-size: 50px;
+    color:#E26F39;
+    letter-spacing: 3px;
+/*    border-right: solid 8px #E26F39;*/
+    flex-wrap: nowrap;
+    width: 180px;
 }
 
-.apm h1 a:hover{
-    color: #FCB797;
+.texteUne{
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 3%;
+    border-left: solid 6px #E26F39;
 }
 
-.apm .savoir{
-    text-align: right;
-    margin: 15px 0;
+.une p{
+    padding-top:5%;
 }
+
+.btnArtiste{
+    background-color: #F9DB45;
+    color: white;
+}
+
+.btnArtiste:hover{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 /*section Artiste --------------------------*/
 .artiste{
@@ -66,11 +89,12 @@
 
 .artiste h1{
     color: white;
+    font-weight: 400; 
 }
 
 .artiste h2{
     font-size: 1.2em;
-    color: white;
+    color: white; 
     text-align: center;
     font-weight: 600;   
 }
@@ -85,24 +109,91 @@
 } 
 
 /*Artiste à l'honneur --------------------------*/
+
+.listeParcours{
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .honneur{
-    width: 100%;
+    display: inherit;
+    height: 10%;
+    width: 33.3%;
     position: relative;
+    margin-bottom: 0;
+}
+
+.honneur a{
+    height: 250px;
+    width: 100%;
 }
 
 .honneur img{
-    height: auto;
+    object-fit: cover;
     width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+     filter: brightness(60%);
+     -webkit-filter: brightness(60%);
+}
+
+.honneur img:hover{
+    width: 100%;
+    margin-bottom: 0;
+    filter: brightness(100%);
+     -webkit-filter: brightness(100%);
+     transition: 0.5s;
 }
 
 .honneur h2{
     position: absolute;
-    left: -10px;
-    bottom: 2em;
+    bottom: 1em;
     background-color: white;
-    padding: 2% 2% 2% 5%;
+    padding: 2% 4% 2% 4%;
+    color: black;
+    font-weight: 400;
 }
 
+.contenu.bouton{
+    padding-top: 10px;
+    min-height: 0;
+}
+
+.btnVisite{
+    color: white;
+    background-color: #81CEC5;
+    justify-content: flex-end;
+}
+
+.btnVisite:hover{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+/*section À propos --------------------------*/
+.apm p{
+    text-align: center;
+}
+.apm, .artiste{
+    padding: 10%;
+}
+
+.apm h1, .apm h1 a{
+    color: #F08243;
+    font-weight:400;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.apm h1 a:hover{
+    color: #FCB797;
+}
+
+.apm .savoir{
+    text-align: center;
+    margin: 15px 0;
+}
 
 
 /* media queries: mobile --------------------------------------------------*/
@@ -120,5 +211,30 @@
         color: darkgrey;
     }
     
-  
+    .une h1{
+    font-size: 30px;
+    width: 250px;
+    }
+    
+    .texteUne{
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 3%;
+    border-left: solid 5px #E26F39;
+    }
+    
+    .honneur{
+    display: inherit;
+    height: 10%;
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+    }
+    
+    .honneur a{
+    height: 130px;
+    width: 100%;
+    }
 }
+

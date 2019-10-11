@@ -29,7 +29,7 @@
                     <a href="/art-pub-mtl/api"><i class="fas fa-home"></i>Accueil</a>
                     <a href="/art-pub-mtl/api/artiste"><i class="fas fa-paint-brush"></i>Artistes</a>
                     <a href="/art-pub-mtl/api/oeuvre"><i class="fas fa-brush"></i>Oeuvres</a>
-                    <!-- <a href=""><i class="fas fa-map-marker-alt"></i>Parcours</a> -->
+                    <a href="/art-pub-mtl/api/parcours"><i class="fas fa-tree"></i>Parcours</a>
                     <!-- <a href=""><i class="fas fa-hand-holding-heart"></i>Partenariat</a> -->
                     <a href="/art-pub-mtl/api/apropos"><i class="fas fa-spray-can"></i>À Propos</a>
                     <!-- <a href=""><i class="fas fa-comment"></i>Francais | English</a> -->

@@ -15,41 +15,25 @@
 
 class Vue {
 
-/**
-	 * Affiche le head html
-	 * @access public
-	 * @return void
-	 */
+    /* Affiche le head html ---------------- */
 	public function afficheHead() {
 	   include "VueEntete.php";
 		
 	}
 
-	/**
-	 * Affiche entetes
-	 * @access public
-	 * @return void
-	 */
+	/* Affiche entetes ---------------- */
 	public function afficheEntete() {
 		include "VueNavigation.php";		
 	}
 
 
-	/**
-	 * Affiche le pied de page
-	 * @access public
-	 * @return void
-	 */
+	/* Affiche le pied de page ---------------- */
 	public function affichePied() {
 		include "VuePied.php";
 	}
 	
 
-	/**
-	 * Affiche la page d'accueil
-	 * @access public
-	 * @return void
-	 */
+	
 	public function afficheAccueil() {
         $this->afficheHead();
         $this->afficheEntete();
@@ -57,11 +41,7 @@ class Vue {
         $this->affichePied();
 	}
 
-	/**
-	 * Affiche la page à propos
-	 * @access public
-	 * @return void
-	 */
+	/* Affiche la page à propos ---------------- */
 	public function afficheApropos() {
         $this->afficheHead();
         $this->afficheEntete();
@@ -69,11 +49,7 @@ class Vue {
         $this->affichePied();
 	}
 	
-	/**
-	 * Affiche la liste des oeuvres
-	 * @access public
-	 * @return void
-	 */
+	/* Affiche la liste des oeuvres ---------------- */
 	public function afficheOeuvres($aData = Array(), $arrondissements, $materiaux, $categories) {
 		$this->afficheHead();
 		$this->afficheEntete();
@@ -82,11 +58,7 @@ class Vue {
 		
 	}
 
-	/**
-	 * Affiche le détails d'une oeuvre
-	 * @access public
-	 * @return void
-	 */
+    /* Affiche le détails d'une oeuvre ---------------- */
 	public function afficheOeuvre($aData = Array()) {
 		$this->afficheHead();
 		$this->afficheEntete();
@@ -95,11 +67,7 @@ class Vue {
 	}
 
 
-	/**
-	 * Affiche la liste des artistes
-	 * @access public
-	 * @return void
-	 */
+	/* Affiche la liste des artistes ---------------- */
 	public function afficheArtistes($aData = Array()) {
 		$this->afficheHead();
 		$this->afficheEntete();
@@ -107,19 +75,32 @@ class Vue {
 		$this->affichePied();
 	}
 
-
-/**
-	 * Affiche le détails d'un artiste
-	 * @access public
-	 * @return void
-	 */
+    /*Affiche le détails d'un artiste ---------------- */
 	public function afficheArtiste($aData = Array()) {
 		$this->afficheHead();
 		$this->afficheEntete();
         include("VueDetailArtiste.html.php");
 		$this->affichePied();
 	}
+    
+    
+    /*Affiche la liste des parcours ---------------- */ 
+    public function afficheParcours() {
+		$this->afficheHead();
+		$this->afficheEntete();
+        include("VueParcours.html.php");
+		$this->affichePied();
+	}
+    
+    /*Affiche les détails des parcours ---------------- */
+    public function afficheDetailParcours() {
+		$this->afficheHead();
+		$this->afficheEntete();
+        include("VueDetailParcours.html.php");
+		$this->affichePied();
+	}
 
+    /* Affiche le formulaire de connexion ---------------- */
 	public function afficherFormConnexion($msg, $action){
 		$this->afficheHead();
 		$this->afficheEntete();
@@ -128,6 +109,7 @@ class Vue {
 
 	}
 
+    /* Affiche le formulaire d'ajout d'une oeuvre ---------------- */
 	public function getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
@@ -135,6 +117,7 @@ class Vue {
 		$this->affichePied();
 	}
 
+    /* Affiche le formulaire d'ajout d'un artiste ---------------- */
 	public function getFormAjoutArtiste($msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
@@ -142,13 +125,19 @@ class Vue {
 		$this->affichePied();
 	}
 
+<<<<<<< HEAD
+    /* Affiche le formulaire de modification d'une oeuvre ---------------- */
+	public function getFormModifierOeuvre(){
+=======
 	public function getFormModifierOeuvre($aData, $liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
+>>>>>>> bae99f0d3501c3d832264bf411e3e220f07b908c
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formModifOeuvre.php");
 		$this->affichePied();
 	}
 
+    /* Affiche le formulaire de modification d'un artiste ---------------- */
 	public function getFormModifArtiste($aData, $msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
