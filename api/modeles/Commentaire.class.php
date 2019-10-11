@@ -20,7 +20,7 @@ class Commentaire extends Modele {
         join oeuvre o
         on o.id_oeuvre = c.id_oeuvre
         join usager u
-        on u.id_usager - c.id_usager
+        on u.id_usager = c.id_usager
         where c.id_oeuvre = '$id'
         GROUP BY c.id_commentaire";
         if($mrResultat = $this->_db->query($query))

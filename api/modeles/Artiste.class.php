@@ -54,13 +54,10 @@ class Artiste extends Modele {
 		return $res;
 	}
 
-	public function deleteArtiste($id){
-		$query = "DELETE
-		FROM artiste 
-		WHERE id_artiste = $id";
-
-		var_dump($this->_db->query($query));
-
+	public function deleteArtiste($res){
+		$query = "DELETE FROM artiste $res";
+		$res = $this->_db->query($query);
+		echo $query;
 	}
 
 
@@ -83,7 +80,16 @@ class Artiste extends Modele {
 		$this->_db->query($query);
 	}
 
-	
+    public function verifierArtisteExistant($aData)
+    {
+		$res = Array();
+        extract($aData);
+		if($mrResultat = $this->_db->query("select * from ". self::TABLE_ARTISTE." where nom = '".$nom."' and prenom = '".$prenom."' and nom_collectif = '".$nom_collectif."'"))
+		{
+			$res = $mrResultat->fetch_assoc();
+		}
+		return $res;
+    }	
 }
 
 

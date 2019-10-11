@@ -17,6 +17,15 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
+        $oArtiste = new Artiste();
+        $oCategorie = new Categorie();
+        $oTypeSupport = new TypeSupport();
+        $oArrondissement = new Arrondissement();
+        $liste_artiste = $oArtiste->getListe();
+        $liste_categorie = $oCategorie->getListe();
+        $liste_support = $oTypeSupport->getListe();
+        $liste_arrondissement = $oArrondissement->getListe();
+        $msgErreur ="";
 		
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// l'id de l'oeuvre 
 		{
@@ -27,7 +36,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$res = $this->supOeuvre($requete->url_elements[1]);
+				$aData[] = $requete->url_elements[1];
+				$string = $this->ArrayToString($aData);
+				$this->supOeuvre($string);
 				header("Location:/art-pub-mtl/api/OeuvreAdmin");
 			}
 			else{
@@ -44,7 +55,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$this->getFormAjout();
+				$this->getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
 			}
 			else{
 				echo "vous devez etre connecté en tant qu'admin";
@@ -55,21 +66,113 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         {
 			$res = $this->getListeOeuvre();
 			$oVue = new AdminVue();
-			$oVue->afficheOeuvres($res);
+			$oVue->afficheOeuvres($res, $msgErreur = "");
 		}		
 		
 		
 	}
 
-	public function postAction(Requete $requete)
-	{
-		var_dump($requete->url_elements[0]);
-		if (isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
-			// modification de l'oeuvre ici!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public function postAction(Requete $requete){
+		
+		//Validation supprimer avec le Checkbox
+		if (isset($_POST['supp'])) {
+			$msgErreur ="";
+			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
+				$selected = array();
+				$num_checks = count($_POST['checks']);
+				foreach ($_POST['checks'] as $key => $value) {
+						$selected[] = $value;
+				}
+			}
+			if (empty($selected)){
+				$msgErreur = 'Aucune oeuvre sélectionnée';
+				$res = $this->getListeOeuvre();
+				$oVue = new AdminVue();
+				$oVue->afficheOeuvres($res, $msgErreur);
+			}
+
+			if($msgErreur == ""){
+				$string = $this->ArrayToString($selected);
+				$this->supOeuvre($string);
+				header("Location:/art-pub-mtl/api/OeuvreAdmin");
+			}
+		
+		}    
+		
+        $oCategorie = new Categorie();
+        $oTypeSupport = new TypeSupport();
+        $oArrondissement = new Arrondissement();
+        $oArtiste = new Artiste();
+        $liste_categorie = $oCategorie->getListe();
+        $liste_support = $oTypeSupport->getListe();
+        $liste_arrondissement = $oArrondissement->getListe();
+        $liste_artiste = $oArtiste->getListe();
+        $msgErreur ="";
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
+			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
+				if(empty(trim($_POST["titre"]))) {
+                    $msgErreur.= "Vous devez saisir un titre. <br>";
+                }
+                
+                if(empty(trim($_POST["dimension"]))) {
+                    $msgErreur.= "Vous devez saisir une dimension. <br>";
+                }
+                
+                if($_POST["id_support"] == "choix")
+                {
+                    if(empty(trim($_POST["support_nom_francais"])) && empty(trim($_POST["support_nom_anglais"]))) {
+                             $msgErreur.= "Vous devez saisir un type de support ou le choisir dans la liste déroulante.<br>";
+                    }                     
+                }
+                
+                if(empty(trim($_POST["description"]))) {
+                    $msgErreur.= "Vous devez saisir une description en français. <br>";
+                }
+
+                if(empty(trim($_POST["description_anglais"]))) {
+                    $msgErreur.= "Vous devez saisir une description en anglais. <br>";
+                }
+                              
+                if($_POST["id_categorie"] == "choix") {
+                     $msgErreur.= "Vous devez choisir une catégorie dans la liste. <br>";
+                }
+                
+                if($_POST["id_artiste"] == "choix") {
+                     $msgErreur.= "Vous devez choisir un artiste dans la liste. <br>";
+                }
+                
+                if(empty(trim($_POST["parc"])) && empty(trim($_POST["batiment"])) && empty(trim($_POST["adresse"]))) {
+					$msgErreur.= "Vous devez saisir un parc, un bâtiment ou une adresse civique<br>";
+                }
+                
+                if(empty(trim($_POST["coordonnee_latitude"]))) {
+                    $msgErreur.= "Vous devez saisir une coordonnée pour la latitude.<br>";                               
+                }
+                
+                if(empty(trim($_POST["coordonnee_longitude"]))) {
+                    $msgErreur.= "Vous devez saisir une coordonnée pour la longitude.<br>";
+                }
+
+				// Si le message d'erreur est vide on lance l'ajout, sinon on affiche le message
+				if($msgErreur == ""){
+					$aData = Array();
+					foreach($_POST as $cle=>$value){
+						$aData[$cle] = $value;
+					}
+
+					$this->AjouterData($aData);
+					header("Location: /art-pub-mtl/api/admin");
+				}
+				else{
+					$this->getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
+				}
+
+			}
+
 		}
-		
-		
 	}
+/* 		else if (isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
+			// modification de l'oeuvre ici!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 	
 	// Section Oeuvres
 	protected function getOeuvre($id_oeuvre){
@@ -84,14 +187,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
 	}
 
-	protected function supOeuvre($id_oeuvre){
-		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
-	}
-
-	protected function getFormAjout(){
+	protected function getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
 		$oVue = new AdminVue();
-		$oVue->getFormAjoutOeuvre();
+		$oVue->getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
 	}
 
 	protected function getFormMod(){
@@ -99,9 +197,51 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$oVue->getFormModifierOeuvre();
 	}
 	
+	// Section Supprimer Oeuvres
+	protected function supOeuvre($aData){
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->deleteOeuvre($aData);
+	}
 
-	
-	
-	
+	protected function ArrayToString($aData){
+		
+		if($msgErreur == ""){
+			$premier = true;
+
+			foreach($aData as $id){
+				if($premier == true){
+					$res= "WHERE id_oeuvre = ". $id;
+				}
+				else{
+					$res .=" OR  id_oeuvre = ". $id;
+				}
+				$premier = false;
+			}
+			return $res;
+		}
+	}
+	protected function AjouterData($aData){
+        $oTraitementDonnees = new TraitementDonnees();
+        $oArtisteOeuvre = new ArtisteOeuvre();
+        $tabTypeSupport = Array();
+        
+        $aData['id_arrondissement'] = intval($aData['arrondissement']);
+        $aData['id_endroit'] = $oTraitementDonnees->traiterEndroit($aData);
+
+        if($aData['id_support'] == "choix")
+        {
+            $aData['id_support'] = $oTraitementDonnees->traiterTypeSupport(trim(mb_strtolower($aData['support_nom_francais']), 'UTF-8'),trim(mb_strtolower($aData['support_nom_anglais']), 'UTF-8'));
+        }
+        
+        if(($aData['id_categorie'] != 0) && ($aData['id_support'] != 0) && ($aData['id_endroit'] != 0))
+        {
+            $aData['id_oeuvre'] = $oTraitementDonnees->traiterOeuvre($aData);
+        }
+        
+        if($aData['id_oeuvre'] > 0)
+        {
+            $oArtisteOeuvre->ajouterArtisteOeuvre($aData['id_artiste'],$aData['id_oeuvre']);
+        }
+	}	
 }
 ?>

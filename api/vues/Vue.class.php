@@ -74,7 +74,7 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheOeuvres($aData = Array()) {
+	public function afficheOeuvres($aData = Array(), $arrondissements, $materiaux, $categories) {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("VueListeOeuvre.html.php");
@@ -134,7 +134,7 @@ class Vue {
 
 	}
 
-	public function getFormAjoutOeuvre(){
+	public function getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formAjouterOeuvres.php");

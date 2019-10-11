@@ -1,6 +1,7 @@
 <div class="container">
     <div class="contenu-form">
-		<?php
+        <?php
+        var_dump($action);
             //si je ne suis pas authentifié, on affiche le formulaire de login
             if(!isset($_SESSION["login"]))
             {            
@@ -13,7 +14,7 @@
             <h1>Formulaire de Connexion</h1>
             <form action="/art-pub-mtl/api/connection/login" method="POST">	
                 <div>
-                    <label for="name">Login:</label>
+                    <label for="name">Nom d'usager:</label>
                     <input type="text" id="name" name="user">
                 </div>
                 <div>
@@ -36,11 +37,11 @@
             </form>
         </div>
 
-        <div class="formInscription"<?php
+        <div class="formInscription <?php
             if($action == "connexion"){
                 echo "cacher";
             }
-        ?>>
+        ?>">
             <h1>Formulaire d'inscription</h1>
             <form class="form2" action="/art-pub-mtl/api/connection/inscription" method="POST">	
                 <div>

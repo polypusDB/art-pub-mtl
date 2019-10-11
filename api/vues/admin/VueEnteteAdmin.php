@@ -24,7 +24,7 @@
     
     <body>
     <header class="entete admin">
-        <a href="/art-pub-mtl/api" target="_blank" class="logo"><img src="/art-pub-mtl/img/logoAPM.png" alt="Art Public Montreal"></a>
+        <a href="/art-pub-mtl/api/admin" class="logo"><img src="/art-pub-mtl/img/logoAPM.png" alt="Art Public Montreal"></a>
         <span class="flexgrow"></span>
         <nav class="menu">
             <?php
@@ -36,7 +36,8 @@
             else{
                 $username = $_SESSION["utilisateur"]["nom_connexion"];
                 ?>
-                <a href="/art-pub-mtl/api/admin"><i class="fas fa-grin-wink"></i><?php echo $username?></a>
+                <div class="user">Salut <i class="fas fa-grin-wink"></i><?php echo $username?></div>
+                <a href="/art-pub-mtl/api" target="_blank" >Aller au site</a>
                 <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                 <?php
             }

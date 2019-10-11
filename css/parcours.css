@@ -1,0 +1,59 @@
+
+
+/* section du nombres d'oeuvres ainsi que du temps de réalisation ------- */
+.affichageListe{
+    height: 100%;
+    width: 30.8%;
+    position: relative;
+    margin-bottom: 0;
+    border-top: solid 6px #E26F39;
+    margin: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.affichageListe a{
+    height: 300px;
+    width: 100%;
+}
+
+.affichageListe img{
+    object-fit: cover;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.affichageListe h2{
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    top: 45%;
+    padding: 2% 4% 2% 4%;
+    color: black;
+    font-weight: 400;
+}
+
+.indicateurParcours{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10%;
+}
+
+@media screen and (max-width:667px){
+    
+    .affichageListe{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+    border-top: solid 6px #E26F39;
+    }
+
+}
+
+
+
+

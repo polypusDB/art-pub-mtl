@@ -43,7 +43,7 @@
                 </div>
             </div>
     </section>
-    <section class="listeParcours" >
+    <section class="listeParcours">
         <div class="honneur">
             <a href="/art-pub-mtl/api/artiste">
                 <img src="/art-pub-mtl/img/oeuvres/fontaine.jpg" alt="">
@@ -62,8 +62,9 @@
                 <h2>Suivre la ligne bleue</h2>
             </a>
         </div>
-        <input class="btnVisite" type="button" href="/art-pub-mtl/api/parcours" value="Planifier votre visite">
+        <div></div>
     </section>
+    <input class="btnVisite" type="button" href="/art-pub-mtl/api/parcours" value="Planifier votre visite">
     <section class="apm">
         <div>
             <p class="propos">À PROPOS</p>

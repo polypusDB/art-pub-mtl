@@ -83,7 +83,7 @@ class ConnectionControlleur extends Controlleur
 		$utilisateur = $oConnection->getConnectionUser($_POST["user"], $_POST["mdp"]);
 		if($utilisateur == false){
 			$action = "connexion";
-			$msg = "mauvaise combinaison mot de passe et nom d'usagé";
+			$msg = "Mauvaise combinaison mot de passe et nom d'usager";
 			$oVue = new Vue();
 			$oVue->afficherFormConnexion($msg, $action);
 		}
