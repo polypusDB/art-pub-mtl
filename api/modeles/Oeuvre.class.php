@@ -219,12 +219,8 @@ class Oeuvre extends Modele {
 	// 	return (count($res) >0 ? true : false);
 	// }
 
-	public function deleteOeuvre($id){
-
-		echo "je supprime";
-		$query = "DELETE 
-		FROM oeuvre 
-		WHERE id_oeuvre = $id";
+	public function deleteOeuvre($res){
+		$query = "DELETE FROM oeuvre $res";
 		$res = $this->_db->query($query);
 		
 	}

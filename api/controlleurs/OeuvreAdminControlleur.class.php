@@ -36,7 +36,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$res = $this->supOeuvre($requete->url_elements[1]);
+				$aData[] = $requete->url_elements[1];
+				$string = $this->ArrayToString($aData);
+				$this->supOeuvre($string);
 				header("Location:/art-pub-mtl/api/OeuvreAdmin");
 			}
 			else{
@@ -64,13 +66,39 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         {
 			$res = $this->getListeOeuvre();
 			$oVue = new AdminVue();
-			$oVue->afficheOeuvres($res);
+			$oVue->afficheOeuvres($res, $msgErreur = "");
 		}		
 		
 		
 	}
 
 	public function postAction(Requete $requete){
+		
+		//Validation supprimer avec le Checkbox
+		if (isset($_POST['supp'])) {
+			$msgErreur ="";
+			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
+				$selected = array();
+				$num_checks = count($_POST['checks']);
+				foreach ($_POST['checks'] as $key => $value) {
+						$selected[] = $value;
+				}
+			}
+			if (empty($selected)){
+				$msgErreur = 'Aucune oeuvre sélectionnée';
+				$res = $this->getListeOeuvre();
+				$oVue = new AdminVue();
+				$oVue->afficheOeuvres($res, $msgErreur);
+			}
+
+			if($msgErreur == ""){
+				$string = $this->ArrayToString($selected);
+				$this->supOeuvre($string);
+				header("Location:/art-pub-mtl/api/OeuvreAdmin");
+			}
+		
+		}    
+		
         $oCategorie = new Categorie();
         $oTypeSupport = new TypeSupport();
         $oArrondissement = new Arrondissement();
@@ -159,11 +187,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
 	}
 
-	protected function supOeuvre($id_oeuvre){
-		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->deleteOeuvre($id_oeuvre);
-	}
-
 	protected function getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
 		$oVue = new AdminVue();
 		$oVue->getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
@@ -174,6 +197,29 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$oVue->getFormModifierOeuvre();
 	}
 	
+	// Section Supprimer Oeuvres
+	protected function supOeuvre($aData){
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->deleteOeuvre($aData);
+	}
+
+	protected function ArrayToString($aData){
+		
+		if($msgErreur == ""){
+			$premier = true;
+
+			foreach($aData as $id){
+				if($premier == true){
+					$res= "WHERE id_oeuvre = ". $id;
+				}
+				else{
+					$res .=" OR  id_oeuvre = ". $id;
+				}
+				$premier = false;
+			}
+			return $res;
+		}
+	}
 	protected function AjouterData($aData){
         $oTraitementDonnees = new TraitementDonnees();
         $oArtisteOeuvre = new ArtisteOeuvre();
