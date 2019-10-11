@@ -24,13 +24,13 @@ input, textarea{
     color: #AFAFAF;
     font-family: 'Raleway', sans-serif;
 }
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
     background: #81CEC5;
     color: white;
     text-transform: uppercase;
     cursor: pointer;
 }
-input[type="submit"]:hover {
+input[type="submit"]:hover, input[type="button"]:hover {
     background: #8FE3DA;
 }
 input[readonly="readonly"] {
@@ -52,8 +52,20 @@ form select{
 }
 label#texte-mdp{
     display: block;
-    font-size: 11px;
+    font-size: 13px;
     color: #AFAFAF;
+    text-align: left;
+}
+label#texte-mdp:last-child{
+    text-align: center;
+}
+label#texte-mdp span{
+    color: #E26F39;
+    font-weight: 600;
+}
+label#texte-mdp span:hover{
+    color: rgb(255, 146, 83);
+    cursor: pointer;
 }
 input[type="checkbox"] {
     width: 3%;
@@ -73,6 +85,9 @@ fieldset{
 }
 legend{
     margin-bottom: 15px;
+}
+.contenu-form .cacher{
+    display: none;
 }
 
 @media screen and (max-width:667px){
