@@ -5,9 +5,16 @@ window.addEventListener("load", function(){
         let titreArron = document.querySelector(".titreArron");
         let divArron = document.querySelector(".filtresArr");
 
+
+        let divCat = document.querySelector(".filtresCat");
+        let titreCat = document.querySelector(".titreCat");
+
         titreArron.addEventListener("click", function(){
-            console.log("allo");
             divArron.classList.toggle("cacher");
+        })
+
+        titreCat.addEventListener("click", function(){
+            divCat.classList.toggle("cacher");
         })
     }
 })

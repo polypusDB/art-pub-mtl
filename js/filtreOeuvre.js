@@ -1,14 +1,13 @@
 window.addEventListener("load", function(){
     if(document.querySelector(".recherche") != null){
         let arrondissement = document.querySelectorAll(".unArrondissement");
-        console.log(arrondissement);
         let materiaux = document.querySelectorAll(".materiaux");
         let categories = document.querySelectorAll(".categorie");
         let barRecherche = document.querySelector(".recherche");
         let oeuvrePresent = 20;
     
     
-    
+        let btnFiltre = document.querySelector(".btnFiltre");
         
         let recherche = "";
         barRecherche.addEventListener("keyup", function(){
@@ -27,22 +26,14 @@ window.addEventListener("load", function(){
         *   EVENT POUR LES ARRONDISSEMENTS
         */
         let arr = [];
-        // for(let i=0; i<arrondissement.length;  i++){
-        //     // console.log(arrondissement[i]);
-        //     arrondissement[i].addEventListener("click", function(){
-        //         console.log("click");
-        //         let nArr = "";
-        //         nArr = arrondissement[i].dataset.id
-        //         // ajoutFiltreArrondissement(nArr);
-        //     });
-        // }
         arrondissement.forEach(function(arrond){
-            // console.log(arrondissement[i]);
-            arrond.addEventListener("click", function(){
-                console.log("click");
-                let nArr = "";
-                nArr = arrond.dataset.id;
-                // ajoutFiltreArrondissement(nArr);
+            arrond.addEventListener("click", function(evt){
+                if(evt.target.classList.value == "arrondissement" || evt.target.classList.value == "checkmark"){
+                    let nArr = "";
+                    nArr = arrond.dataset.id;
+                    ajoutFiltreArrondissement(nArr);
+                }
+
             });
         });
     
@@ -65,16 +56,19 @@ window.addEventListener("load", function(){
         */
         let cat = [];
         for(let i=0; i<categories.length;  i++){
-            categories[i].addEventListener("click", function(){
-                let nCat = "";
-                nCat = categories[i].dataset.id
-                ajoutFiltreCategorie(nCat);
+            categories[i].addEventListener("click", function(evt){       
+                if(evt.target.classList.value == "categorie" || evt.target.classList.value == "checkmark"){
+                    console.log(categories[i]);
+                    let nCat = "";
+                    nCat = categories[i].dataset.id
+                    ajoutFiltreCategorie(nCat);
+                }
             });
         }
     
     
         function ajoutFiltreRecherche(recherche){
-            GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
+            // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -88,7 +82,7 @@ window.addEventListener("load", function(){
            else{
                arr.splice(arr.indexOf(nArr), 1);
            }
-           GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
+        //    GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -102,7 +96,7 @@ window.addEventListener("load", function(){
         else{
             mat.splice(mat.indexOf(nMat), 1);
         }
-        GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
+        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
@@ -117,7 +111,7 @@ window.addEventListener("load", function(){
         else{
             cat.splice(cat.indexOf(nCat), 1);
         }
-        GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
+        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
@@ -169,12 +163,41 @@ window.addEventListener("load", function(){
             xhr.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
                     let oeuvres  = JSON.parse(xhr.responseText);
-                    console.log(oeuvres);
+                    
+                    afficherListe(oeuvres);
                     bool = false;
                 }
             }
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(data);
+        }
+
+
+        function afficherListe(oeuvres){
+            let template = document.querySelector(".templateOeuvre");
+            let parent = this.document.querySelector(".parent");
+            parent.innerHTML = ""
+            oeuvres.forEach(function(oeuvre){
+                let uneOeuvre  = template.cloneNode(true);
+                for(let prop in oeuvre){
+                    let regExp = new RegExp("{{"+prop+"}}", "g");
+                    uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
+                }
+                let nouveauNoeud = document.importNode(uneOeuvre.content, true)
+                parent.append(nouveauNoeud);
+                oeuvre["Artistes"].forEach(function(artiste){
+                    let template2 = document.querySelector(".templateAuteur");
+                    let unArtiste  = template2.cloneNode(true);
+                    for(let prop in artiste){
+                        let regExp = new RegExp("{{"+prop+"}}", "g");
+                        unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                    }
+                    let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
+                    let noeudArtiste = document.importNode(unArtiste.content, true)
+
+                    parent2.append(noeudArtiste);
+                })
+            })
         }
     
     
@@ -191,12 +214,15 @@ window.addEventListener("load", function(){
             scrollPos = window.scrollY + navHeight;
             if(scrollPos >= footer.offsetTop){
                 if(bool == false){
-                    console.log("bas");
                     bool = true;
                     oeuvrePresent = oeuvrePresent + 20;
                     GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
                 }
             }
+        })
+
+        btnFiltre.addEventListener("click", function(){
+            GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         })
     
     }

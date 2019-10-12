@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  mar. 01 oct. 2019 à 22:18
--- Version du serveur :  5.7.17
--- Version de PHP :  5.6.30
+-- Host: 127.0.0.1
+-- Generation Time: Oct 12, 2019 at 06:31 PM
+-- Server version: 5.7.17
+-- PHP Version: 7.1.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `artpublicmtl`
+-- Database: `artpublicmtl`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `arrondissement`
+-- Table structure for table `arrondissement`
 --
 
 CREATE TABLE `arrondissement` (
@@ -34,7 +34,7 @@ CREATE TABLE `arrondissement` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `arrondissement`
+-- Dumping data for table `arrondissement`
 --
 
 INSERT INTO `arrondissement` (`id_arrondissement`, `nom`) VALUES
@@ -60,7 +60,7 @@ INSERT INTO `arrondissement` (`id_arrondissement`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `artiste`
+-- Table structure for table `artiste`
 --
 
 CREATE TABLE `artiste` (
@@ -72,7 +72,7 @@ CREATE TABLE `artiste` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `artiste`
+-- Dumping data for table `artiste`
 --
 
 INSERT INTO `artiste` (`id_artiste`, `nom`, `prenom`, `nom_collectif`, `biographie`) VALUES
@@ -282,7 +282,7 @@ INSERT INTO `artiste` (`id_artiste`, `nom`, `prenom`, `nom_collectif`, `biograph
 -- --------------------------------------------------------
 
 --
--- Structure de la table `artiste_oeuvre`
+-- Table structure for table `artiste_oeuvre`
 --
 
 CREATE TABLE `artiste_oeuvre` (
@@ -291,7 +291,7 @@ CREATE TABLE `artiste_oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `artiste_oeuvre`
+-- Dumping data for table `artiste_oeuvre`
 --
 
 INSERT INTO `artiste_oeuvre` (`id_artiste`, `id_oeuvre`) VALUES
@@ -617,7 +617,7 @@ INSERT INTO `artiste_oeuvre` (`id_artiste`, `id_oeuvre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categorie`
+-- Table structure for table `categorie`
 --
 
 CREATE TABLE `categorie` (
@@ -627,7 +627,7 @@ CREATE TABLE `categorie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `categorie`
+-- Dumping data for table `categorie`
 --
 
 INSERT INTO `categorie` (`id_categorie`, `nom_francais`, `nom_anglais`) VALUES
@@ -637,7 +637,7 @@ INSERT INTO `categorie` (`id_categorie`, `nom_francais`, `nom_anglais`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaire`
+-- Table structure for table `commentaire`
 --
 
 CREATE TABLE `commentaire` (
@@ -650,7 +650,7 @@ CREATE TABLE `commentaire` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `endroit`
+-- Table structure for table `endroit`
 --
 
 CREATE TABLE `endroit` (
@@ -664,7 +664,7 @@ CREATE TABLE `endroit` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `endroit`
+-- Dumping data for table `endroit`
 --
 
 INSERT INTO `endroit` (`id_endroit`, `parc`, `batiment`, `adresse`, `coordonnee_latitude`, `coordonnee_longitude`, `id_arrondissement`) VALUES
@@ -1256,7 +1256,7 @@ INSERT INTO `endroit` (`id_endroit`, `parc`, `batiment`, `adresse`, `coordonnee_
 -- --------------------------------------------------------
 
 --
--- Structure de la table `favoris`
+-- Table structure for table `favoris`
 --
 
 CREATE TABLE `favoris` (
@@ -1267,7 +1267,7 @@ CREATE TABLE `favoris` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `image`
+-- Table structure for table `image`
 --
 
 CREATE TABLE `image` (
@@ -1279,7 +1279,7 @@ CREATE TABLE `image` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `materiaux`
+-- Table structure for table `materiaux`
 --
 
 CREATE TABLE `materiaux` (
@@ -1289,7 +1289,7 @@ CREATE TABLE `materiaux` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `materiaux`
+-- Dumping data for table `materiaux`
 --
 
 INSERT INTO `materiaux` (`id_materiaux`, `nom_francais`, `nom_anglais`) VALUES
@@ -1398,7 +1398,7 @@ INSERT INTO `materiaux` (`id_materiaux`, `nom_francais`, `nom_anglais`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `oeuvre`
+-- Table structure for table `oeuvre`
 --
 
 CREATE TABLE `oeuvre` (
@@ -1412,7 +1412,7 @@ CREATE TABLE `oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `oeuvre`
+-- Dumping data for table `oeuvre`
 --
 
 INSERT INTO `oeuvre` (`id_oeuvre`, `titre`, `dimension`, `description`, `id_categorie`, `id_support`, `id_endroit`) VALUES
@@ -1669,7 +1669,7 @@ INSERT INTO `oeuvre` (`id_oeuvre`, `titre`, `dimension`, `description`, `id_cate
 -- --------------------------------------------------------
 
 --
--- Structure de la table `oeuvre_materiaux`
+-- Table structure for table `oeuvre_materiaux`
 --
 
 CREATE TABLE `oeuvre_materiaux` (
@@ -1678,7 +1678,7 @@ CREATE TABLE `oeuvre_materiaux` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `oeuvre_materiaux`
+-- Dumping data for table `oeuvre_materiaux`
 --
 
 INSERT INTO `oeuvre_materiaux` (`id_materiaux`, `id_oeuvre`) VALUES
@@ -2202,7 +2202,7 @@ INSERT INTO `oeuvre_materiaux` (`id_materiaux`, `id_oeuvre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `oeuvre_technique`
+-- Table structure for table `oeuvre_technique`
 --
 
 CREATE TABLE `oeuvre_technique` (
@@ -2211,7 +2211,7 @@ CREATE TABLE `oeuvre_technique` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `oeuvre_technique`
+-- Dumping data for table `oeuvre_technique`
 --
 
 INSERT INTO `oeuvre_technique` (`id_technique`, `id_oeuvre`) VALUES
@@ -2655,7 +2655,7 @@ INSERT INTO `oeuvre_technique` (`id_technique`, `id_oeuvre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parcours`
+-- Table structure for table `parcours`
 --
 
 CREATE TABLE `parcours` (
@@ -2667,7 +2667,7 @@ CREATE TABLE `parcours` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parcours_endroit`
+-- Table structure for table `parcours_endroit`
 --
 
 CREATE TABLE `parcours_endroit` (
@@ -2680,7 +2680,7 @@ CREATE TABLE `parcours_endroit` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -2689,7 +2689,7 @@ CREATE TABLE `role` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id_role`, `type_acces`) VALUES
@@ -2700,7 +2700,7 @@ INSERT INTO `role` (`id_role`, `type_acces`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `technique`
+-- Table structure for table `technique`
 --
 
 CREATE TABLE `technique` (
@@ -2710,7 +2710,7 @@ CREATE TABLE `technique` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `technique`
+-- Dumping data for table `technique`
 --
 
 INSERT INTO `technique` (`id_technique`, `nom_francais`, `nom_anglais`) VALUES
@@ -2807,7 +2807,7 @@ INSERT INTO `technique` (`id_technique`, `nom_francais`, `nom_anglais`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_support`
+-- Table structure for table `type_support`
 --
 
 CREATE TABLE `type_support` (
@@ -2817,7 +2817,7 @@ CREATE TABLE `type_support` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `type_support`
+-- Dumping data for table `type_support`
 --
 
 INSERT INTO `type_support` (`id_support`, `nom_francais`, `nom_anglais`) VALUES
@@ -2838,54 +2838,55 @@ INSERT INTO `type_support` (`id_support`, `nom_francais`, `nom_anglais`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `usager`
+-- Table structure for table `usager`
 --
 
 CREATE TABLE `usager` (
   `id_usager` int(11) NOT NULL,
   `nom_connexion` varchar(50) NOT NULL,
-  `mot_passe` varchar(50) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
+  `mot_passe` varchar(100) NOT NULL,
+  `nom` varchar(50) DEFAULT NULL,
+  `prenom` varchar(50) DEFAULT NULL,
   `courriel` varchar(50) NOT NULL,
   `id_role` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `usager`
+-- Dumping data for table `usager`
 --
 
 INSERT INTO `usager` (`id_usager`, `nom_connexion`, `mot_passe`, `nom`, `prenom`, `courriel`, `id_role`) VALUES
 (1, 'modo', 'modo', 'modérateur', 'super', 'modo@hotmail.com', 1),
-(2, 'admin', 'admin', 'administrateur', 'adminart', 'admin@hotmail.com', 2),
-(3, 'usager', 'usager', 'usager1', 'sanspouvoir', 'usager@hotmail.com', 3);
+(5, 'admin', '$2y$10$DfyMIA2vu5zzo3rU84vLcupbJTed2Cl/KmAtBCazv8vQoLQDA2G8C', NULL, NULL, 'admin', 2),
+(3, 'usager', 'usager', 'usager1', 'sanspouvoir', 'usager@hotmail.com', 3),
+(4, 'polypusDB', '$2y$10$l3kL9.OghGCxzOf3913YbOmwUAH.1KokJwQf0FoQYC9dX.C57SLMa', NULL, NULL, 'bobobob', 2);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `arrondissement`
+-- Indexes for table `arrondissement`
 --
 ALTER TABLE `arrondissement`
   ADD PRIMARY KEY (`id_arrondissement`),
   ADD UNIQUE KEY `nom` (`nom`);
 
 --
--- Index pour la table `artiste`
+-- Indexes for table `artiste`
 --
 ALTER TABLE `artiste`
   ADD PRIMARY KEY (`id_artiste`);
 
 --
--- Index pour la table `artiste_oeuvre`
+-- Indexes for table `artiste_oeuvre`
 --
 ALTER TABLE `artiste_oeuvre`
   ADD PRIMARY KEY (`id_artiste`,`id_oeuvre`),
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- Index pour la table `categorie`
+-- Indexes for table `categorie`
 --
 ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id_categorie`),
@@ -2893,7 +2894,7 @@ ALTER TABLE `categorie`
   ADD UNIQUE KEY `nom_anglais` (`nom_anglais`);
 
 --
--- Index pour la table `commentaire`
+-- Indexes for table `commentaire`
 --
 ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`id_commentaire`),
@@ -2901,21 +2902,21 @@ ALTER TABLE `commentaire`
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- Index pour la table `endroit`
+-- Indexes for table `endroit`
 --
 ALTER TABLE `endroit`
   ADD PRIMARY KEY (`id_endroit`),
   ADD KEY `id_arrondissement` (`id_arrondissement`);
 
 --
--- Index pour la table `favoris`
+-- Indexes for table `favoris`
 --
 ALTER TABLE `favoris`
   ADD PRIMARY KEY (`id_usager`,`id_oeuvre`),
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- Index pour la table `image`
+-- Indexes for table `image`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`id_image`),
@@ -2923,7 +2924,7 @@ ALTER TABLE `image`
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- Index pour la table `materiaux`
+-- Indexes for table `materiaux`
 --
 ALTER TABLE `materiaux`
   ADD PRIMARY KEY (`id_materiaux`),
@@ -2931,7 +2932,7 @@ ALTER TABLE `materiaux`
   ADD UNIQUE KEY `nom_anglais` (`nom_anglais`);
 
 --
--- Index pour la table `oeuvre`
+-- Indexes for table `oeuvre`
 --
 ALTER TABLE `oeuvre`
   ADD PRIMARY KEY (`id_oeuvre`),
@@ -2940,27 +2941,27 @@ ALTER TABLE `oeuvre`
   ADD KEY `id_endroit` (`id_endroit`);
 
 --
--- Index pour la table `oeuvre_materiaux`
+-- Indexes for table `oeuvre_materiaux`
 --
 ALTER TABLE `oeuvre_materiaux`
   ADD PRIMARY KEY (`id_materiaux`,`id_oeuvre`),
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- Index pour la table `oeuvre_technique`
+-- Indexes for table `oeuvre_technique`
 --
 ALTER TABLE `oeuvre_technique`
   ADD PRIMARY KEY (`id_technique`,`id_oeuvre`),
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- Index pour la table `parcours`
+-- Indexes for table `parcours`
 --
 ALTER TABLE `parcours`
   ADD PRIMARY KEY (`id_parcours`);
 
 --
--- Index pour la table `parcours_endroit`
+-- Indexes for table `parcours_endroit`
 --
 ALTER TABLE `parcours_endroit`
   ADD PRIMARY KEY (`id_parcours`,`id_endroit`),
@@ -2968,14 +2969,14 @@ ALTER TABLE `parcours_endroit`
   ADD KEY `id_usager` (`id_usager`);
 
 --
--- Index pour la table `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`),
   ADD UNIQUE KEY `type_acces` (`type_acces`);
 
 --
--- Index pour la table `technique`
+-- Indexes for table `technique`
 --
 ALTER TABLE `technique`
   ADD PRIMARY KEY (`id_technique`),
@@ -2983,7 +2984,7 @@ ALTER TABLE `technique`
   ADD UNIQUE KEY `nom_anglais` (`nom_anglais`);
 
 --
--- Index pour la table `type_support`
+-- Indexes for table `type_support`
 --
 ALTER TABLE `type_support`
   ADD PRIMARY KEY (`id_support`),
@@ -2991,7 +2992,7 @@ ALTER TABLE `type_support`
   ADD UNIQUE KEY `nom_anglais` (`nom_anglais`);
 
 --
--- Index pour la table `usager`
+-- Indexes for table `usager`
 --
 ALTER TABLE `usager`
   ADD PRIMARY KEY (`id_usager`),
@@ -2999,74 +3000,74 @@ ALTER TABLE `usager`
   ADD KEY `id_role` (`id_role`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `arrondissement`
+-- AUTO_INCREMENT for table `arrondissement`
 --
 ALTER TABLE `arrondissement`
   MODIFY `id_arrondissement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT pour la table `artiste`
+-- AUTO_INCREMENT for table `artiste`
 --
 ALTER TABLE `artiste`
   MODIFY `id_artiste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 --
--- AUTO_INCREMENT pour la table `categorie`
+-- AUTO_INCREMENT for table `categorie`
 --
 ALTER TABLE `categorie`
   MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT pour la table `commentaire`
+-- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
   MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `endroit`
+-- AUTO_INCREMENT for table `endroit`
 --
 ALTER TABLE `endroit`
   MODIFY `id_endroit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=584;
 --
--- AUTO_INCREMENT pour la table `image`
+-- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
   MODIFY `id_image` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `materiaux`
+-- AUTO_INCREMENT for table `materiaux`
 --
 ALTER TABLE `materiaux`
   MODIFY `id_materiaux` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 --
--- AUTO_INCREMENT pour la table `oeuvre`
+-- AUTO_INCREMENT for table `oeuvre`
 --
 ALTER TABLE `oeuvre`
   MODIFY `id_oeuvre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
 --
--- AUTO_INCREMENT pour la table `parcours`
+-- AUTO_INCREMENT for table `parcours`
 --
 ALTER TABLE `parcours`
   MODIFY `id_parcours` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT pour la table `technique`
+-- AUTO_INCREMENT for table `technique`
 --
 ALTER TABLE `technique`
   MODIFY `id_technique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
--- AUTO_INCREMENT pour la table `type_support`
+-- AUTO_INCREMENT for table `type_support`
 --
 ALTER TABLE `type_support`
   MODIFY `id_support` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT pour la table `usager`
+-- AUTO_INCREMENT for table `usager`
 --
 ALTER TABLE `usager`
-  MODIFY `id_usager` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `id_usager` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

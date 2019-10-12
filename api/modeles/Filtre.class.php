@@ -117,7 +117,7 @@ class Filtre extends Modele {
         
     }
 
-    public function filtrerArtisteAdmin($rec = ""){
+    public function filtrerArtisteAdmin($rec = "", $limit = 500){
         
         if($rec != ""){
             $res = "WHERE ";
@@ -125,18 +125,18 @@ class Filtre extends Modele {
 
         }
         $oArtiste = new Artiste();
-        $aArtiste = $oArtiste->getListe($res);
+        $aArtiste = $oArtiste->getListe($res, $limit);
         echo json_encode($aArtiste);
     }
 
-    public function filtrerOeuvreAdmin($rec){
+    public function filtrerOeuvreAdmin($rec , $limit){
         if($rec != ""){
             $res = "WHERE ";
             $res .= " oeuvre.titre like'%$rec%'";
 
         }
         $oOeuvre = new Oeuvre();
-        $aOeuvre = $oOeuvre->getListe($res);
+        $aOeuvre = $oOeuvre->getListe($res , $limit);
         echo json_encode($aOeuvre);
     }
 
