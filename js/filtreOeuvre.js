@@ -148,7 +148,10 @@ window.addEventListener("load", function(){
             aData.recherche = recherche;
             aData.oeuvrePresent = oeuvrePresent;
      
+            
             let jsonData = JSON.stringify(aData);
+            console.log(aData);
+            console.log(jsonData);
             filtrer(jsonData);
         }
     
