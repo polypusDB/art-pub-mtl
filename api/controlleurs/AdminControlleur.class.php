@@ -15,6 +15,7 @@ class AdminControlleur extends Controlleur
 {
 	
 	public function getAction(Requete $requete){
+		
 		$res = array();
 		if(isset($_SESSION["utilisateur"])){
 			if($_SESSION["utilisateur"]["type_acces"] == "admin"){

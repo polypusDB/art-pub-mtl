@@ -18,18 +18,12 @@ class ArtisteAdminControlleur extends Controlleur
 	{
 		$res = array();
 		$msgErreur="";
-		 // si sup on regarde l'id et on supprime
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				$aData[] = $requete->url_elements[1];
 				$string = $this->ArrayToString($aData);
 				$this->supArtiste($string);
 				header("Location:/art-pub-mtl/api/artisteAdmin");
-				
-				
-				// $this->supArtiste((int)$requete->url_elements[1]);
-				// $res = $this->getListeArtiste();
-				
 			}
 			else{
 				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
@@ -39,8 +33,6 @@ class ArtisteAdminControlleur extends Controlleur
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				$aData = $this->getArtiste((int)$requete->url_elements[1]);
 				$this->getFormModif($aData, $msgErreur="");
-				
-				
 			}
 			else{
 				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";

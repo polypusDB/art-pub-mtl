@@ -125,12 +125,7 @@ class Vue {
 		$this->affichePied();
 	}
 
-<<<<<<< HEAD
-    /* Affiche le formulaire de modification d'une oeuvre ---------------- */
-	public function getFormModifierOeuvre(){
-=======
 	public function getFormModifierOeuvre($aData, $liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
->>>>>>> bae99f0d3501c3d832264bf411e3e220f07b908c
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formModifOeuvre.php");

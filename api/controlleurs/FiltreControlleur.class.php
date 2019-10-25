@@ -30,22 +30,17 @@ class FiltreControlleur extends Controlleur
         
         if($requete->parametres["filtre"] == "adminArtiste"){
             $recherche = $requete->parametres["recherche"];
-            $this->filtrerAdminArtiste($recherche);
+            $limit = $requete->parametres["limit"];
+            $this->filtrerAdminArtiste($recherche, $limit);
         }
         else if($requete->parametres["filtre"] == "adminOeuvre"){
             $recherche = $requete->parametres["recherche"];
-            $this->filtrerAdminOeuvre($recherche);
+            $limit = $requete->parametres["limit"];
+            $this->filtrerAdminOeuvre($recherche, $limit);
         }
         else if($requete->parametres["filtre"] == "userArtiste"){
             $recherche = $requete->parametres["recherche"];
             $limit = $requete->parametres["limit"];
-            // if($recherche == ""){
-            //     echo json_encode("vide");
-            // }
-            // else{
-            //     echo json_encode("pas vide");
-            // }
-            
             $this->filtrerArtiste($recherche, $limit);
         }
         else if($requete->parametres["filtre"] == "userOeuvre"){
@@ -77,15 +72,15 @@ class FiltreControlleur extends Controlleur
         $aFiltre = $oFiltre->OeuvreFiltre($arrondissement, $materiaux, $categories, $recherche, $limit);
     }
 
-    public function filtrerAdminArtiste($recherche){
+    public function filtrerAdminArtiste($recherche, $limit){
         $oFiltre = new Filtre();
-        $aFiltre = $oFiltre->filtrerArtisteAdmin($recherche);
+        $aFiltre = $oFiltre->filtrerArtisteAdmin($recherche, $limit);
     }
 
 
-    public function filtrerAdminOeuvre($recherche){
+    public function filtrerAdminOeuvre($recherche, $limit){
         $oFiltre = new Filtre();
-        $aFiltre = $oFiltre->filtrerOeuvreAdmin($recherche);
+        $aFiltre = $oFiltre->filtrerOeuvreAdmin($recherche, $limit);
     }
     public function filtrerArtiste($recherche, $limit){
         $oFiltre = new Filtre();

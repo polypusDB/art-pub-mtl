@@ -52,8 +52,8 @@ window.addEventListener("load", function(){
         xhr.onreadystatechange = function(){
             if (this.readyState == 4 && this.status == 200){
                 bool = false;
-                let artiste  = JSON.parse(xhr.responseText);
-                console.log(artiste);
+                let artistes  = JSON.parse(xhr.responseText);
+                afficherListe(artistes);
                 
             }
         }
@@ -61,5 +61,21 @@ window.addEventListener("load", function(){
         xhr.send(data);
     }
 
-    
+
+    function afficherListe(artistes){
+        let template = document.querySelector(".liste_Artiste");
+        let parent = this.document.querySelector(".parent");
+        parent.innerHTML = "";
+        artistes.forEach(function(artiste){
+            let unArtiste  = template.cloneNode(true);
+            for(let prop in artiste){
+                let regExp = new RegExp("{{"+prop+"}}", "g");
+                unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+            }
+            let nouveauNoeud = document.importNode(unArtiste.content, true)
+            parent.append(nouveauNoeud);
+        })
+    }
+
+
 })
