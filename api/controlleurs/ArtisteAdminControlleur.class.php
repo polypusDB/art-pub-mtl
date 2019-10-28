@@ -62,60 +62,22 @@ class ArtisteAdminControlleur extends Controlleur
 
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
-				$msgErreur ="";
-				if(empty(trim($_POST["nom_collectif"]))){
-					if(empty(trim($_POST["nom"])) && empty(trim($_POST["prenom"]))){
-						$msgErreur.= "Vous devez remplir le champ nom collectif ou nom et prenom. <br>";
-					}
-					else if(empty(trim($_POST["nom"])) || empty(trim($_POST["prenom"]))){
-						$msgErreur.= "Vous devez remplir le champ prenom et prénom ou un nom collectif. <br>";
-					}
+				$aData = Array();
+				foreach($_POST as $cle=>$value){
+					$aData[$cle] = $value;
 				}
-				if(empty($_POST["biographie"])){
-					$msgErreur .= "Vous devez remplir le champ biographie. <br>";
-				}
-
-				// Si le message d'erreur est vide on lance l'ajout, sinon on affiche le message
-				if($msgErreur == ""){
-					$aData = Array();
-					foreach($_POST as $cle=>$value){
-						$aData[$cle] = $value;
-					}
-						$this->AjouterData($aData);
-						header("Location: /art-pub-mtl/api/artisteAdmin");
-				}
-				else{
-					
-					$this->getFormAjout($msgErreur);
-				}
+				$this->AjouterData($aData);
+				header("Location: /art-pub-mtl/api/artisteAdmin");
 			}
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "mod"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
-				$msgErreur ="";
-				if(empty(trim($_POST["nom_collectif"]))){
-					if(empty(trim($_POST["nom"])) && empty(trim($_POST["prenom"]))){
-						$msgErreur.= "Vous devez remplir le champ nom collectif ou nom et prenom. <br>";
-					}
-					else if(empty(trim($_POST["nom"])) || empty(trim($_POST["prenom"]))){
-						$msgErreur.= "Vous devez remplir le champ prenom et prénom ou un nom collectif. <br>";
-					}
+				$aData = Array();
+				foreach($_POST as $cle=>$value){
+					$aData[$cle] = $value;
 				}
-				if(empty($_POST["biographie"])){
-					$msgErreur .= "Vous devez remplir le champ biographie. <br>";
-				}
-
-				if($msgErreur == ""){
-					$aData = Array();
-					foreach($_POST as $cle=>$value){
-						$aData[$cle] = $value;
-					}
-					$this->modifData($aData, $msgErreur);
-					header("Location: /art-pub-mtl/api/artisteAdmin");
-				}
-				else{
-					$this->getFormModif($_POST, $msgErreur);
-				}
+				$this->modifData($aData, $msgErreur);
+				header("Location: /art-pub-mtl/api/artisteAdmin");
 			}
 		}
 		//Validation supprimer avec le Checkbox
@@ -183,12 +145,14 @@ class ArtisteAdminControlleur extends Controlleur
 	// Section Supprimer
 	protected function supArtiste($aData){
 		$oArtiste= new Artiste();
+		$oArtisteOeuvre= new ArtisteOeuvre();
 		$aArtiste = $oArtiste->deleteArtiste($aData);
+		$aArtisteOeuvre = $oArtisteOeuvre->supprimerArtisteOeuvre($aData);
 	}
 
 	protected function ArrayToString($aData){
 		
-		if($msgErreur == ""){
+
 			$premier = true;
 
 			foreach($aData as $id){
@@ -201,7 +165,6 @@ class ArtisteAdminControlleur extends Controlleur
 				$premier = false;
 			}
 			return $res;
-		}
 	}
 }
 ?>

@@ -89,6 +89,9 @@ legend{
 .contenu-form .cacher{
     display: none;
 }
+.vide{
+    border: 2px red solid;
+}
 
 @media screen and (max-width:667px){
     .contenu-form {

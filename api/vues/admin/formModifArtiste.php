@@ -5,20 +5,14 @@
         extract($aData);
         // var_dump($aData);
     ?>
-    <form action="/art-pub-mtl/api/artisteAdmin/mod/insert" method="POST">
+    <form action="/art-pub-mtl/api/artisteAdmin/mod/insert" method="POST" class="modArtiste">
         Nom : <input type="text" name="nom" value="<?=$nom ?>"/><br>
         Prenom : <input type="text" name="prenom" value="<?=$prenom ?>"/><br>
         Nom Collectif : <input type="text" name="nom_collectif" value="<?=$nom_collectif ?>"/><br>
         Biographie : <input type="text" name="biographie"value="<?=$biographie ?>" /><br>
         <input type="hidden" name="id" value='<?=$id_artiste ?>'/>
-        <input type="submit" value="Modifier"/>
-        <div>
-        <?php
-        if($msgErreur != ""){
-            echo $msgErreur;
-        }
-        ?>
-        </div>
+        <input type="submit" value="Modifier" class="btn" />
+        <div class="message"></div>
     </form>
     <?php
     include "VuePiedAdmin.php";
