@@ -84,6 +84,8 @@
 						<div>
 							<p><?=$nom_connexion ?></p>
 							<p><?=$texte ?></p>
+							<p data-idCommentaire="<?=$id_commentaire ?>" class="signaler">Signaler</p>
+							<p data-idCommentaire="<?=$id_commentaire ?>"class="suprimer">Suprimer</p>
 						</div>
 				<?php
 				}

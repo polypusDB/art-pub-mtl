@@ -43,6 +43,9 @@ class Commentaire extends Modele {
         $query = "INSERT into commentaire (id_usager, id_oeuvre, texte)
         VALUES ('$id_user','$id_oeuvre', '$text')";
         $res = $this->_db->query($query);
+        // var_dump($this->_db->insert_id);
+        $idCom = $this->_db->insert_id;
+        return $idCom;
     }
 }
 
