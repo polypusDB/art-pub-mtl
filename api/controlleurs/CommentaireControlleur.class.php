@@ -23,7 +23,18 @@ class CommentaireControlleur extends Controlleur
 
 	public function getAction(Requete $requete)
 	{
-        echo "Commentaire";
+        // echo "Commentaire";
+        
+        if($requete->url_elements[0] == "signaler"){
+            if($requete->url_elements[1] && is_numeric($requete->url_elements[1])){
+                // echo json_encode($requete->url_elements[0]);
+                $this->signalerCommentaire($requete->url_elements[1]);
+            }
+        }
+        else if($requete->url_elements[0] == "suprimer"){
+            echo "suprimer";
+        }
+
 	}
 
 	public function postAction(Requete $requete){
@@ -46,11 +57,16 @@ class CommentaireControlleur extends Controlleur
     
     
     protected function insertCommentaire($aData){
-        $oCommentaire = new Commentaire;
+        $oCommentaire = new Commentaire();
         $res = $oCommentaire->insertCommentaire($aData);
         return $res;
     }
-	
+    
+    
+    protected function signalerCommentaire($id){
+        $oCommentaire = new Commentaire();
+        $aCommentaire = $oCommentaire->signalerCommentaire($id);
+    }
 	
 }
 ?>

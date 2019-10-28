@@ -47,6 +47,15 @@ class Commentaire extends Modele {
         $idCom = $this->_db->insert_id;
         return $idCom;
     }
+
+
+    public function signalerCommentaire($id){
+        $query = "UPDATE commentaire
+        SET signaler = true
+        where id_commentaire = $id";
+        
+        $this->_db->insert_id;
+    }
 }
 
 

@@ -3,9 +3,8 @@ window.addEventListener("load", function(){
 
     let btnCom = document.querySelector(".btnCom");
     if(btnCom != null){
+        let sectionCom = document.querySelector(".list-comment");
 
-        let btnSignaler = document.querySelectorAll(".signaler");
-        let btnSuprimer = document.querySelectorAll(".suprimer");
 
         btnCom.addEventListener("click", function(){
             let text = document.querySelector(".commentaire").value;
@@ -14,7 +13,7 @@ window.addEventListener("load", function(){
             let user = document.querySelector(".user").value;
             let aData = { "text" : text, "id_user" : idUser, "id_oeuvre" : idOeuvre, "nom_connexion" : user};
             let newDATA = JSON.stringify(aData);
-            let sectionCom = document.querySelector(".list-comment");
+            
     
     
             if(text.value != ""){
@@ -55,17 +54,30 @@ window.addEventListener("load", function(){
             }
         })
 
+        sectionCom.addEventListener("click", function(evt){
+            if(evt.target.classList.value == "signaler"){
+                // console.log(evt.target.dataset.idcommentaire);
+                signalerCommentaire(evt.target.dataset.idcommentaire);
+                evt.target.classList.add("signalerON");
+            }
+        })
 
 
-        function detecBtn(){
-            btnSignaler = document.querySelectorAll(".signaler");
-            btnSuprimer = document.querySelectorAll(".suprimer");
-
-
-
-
-        }
+        
     }
 
+
+    function signalerCommentaire(id){
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", "/art-pub-mtl/api/commentaire/signaler/"+id);
+        xhr.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200) {
+                // console.log(xhr.responseText);
+
+            }
+        }
+        xhr.send(id);
+
+    }
 
 })
