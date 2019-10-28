@@ -7,13 +7,8 @@ window.addEventListener("load", function(){
 
         btnRecherche.addEventListener("click", function(){
             let recherche = barreRecherche.value;
-            if(recherche != ""){
                 gestionFiltre(artistePresent, recherche);
-            }
-            else{
-                console.log("le champ recherche est vide");
-            }
-            
+
         })
 
 
