@@ -1,24 +1,25 @@
 <?php
 /**
  * Class ConnectionControlleur
- * Gère les requêtes de connection
+ * Gère la page connection
  * 
- * @author Saul Turbide
+ * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
- * @update 2019-08-12
+ * @update 2019-06-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
- 
 
 
  
 
 class ConnectionControlleur extends Controlleur 
 {
-	
-
-	
+	/**
+	 * GET : 
+	 * 		/connection : 	1- si l'utilisateur est connecté on le déconnecte
+	 * 					  	2- si l'utilisateur n'est pas connecté on l'ammene au formullaire de connection / inscription 
+	 */
 	public function getAction(Requete $requete)
 	{
 		if(isset($_SESSION["utilisateur"])){
@@ -30,19 +31,21 @@ class ConnectionControlleur extends Controlleur
 			$oVue = new Vue();
 			$msg= "";			
 			$oVue->afficherFormConnexion($msg, $action);
-			
 		}
-
-
-		
 	}
 
+	/**
+	 * POST 
+	 * 		/inscription/login			- on montre le formulaire de connexion
+	 * 		/inscription/inscription 	- on montre le formullaire d'inscription
+	 */
+
 	public function postAction(Requete $requete){
-		
+		/**
+		 * les "actions" sont utilisé pour savoir quelle formulaire caché selon l'endroits d'ou on viens
+		 */
 		if(isset($requete->url_elements[0])&& $requete->url_elements[0] =="login")
 		{
-			echo "<br>";
-			echo $requete->url_elements[0];
 			if(isset($_POST["user"]) && isset($_POST["mdp"])){
 				if(trim($_POST["user"]) != "" && trim($_POST["mdp"])){
 					$this->connection($_POST["user"]);	
@@ -74,10 +77,16 @@ class ConnectionControlleur extends Controlleur
 		}
 	}
 
+	/**
+	 * Déconnexion
+	 */
 	protected function deconnection(){
 		session_destroy();
 	}
 
+	/**
+	 * Connexion de l'usager à son compte
+	 */
 	protected function connection(){
 		$oConnection = new Connection();
 		$utilisateur = $oConnection->getConnectionUser($_POST["user"], $_POST["mdp"]);
@@ -89,12 +98,12 @@ class ConnectionControlleur extends Controlleur
 		}
 		else{
 			$_SESSION["utilisateur"] = $utilisateur;
-			
 			$this->detecConnexion($utilisateur);
 		}
-		
 	}
-
+	/**
+ 	*	Redirection après la connexion selon le type d'acces de la personne connecté 
+ 	*/
 	protected function detecConnexion($user){
 		if($user["type_acces"] == "admin"){
 			header("location: /art-pub-mtl/api/admin");
@@ -104,6 +113,10 @@ class ConnectionControlleur extends Controlleur
 		}
 	}
 
+	/**
+	 * Envoie les informations pour l'inscription au modele connexion
+	 * @param aData - information de l'usager sur le formulaire d'inscription
+	 */
 	protected function inscription($aData){
 		$oConnection = new Connection();
 		$res = $oConnection->inscription($aData);
