@@ -23,18 +23,32 @@ class CommentaireControlleur extends Controlleur
 
 	public function getAction(Requete $requete)
 	{
-        echo "Commentaire";
+        // echo "Commentaire";
+        
+        if($requete->url_elements[0] == "signaler"){
+            if($requete->url_elements[1] && is_numeric($requete->url_elements[1])){
+                $this->signalerCommentaire($requete->url_elements[1]);
+            }
+        }
+        else if($requete->url_elements[0] == "suprimer"){
+            if($requete->url_elements[1] && is_numeric($requete->url_elements[1])){
+                $this->suprimerCommentaire($requete->url_elements[1]);
+            }
+            
+        }
+
 	}
 
 	public function postAction(Requete $requete){
 
         
-        $this->insertCommentaire($requete->parametres);
+        $res = $this->insertCommentaire($requete->parametres);
 
         $com = array(
             "texte" => $requete->parametres["text"],
             "id_user" => $requete->parametres["id_user"],
-            "nom_connexion" => $_SESSION["utilisateur"]["nom_connexion"]
+            "nom_connexion" => $_SESSION["utilisateur"]["nom_connexion"],
+            "id_commentaire" =>$res
         );
 
 
@@ -45,10 +59,21 @@ class CommentaireControlleur extends Controlleur
     
     
     protected function insertCommentaire($aData){
-        $oCommentaire = new Commentaire;
+        $oCommentaire = new Commentaire();
         $res = $oCommentaire->insertCommentaire($aData);
+        return $res;
     }
-	
+    
+    
+    protected function signalerCommentaire($id){
+        $oCommentaire = new Commentaire();
+        $aCommentaire = $oCommentaire->signalerCommentaire($id);
+    }
+
+    protected function suprimerCommentaire($id){
+        $oCommentaire = new Commentaire();
+        $aCommentaire = $oCommentaire->suprimer($id);
+    }
 	
 }
 ?>

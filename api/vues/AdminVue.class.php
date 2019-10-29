@@ -111,6 +111,12 @@ class AdminVue {
 		$this->afficheEntete();
 		include("admin/VueListeUsagersAdmin.php");
 	}
+
+	public function afficherCommentairesSignaler($aData){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueListeCommentairesAdmin.php");
+	}
 	
 }
 ?>

@@ -11,5 +11,6 @@
         <a href="/art-pub-mtl/api/artisteAdmin">Liste des Artistes</a>
         <a href="/art-pub-mtl/api/artisteAdmin/ajouter">Ajouter un Artiste</a>
     </li>
+    <li><a href="/art-pub-mtl/api/commentaireAdmin">Commentaires</a></li>
     <!-- <li><a href="">Parcours</a></li> -->
 </ul>

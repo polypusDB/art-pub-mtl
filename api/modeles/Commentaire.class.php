@@ -16,7 +16,7 @@ class Commentaire extends Modele {
 
     public function ListeCommentairesParOeuvreID($id){
         $res = Array();
-        $query = "SELECT c.texte, u.nom_connexion, c.id_commentaire
+        $query = "SELECT c.texte, u.nom_connexion, c.id_commentaire, c.signaler
         from commentaire c
         join oeuvre o
         on o.id_oeuvre = c.id_oeuvre
@@ -34,15 +34,75 @@ class Commentaire extends Modele {
 		return $res;
     }
 
-    public function postAction(){
-
-    }
 
     public function insertCommentaire($aData){
         extract($aData);
         $query = "INSERT into commentaire (id_usager, id_oeuvre, texte)
         VALUES ('$id_user','$id_oeuvre', '$text')";
         $res = $this->_db->query($query);
+
+        $idCom = $this->_db->insert_id;
+        return $idCom;
+    }
+
+
+    public function signalerCommentaire($id){
+        $query = "UPDATE commentaire
+        SET signaler = true
+        where id_commentaire = $id";
+        
+        
+        $this->_db->query($query);
+    }
+
+    public function suprimer($id){
+        // echo $id;
+
+        $query = "DELETE FROM commentaire
+        WHERE id_commentaire = $id";
+
+        $this->_db->query($query);
+    }
+
+    public function supCommentaire($string){
+        $query = "DELETE 
+        FROM commentaire
+        $string";
+
+        $this->_db->query($query);
+    }
+
+    public function GetListeSignaler(){
+        $query = "SELECT c.id_commentaire, c. texte, u.id_usager, u.nom_connexion
+        FROM commentaire c
+        join usager u
+        on u.id_usager = c.id_usager
+        where signaler = 1";
+
+        if($mrResultat = $this->_db->query($query)){
+            while($commentaire = $mrResultat->fetch_assoc()){
+                foreach($commentaire as $cle=> $valeur){
+                    $commentaire[$cle] = utf8_encode($valeur);
+                }
+                $res[] = $commentaire;
+            }
+        }
+        if(empty($res)){
+            return "vide";
+        }
+        else{
+            return($res);
+        }
+    }
+
+
+    public function appCommentaire($string){
+        $query = "UPDATE commentaire 
+        SET signaler = false
+        $string";
+
+        // echo $query;
+        $this->_db->query($query);
     }
 }
 

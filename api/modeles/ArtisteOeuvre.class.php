@@ -59,5 +59,13 @@ class ArtisteOeuvre extends Modele {
 		$resQuery = $this->_db->query($query); 
         
 		return $resQuery;        
-    }
+	}
+	
+	public function supprimerArtisteOeuvre($id_artiste){
+		$query = "DELETE ". self::TABLE_ARTISTEOEUVRE ."
+		$id_artiste";
+
+		echo $query;
+		// $resQuery = $this->_db->query($query); 
+	}
 }

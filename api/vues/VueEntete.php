@@ -32,6 +32,7 @@
         <script src="/art-pub-mtl/js/filtreOeuvre.js"></script>
         <script src="/art-pub-mtl/js/filtreArtiste.js"></script>
         <script src="/art-pub-mtl/js/apparritionFiltres.js"></script>
+        <script src="/art-pub-mtl/js/champsObligatoires.js"></script>
 
     </head>
     <body>
