@@ -1,7 +1,6 @@
 <?php
 /**
- * Class AdminControlleur
- * Gère la page d'accueil
+ * Class ArrondissementControlleur
  * 
  * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
@@ -16,9 +15,10 @@
  
 class ArrondissementControlleur extends Controlleur 
 {
-	
-	// GET : 
-	// 		/arrondissement/ - Liste des oeuvres
+	/**
+	 * GET : 
+	 * 		arrondissement/ - Liste des oeuvres À CHANGER
+	 */
 	
 	
 	public function getAction(Requete $requete)

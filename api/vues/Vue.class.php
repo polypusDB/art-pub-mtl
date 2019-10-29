@@ -140,5 +140,12 @@ class Vue {
 		$this->affichePied();
 	}
 
+	public function AfficherUsager($aData){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("VueUsager.php");
+		$this->affichePied();
+	}
+
 }
 ?>

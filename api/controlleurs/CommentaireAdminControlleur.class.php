@@ -1,25 +1,27 @@
 <?php
 /**
- * Class AdminControlleur
- * Gère la page d'accueil
+ * Class CommentaireAdminControlleur
  * 
- * @author Jonathan Martel
+ * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
  * @update 2019-06-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
- 
 
 class CommentaireAdminControlleur extends Controlleur 
 {
-	
+    /**
+	 * GET : 
+	 * 		/comentaire/        - Liste des commentaires signalés
+	 * 		/commentaire/sup/id - supprime un commentaire de la base de données
+	 * 		/commentaire/app/id - approuve un commentaire et change sa value "signale" a false;
+	 * 		@param requete	    - Recois un verbes et autre parametres qui sont utiliser pour la redirection
+	 */
 	public function getAction(Requete $requete){
 	
         if($_SESSION["utilisateur"]["type_acces"] == "admin"){
-            // var_dump($requete->url_elements);
             if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
-                // echo "on supprime";
                 $aData[] = $requete->url_elements[1];
 				$string = $this->ArrayToString($aData);
 				$this->supCommentaire($string);
@@ -35,10 +37,18 @@ class CommentaireAdminControlleur extends Controlleur
                 $this->getCommnetaires();
             }
         }
-	}
-
+    }
+    
+    /**
+	 * POST : 
+	 * 		/isset($_POST["sup"]) - supprime plusieurs commentaires de la base de données
+	 * 		/isset($_POST["app"]) - approuve plusieurs commentaires et change la value "signale" a false
+	 * 		@param requete	    - Recois un verbes et autre parametres qui sont utiliser pour la redirection
+	 */
 	public function postAction(Requete $requete){
-
+        /**
+         * Recois le tableau de commentaire sélectionné et crée une string avec celui-ci
+         */
         if(isset($_POST["sup"])){
             $msgErreur ="";
 			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
@@ -85,6 +95,10 @@ class CommentaireAdminControlleur extends Controlleur
         }
     }
     
+    /**
+     * Recois la liste de commentaire a afficher
+     * Appelle la vue et envoie le tableau de commentaires
+     */
     protected function getCommnetaires(){
         $oCommentaire = new Commentaire();
         $aCommentaire = $oCommentaire->GetListeSignaler();
@@ -92,16 +106,28 @@ class CommentaireAdminControlleur extends Controlleur
         $oVue->afficherCommentairesSignaler($aCommentaire);
     }
 
+    /**
+     * Envoie la string nécessaive a la suppression des commentaires
+     * @param string - id en string sql
+     */
     protected function supCommentaire($string){
         $oCommentaire = new Commentaire();
         $oCommentaire->supCommentaire($string);
     }
-
+    /**
+     * Envoie la string nécessaive a l'approbation des commentaires
+     * @param string - id en string sql
+     */
     protected function appCommentaire($string){
         $oCommentaire = new Commentaire();
         $oCommentaire->appCommentaire($string);
     }
 
+    /**
+     * Revois un tableau d'id et les convertis en string sql
+     * @param aData - tableau d'id
+     * retourne le tableau en partie de chaine sql
+     */
     protected function ArrayToString($aData){
         $premier = true;
 

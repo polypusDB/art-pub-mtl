@@ -12,8 +12,9 @@
                         }
                         else{
                             $username = $_SESSION["utilisateur"]["nom_connexion"];
+                            $id = $_SESSION["utilisateur"]["id_usager"];
                             ?>
-                            <a href="#" class="user"><i class="fas fa-grin-wink"></i>Salut <?php echo $username?></a>
+                            <a href="/art-pub-mtl/api/usager/<?=$id ?>" class="user"><i class="fas fa-grin-wink"></i>Salut <?php echo $username?></a>
                             <a href="/art-pub-mtl/api/admin"><i class="fas fa-edit"></i>Tableau de Bord</a>
                             <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                             <?php

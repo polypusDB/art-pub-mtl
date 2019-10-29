@@ -1,7 +1,6 @@
 <?php
 /**
- * Class AdminControlleur
- * Gère la page d'accueil
+ * Class ArtisteAdminControlleur
  * 
  * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
@@ -9,16 +8,15 @@
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
- 
 
 class ArtisteAdminControlleur extends Controlleur 
 {
-
 	/** 	GET : 
 	* 		oeuvre 			- Liste des oeuvres
 	* 		oeuvre/sup/id 	- supprime une oeuvre
 	*		oeuvre/mod/id 	- formullaire de modification une oeuvre
 	* 		oeuvre/ajouter 	- formullaire d'ajout d'une oeuvre
+	*		@param requete	- Recois un verbes et autre parametres qui sont utiliser pour la redirection
 	*/
 
 	public function getAction(Requete $requete)
@@ -63,15 +61,14 @@ class ArtisteAdminControlleur extends Controlleur
 			
 		}
 	}
-
-	public function postAction(Requete $requete){
-
 		/**
 		 * POST : 
 		 * oeuvre/mod/insert 		modifie une oeuvre
 		 * oeuvre/ajouter/insert 	ajoute une oeuvre
+		 * @param requete	- Recois un verbes et autre parametres qui sont utiliser pour la redirection
 		 */
 
+	public function postAction(Requete $requete){
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
 				$aData = Array();
@@ -122,7 +119,10 @@ class ArtisteAdminControlleur extends Controlleur
 
 
 	/**
-	 * Liste de tous les artistes
+	 * Liste de tous les artistes selons les filtres et la limites recus
+	 * @param filtre - string qui seras ajouter à la suite de la requête SQL
+	 * @param limit - nombre pour limiter le nombre d'élément requis au chargement de la page.
+	 * Returns la liste des artistes filtré ou non
 	 */
 	protected function getListeArtiste($filtre= "", $limit = 20){
 		$oArtiste = new Artiste();
@@ -160,30 +160,41 @@ class ArtisteAdminControlleur extends Controlleur
 	
 	/**
 	 * Retourne la vue pour afficher le formullaire de modification
+	 * @param aData 	- un tableau des champs rentré dans le formullaire de modificaiton
+	 * @param msgErreur	- message d'erreur si on envoie un tableau vide
 	 */
-	protected function getFormModif($aData, $msgErreur){
+	protected function getFormModif($aData, $msgErreur = ""){
 		$oVue = new AdminVue();
 		$oVue->getFormModifArtiste($aData, $msgErreur);
 	}
 
+	/**
+	 * Insère les données modifié dans la base de données
+	 * @param aData 	- un tableau des champs rentré dans le formullaire de modificaiton
+	 */
 	protected function modifData($aData){
 		$oArtiste = new Artiste();
 		$oArtiste->modifierArtiste($aData);
 	}
 	
 	// Section Supprimer
-	protected function supArtiste($aData){
+	/**
+	 * envoie les id au modèle artiste pour supprimer les artistes et leurs liens ArtisteOeuvre
+	 * @param string est une chaine de caractères qui s'additionne a la requete sql pour sélectionner les bon
+	 * éléments a supprimer
+	 */
+	protected function supArtiste($string){
 		$oArtiste= new Artiste();
 		$oArtisteOeuvre= new ArtisteOeuvre();
-		$aArtiste = $oArtiste->deleteArtiste($aData);
-		$aArtisteOeuvre = $oArtisteOeuvre->supprimerArtisteOeuvre($aData);
+		$aArtiste = $oArtiste->deleteArtiste($string);
+		$aArtisteOeuvre = $oArtisteOeuvre->supprimerArtisteOeuvre($string);
 	}
-
+	/**
+	 * Convertis les id et les intègre dans une fin de requete sql 
+ 	 * @param aData - Tableau d'id 
+ 	 */
 	protected function ArrayToString($aData){
-		
-
 			$premier = true;
-
 			foreach($aData as $id){
 				if($premier == true){
 					$res= "WHERE id_artiste = ". $id;
