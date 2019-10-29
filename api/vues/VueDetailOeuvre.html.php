@@ -80,12 +80,19 @@
 			<?php
 				foreach($commentaires as $commentaire){
 					extract($commentaire);
+					$userConnect = $_SESSION["utilisateur"]["nom_connexion"];
 					?>
-						<div>
+						<div data-idCommentaire="<?=$id_commentaire ?>">
 							<p><?=$nom_connexion ?></p>
 							<p><?=$texte ?></p>
-							<p data-idCommentaire="<?=$id_commentaire ?>" class="signaler">Signaler</p>
-							<p data-idCommentaire="<?=$id_commentaire ?>"class="suprimer">Suprimer</p>
+							<p data-idCommentaire="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>">Signaler</p>
+							<?php
+								if($userConnect == $nom_connexion){
+								?>
+									<p data-idCommentaire="<?=$id_commentaire ?>"class="suprimer">Suprimer</p>
+								<?php
+								}
+							?>
 						</div>
 				<?php
 				}

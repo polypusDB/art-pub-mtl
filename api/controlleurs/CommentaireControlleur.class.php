@@ -27,12 +27,14 @@ class CommentaireControlleur extends Controlleur
         
         if($requete->url_elements[0] == "signaler"){
             if($requete->url_elements[1] && is_numeric($requete->url_elements[1])){
-                // echo json_encode($requete->url_elements[0]);
                 $this->signalerCommentaire($requete->url_elements[1]);
             }
         }
         else if($requete->url_elements[0] == "suprimer"){
-            echo "suprimer";
+            if($requete->url_elements[1] && is_numeric($requete->url_elements[1])){
+                $this->suprimerCommentaire($requete->url_elements[1]);
+            }
+            
         }
 
 	}
@@ -66,6 +68,11 @@ class CommentaireControlleur extends Controlleur
     protected function signalerCommentaire($id){
         $oCommentaire = new Commentaire();
         $aCommentaire = $oCommentaire->signalerCommentaire($id);
+    }
+
+    protected function suprimerCommentaire($id){
+        $oCommentaire = new Commentaire();
+        $aCommentaire = $oCommentaire->suprimer($id);
     }
 	
 }

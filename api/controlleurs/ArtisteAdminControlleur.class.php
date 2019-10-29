@@ -1,11 +1,11 @@
 <?php
 /**
- * Controlleur de la ressource Artiste
+ * Class AdminControlleur
+ * Gère la page d'accueil
  * 
- * 
- * @author Jonathan Martel
+ * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
- * @update 2016-11-16
+ * @update 2019-06-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
@@ -13,6 +13,13 @@
 
 class ArtisteAdminControlleur extends Controlleur 
 {
+
+	/** 	GET : 
+	* 		oeuvre 			- Liste des oeuvres
+	* 		oeuvre/sup/id 	- supprime une oeuvre
+	*		oeuvre/mod/id 	- formullaire de modification une oeuvre
+	* 		oeuvre/ajouter 	- formullaire d'ajout d'une oeuvre
+	*/
 
 	public function getAction(Requete $requete)
 	{
@@ -35,7 +42,7 @@ class ArtisteAdminControlleur extends Controlleur
 				$this->getFormModif($aData, $msgErreur="");
 			}
 			else{
-				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
+				echo "vous devez être connecté en tant qu'admin pour pouvoir modifier";
 			}	
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
@@ -43,10 +50,9 @@ class ArtisteAdminControlleur extends Controlleur
 				$this->getFormAjout($msgErreur);				
 			}
 			else{
-				echo "vous devez être connecté en tant qu'admin pour pouvoir supprimer";
+				echo "vous devez être connecté en tant qu'admin pour pouvoir ajouter";
 			}
 		}
-		// Liste des artistes
         else 	
         {
 			$filtre= "";
@@ -59,6 +65,12 @@ class ArtisteAdminControlleur extends Controlleur
 	}
 
 	public function postAction(Requete $requete){
+
+		/**
+		 * POST : 
+		 * oeuvre/mod/insert 		modifie une oeuvre
+		 * oeuvre/ajouter/insert 	ajoute une oeuvre
+		 */
 
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
@@ -80,7 +92,10 @@ class ArtisteAdminControlleur extends Controlleur
 				header("Location: /art-pub-mtl/api/artisteAdmin");
 			}
 		}
-		//Validation supprimer avec le Checkbox
+		/**
+		 * Validation supprimer avec le Checkbox
+		 * Recois en paramètre POST une liste d'id à supprimer
+		 */
 		else if (isset($_POST['suppArt'])) {
 			$msgErreur ="";
 			if (isset($_POST['checks']) && is_array($_POST['checks'])) {
@@ -102,36 +117,50 @@ class ArtisteAdminControlleur extends Controlleur
 				$this->supArtiste($string);
 				header("Location:/art-pub-mtl/api/artisteAdmin");
 			}
-		
 		}
 	}
 
 
-	// Section Artistes
+	/**
+	 * Liste de tous les artistes
+	 */
 	protected function getListeArtiste($filtre= "", $limit = 20){
 		$oArtiste = new Artiste();
 		$aArtiste = $oArtiste->getListe($filtre, $limit);
 		return $aArtiste;
 	}
 
+	/**
+	 * Information d'un seul artiste
+	 * @param id_artiste - id de l'artiste
+	 * Returns les détails d'un artiste
+	 */
 	protected function getArtiste($id_artiste){
 		$oArtiste= new Artiste();
 		$aArtiste = $oArtiste->getArtiste($id_artiste);		
 		return $aArtiste;
 	}
 
-	// Section Ajouter
+	/**
+	 * Retourne la vue pour afficher le formullaire d'ajout
+	 */
 	protected function getFormAjout(){
 		$oVue = new AdminVue();
 		$oVue->getFormAjoutArtiste();
 	}
 
+	/**
+	 * Ajoute dans la base de données le nouvel artiste
+	 * @param aData - tableau des données du nouvel artiste entrée
+	 */
 	protected function AjouterData($aData){
 		$oArtiste = new Artiste();
 		$oArtiste->AjouterArtiste($aData);
 	}
 	
-	// Section Modifier
+	/**
+	 * Retourne la vue pour afficher le formullaire de modification
+	 */
 	protected function getFormModif($aData, $msgErreur){
 		$oVue = new AdminVue();
 		$oVue->getFormModifArtiste($aData, $msgErreur);

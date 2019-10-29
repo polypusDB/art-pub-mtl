@@ -1,6 +1,4 @@
 window.addEventListener("load", function(){
-
-
     let btnCom = document.querySelector(".btnCom");
     if(btnCom != null){
         let sectionCom = document.querySelector(".list-comment");
@@ -31,8 +29,12 @@ window.addEventListener("load", function(){
                         let p3 = document.createElement("P");
                         let p4 = document.createElement("P");
                         let div = document.createElement("DIV");
+                        div.dataset.idCommentaire = com["id_commentaire"];
                         p3.dataset.idCommentaire = com["id_commentaire"];
                         p3.dataset.idCommentaire = com["id_commentaire"];
+                        p4.dataset.idCommentaire = com["id_commentaire"];
+                        p3.classList.add("signaler");
+                        p4.classList.add("suprimer");
                         p1.textContent = com["nom_connexion"];
                         p2.textContent = com["texte"];
                         p3.textContent = "Signaler";
@@ -55,10 +57,15 @@ window.addEventListener("load", function(){
         })
 
         sectionCom.addEventListener("click", function(evt){
+            console.log(evt.target);
             if(evt.target.classList.value == "signaler"){
-                // console.log(evt.target.dataset.idcommentaire);
-                signalerCommentaire(evt.target.dataset.idcommentaire);
                 evt.target.classList.add("signalerON");
+                signalerCommentaire(evt.target.dataset.idcommentaire);
+            }
+            if(evt.target.classList.value == "suprimer"){
+                suprimerCommentaire(evt.target.dataset.idcommentaire);
+                let divParent = evt.target.parentElement;
+                divParent.remove();
             }
         })
 
@@ -72,7 +79,19 @@ window.addEventListener("load", function(){
         xhr.open("GET", "/art-pub-mtl/api/commentaire/signaler/"+id);
         xhr.onreadystatechange = function(){
             if (this.readyState == 4 && this.status == 200) {
-                // console.log(xhr.responseText);
+
+            }
+        }
+        xhr.send(id);
+
+    }
+
+
+    function suprimerCommentaire(id){
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", "/art-pub-mtl/api/commentaire/suprimer/"+id);
+        xhr.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200) {
 
             }
         }
