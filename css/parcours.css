@@ -1,0 +1,133 @@
+.contenu.parcours{
+    min-height: 0%;
+    padding-bottom: 0%;
+}
+
+.contenu.caracteristiques{
+    text-align: center;
+    justify-content: space-between;
+    padding-top: 7%;
+    height: 80px;
+    
+}
+
+.contenu.caracteristiques div{
+    border-right: solid 6px #E26F39;
+    height: 70px;
+    width: 33.3%;
+}
+
+.contenu.caracteristiques div:last-child{
+    border-right: none;
+    height: 70px;
+    width: 33.3%;
+}
+
+.contenu.caracteristiques h3{
+    font-size: 34px;
+}
+
+.contenu.caracteristiques p{
+    text-align: center;
+}
+
+.contenu.texte{
+    padding-top: 20px;
+}
+
+.affichageListe{
+    width: 30%;
+    position: relative;
+    margin-bottom: 0;
+    border-top: solid 6px #E26F39;
+    margin: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.affichageListe img{
+    object-fit: cover;
+    z-index: 1;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 0;
+}
+
+
+.affichageListe h2{
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    top: 40%;
+    padding: 2% 4% 2% 4%;
+    color: black;
+    font-weight: 400;
+}
+
+.indicateurParcours{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10%;
+    margin-top: 30px;
+}
+
+.indicateurParcours.arrow{
+    margin-top: 60px;
+    padding: 10% 10% 0% 10%;
+}
+
+..affichageListe.details {
+    border: none;
+}
+
+.affichageListe.details h2{
+    top: 80%;
+}
+
+/*flèche de distance de détails des pa*/
+.arrow{
+    text-align: center;
+}
+
+.arrow img{
+    width: 90%;
+    height: auto;
+}
+
+.map img{
+    margin-top: 10%;
+    width: 100%;
+    height: auto;
+     border-bottom: solid 6px #E26F39;
+}
+
+
+@media screen and (max-width:667px){
+    
+    .affichageListe{
+    height: 320px;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    margin-top: 10px;
+    border-top: solid 6px #E26F39;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .affichageListe img{
+    object-fit: cover;
+    z-index: 1;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 0;
+    }
+    
+    .indicateurParcours{
+    margin-top: 0px;
+    }
+}
+
+
+
+

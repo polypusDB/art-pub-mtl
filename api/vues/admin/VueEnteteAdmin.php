@@ -20,6 +20,10 @@
 
         <!-- scripts -->
         <script src="/art-pub-mtl/js/menuAdmin.js"></script>
+        <script src="/art-pub-mtl/js/filtreAdminArtiste.js"></script>
+        <script src="/art-pub-mtl/js/filtreAdminOeuvre.js"></script>
+        <script src="/art-pub-mtl/js/champsObligatoires.js"></script>
+
     </head>
     
     <body>

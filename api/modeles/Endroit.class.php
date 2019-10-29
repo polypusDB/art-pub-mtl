@@ -8,16 +8,16 @@
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
- * 
+ * Cette classe sert à gérer les endroits dans la base de données. 
  * 
  */
 class Endroit extends Modele {	
 	const TABLE_ENDROIT = "endroit";
 		
 	/**
-	 * Retourne la liste des oeuvres
+	 * Retourne la liste des endroits
 	 * @access public
-	 * @return Array
+	 * @return Array Liste des endroits contenus dans la base de données.
 	 */
 	public function getListe() 
 	{
@@ -38,10 +38,10 @@ class Endroit extends Modele {
 	}
 	
 	/**
-	 * Récupère une oeuvre avec son id
+	 * Récupère les informations sur un endroit
 	 * @access public
-	 * @param int $id Identifiant de l'oeuvre
-	 * @return Array
+	 * @param int $id Identifiant de l'endroit
+	 * @return Array Tableau contenant les informations sur un endroit.
 	 */
 	public function getEndroit($id) 
 	{
@@ -53,6 +53,11 @@ class Endroit extends Modele {
 		return $res;
 	}
     
+  	/**
+	 * Récupére le dernier id d'un endroit.
+	 * @access public
+     * @return Array Tableau le dernier id d'un endroit.
+	 */ 
     public function getDernierEnregistrement()
     {
 		$res = Array();
@@ -62,26 +67,38 @@ class Endroit extends Modele {
 		}
 		return $res;        
     }
-	
+
+  	/**
+	 * Vérifie si un endroit existe dans la base de données.
+	 * @access public
+	 * @param Array $aData Tableau contenant les données à vérifier dans la base de données.
+     * @return Array Tableau contenant les informations sur un endroit.
+	 */ 
     public function verifierEndroitExistant($aData)
     {
 		$res = Array();
         extract($aData);
-		if($mrResultat = $this->_db->query("select * from ". self::TABLE_ENDROIT." where coordonnee_latitude = '".$coordonnee_latitude."' and coordonnee_longitude = '".$coordonnee_longitude."'"))
+		if($mrResultat = $this->_db->query("select * from ". self::TABLE_ENDROIT." where parc = '".$parc."' and batiment = '".$batiment."' and adresse = '".$adresse."'and coordonnee_latitude = '".$coordonnee_latitude."' and coordonnee_longitude = '".$coordonnee_longitude."'"))
 		{
 			$res = $mrResultat->fetch_assoc();
 		}
 		return $res;
     }
-    
+
+ 	/**
+	 * Ajouter un endroit dans la base de données.
+	 * @access public
+	 * @param Array $aData Tableau contenant les données à ajouter dans la base de données.
+	 * @return Boolean Retourne une valeur booléenne pour déterminer si l'endroit a été ajouté dans la base de données.
+	 */  
     public function ajouterEndroit($aData)
     {
-		$res = Array();
+		$resQuery = false;
         extract($aData);
         $query = "INSERT INTO ". self::TABLE_ENDROIT ."  (`parc`, `batiment`, `adresse`, `coordonnee_latitude`, `coordonnee_longitude`, `id_arrondissement`) VALUES ('".$parc."', '".$batiment."', '".$adresse."', '".$coordonnee_latitude."', '".$coordonnee_longitude."', $id_arrondissement)";
-        $resultat = $this->_db->query($query); 
-		return $resultat;    
-    }    
+        $resQuery = $this->_db->query($query); 
+		return $resQuery;    
+    }   
 }
 
 

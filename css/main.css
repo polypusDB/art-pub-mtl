@@ -367,7 +367,7 @@ buttons {
 /* Modification pour les cartes d'ouvres Sprint zero A.S.---------------------------------------- */
 .carte section p{
     margin-top: 0;
-    font-size: 12px;
+    font-size: 16px;
     color: #7e7e7e;
 }
 section p.auteur{
@@ -562,8 +562,10 @@ section p.arrondissement{
     margin: 20px 0;
 }
 
-
-
+.proposTexte{
+    text-align: justify;
+    padding-right: 5%;
+}
 .hidden
 {
     display: none;

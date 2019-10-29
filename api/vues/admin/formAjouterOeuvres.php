@@ -1,7 +1,7 @@
 <div class="contenu-form admin">
     <a href="/art-pub-mtl/api/oeuvreAdmin">Retour à la liste</a>
     <h1>Formulaire ajouter une oeuvre</h1>
-    <form action="/art-pub-mtl/api/oeuvreAdmin/ajouter/insert" method="POST">
+    <form action="/art-pub-mtl/api/oeuvreAdmin/ajouter/insert" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Caractéristiques principales :</legend>
             Titre : <input type="text" name="titre" />
@@ -42,17 +42,17 @@
         </fieldset>
         <fieldset>
             <legend>Artiste :</legend>
-            <div class="chercherForm">
+            <!-- <div class="chercherForm">
                 <i class="fas fa-search"></i>
                 <input type="search" placeholder="Chercher une artiste" name="chercher_artiste">
             </div>
-            ou
+            ou -->
             <select name="id_artiste">
                 <option value="choix">Choisir un artiste</option>
                 <?php 
                     if(!empty($liste_artiste)){
                         foreach($liste_artiste as $artiste){
-                            echo "<option value='" . $artiste['id_artiste'] . "'> " . $artiste['nom'] . " " . $artiste['prenom'] . " " . $artiste['nom_collectif'] . "</option>";
+                            echo "<option value='" . $artiste['id_artiste'] . "'> " . ucfirst(mb_strtolower($artiste['nom'], 'UTF-8')) . " " . ucfirst(mb_strtolower($artiste['prenom'], 'UTF-8')) . " " . ucfirst(mb_strtolower($artiste['nom_collectif'], 'UTF-8')) . "</option>";
                         }
                     }
                 ?>
@@ -71,18 +71,18 @@
                 <?php 
                     if(!empty($liste_arrondissement)){
                         foreach($liste_arrondissement as $arrondissement){
-                            echo "<option value='" . $arrondissement['id_arrondissement'] . "'> " . $arrondissement['nom'] . "</option>";
+                            echo "<option value='" . $arrondissement['id_arrondissement'] . "'> " . $arrondissement['nom_arrondissement'] . "</option>";
                         }
                     }
                 ?>
             </select>
         </fieldset>
             <!--Télécharger une image-->
-        <fieldset>
+        <!-- <fieldset>
             <legend>Image :</legend>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000" />
             <input name="uploadedfile" type="file" />
-        </fieldset>
+        </fieldset> -->
             <!--Fin Télécharger une image-->
 
             <input type="hidden" name="action" value=''/>

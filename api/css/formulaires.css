@@ -1,0 +1,92 @@
+/* CSS Formulaires -------------------------------------------------------------------- */
+
+.contenu-form{
+    padding: 5%;
+}
+.contenu-form h1{
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 15px;
+}
+form{
+    border: 1px solid #f1f1f1;
+    padding: 20px;
+}
+input, textarea{
+    width: 100%;
+    padding: 15px;
+    padding-right: 0;
+    margin: 10px 0;
+    background: #F8F8F8;
+    border: none;
+    font-size: 14px;
+    color: #AFAFAF;
+    font-family: 'Raleway', sans-serif;
+}
+input[type="submit"] {
+    background: #81CEC5;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background: #8FE3DA;
+}
+input[readonly="readonly"] {
+    background: #C9C9C9;
+}
+input[type="radio"] {
+    width: 2%;
+    margin-left: 10px;
+}
+form select{
+    width: 100%;
+    padding: 15px;
+    padding-right: 0;
+    margin: 10px 0;
+    background: #F8F8F8;
+    font-size: 14px;
+    color: #AFAFAF;
+    font-family: 'Raleway', sans-serif;
+}
+label#texte-mdp{
+    display: block;
+    font-size: 11px;
+    color: #AFAFAF;
+}
+input[type="checkbox"] {
+    width: 3%;
+}
+.chercherForm{
+    margin: 10px 0;
+}
+input[type="search"] {
+    width: 40%;
+    margin-left: 10px;
+    border: 1px solid rgb(169, 169, 169);
+    color: #AFAFAF;
+}
+fieldset{
+    margin: 20px 0;
+    border: 1px solid #B8B8B8;
+}
+legend{
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width:667px){
+    .contenu-form {
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: 30%;
+    }
+    input[type="checkbox"] {
+        width: 10%;
+    }
+    input[type="search"] {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+}

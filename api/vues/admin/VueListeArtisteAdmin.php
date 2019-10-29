@@ -1,8 +1,20 @@
+<template class="listeArtiste">
+            <tr>
+                <td><input type="checkbox" name="checks[]" value="{{id_artiste}}"></td>
+                <td> <a href="/art-pub-mtl/api/artisteAdmin/mod/{{id_artiste}}"><h2 class="nom">{{nom}} {{prenom}} {{nom_collectif}}</h2></a></td>
+                <td><a class="btnMod" href="/art-pub-mtl/api/artisteAdmin/mod/{{id_artiste}}"><i class="fas fa-pencil-alt"></i></a></td>
+                <td><a class="btnSup" href="/art-pub-mtl/api/artisteAdmin/sup/{{id_artiste}}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+    </template>
 <div class="contenu listeArtiste">
     <div class="titreListe">
         <h1 id="ancre">Liste des Artistes</h1>
     </div>
     <section>
+
+
+
+        <input type= "text" class = "adminSearchArtiste"/><input type="button" class = "btnRecherche" value = "chercher">
         <form action="" method="POST">
             <div class="bts-principal">
 				<div class="bt-ajouter">
@@ -17,7 +29,7 @@
 					echo "<div class='msg-erreur'>" . $msgErreur . "</div>";
 				}
 			?>
-            <table class="table">
+            <table class="table parent">
                 <thead>
                 <tr>
                     <th></th>

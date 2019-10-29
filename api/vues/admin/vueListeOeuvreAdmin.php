@@ -1,8 +1,18 @@
+<template class="listeOeuvre">
+	<tr>
+		<td><label><input type="checkbox" name="checks[]" value="{{id_oeuvre}}"></label></td>
+		<td><h2 class="titre"><a href="/art-pub-mtl/api/oeuvreAdmin/mod/{{id_oeuvre}}">{{titre}}</a></h2></td>
+		<td><a class="btnMod" href="/art-pub-mtl/api/oeuvreAdmin/mod/{{id_oeuvre}}"><i class="fas fa-pencil-alt"></i></a></td>
+		<td><a class="btnSup" href="/art-pub-mtl/api/oeuvreAdmin/sup/{{id_oeuvre}}"><i class="fas fa-trash-alt"></i></a></td>
+	</tr>
+</template>
 <div class="contenu listeOeuvres">
 	<div class="titreListe">
 		<h1 id="ancre">Liste des Oeuvres</h1>
 	</div>
 	<section>
+	<input type= "text" class = "adminSearchOeuvre"/><input type="button" class = "btnRecherche" value = "chercher">
+
 		<form action="" method="POST">
 			<div class="bts-principal">
 				<div class="bt-ajouter">
@@ -17,7 +27,7 @@
 					echo "<div class='msg-erreur'>" . $msgErreur . "</div>";
 				}
 			?>
-			<table class="table">
+			<table class="table parent">
 				<thead>
 				<tr>
 					<th></th>

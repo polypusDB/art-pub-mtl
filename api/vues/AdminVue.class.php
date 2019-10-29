@@ -3,10 +3,11 @@
  * Class Vue
  * Modèle de classe Vue. Dupliquer et modifier pour votre usage.
  * 
- * @author Jonathan Martel
+ * @author Jonathan Martel modifié par Michel Plamondon ,Saul Turbide et Luz Angela Sanchez Gutierrez.
  * @version 1.1
  * @update 2013-12-11
  * @update 2016-01-22 : Adaptation du code aux standards de codage du département de TIM
+ * @update 2019-10-10
  * @license MIT
  * @license http://opensource.org/licenses/MIT
  * 
@@ -95,7 +96,7 @@ class AdminVue {
 	/**
 	 * Affiche le Formulaire pour modifier un oeuvre
 	 */
-	public function getFormModifierOeuvre(){
+	public function getFormModifierOeuvre($aData, $liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/formModifOeuvre.php");
@@ -109,6 +110,12 @@ class AdminVue {
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/VueListeUsagersAdmin.php");
+	}
+
+	public function afficherCommentairesSignaler($aData){
+		$this->afficheHead();
+		$this->afficheEntete();
+		include("admin/VueListeCommentairesAdmin.php");
 	}
 	
 }

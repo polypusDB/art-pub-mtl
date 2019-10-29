@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `usager` (
     nom_connexion VARCHAR(50) NOT NULL UNIQUE,
     mot_passe VARCHAR(100) NOT NULL,
     nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    courriel VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NULL,
+    courriel VARCHAR(50) NULL,
     id_role INT NOT NULL,
     PRIMARY KEY(id_usager),
     FOREIGN KEY(id_role) REFERENCES role(id_role)

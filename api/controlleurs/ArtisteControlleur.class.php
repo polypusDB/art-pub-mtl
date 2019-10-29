@@ -43,19 +43,6 @@ class ArtisteControlleur extends Controlleur
 			$oVue->afficheArtistes($res);
 			
 		}
-		
-		
-
-
-		
-		// if(isset($_GET['json']))
-		// {
-		// 	echo json_encode($res);	
-		// }
-
-			
-		
-		
 	}
 
 	protected function getArtiste($id_artiste)
