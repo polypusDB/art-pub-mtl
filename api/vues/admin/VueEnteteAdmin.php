@@ -6,7 +6,6 @@
         <meta charset="UTF8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
         
         <link rel="stylesheet" href="/art-pub-mtl/css/adminmain.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/entete-footer.css" type="text/css" media="screen">
