@@ -1,7 +1,6 @@
 <?php
 /**
- * Class AdminControlleur
- * Gère la page d'accueil
+ * Class AproposControlleur
  * 
  * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
@@ -13,23 +12,19 @@
  
  /*
  * ACTION : Dirige vers la page à propos
- *
  */
 
- 
- 
 class AproposControlleur extends Controlleur 
 {
-	
-	// GET : 
-	//			api/apropos - page a propos
-	
+	/**
+	 * GET : 
+	 * 		api/apropos - page a propos
+	 */
+
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
 		$oVue->afficheApropos();				
 	}
-	
-	
 }
 ?>

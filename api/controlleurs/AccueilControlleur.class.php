@@ -1,7 +1,6 @@
 <?php
 /**
  * Class AccueilControlleur
- * Gère la page d'accueil
  * 
  * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
@@ -19,8 +18,9 @@
  
 class AccueilControlleur extends Controlleur 
 {
-	
-	// GET : api/ - page d'accueil
+	/**
+	 * GET : api/ - page d'accueil
+	 */
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();

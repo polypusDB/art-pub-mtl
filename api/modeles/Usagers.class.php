@@ -36,6 +36,30 @@ class Usagers extends Modele {
 
     }
 
+    public function getUsager($id){
+      // echo "yayayaya";
+      $query = "SELECT * 
+      FROM usager
+      WHERE id_usager = $id";
+
+      $this->_db->query($query);
+      if($mrResultat = $this->_db->query($query))
+      {
+        while($usager = $mrResultat->fetch_assoc())
+        {
+          foreach($usager as $cle=> $valeur)
+          {
+            $usager[$cle] = utf8_encode($valeur);
+          }
+          
+          $res[] = $usager;
+        }
+      }
+      unset($res[0]["mot_passe"]);
+      $usager = $res[0];
+      return($usager);
+    }
+
 }
 
 

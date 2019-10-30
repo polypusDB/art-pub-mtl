@@ -1,30 +1,24 @@
 <?php
 /**
- * Class Controler
- * Gère les requêtes HTTP
+ * Class CommentaireControlleur
  * 
- * @author Jonathan Martel
+ * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
- * @update 2016-03-03
+ * @update 2019-06-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  */
  
- /*
- * TODO : Commenter selon les standards du département.
- *
- */
-
- 
- 
 class CommentaireControlleur extends Controlleur 
 {
-	
-
+	/**
+	 * GET : 
+	 * 		/signaler           - signale un commentaire
+	 * 		/suprimer           - supprime un commentaire
+	 * 		@param requete	    - Recois un verbes et autre parametres qui sont utiliser pour la redirection
+	 */
 	public function getAction(Requete $requete)
-	{
-        // echo "Commentaire";
-        
+	{        
         if($requete->url_elements[0] == "signaler"){
             if($requete->url_elements[1] && is_numeric($requete->url_elements[1])){
                 $this->signalerCommentaire($requete->url_elements[1]);
@@ -37,13 +31,16 @@ class CommentaireControlleur extends Controlleur
             
         }
 
-	}
-
+    }
+    
+    /**
+	 * POST : 
+	 * 		recois un json de commentaire 
+	 * 		@param requete	    - Recois un verbes et autre parametres qui sont utiliser pour la redirection
+	 */
 	public function postAction(Requete $requete){
 
-        
         $res = $this->insertCommentaire($requete->parametres);
-
         $com = array(
             "texte" => $requete->parametres["text"],
             "id_user" => $requete->parametres["id_user"],
@@ -57,19 +54,29 @@ class CommentaireControlleur extends Controlleur
 
 	}
     
-    
+    /**
+     * Envoie le tableau au modele commentaire
+     * @param aData - tableau du commentaire
+     * retourne l'id du commentaire dans la base de données
+     */
     protected function insertCommentaire($aData){
         $oCommentaire = new Commentaire();
         $res = $oCommentaire->insertCommentaire($aData);
         return $res;
     }
-    
-    
+
+    /**
+     * Envoie l'id du commentaire au modele commentaire
+     * @param id - id du commentaire
+     */
     protected function signalerCommentaire($id){
         $oCommentaire = new Commentaire();
         $aCommentaire = $oCommentaire->signalerCommentaire($id);
     }
-
+    /**
+     * Envoie l'id du commentaire au modele commentaire
+     * @param id - id du commentaire
+     */
     protected function suprimerCommentaire($id){
         $oCommentaire = new Commentaire();
         $aCommentaire = $oCommentaire->suprimer($id);

@@ -65,7 +65,6 @@ class Artiste extends Modele {
 	public function deleteArtiste($res){
 		$query = "DELETE FROM artiste $res";
 		$res = $this->_db->query($query);
-		echo $query;
 	}
 
  	/**
