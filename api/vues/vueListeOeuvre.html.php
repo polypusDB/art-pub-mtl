@@ -1,7 +1,7 @@
 <template class="templateOeuvre">
 	<div class="oeuvre carte">
 		<div class="image dummy">
-			<a href="oeuvre/{{id_oeuvre}}"><img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
+			<a href="oeuvre/{{id_oeuvre}}"><img src="{{image}}" alt="Art Public Montreal"></a>
 		</div>
 		<div class="texte">
 			<h2 class="titre"><a href="oeuvre/{{id_oeuvre}}">{{titre}}</a></h2>
@@ -77,7 +77,7 @@
 		?>
 			<div class="oeuvre carte">
 				<div class="image dummy">
-					<a href="oeuvre/<?=$id_oeuvre ?>"><img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal"></a>
+					<a href="oeuvre/<?=$id_oeuvre ?>"><img src="<?=$image ?>" alt="Art Public Montreal"></a>
 				</div>
 				<div class="texte">
 					<h2 class="titre"><a href="oeuvre/<?=$id_oeuvre ?>"><?php echo $titre?></a></h2>

@@ -88,7 +88,7 @@ class Oeuvre extends Modele {
 	public function getOeuvre($id) 
 	{
 		$res = Array();
-		$query = "SELECT o.titre, o.id_oeuvre, o.dimension, o.description, a.id_artiste, CONCAT(a.prenom, ', ', a.nom) as nomA, e.adresse, ar.nom as NomArrondissement, s.nom_francais as NomSupport, c.nom_francais as NomCategorie, e.coordonnee_latitude as latitude, e.coordonnee_longitude as longitude, e.parc, e.batiment, e.id_arrondissement, s.id_support, c.id_categorie,  e.coordonnee_latitude as coordonnee_latitude, e.coordonnee_longitude as coordonnee_longitude
+		$query = "SELECT o.titre,o.image, o.id_oeuvre, o.dimension, o.description, a.id_artiste, CONCAT(a.prenom, ', ', a.nom) as nomA, e.adresse, ar.nom as NomArrondissement, s.nom_francais as NomSupport, c.nom_francais as NomCategorie, e.coordonnee_latitude as latitude, e.coordonnee_longitude as longitude, e.parc, e.batiment, e.id_arrondissement, s.id_support, c.id_categorie,  e.coordonnee_latitude as coordonnee_latitude, e.coordonnee_longitude as coordonnee_longitude
 		FROM oeuvre o 
 		join artiste_oeuvre ao
 		on ao.id_oeuvre = o.id_oeuvre

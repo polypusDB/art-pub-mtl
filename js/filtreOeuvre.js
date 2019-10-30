@@ -17,7 +17,6 @@ window.addEventListener("load", function(){
             else{
                 
                 recherche = barRecherche.value
-                console.log(recherche);
                 ajoutFiltreRecherche(recherche);
             }
     
@@ -150,8 +149,7 @@ window.addEventListener("load", function(){
      
             
             let jsonData = JSON.stringify(aData);
-            console.log(aData);
-            console.log(jsonData);
+
             filtrer(jsonData);
         }
     
@@ -177,30 +175,38 @@ window.addEventListener("load", function(){
 
 
         function afficherListe(oeuvres){
-            let template = document.querySelector(".templateOeuvre");
+            
             let parent = this.document.querySelector(".parent");
             parent.innerHTML = ""
-            oeuvres.forEach(function(oeuvre){
-                let uneOeuvre  = template.cloneNode(true);
-                for(let prop in oeuvre){
-                    let regExp = new RegExp("{{"+prop+"}}", "g");
-                    uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
-                }
-                let nouveauNoeud = document.importNode(uneOeuvre.content, true)
-                parent.append(nouveauNoeud);
-                oeuvre["Artistes"].forEach(function(artiste){
-                    let template2 = document.querySelector(".templateAuteur");
-                    let unArtiste  = template2.cloneNode(true);
-                    for(let prop in artiste){
+            if(oeuvres.length > 0){
+                let template = document.querySelector(".templateOeuvre");
+                oeuvres.forEach(function(oeuvre){
+                    let uneOeuvre  = template.cloneNode(true);
+                    for(let prop in oeuvre){
                         let regExp = new RegExp("{{"+prop+"}}", "g");
-                        unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                        uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
                     }
-                    let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
-                    let noeudArtiste = document.importNode(unArtiste.content, true)
-
-                    parent2.append(noeudArtiste);
+                    let nouveauNoeud = document.importNode(uneOeuvre.content, true)
+                    parent.append(nouveauNoeud);
+                    oeuvre["Artistes"].forEach(function(artiste){
+                        let template2 = document.querySelector(".templateAuteur");
+                        let unArtiste  = template2.cloneNode(true);
+                        for(let prop in artiste){
+                            let regExp = new RegExp("{{"+prop+"}}", "g");
+                            unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                        }
+                        let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
+                        let noeudArtiste = document.importNode(unArtiste.content, true)
+    
+                        parent2.append(noeudArtiste);
+                    })
                 })
-            })
+            }
+            else{
+                let message = document.createElement("P");
+                message.textContent = "Aucun oeuvre ne correspond à votre recherche";
+                parent.appendChild(message);
+            }
         }
     
     
