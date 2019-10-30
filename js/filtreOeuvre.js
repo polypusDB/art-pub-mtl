@@ -42,10 +42,13 @@ window.addEventListener("load", function(){
         */
         let mat = [];
         for(let i=0; i<materiaux.length;  i++){
-            materiaux[i].addEventListener("click", function(){
-                let nMat = "";
-                nMat = materiaux[i].dataset.id
-                ajoutFiltreMateriaux(nMat);
+            materiaux[i].addEventListener("click", function(evt){
+                if(evt.target.classList.value == "materiaux" || evt.target.classList.value == "checkmark"){
+                    let nMat = "";
+                    nMat = materiaux[i].dataset.id
+                    console.log(nMat)
+                    ajoutFiltreMateriaux(nMat);
+                }
             });
         }
     
@@ -67,7 +70,6 @@ window.addEventListener("load", function(){
     
     
         function ajoutFiltreRecherche(recherche){
-            // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -81,7 +83,6 @@ window.addEventListener("load", function(){
            else{
                arr.splice(arr.indexOf(nArr), 1);
            }
-        //    GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -95,7 +96,6 @@ window.addEventListener("load", function(){
         else{
             mat.splice(mat.indexOf(nMat), 1);
         }
-        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
@@ -110,13 +110,12 @@ window.addEventListener("load", function(){
         else{
             cat.splice(cat.indexOf(nCat), 1);
         }
-        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
     
         function GestionFiltre(arr = [], mat = [], cat = [], recherche = "", oeuvrePresent = 20){
-    
+            console.log(mat);
     
             let arrondissementb = {};
             for(let y = 0; y<arr.length; y++){
@@ -147,7 +146,7 @@ window.addEventListener("load", function(){
             aData.recherche = recherche;
             aData.oeuvrePresent = oeuvrePresent;
      
-            
+            // console.log(aData);
             let jsonData = JSON.stringify(aData);
 
             filtrer(jsonData);
@@ -163,6 +162,7 @@ window.addEventListener("load", function(){
             xhr.open("POST", "/art-pub-mtl/api/filtre");
             xhr.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
+                    // console.log(xhr.responseText)
                     let oeuvres  = JSON.parse(xhr.responseText);
                     
                     afficherListe(oeuvres);
