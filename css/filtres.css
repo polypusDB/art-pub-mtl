@@ -1,8 +1,8 @@
 .filtres{
     width: 100%;
-    border:2px #81CEC5 solid;
     margin-top: 20px;
     display: flex;
+    justify-content: center;
 }
 
 .filtres h3{
@@ -45,7 +45,7 @@
   padding: 15px;
 }
 
-.arrondissement , .categorie{
+.arrondissement , .categorie, .materiaux{
     display: block;
     position: relative;
     padding-left: 35px;
@@ -61,7 +61,8 @@
 }
   
 .arrondissement input,
-.categorie input {
+.categorie input,
+.materiaux input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -81,12 +82,14 @@
 }
 
 .arrondissement:hover input ~ .checkmark,
-.categorie:hover input ~ .checkmark {
+.categorie:hover input ~ .checkmark,
+.materiaux:hover input ~ .checkmark  {
   background-color: #eee;
 }
 
 .arrondissement input:checked ~ .checkmark,
-.categorie input:checked ~ .checkmark {
+.categorie input:checked ~ .checkmark,
+.materiaux input:checked ~ .checkmark {
   background-color: #81CEC5;
 }
 
@@ -97,12 +100,14 @@
 }
 
 .arrondissement input:checked ~ .checkmark:after,
-.categorie input:checked ~ .checkmark:after {
+.categorie input:checked ~ .checkmark:after,
+.materiaux input:checked ~ .checkmark:after{
   display: block;
 }
 
 .arrondissement .checkmark:after,
-.categorie .checkmark:after {
+.categorie .checkmark:after,
+.materiaux .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -112,9 +117,18 @@
   transform: rotate(45deg);
 }
 
+.contNomFiltre{
+  width: 30%;
+  margin-right: 20px;
+  text-align: center;
+}
+
 
 @media screen and (max-width:667px){
-  .filtreMateriaux{
+  .filtres{
+    display: block;
+}
+  .contMateriaux{
     display: none;
   }
 }
