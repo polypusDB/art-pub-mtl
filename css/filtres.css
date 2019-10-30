@@ -5,14 +5,15 @@
 
 .filtres h3{
     padding: 20px;
-    background-color: #81CEC5;
+    background-color: #64ADA4;
     color: white;
     font-weight: 400;
-    border-bottom: 2px rgb(114, 184, 174) solid 
+    border-bottom: 2px rgb(114, 184, 174) solid;
+    cursor: pointer;
 }
 
 .filtres h3:hover{
-  background-color: rgb(90, 146, 140);
+  background-color: #81CEC5;
 }
 
 .filtres label{
@@ -20,7 +21,6 @@
     padding-top:5px ;
     color: #5f5f5f;
 }
-
 
 .filtresArr{
     display: block;
@@ -33,7 +33,17 @@
     display: none;
 }
 
-  .arrondissement , .categorie{
+.contenu input.recherche, .contenu input.searchArtiste{
+  border: 1px solid #f1f1f1;
+}
+
+.contenu input.btnFiltre, .contenu input.btnRecherche{
+  width: 50%;
+  margin: 10px auto;
+  padding: 15px;
+}
+
+.arrondissement , .categorie{
     display: block;
     position: relative;
     padding-left: 35px;
@@ -43,61 +53,60 @@
     user-select: none;
   }
 
-  .unArrondissement, .uneCat{
-      align-items: center;
-      display: flex;
-      padding: 10px;
-  }
+.unArrondissement, .uneCat{
+    align-items: center;
+    display: flex;
+    padding: 10px;
+}
   
-  .arrondissement input,
-  .categorie input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+.arrondissement input,
+.categorie input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
   
+/*marqueur crochet custum */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 1px #81CEC5 solid ;
+}
 
-  /*marqueur crochet custum */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border: 1px #81CEC5 solid ;
-  }
-  
-  .arrondissement:hover input ~ .checkmark,
-  .categorie:hover input ~ .checkmark {
-    background-color: #eee;
-  }
-  
-  .arrondissement input:checked ~ .checkmark,
-  .categorie input:checked ~ .checkmark {
-    background-color: #81CEC5;
-  }
-  
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .arrondissement input:checked ~ .checkmark:after,
-  .categorie input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  .arrondissement .checkmark:after,
-  .categorie .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-  }
+.arrondissement:hover input ~ .checkmark,
+.categorie:hover input ~ .checkmark {
+  background-color: #eee;
+}
+
+.arrondissement input:checked ~ .checkmark,
+.categorie input:checked ~ .checkmark {
+  background-color: #81CEC5;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.arrondissement input:checked ~ .checkmark:after,
+.categorie input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.arrondissement .checkmark:after,
+.categorie .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
