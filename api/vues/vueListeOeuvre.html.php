@@ -26,7 +26,7 @@
 	</div>
 	<p class="textFiltrer">Filtrer par :</p>
 	<div class ="filtres">
-		<div class="arrondissements">
+		<div class="contNomFiltre">
 			<h3 class="titreArron">Arrondissement</h3>
 			<div class ="filtresArr cacher">
 				<?php
@@ -41,7 +41,7 @@
 				?>
 			</div>
 		</div>
-		<div class="contCategorie">
+		<div class="contNomFiltre">
 			<h3 class="titreCat">Categories</h3>
 			<div class ="filtresCat cacher">
 				<?php
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<!-- Filtre pour les materiaux juste pour desktop -->
-		<div class="contMateriaux">
+		<div class="contNomFiltre">
 			<h3 class="titreMat">Materiaux</h3>
 			<div class="filtresMat cacher">
 				<?php
@@ -65,7 +65,7 @@
 				extract($materiel);
 				?>
 				<div class="uneCat">
-					<label class= "categorie materiaux" data-id="<?=$id_materiaux ?>"><input type="checkbox" class="check" /><?=$nom_francais ?><span class="checkmark" data-id="<?=$id_materiaux ?>"></span></label>
+					<label class= "materiaux" data-id="<?=$id_materiaux ?>"><input type="checkbox" class="check" /><?=$nom_francais ?><span class="checkmark" data-id="<?=$id_materiaux ?>"></span></label>
 				</div>
 				<?php
 				}
