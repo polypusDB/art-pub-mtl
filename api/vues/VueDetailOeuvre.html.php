@@ -19,7 +19,7 @@
 			extract($aData);
 		?>
 		<div class="dummy">
-			<img src="/art-pub-mtl/img/placeholder_640_480.jpg" alt="Art Public Montreal">
+			<img src="<?=$image ?>" alt="Art Public Montreal">
 			<h5>
 				<span><?php echo $titre . " : "?></span>
 				<?php
@@ -85,11 +85,11 @@
 						<div data-idCommentaire="<?=$id_commentaire ?>">
 							<p><?=$nom_connexion ?></p>
 							<p><?=$texte ?></p>
-							<p data-idCommentaire="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>">Signaler</p>
+							<p data-idcommentairesig="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>">Signaler</p>
 							<?php
 								if($userConnect == $nom_connexion){
 								?>
-									<p data-idCommentaire="<?=$id_commentaire ?>"class="suprimer">Suprimer</p>
+									<p data-idcommentairesup="<?=$id_commentaire ?>"class="suprimer">Suprimer</p>
 								<?php
 								}
 							?>
@@ -100,7 +100,7 @@
 			?>
 		</div>
 		<div class="titreComment">Laisse ton commentaire ou tes questions ici!</div>
-		<form action="" method="POST">
+		<div>
 			<?php
 				if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["nom_connexion"] != ""){
 					?>
@@ -117,9 +117,7 @@
 					<?php
 				}
 			?>
-
-			<!-- <input type="button" value ="Commentez" class="btnCom"/> -->
-		</form>
+		</div>
 	</div>
 	<div class = "map"></div>
 

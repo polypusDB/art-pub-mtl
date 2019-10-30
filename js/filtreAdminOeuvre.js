@@ -36,18 +36,27 @@ window.addEventListener("load", function(){
 
 
     function afficherListe(oeuvres){
-        let template = document.querySelector(".listeOeuvre");
         let parent = this.document.querySelector(".parent");
-        topTableau(parent);
-        oeuvres.forEach(function(oeuvre){
-            let uneOeuvre  = template.cloneNode(true);
-            for(let prop in oeuvre){
-                let regExp = new RegExp("{{"+prop+"}}", "g");
-                uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
-            }
-            let nouveauNoeud = document.importNode(uneOeuvre.content, true)
-            parent.append(nouveauNoeud);
-        })
+        if(oeuvres.length > 0){
+            let template = document.querySelector(".listeOeuvre");
+            topTableau(parent);
+            oeuvres.forEach(function(oeuvre){
+                let uneOeuvre  = template.cloneNode(true);
+                for(let prop in oeuvre){
+                    let regExp = new RegExp("{{"+prop+"}}", "g");
+                    uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
+                }
+                let nouveauNoeud = document.importNode(uneOeuvre.content, true)
+                parent.append(nouveauNoeud);
+            })
+        }
+        else{
+            parent.innerHTML = "";
+            let message = document.createElement("tr");
+            message.textContent = "Aucun oeuvre ne correspond à votre recherche";
+            parent.appendChild(message);
+        }
+
     }
 
 

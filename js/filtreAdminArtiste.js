@@ -36,18 +36,27 @@ window.addEventListener("load", function(){
 
 
     function afficherListe(artistes){
-        let template = document.querySelector(".listeArtiste");
         let parent = this.document.querySelector(".parent");
-        topTableau(parent);
-        artistes.forEach(function(artiste){
-            let unArtiste  = template.cloneNode(true);
-            for(let prop in artiste){
-                let regExp = new RegExp("{{"+prop+"}}", "g");
-                unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
-            }
-            let nouveauNoeud = document.importNode(unArtiste.content, true)
-            parent.append(nouveauNoeud);
-        })
+        if(artistes.length > 0){
+            let template = document.querySelector(".listeArtiste");
+            topTableau(parent);
+            artistes.forEach(function(artiste){
+                let unArtiste  = template.cloneNode(true);
+                for(let prop in artiste){
+                    let regExp = new RegExp("{{"+prop+"}}", "g");
+                    unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                }
+                let nouveauNoeud = document.importNode(unArtiste.content, true)
+                parent.append(nouveauNoeud);
+            })
+        }
+        else{
+            parent.innerHTML = "";
+            let message = document.createElement("tr");
+            message.textContent = "Aucun artiste ne correspond à votre recherche";
+            parent.appendChild(message);
+        }
+
     }
 
 

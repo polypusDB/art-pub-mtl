@@ -17,7 +17,6 @@ window.addEventListener("load", function(){
             else{
                 
                 recherche = barRecherche.value
-                console.log(recherche);
                 ajoutFiltreRecherche(recherche);
             }
     
@@ -43,10 +42,13 @@ window.addEventListener("load", function(){
         */
         let mat = [];
         for(let i=0; i<materiaux.length;  i++){
-            materiaux[i].addEventListener("click", function(){
-                let nMat = "";
-                nMat = materiaux[i].dataset.id
-                ajoutFiltreMateriaux(nMat);
+            materiaux[i].addEventListener("click", function(evt){
+                if(evt.target.classList.value == "materiaux" || evt.target.classList.value == "checkmark"){
+                    let nMat = "";
+                    nMat = materiaux[i].dataset.id
+                    console.log(nMat)
+                    ajoutFiltreMateriaux(nMat);
+                }
             });
         }
     
@@ -68,7 +70,6 @@ window.addEventListener("load", function(){
     
     
         function ajoutFiltreRecherche(recherche){
-            // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -82,7 +83,6 @@ window.addEventListener("load", function(){
            else{
                arr.splice(arr.indexOf(nArr), 1);
            }
-        //    GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -96,7 +96,6 @@ window.addEventListener("load", function(){
         else{
             mat.splice(mat.indexOf(nMat), 1);
         }
-        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
@@ -111,13 +110,12 @@ window.addEventListener("load", function(){
         else{
             cat.splice(cat.indexOf(nCat), 1);
         }
-        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
     
         function GestionFiltre(arr = [], mat = [], cat = [], recherche = "", oeuvrePresent = 20){
-    
+            console.log(mat);
     
             let arrondissementb = {};
             for(let y = 0; y<arr.length; y++){
@@ -148,10 +146,9 @@ window.addEventListener("load", function(){
             aData.recherche = recherche;
             aData.oeuvrePresent = oeuvrePresent;
      
-            
+            // console.log(aData);
             let jsonData = JSON.stringify(aData);
-            console.log(aData);
-            console.log(jsonData);
+
             filtrer(jsonData);
         }
     
@@ -165,6 +162,7 @@ window.addEventListener("load", function(){
             xhr.open("POST", "/art-pub-mtl/api/filtre");
             xhr.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
+                    // console.log(xhr.responseText)
                     let oeuvres  = JSON.parse(xhr.responseText);
                     
                     afficherListe(oeuvres);
@@ -177,30 +175,38 @@ window.addEventListener("load", function(){
 
 
         function afficherListe(oeuvres){
-            let template = document.querySelector(".templateOeuvre");
+            
             let parent = this.document.querySelector(".parent");
             parent.innerHTML = ""
-            oeuvres.forEach(function(oeuvre){
-                let uneOeuvre  = template.cloneNode(true);
-                for(let prop in oeuvre){
-                    let regExp = new RegExp("{{"+prop+"}}", "g");
-                    uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
-                }
-                let nouveauNoeud = document.importNode(uneOeuvre.content, true)
-                parent.append(nouveauNoeud);
-                oeuvre["Artistes"].forEach(function(artiste){
-                    let template2 = document.querySelector(".templateAuteur");
-                    let unArtiste  = template2.cloneNode(true);
-                    for(let prop in artiste){
+            if(oeuvres.length > 0){
+                let template = document.querySelector(".templateOeuvre");
+                oeuvres.forEach(function(oeuvre){
+                    let uneOeuvre  = template.cloneNode(true);
+                    for(let prop in oeuvre){
                         let regExp = new RegExp("{{"+prop+"}}", "g");
-                        unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                        uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
                     }
-                    let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
-                    let noeudArtiste = document.importNode(unArtiste.content, true)
-
-                    parent2.append(noeudArtiste);
+                    let nouveauNoeud = document.importNode(uneOeuvre.content, true)
+                    parent.append(nouveauNoeud);
+                    oeuvre["Artistes"].forEach(function(artiste){
+                        let template2 = document.querySelector(".templateAuteur");
+                        let unArtiste  = template2.cloneNode(true);
+                        for(let prop in artiste){
+                            let regExp = new RegExp("{{"+prop+"}}", "g");
+                            unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                        }
+                        let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
+                        let noeudArtiste = document.importNode(unArtiste.content, true)
+    
+                        parent2.append(noeudArtiste);
+                    })
                 })
-            })
+            }
+            else{
+                let message = document.createElement("P");
+                message.textContent = "Aucun oeuvre ne correspond à votre recherche";
+                parent.appendChild(message);
+            }
         }
     
     
