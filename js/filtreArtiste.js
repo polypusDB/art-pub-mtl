@@ -11,6 +11,13 @@ window.addEventListener("load", function(){
 
         })
 
+        window.addEventListener("keydown", function(evt){
+            if(evt.key == "Enter"){
+                let recherche = barreRecherche.value;
+                gestionFiltre(artistePresent, recherche);
+            }
+        })
+
 
         let navHeight = window.screen.height;
         let footer = document.querySelector("footer");
@@ -47,6 +54,7 @@ window.addEventListener("load", function(){
         xhr.onreadystatechange = function(){
             if (this.readyState == 4 && this.status == 200){
                 bool = false;
+                console.log(xhr.responseText)
                 let artistes  = JSON.parse(xhr.responseText);
                 afficherListe(artistes);
                 

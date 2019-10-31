@@ -55,7 +55,6 @@
                     <label for="mdp">Mot de Passe:</label>
                     <input type="password" id="mdp" name="mdp">
                     <label id="texte-mdp">Les mots de passe doivent contenir au moins 8 caractères, majuscules, minuscules et chiffres.</label>
-                    <input type="checkbox" name="voirMdp" value="voir"> Afficher le mot de passe
                 </div>
                 <div>
                     <input type="submit" id="envoyer" value="ENVOYER">

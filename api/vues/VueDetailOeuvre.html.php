@@ -82,14 +82,14 @@
 					extract($commentaire);
 					$userConnect = $_SESSION["utilisateur"]["nom_connexion"];
 					?>
-						<div data-idCommentaire="<?=$id_commentaire ?>">
+						<div data-idCommentaire="<?=$id_commentaire ?>" class="unCommentaire">
 							<p><?=$nom_connexion ?></p>
 							<p><?=$texte ?></p>
-							<p data-idcommentairesig="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>">Signaler</p>
+							<p data-idcommentairesig="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>"><i class="fab fa-font-awesome-flag" data-signaler ="true"></i></p>
 							<?php
 								if($userConnect == $nom_connexion){
 								?>
-									<p data-idcommentairesup="<?=$id_commentaire ?>"class="suprimer">Suprimer</p>
+									<p data-idcommentairesup="<?=$id_commentaire ?>"class="suprimer"><i class="fas fa-trash" data-supprimer ="true"></i></p>
 								<?php
 								}
 							?>

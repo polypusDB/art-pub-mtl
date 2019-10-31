@@ -15,6 +15,8 @@
 class Commentaire extends Modele {		
 
     public function ListeCommentairesParOeuvreID($id){
+        $oFiltrerChamp = new FiltrerChamp();
+		$id = $oFiltrerChamp->FiltrerChamps($id);
         $res = Array();
         $query = "SELECT c.texte, u.nom_connexion, c.id_commentaire, c.signaler
         from commentaire c
@@ -37,6 +39,10 @@ class Commentaire extends Modele {
 
     public function insertCommentaire($aData){
         extract($aData);
+        $oFiltrerChamp = new FiltrerChamp();
+		$id_user = $oFiltrerChamp->FiltrerChamps($id_user);
+		$id_oeuvre = $oFiltrerChamp->FiltrerChamps($id_oeuvre);
+		$text = $oFiltrerChamp->FiltrerChamps($text);
         $query = "INSERT into commentaire (id_usager, id_oeuvre, texte)
         VALUES ('$id_user','$id_oeuvre', '$text')";
         $res = $this->_db->query($query);
@@ -47,6 +53,9 @@ class Commentaire extends Modele {
 
 
     public function signalerCommentaire($id){
+
+        $oFiltrerChamp = new FiltrerChamp();
+		$id = $oFiltrerChamp->FiltrerChamps($id);
         $query = "UPDATE commentaire
         SET signaler = true
         where id_commentaire = $id";
@@ -56,8 +65,8 @@ class Commentaire extends Modele {
     }
 
     public function suprimer($id){
-        // echo $id;
-
+        $oFiltrerChamp = new FiltrerChamp();
+		$id = $oFiltrerChamp->FiltrerChamps($id);
         $query = "DELETE FROM commentaire
         WHERE id_commentaire = $id";
 
@@ -65,6 +74,8 @@ class Commentaire extends Modele {
     }
 
     public function supCommentaire($string){
+        $oFiltrerChamp = new FiltrerChamp();
+		$string = $oFiltrerChamp->FiltrerChamps($string);
         $query = "DELETE 
         FROM commentaire
         $string";
@@ -97,6 +108,8 @@ class Commentaire extends Modele {
 
 
     public function appCommentaire($string){
+        $oFiltrerChamp = new FiltrerChamp();
+		$string = $oFiltrerChamp->FiltrerChamps($string);
         $query = "UPDATE commentaire 
         SET signaler = false
         $string";

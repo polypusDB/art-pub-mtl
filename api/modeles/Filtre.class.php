@@ -160,7 +160,6 @@ class Filtre extends Modele {
         if($rec != ""){
             $res = "WHERE ";
             $res .= "artiste.nom like '%$rec%' OR artiste.prenom like '%$rec%' OR artiste.nom_collectif like '%$rec%'";
-
         }
         else{
             $res = "";
