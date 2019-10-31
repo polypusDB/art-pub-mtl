@@ -2,11 +2,11 @@
     width: 100%;
     margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .filtres h3{
-    padding: 20px;
+    padding: 20px 20px 5px;
     background-color: #64ADA4;
     color: white;
     font-weight: 400;
@@ -22,6 +22,7 @@
     font-size: 14px;
     padding-top:5px ;
     color: #5f5f5f;
+    text-align: left;
 }
 
 .filtresArr, .filtresMat{
@@ -119,10 +120,56 @@
 
 .contNomFiltre{
   width: 30%;
-  margin-right: 20px;
   text-align: center;
 }
 
+.contNomFiltre i{
+  display: block;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.grandContRecherche{
+  width: 20%;
+  margin-right: 5%;
+}
+
+.grandContFiltres{
+  width: 70%;
+}
+
+.listeArtiste .grandContRecherche{
+  width: 45%;
+}
+
+.listeArtiste .grandContFiltres{
+  width: 45%;
+  align-items: flex-end;
+  display: flex;
+}
+.listeArtiste .grandContFiltres .btnRecherche{
+  margin-bottom: 20px;
+  height: 41px;
+}
+
+@media screen and (max-width:1024px){
+  .filtres h3 {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width:768px){
+  .filtres h3 {
+    font-size: 12px;
+    padding: 20px 10px 10px;
+  }
+  .grandContRecherche {
+    width: 30%;
+    margin-right: 5%;
+  }
+  .grandContFiltres {
+    width: 60%;
+}
+}
 
 @media screen and (max-width:667px){
   .filtres{
@@ -130,5 +177,19 @@
 }
   .contMateriaux{
     display: none;
+  }
+  .grandContRecherche{
+    width: 100%;
+    margin-right: 0;
+  }
+  .grandContFiltres{
+      width: 100%;
+  }
+  .contNomFiltre{
+    width: 100%;
+  }
+  .filtres h3 {
+    font-size: 16px;
+    padding: 20px 30px 5px;
   }
 }

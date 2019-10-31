@@ -12,11 +12,15 @@
             <h1>Artistes</h1>
             <h4>Les acteurs d'Art Public Montréal</h4>
     </div>
-    <p class="textFiltrer">Rechercher :</p>
-    <div class="contRecherche">
-		<i class='fas fa-search'></i><input type="text" class="searchArtiste"/>
-	</div>
-    <input type="button" class ="btnRecherche" value ="chercher">
+    <div class="grandContRecherche">
+        <p class="textFiltrer">Rechercher :</p>
+        <div class="contRecherche">
+            <i class='fas fa-search'></i><input type="text" class="searchArtiste" placeholder="Nom"/>
+        </div>
+    </div>
+    <div class="grandContFiltres">
+        <input type="button" class ="btnRecherche" value ="chercher">
+    </div>
     <section class="oeuvres flex wrap parent">
         <?php
         foreach ($aData as $cle => $artiste) {
