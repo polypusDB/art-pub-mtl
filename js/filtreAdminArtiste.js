@@ -20,7 +20,6 @@ window.addEventListener("load", function(){
         window.addEventListener("keydown", function(evt){
             
             if(evt.key == "Enter"){
-                console.log("allo");
                 let recherche = barreRecherche.value;
                     let aData={};
                     aData.filtre = "adminArtiste";

@@ -23,6 +23,15 @@
 				<div class="bt-supprimer">
 					<input type="submit" name="suppArt" value="" />
 				</div>
+            </div>
+            <div class="fond MessageOeuvre">
+				<div class="contenuMessage">
+					<p class = "texte">Êtes-vous certains de vouloir supprimer ce(s) élément(s)</p>
+					<div class= "btnOptions">
+						<p class="non">NON</p>
+						<p class="oui">OUI</p>
+					</div>
+				</div>
 			</div>
 			<?php
 				if(isset($msgErreur)){
@@ -46,7 +55,7 @@
                     <td><input type="checkbox" name="checks[]" value="<?=$id_artiste ?>"></td>
                     <td> <a href="/art-pub-mtl/api/artisteAdmin/mod/<?php echo $id_artiste ?>"><h2 class="nom"><?php if($nom != '' || $prenom != '') { echo $nom .", ". $prenom; } else { echo $nom_collectif; } ?></h2></a></td>
                     <td><a class="btnMod" href="/art-pub-mtl/api/artisteAdmin/mod/<?=$id_artiste ?>"><i class="fas fa-pencil-alt"></i></a></td>
-                    <td><a class="btnSup" href="/art-pub-mtl/api/artisteAdmin/sup/<?=$id_artiste ?>"><i class="fas fa-trash-alt"></i></a></td>  
+                    <td><a class="btnSup" ><i data-id="<?=$id_artiste ?>" class="fas fa-trash-alt"></i></a></td>  
                 </tr>
             <?php
                 }
