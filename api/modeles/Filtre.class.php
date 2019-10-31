@@ -39,14 +39,16 @@ class Filtre extends Modele {
             $elemAvant = true;
             $arr = $arr->id;
             if(++$i === $DerItem){
-                $res .= " a.id_arrondissement = ". $arr;
+                $res .= "( a.id_arrondissement = ". $arr;
             }
             else{
                 $res .= " OR  a.id_arrondissement = ". $arr;
             }
 
         }
-
+        if($elemAvant == true){
+            $res .= ") ";
+        }
 
         
         $DerItemMat = count($materiaux);
@@ -59,12 +61,16 @@ class Filtre extends Modele {
             }
             $mat = $mat->id_mat;
             if(++$y === $DerItemMat){
-                $res .= " om.id_materiaux = ". $mat;
+                $res .= "( om.id_materiaux = ". $mat;
             }
             else{
                 $res .= " OR  om.id_materiaux = ". $mat;
             }
             $elemMatAvant = true;
+        }
+
+        if($elemMatAvant == true){
+            $res .= ") ";
         }
 
 
@@ -78,12 +84,15 @@ class Filtre extends Modele {
             }
             $cat = $cat->id_cat;
             if(++$z === $DerItemCat){
-                $res .= " oeuvre.id_categorie = ". $cat;
+                $res .= "( oeuvre.id_categorie = ". $cat;
             }
             else{
                 $res .= " OR  oeuvre.id_categorie = ". $cat;
             }
             $elemCatAvant = true;
+        }
+        if($elemCatAvant == true){
+            $res .= ") ";
         }
 
 
@@ -124,6 +133,9 @@ class Filtre extends Modele {
             $res .= "artiste.nom like '%$rec%' OR artiste.prenom like '%$rec%' OR artiste.nom_collectif like '%$rec%'";
 
         }
+        else{
+            $res = "";
+        }
         $oArtiste = new Artiste();
         $aArtiste = $oArtiste->getListe($res, $limit);
         echo json_encode($aArtiste);
@@ -134,6 +146,9 @@ class Filtre extends Modele {
             $res = "WHERE ";
             $res .= " oeuvre.titre like'%$rec%'";
 
+        }
+        else{
+            $res = "";
         }
         $oOeuvre = new Oeuvre();
         $aOeuvre = $oOeuvre->getListe($res , $limit);

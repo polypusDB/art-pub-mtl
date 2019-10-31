@@ -8,13 +8,26 @@ window.addEventListener("load", function(){
 
         btnRecherche.addEventListener("click", function(){
             let recherche = barreRecherche.value;
-            if(recherche != ""){
                 let aData={};
                 aData.filtre = "adminArtiste";
                 aData.recherche = recherche;
                 aData.limit = 500;
                 let jsonData = JSON.stringify(aData);
+                
                 filtrer(jsonData);
+        })
+
+        window.addEventListener("keydown", function(evt){
+            
+            if(evt.key == "Enter"){
+                console.log("allo");
+                let recherche = barreRecherche.value;
+                    let aData={};
+                    aData.filtre = "adminArtiste";
+                    aData.recherche = recherche;
+                    aData.limit = 500;
+                    let jsonData = JSON.stringify(aData);
+                    filtrer(jsonData);
             }
         })
         
@@ -36,18 +49,27 @@ window.addEventListener("load", function(){
 
 
     function afficherListe(artistes){
-        let template = document.querySelector(".listeArtiste");
         let parent = this.document.querySelector(".parent");
-        topTableau(parent);
-        artistes.forEach(function(artiste){
-            let unArtiste  = template.cloneNode(true);
-            for(let prop in artiste){
-                let regExp = new RegExp("{{"+prop+"}}", "g");
-                unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
-            }
-            let nouveauNoeud = document.importNode(unArtiste.content, true)
-            parent.append(nouveauNoeud);
-        })
+        if(artistes.length > 0){
+            let template = document.querySelector(".listeArtiste");
+            topTableau(parent);
+            artistes.forEach(function(artiste){
+                let unArtiste  = template.cloneNode(true);
+                for(let prop in artiste){
+                    let regExp = new RegExp("{{"+prop+"}}", "g");
+                    unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                }
+                let nouveauNoeud = document.importNode(unArtiste.content, true)
+                parent.append(nouveauNoeud);
+            })
+        }
+        else{
+            parent.innerHTML = "";
+            let message = document.createElement("tr");
+            message.textContent = "Aucun artiste ne correspond à votre recherche";
+            parent.appendChild(message);
+        }
+
     }
 
 

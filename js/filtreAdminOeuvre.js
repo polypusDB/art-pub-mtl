@@ -14,6 +14,18 @@ window.addEventListener("load", function(){
                 filtrer(jsonData);
             }
         })
+
+        window.addEventListener("keydown", function(evt){
+            if(evt.key == "Enter"){
+                let recherche = barreRecherche.value;
+                let aData={};
+                aData.filtre = "adminOeuvre";
+                aData.recherche = recherche;
+                aData.limit = 500;
+                let jsonData = JSON.stringify(aData);
+                filtrer(jsonData);
+            }
+        })
         
     }
 
@@ -36,18 +48,27 @@ window.addEventListener("load", function(){
 
 
     function afficherListe(oeuvres){
-        let template = document.querySelector(".listeOeuvre");
         let parent = this.document.querySelector(".parent");
-        topTableau(parent);
-        oeuvres.forEach(function(oeuvre){
-            let uneOeuvre  = template.cloneNode(true);
-            for(let prop in oeuvre){
-                let regExp = new RegExp("{{"+prop+"}}", "g");
-                uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
-            }
-            let nouveauNoeud = document.importNode(uneOeuvre.content, true)
-            parent.append(nouveauNoeud);
-        })
+        if(oeuvres.length > 0){
+            let template = document.querySelector(".listeOeuvre");
+            topTableau(parent);
+            oeuvres.forEach(function(oeuvre){
+                let uneOeuvre  = template.cloneNode(true);
+                for(let prop in oeuvre){
+                    let regExp = new RegExp("{{"+prop+"}}", "g");
+                    uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
+                }
+                let nouveauNoeud = document.importNode(uneOeuvre.content, true)
+                parent.append(nouveauNoeud);
+            })
+        }
+        else{
+            parent.innerHTML = "";
+            let message = document.createElement("tr");
+            message.textContent = "Aucun oeuvre ne correspond à votre recherche";
+            parent.appendChild(message);
+        }
+
     }
 
 

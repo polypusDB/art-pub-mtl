@@ -12,12 +12,11 @@ window.addEventListener("load", function(){
         let recherche = "";
         barRecherche.addEventListener("keyup", function(){
             if(recherche == barRecherche.value){
-                console.log("aucun changement");
+
             }
             else{
                 
                 recherche = barRecherche.value
-                console.log(recherche);
                 ajoutFiltreRecherche(recherche);
             }
     
@@ -43,10 +42,12 @@ window.addEventListener("load", function(){
         */
         let mat = [];
         for(let i=0; i<materiaux.length;  i++){
-            materiaux[i].addEventListener("click", function(){
-                let nMat = "";
-                nMat = materiaux[i].dataset.id
-                ajoutFiltreMateriaux(nMat);
+            materiaux[i].addEventListener("click", function(evt){
+                if(evt.target.classList.value == "materiaux" || evt.target.classList.value == "checkmark"){
+                    let nMat = "";
+                    nMat = materiaux[i].dataset.id
+                    ajoutFiltreMateriaux(nMat);
+                }
             });
         }
     
@@ -58,7 +59,6 @@ window.addEventListener("load", function(){
         for(let i=0; i<categories.length;  i++){
             categories[i].addEventListener("click", function(evt){       
                 if(evt.target.classList.value == "categorie" || evt.target.classList.value == "checkmark"){
-                    console.log(categories[i]);
                     let nCat = "";
                     nCat = categories[i].dataset.id
                     ajoutFiltreCategorie(nCat);
@@ -68,7 +68,6 @@ window.addEventListener("load", function(){
     
     
         function ajoutFiltreRecherche(recherche){
-            // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -82,7 +81,6 @@ window.addEventListener("load", function(){
            else{
                arr.splice(arr.indexOf(nArr), 1);
            }
-        //    GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         }
     
         /*
@@ -96,7 +94,6 @@ window.addEventListener("load", function(){
         else{
             mat.splice(mat.indexOf(nMat), 1);
         }
-        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
@@ -111,13 +108,11 @@ window.addEventListener("load", function(){
         else{
             cat.splice(cat.indexOf(nCat), 1);
         }
-        // GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
     
         }
     
     
         function GestionFiltre(arr = [], mat = [], cat = [], recherche = "", oeuvrePresent = 20){
-    
     
             let arrondissementb = {};
             for(let y = 0; y<arr.length; y++){
@@ -148,10 +143,8 @@ window.addEventListener("load", function(){
             aData.recherche = recherche;
             aData.oeuvrePresent = oeuvrePresent;
      
-            
             let jsonData = JSON.stringify(aData);
-            console.log(aData);
-            console.log(jsonData);
+
             filtrer(jsonData);
         }
     
@@ -177,30 +170,38 @@ window.addEventListener("load", function(){
 
 
         function afficherListe(oeuvres){
-            let template = document.querySelector(".templateOeuvre");
+            
             let parent = this.document.querySelector(".parent");
             parent.innerHTML = ""
-            oeuvres.forEach(function(oeuvre){
-                let uneOeuvre  = template.cloneNode(true);
-                for(let prop in oeuvre){
-                    let regExp = new RegExp("{{"+prop+"}}", "g");
-                    uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
-                }
-                let nouveauNoeud = document.importNode(uneOeuvre.content, true)
-                parent.append(nouveauNoeud);
-                oeuvre["Artistes"].forEach(function(artiste){
-                    let template2 = document.querySelector(".templateAuteur");
-                    let unArtiste  = template2.cloneNode(true);
-                    for(let prop in artiste){
+            if(oeuvres.length > 0){
+                let template = document.querySelector(".templateOeuvre");
+                oeuvres.forEach(function(oeuvre){
+                    let uneOeuvre  = template.cloneNode(true);
+                    for(let prop in oeuvre){
                         let regExp = new RegExp("{{"+prop+"}}", "g");
-                        unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                        uneOeuvre.innerHTML = uneOeuvre.innerHTML.replace(regExp, oeuvre[prop]);
                     }
-                    let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
-                    let noeudArtiste = document.importNode(unArtiste.content, true)
-
-                    parent2.append(noeudArtiste);
+                    let nouveauNoeud = document.importNode(uneOeuvre.content, true)
+                    parent.append(nouveauNoeud);
+                    oeuvre["Artistes"].forEach(function(artiste){
+                        let template2 = document.querySelector(".templateAuteur");
+                        let unArtiste  = template2.cloneNode(true);
+                        for(let prop in artiste){
+                            let regExp = new RegExp("{{"+prop+"}}", "g");
+                            unArtiste.innerHTML = unArtiste.innerHTML.replace(regExp, artiste[prop]);
+                        }
+                        let parent2 = document.querySelector(".Artiste"+oeuvre["id_oeuvre"]);
+                        let noeudArtiste = document.importNode(unArtiste.content, true)
+    
+                        parent2.append(noeudArtiste);
+                    })
                 })
-            })
+            }
+            else{
+                let message = document.createElement("P");
+                message.textContent = "Aucun oeuvre ne correspond à votre recherche";
+                parent.appendChild(message);
+            }
         }
     
     
@@ -227,6 +228,13 @@ window.addEventListener("load", function(){
         btnFiltre.addEventListener("click", function(){
             GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         })
+
+        window.addEventListener("keydown", function(evt){
+            if(evt.key == "Enter"){
+                GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
+            }
+        })
+        
     
     }
 
