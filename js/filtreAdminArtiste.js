@@ -8,13 +8,26 @@ window.addEventListener("load", function(){
 
         btnRecherche.addEventListener("click", function(){
             let recherche = barreRecherche.value;
-            if(recherche != ""){
                 let aData={};
                 aData.filtre = "adminArtiste";
                 aData.recherche = recherche;
                 aData.limit = 500;
                 let jsonData = JSON.stringify(aData);
+                
                 filtrer(jsonData);
+        })
+
+        window.addEventListener("keydown", function(evt){
+            
+            if(evt.key == "Enter"){
+                console.log("allo");
+                let recherche = barreRecherche.value;
+                    let aData={};
+                    aData.filtre = "adminArtiste";
+                    aData.recherche = recherche;
+                    aData.limit = 500;
+                    let jsonData = JSON.stringify(aData);
+                    filtrer(jsonData);
             }
         })
         

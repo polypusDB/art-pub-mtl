@@ -11,7 +11,6 @@ window.addEventListener("load", function(){
 
         window.addEventListener("keydown", function(evt){
             if(evt.key == "Enter"){
-                // console.log(evt.key);
                 commenter();
             }
         })
@@ -25,7 +24,6 @@ window.addEventListener("load", function(){
             let aData = { "text" : text, "id_user" : idUser, "id_oeuvre" : idOeuvre, "nom_connexion" : user};
             let newDATA = JSON.stringify(aData);
     
-            console.log(aData.text);
             if(aData.text != ""){
                     
                 xhr = new XMLHttpRequest();
@@ -35,7 +33,6 @@ window.addEventListener("load", function(){
                 xhr.onreadystatechange = function(){
                     if (this.readyState == 4 && this.status == 200) {
                         let com =JSON.parse(xhr.responseText);
-                        console.log(com);
                         let p1 = document.createElement("P");
                         let p2 = document.createElement("P");
                         let p3 = document.createElement("P");
@@ -71,14 +68,11 @@ window.addEventListener("load", function(){
 
 
         sectionCom.addEventListener("click", function(evt){
-            console.log(evt.target);
             if(evt.target.classList.value == "signaler"){
                 evt.target.classList.add("signalerON");
-                console.log(evt.target.dataset.idcommentairesig);
                 signalerCommentaire(evt.target.dataset.idcommentairesig);
             }
             if(evt.target.classList.value == "suprimer"){
-                console.log(evt.target.dataset);
                 suprimerCommentaire(evt.target.dataset.idcommentairesup);
                 let divParent = evt.target.parentElement;
                 divParent.remove();
@@ -92,12 +86,9 @@ window.addEventListener("load", function(){
 
     function signalerCommentaire(id){
         xhr = new XMLHttpRequest();
-        // console.log (id);
         xhr.open("GET", "/art-pub-mtl/api/commentaire/signaler/"+id);
         xhr.onreadystatechange = function(){
             if (this.readyState == 4 && this.status == 200) {
-                console.log ("allo");
-
             }
         }
         xhr.send(id);
@@ -110,7 +101,6 @@ window.addEventListener("load", function(){
         xhr.open("GET", "/art-pub-mtl/api/commentaire/suprimer/"+id);
         xhr.onreadystatechange = function(){
             if (this.readyState == 4 && this.status == 200) {
-                console.log ("allo2");
             }
         }
         xhr.send(id);
