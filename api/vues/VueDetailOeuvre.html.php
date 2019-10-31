@@ -80,7 +80,13 @@
 			<?php
 				foreach($commentaires as $commentaire){
 					extract($commentaire);
-					$userConnect = $_SESSION["utilisateur"]["nom_connexion"];
+					if(isset($_SESSION["utilisateur"])){
+						$userConnect = $_SESSION["utilisateur"]["nom_connexion"];
+					}
+					else{
+						$userConnect = "";
+					}
+					
 					?>
 						<div data-idCommentaire="<?=$id_commentaire ?>" class="unCommentaire">
 							<p><?=$nom_connexion ?></p>
