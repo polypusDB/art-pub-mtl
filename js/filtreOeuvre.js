@@ -12,7 +12,7 @@ window.addEventListener("load", function(){
         let recherche = "";
         barRecherche.addEventListener("keyup", function(){
             if(recherche == barRecherche.value){
-                console.log("aucun changement");
+
             }
             else{
                 
@@ -46,7 +46,6 @@ window.addEventListener("load", function(){
                 if(evt.target.classList.value == "materiaux" || evt.target.classList.value == "checkmark"){
                     let nMat = "";
                     nMat = materiaux[i].dataset.id
-                    console.log(nMat)
                     ajoutFiltreMateriaux(nMat);
                 }
             });
@@ -60,7 +59,6 @@ window.addEventListener("load", function(){
         for(let i=0; i<categories.length;  i++){
             categories[i].addEventListener("click", function(evt){       
                 if(evt.target.classList.value == "categorie" || evt.target.classList.value == "checkmark"){
-                    console.log(categories[i]);
                     let nCat = "";
                     nCat = categories[i].dataset.id
                     ajoutFiltreCategorie(nCat);
@@ -115,7 +113,6 @@ window.addEventListener("load", function(){
     
     
         function GestionFiltre(arr = [], mat = [], cat = [], recherche = "", oeuvrePresent = 20){
-            console.log(mat);
     
             let arrondissementb = {};
             for(let y = 0; y<arr.length; y++){
@@ -146,7 +143,6 @@ window.addEventListener("load", function(){
             aData.recherche = recherche;
             aData.oeuvrePresent = oeuvrePresent;
      
-            // console.log(aData);
             let jsonData = JSON.stringify(aData);
 
             filtrer(jsonData);
@@ -162,7 +158,6 @@ window.addEventListener("load", function(){
             xhr.open("POST", "/art-pub-mtl/api/filtre");
             xhr.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
-                    // console.log(xhr.responseText)
                     let oeuvres  = JSON.parse(xhr.responseText);
                     
                     afficherListe(oeuvres);
@@ -233,6 +228,13 @@ window.addEventListener("load", function(){
         btnFiltre.addEventListener("click", function(){
             GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
         })
+
+        window.addEventListener("keydown", function(evt){
+            if(evt.key == "Enter"){
+                GestionFiltre(arr, mat, cat, recherche, oeuvrePresent);
+            }
+        })
+        
     
     }
 

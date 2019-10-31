@@ -14,6 +14,18 @@ window.addEventListener("load", function(){
                 filtrer(jsonData);
             }
         })
+
+        window.addEventListener("keydown", function(evt){
+            if(evt.key == "Enter"){
+                let recherche = barreRecherche.value;
+                let aData={};
+                aData.filtre = "adminOeuvre";
+                aData.recherche = recherche;
+                aData.limit = 500;
+                let jsonData = JSON.stringify(aData);
+                filtrer(jsonData);
+            }
+        })
         
     }
 

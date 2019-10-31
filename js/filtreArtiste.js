@@ -58,7 +58,6 @@ window.addEventListener("load", function(){
 
 
     function afficherListe(artistes){
-        console.log(artistes.length);
         let parent = this.document.querySelector(".parent");
         parent.innerHTML = "";
         if(artistes.length>0){
