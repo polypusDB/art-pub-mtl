@@ -22,7 +22,7 @@
 </div>
 <section class="une">
     <div class="ImgUne">
-        <a href="/art-pub-mtl/api/oeuvre"><img src="/art-pub-mtl/img/oeuvreAlaUne.png" alt="mtl"></a>
+        <a href="/art-pub-mtl/api/oeuvre"><img src="/art-pub-mtl/img/OeuvreAlaUne.jpg" alt="mtl"></a>
     </div>
     <div class="BlocUne">
         <div class="titreUne">
@@ -30,10 +30,12 @@
             <h2 class="texteUne">Chaque semaine, un artiste ou une oeuvre est mis en évidence.</h2>
         </div>
         <div class="contenuUne">
-            <h2><a href=""></a> C.A Barbier</h2>
-            <div class="subTitreUne">Muraliste</div>
-            <p>Créé en 2006 à Montréal, Artducommun est un collectif de peintres muralistes fondé par Simon Bachand et Jasmin Guérard-Alie. Il regroupe des artistes professionnels qui pratiquent cette forme d’art depuis plus de 15 ans. Innovant à travers des techniques audacieuses et un imaginaire unique, les artistes recherchent de nouvelles approches pour chacune de leurs créations.</p>
-            <input class="btnArtiste" type="button" href="" value="Découvrir d'avantage">
+            <h2><a href="/art-pub-mtl/api/oeuvre/111"></a>ACIER</h2>
+            <div class="subTitreUne">Beaux-arts</div>
+            <p>Il regroupe des artistes professionnels qui pratiquent cette forme d’art depuis plus de 15 ans. Innovant à travers des techniques audacieuses et un imaginaire unique, les artistes recherchent de nouvelles approches pour chacune de leurs créations.</p>
+            <a href="/art-pub-mtl/api/oeuvre/111">
+                <div class="btnArtiste">Découvrir d'avantage</div>
+            </a>
         </div>
     </div>
 </section>
@@ -70,7 +72,9 @@
         <div></div>
     </section>
     <section class="contenu bouton">
-        <input class="btnVisite" type="button" href="/art-pub-mtl/api/parcours" value="Planifier votre visite">
+        <a href="/art-pub-mtl/api/parcours">
+            <div class="btnVisite">Planifier votre visite</div>
+        </a>
     </section>
     
     <section class="apm">

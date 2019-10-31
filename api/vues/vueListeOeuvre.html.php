@@ -17,7 +17,7 @@
 
 <section class="contenu listeOeuvres">
 	<div class="titreListe">
-		<h1>Oeuvres</h1>
+		<h1 id="up">Oeuvres</h1>
 		<h4>Découvrez la grande collection</h4>
 	</div>
 	<div class="grandContRecherche">
@@ -106,6 +106,8 @@
 		}
 		?>
 	</section>
-				
+	<a href="#up">
+		<div class="upIcone"><i class="far fa-arrow-alt-circle-up"></i></div>
+	</a>
 </section>
 			
