@@ -93,10 +93,27 @@ class Vue {
 	}
     
     /*Affiche les détails des parcours ---------------- */
-    public function afficheDetailParcours() {
+    /* Parcours numéro 1 */
+    public function afficheDetailParcours1() {
 		$this->afficheHead();
 		$this->afficheEntete();
-        include("VueDetailParcours.html.php");
+        include("VueDetailParcours1.html.php");
+		$this->affichePied();
+	}
+    
+    /* Parcours numéro 2 */
+    public function afficheDetailParcours2() {
+		$this->afficheHead();
+		$this->afficheEntete();
+        include("VueDetailParcours2.html.php");
+		$this->affichePied();
+	}
+    
+    /* Parcours numéro 3 */
+    public function afficheDetailParcours3() {
+		$this->afficheHead();
+		$this->afficheEntete();
+        include("VueDetailParcours3.html.php");
 		$this->affichePied();
 	}
 
