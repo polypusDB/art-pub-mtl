@@ -26,10 +26,20 @@ class ParcoursControlleur extends Controlleur
 	{
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
 		{
-            //var_dump($requete->url_elements[0]);
-            $oVue = new Vue();
-            $oVue->afficheDetailParcours();
+            if($requete->url_elements[0] == 1){
+                $oVue = new Vue();
+                $oVue->afficheDetailParcours1();
+            }
             
+            if($requete->url_elements[0] == 2){
+                $oVue = new Vue();
+                $oVue->afficheDetailParcours2();
+            }
+            
+            if($requete->url_elements[0] == 3){
+                $oVue = new Vue();
+                $oVue->afficheDetailParcours3();
+            }
 		}
         else 	// Liste des oeuvres
         {

@@ -45,21 +45,21 @@
     </section>
     <section class="listeParcours">
         <div class="honneur">
-            <a href="/art-pub-mtl/api/parcours">
+            <a href="/art-pub-mtl/api/parcours/1">
                 <img src="/art-pub-mtl/img/oeuvres/fontaine.jpg" alt="">
                 <h2>Sculptures - Fontaines</h2>
             </a>
         </div>
         <div class="honneur">
-            <a href="/art-pub-mtl/api/parcours">
+            <a href="/art-pub-mtl/api/parcours/2">
                 <img src="/art-pub-mtl/img/oeuvres/mileEnd.jpg" alt="">
-                <h2>Mini-circuit - Mile End</h2>
+                <h2>La Petite Italie</h2>
             </a>
         </div>
         <div class="honneur">
-            <a href="/art-pub-mtl/api/parcours">
-                <img src="/art-pub-mtl/img/oeuvres/bleue.jpg" alt="">
-                <h2>Suivre la ligne bleue</h2>
+            <a href="/art-pub-mtl/api/parcours/3">
+                <img src="/art-pub-mtl/img/oeuvres/lion.jpg" alt="">
+                <h2>Jardin Botanique</h2>
             </a>
         </div>
         <div></div>
