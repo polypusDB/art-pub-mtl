@@ -5,7 +5,7 @@
  * @author Michel Plamondon
  * @version 2.0
  * @update 2019-09-17
- * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
+ * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  * Cette classe sert à faire le lien entre un artiste et une oeuvre. 
@@ -64,6 +64,14 @@ class ArtisteOeuvre extends Modele {
 	public function supprimerArtisteOeuvre($id_artiste){
 		$query = "DELETE ". self::TABLE_ARTISTEOEUVRE ."
 		$id_artiste";
+
+		echo $query;
+		// $resQuery = $this->_db->query($query); 
+	}
+    
+	public function supprimerOeuvreArtiste($id_oeuvre){
+		$query = "DELETE ". self::TABLE_ARTISTEOEUVRE ."
+		$id_oeuvre";
 
 		echo $query;
 		// $resQuery = $this->_db->query($query); 
