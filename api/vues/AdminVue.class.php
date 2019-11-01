@@ -87,7 +87,7 @@ class AdminVue {
 	/**
 	 * Affiche le Formulaire pour ajouter un oeuvre
 	 */
-	public function getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
+	public function getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur,$listeMsgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("admin/formAjouterOeuvres.php");

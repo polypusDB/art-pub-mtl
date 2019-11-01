@@ -68,5 +68,12 @@ class OeuvreTechnique extends Modele {
         
 		return $resQuery;        
     }
-	
+
+	public function supprimerOeuvreTechnique($id_oeuvre){
+		$query = "DELETE ". self::TABLE_OEUVRE_TECHNIQUE ."
+		$id_oeuvre";
+
+		echo $query;
+		// $resQuery = $this->_db->query($query); 
+	}
 }
