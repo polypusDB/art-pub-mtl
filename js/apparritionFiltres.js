@@ -1,5 +1,7 @@
 window.addEventListener("load", function(){
-
+/**
+ * gère l'apparrition et la disparition des filtres
+ */
     
     if(document.querySelector(".filtres")){
         let titreArron = document.querySelector(".titreArron");

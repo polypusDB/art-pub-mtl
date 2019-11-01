@@ -1,11 +1,12 @@
 window.addEventListener("load", function(){
-
+/**
+ * gestion des filtres pour /artisteAdmin
+ * Gere l'apparition avec le template
+ */
 
     if(document.querySelector(".adminSearchArtiste") != null){
         let btnRecherche = document.querySelector(".btnRecherche");
         let barreRecherche = document.querySelector(".adminSearchArtiste");
-
-
         btnRecherche.addEventListener("click", function(){
             let recherche = barreRecherche.value;
                 let aData={};
@@ -32,7 +33,10 @@ window.addEventListener("load", function(){
         
     }
 
-
+/**
+ * Envoie le filtre en ajax
+ * @param {object} data 
+ */
     function filtrer(data){
         xhr = new XMLHttpRequest();
         xhr.open("POST", "/art-pub-mtl/api/filtre");
@@ -46,7 +50,10 @@ window.addEventListener("load", function(){
         xhr.send(data);
     }
 
-
+/**
+ * affiche les artistes
+ * @param {array} artistes 
+ */
     function afficherListe(artistes){
         let parent = this.document.querySelector(".parent");
         if(artistes.length > 0){
@@ -71,7 +78,10 @@ window.addEventListener("load", function(){
 
     }
 
-
+/**
+ * apparrition du head du tableau
+ * @param {htmlelement} parent 
+ */
     function topTableau(parent){
         parent.innerHTML = "";
         let thead =document.createElement("THEAD");

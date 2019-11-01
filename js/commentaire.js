@@ -1,9 +1,10 @@
 window.addEventListener("load", function(){
+    /**
+     * gestion des commentaires en ks
+     */
     let btnCom = document.querySelector(".btnCom");
     if(btnCom != null){
         var sectionCom = document.querySelector(".list-comment");
-
-
         btnCom.addEventListener("click", function(){
             let zoneTexte = document.querySelector(".commentaire");
             commenter();
@@ -16,7 +17,9 @@ window.addEventListener("load", function(){
             }
         })
 
-
+        /**
+         * function pour l'apparrition du commentaire et injection dans la bd
+         */
         function commenter(){
             let text = document.querySelector(".commentaire").value;
             let idUser = document.querySelector(".idUser").value;
@@ -24,12 +27,8 @@ window.addEventListener("load", function(){
             let user = document.querySelector(".user").value;
             let aData = { "text" : text, "id_user" : idUser, "id_oeuvre" : idOeuvre, "nom_connexion" : user};
             let newDATA = JSON.stringify(aData);
-    
             if(aData.text != ""){
-                    
                 xhr = new XMLHttpRequest();
-                   
-        
                 xhr.open("POST", "/art-pub-mtl/api/commentaire");
                 xhr.onreadystatechange = function(){
                     if (this.readyState == 4 && this.status == 200) {
@@ -73,7 +72,9 @@ window.addEventListener("load", function(){
         }
 
 
-
+/**
+ * add event listener pour suprimer et signaler les commentaires
+ */
         sectionCom.addEventListener("click", function(evt){
             if(evt.target.dataset.signaler){
                 evt.target.parentNode.classList.add("signalerON");
@@ -91,6 +92,10 @@ window.addEventListener("load", function(){
         
     }
 
+    /**
+     * signale les commentaire
+     * @param {string} id 
+     */
 
     function signalerCommentaire(id){
         xhr = new XMLHttpRequest();
@@ -103,7 +108,10 @@ window.addEventListener("load", function(){
 
     }
 
-
+    /**
+     * suprimer les commentaire
+     * @param {string} id 
+     */
     function suprimerCommentaire(id){
         xhr = new XMLHttpRequest();
         xhr.open("GET", "/art-pub-mtl/api/commentaire/suprimer/"+id);
