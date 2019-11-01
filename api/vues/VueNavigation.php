@@ -15,7 +15,14 @@
                             $id = $_SESSION["utilisateur"]["id_usager"];
                             ?>
                             <a href="/art-pub-mtl/api/usager/<?=$id ?>" class="user"><i class="fas fa-grin-wink"></i>Salut <?php echo $username?></a>
-                            <a href="/art-pub-mtl/api/admin"><i class="fas fa-edit"></i>Tableau de Bord</a>
+                            <?php
+                                if($_SESSION["utilisateur"]["type_acces"] == "admin"){
+                                    ?>
+                                        <a href="/art-pub-mtl/api/admin"><i class="fas fa-edit"></i>Tableau de Bord</a>
+                                    <?php
+                                }
+                            ?>
+                            
                             <a href="/art-pub-mtl/api/connection"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
                             <?php
                         }
