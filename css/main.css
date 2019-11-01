@@ -111,6 +111,16 @@ p.textFiltrer{
     width: 100%;
     font-weight: 600;
 }
+.upIcone{
+    position: fixed;
+    bottom: 1%;
+    right: 2%;
+    font-size: 70px;
+    color: #F3D331;
+}
+.upIcone i{
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
 
 /* Items des Formulaires ---------------------------------------- */
 .contRecherche{
@@ -177,6 +187,12 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
 .carte .image img{
     width: 100%;
 }
+.carte .image img:hover{
+    width: 100%;
+    filter: brightness(60%);
+     -webkit-filter: brightness(60%);
+     transition: 0.5s;
+}
 .carte .image > .titre{
     position: absolute;
     bottom: 0px;
@@ -226,8 +242,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     font-weight: 600;
 }
 .uneOeuvre > .oeuvres .dummy{
-    width: 60%;
-    margin-top: 60px;
+    width: 30%;
 }
 .uneOeuvre > .oeuvres .dummy img{
     width: 100%;
@@ -249,7 +264,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     color: #E26F39;
     font-weight: 500;
     text-transform: uppercase;
-    margin: 20px 0 0;
+    margin: 0;
 }
 .uneOeuvre > .oeuvres .texte{
     width: 30%;
@@ -281,7 +296,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     color: #E26F39;
     font-size: xx-large;
 }
-.uneOeuvre > .retour{
+.uneOeuvre > .retour, section .retour{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -290,7 +305,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     height: 48px;
     justify-content: flex-end;
 }
-.uneOeuvre > .retour a{
+.uneOeuvre > .retour a, section .retour a{
     text-decoration: none;
     padding-left: 10px;
 }
@@ -385,6 +400,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     margin-top: 10%;
     border: 1px solid #81CEC5;
     padding: 20px;
+    margin-top: 1%;
 }
 .form-comment h2{
     text-transform: uppercase;
@@ -434,9 +450,6 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     margin-top: 5px;
 }
 
-
-
-
 /* À propos -------------------------------------------------------- */
 .img-page {
     width: 100%;
@@ -464,7 +477,9 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
 
 
 @media screen and (max-width:1400px){
-
+    .uneOeuvre > .oeuvres .dummy{
+        width: 50%;
+    }
 }
 @media screen and (max-width:1024px){
     .carte {
@@ -500,13 +515,13 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
         height: auto;
     }
     .artiste-carte{
-    width: 80%;
+        width: 80%;
     }
 
     /* Oeuvres -------------- */
     .oeuvres{
         width: 100%;
-        
+        flex-direction: column;
     }
     .uneOeuvre > .oeuvres .dummy{
         width: 100%;
@@ -523,6 +538,9 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     }
     .titreComment {
         text-align: center;
+    }
+    .form-comment {
+        width: 100%;
     }
 }
 
