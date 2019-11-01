@@ -9,7 +9,7 @@
 
  <section class="contenu listeArtiste">
     <div class="titreListe">
-            <h1>Artistes</h1>
+            <h1 id="up">Artistes</h1>
             <h4>Les acteurs d'Art Public Montréal</h4>
     </div>
     <div class="grandContRecherche">
@@ -36,6 +36,9 @@
 					}
 				?>
      </section>
+     <a href="#up">
+		<div class="upIcone"><i class="far fa-arrow-alt-circle-up"></i></div>
+	</a>
 </section>
 
 
