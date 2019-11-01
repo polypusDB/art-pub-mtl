@@ -36,7 +36,7 @@
             Le quartier de la petite Italie est un quartier charmant de la ville de Montréal où les premiers immigrants italiens ont posés leurs valises au XIXe siècle. À travers ce parcours, vous pourrez découvrir le parc Jarry et ses diverses activités, emprunter la station de métro de Castelnau au cœur de la petite Italie, flâner au marché Jean Talon et finir votre balade par la maison de la culture Claude-Léveillée. Vous pourrez y appréciez la dolce vita et l’ambiance chaleureuse qui y règne, tout en dégustant un délicieux café.
             </p>
         </section>
-        <section class="map">
+        <section class="map parcourMap">
             <img  src="/art-pub-mtl/img/cartes/map_parcours2.jpg" alt="">
         </section>
     </section>

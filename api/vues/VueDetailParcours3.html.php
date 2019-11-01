@@ -35,7 +35,7 @@
             <p>Dans un décor où se côtoient près d’une trentaine de jardins thématiques sans cesse transformés par nos saisons bien définies, découvrez les œuvres d’art public qui parsèment le Jardin botanique de Montréal, une oasis fleurie fondée en 1931 par le frère Marie-Victorin. Outre les onze œuvres ornant les jardins, vous pourrez, par exemple, apprécier l’élégance de l’allée monumentale et le plan d’eau de l’entrée principale du Jardin, de même que celle de la roseraie, du Jardin japonais, ou du Jardin alpin. Seule la perspective ouverte sur le Stade olympique saura vous rappeler que vous vous trouvez bien à Montréal.
             </p>
         </section>
-        <section class="map">
+        <section class="map parcourMap">
             <img  src="/art-pub-mtl/img/cartes/map_parcours3.jpg" alt="">
         </section>
     </section>

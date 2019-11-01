@@ -23,7 +23,7 @@
                 ?>
                 </p>
             </div>
-            <a href="">
+            <a href="/art-pub-mtl/api/usager/<?=$_SESSION['utilisateur']["id_usager"] ?>" target="_blank">
                 <div class="infobt">Voir mon profil</div>
             </a>
         </div>
