@@ -6,6 +6,7 @@ window.addEventListener("load", function(){
     if(btnCom != null){
         var sectionCom = document.querySelector(".list-comment");
         btnCom.addEventListener("click", function(){
+            console.log("yo");
             let zoneTexte = document.querySelector(".commentaire");
             commenter();
             zoneTexte.value = "";
