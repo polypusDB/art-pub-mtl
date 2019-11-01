@@ -333,9 +333,22 @@ td h2{
     fill: white;
     margin: 0;
 }
+
+.bt-approuver input[type = "submit"]{
+    background: url("../img/icons/check-solid.svg") no-repeat center;
+    padding: 6px 15px;
+    fill: white;
+    margin: 0;
+}
+
 .bt-supprimer input[type="submit"]:hover{
     background-color: transparent;
     background: url("../img/icons/trash-alt-bl.svg") no-repeat center;
+}
+
+.bt-approuver input[type = "submit"]:hover{
+    background-color: transparent;
+    background: url("../img/icons/check-solid.svg") no-repeat center;
 }
 
 
