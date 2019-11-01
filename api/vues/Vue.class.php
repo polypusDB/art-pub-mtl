@@ -127,7 +127,7 @@ class Vue {
 	}
 
     /* Affiche le formulaire d'ajout d'une oeuvre ---------------- */
-	public function getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
+	public function getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msg_erreur,$listeMsgErreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formAjouterOeuvres.php");
@@ -142,7 +142,7 @@ class Vue {
 		$this->affichePied();
 	}
 
-	public function getFormModifierOeuvre($aData, $liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
+	public function getFormModifierOeuvre($aData, $liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msg_erreur){
 		$this->afficheHead();
 		$this->afficheEntete();
 		include("formModifOeuvre.php");

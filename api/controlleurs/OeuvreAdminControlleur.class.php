@@ -32,11 +32,21 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         $oArrondissement = new Arrondissement();
         
         // Obtenir des listes d'informations pour faciliter l'ajout ou la modification d'une oeuvre.
-        $liste_artiste = $oArtiste->getListe();
+        $liste_artiste = $oArtiste->getListe("",500);
         $liste_categorie = $oCategorie->getListe();
         $liste_support = $oTypeSupport->getListe();
         $liste_arrondissement = $oArrondissement->getListe();
         $msgErreur ="";
+        $listeMsgErreur = array();
+        $listeMsgErreur["titre"] = "";
+        $listeMsgErreur["support"] = "";
+        $listeMsgErreur["description"] = "";
+        $listeMsgErreur["categorie"] = "";
+        $listeMsgErreur["artiste"] = "";
+        $listeMsgErreur["parc"] = "";
+        $listeMsgErreur["coordonnee_latitude"] = "";
+        $listeMsgErreur["coordonnee_longitude"] = "";
+        $listeMsgErreur["arrondissement"] = "";
 		
         // Répartition des actions selon la requête demandée par l'usager.
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// l'id de l'oeuvre 
@@ -71,7 +81,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 $liste_materiaux = $oOeuvreMateriaux->getOeuvreMateriauxByIdOeuvre($aData['id_oeuvre']);
                 $materiaux_francais = "";
                 $materiaux_anglais = "";
-                if(count($liste_materiaux) > 0)
+                if($liste_materiaux != 0)
                 {
                     foreach($liste_materiaux as $element)
                     {
@@ -87,7 +97,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 $liste_technique = $oOeuvreTechnique->getOeuvreTechniqueByIdOeuvre($aData['id_oeuvre']);
                 $technique_francais = "";
                 $technique_anglais = "";
-                if(count($liste_technique) > 0)
+                if($liste_technique != 0)
                 {
                     foreach($liste_technique as $element)
                     {
@@ -108,7 +118,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		}
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "ajouter"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
-				$this->getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
+				$this->getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur,$listeMsgErreur);
 			}
 			else{
 				echo "vous devez etre connecté en tant qu'admin";
@@ -174,50 +184,60 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         $liste_categorie = $oCategorie->getListe();
         $liste_support = $oTypeSupport->getListe();
         $liste_arrondissement = $oArrondissement->getListe();
-        $liste_artiste = $oArtiste->getListe();
+        $liste_artiste = $oArtiste->getListe("",500);
         $msgErreur =""; // Message d'erreur si les informations demandées sont incorrectes.
+        $listeMsgErreur = array();
+        $listeMsgErreur["titre"] = "";
+        $listeMsgErreur["support"] = "";
+        $listeMsgErreur["description"] = "";
+        $listeMsgErreur["categorie"] = "";
+        $listeMsgErreur["artiste"] = "";
+        $listeMsgErreur["parc"] = "";
+        $listeMsgErreur["coordonnee_latitude"] = "";
+        $listeMsgErreur["coordonnee_longitude"] = "";
+        $listeMsgErreur["arrondissement"] = "";
 		if(isset($requete->url_elements[0]) && (($requete->url_elements[0] == "ajouter") || ($requete->url_elements[0] == "mod"))){
 			if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "insert"){
                 
                 // Validation des données provenant du formulaire.
 				if(empty(trim($_POST["titre"]))) {
-                    $msgErreur.= "Vous devez saisir un titre. <br>";
+                    $listeMsgErreur["titre"] = "Vous devez saisir un titre. <br>";
                 }
                 
                 if($_POST["id_support"] == "choix")
                 {
                     if(empty(trim($_POST["support_nom_francais"])) && empty(trim($_POST["support_nom_anglais"]))) {
-                             $msgErreur.= "Vous devez saisir un type de support ou le choisir dans la liste déroulante.<br>";
+                             $listeMsgErreur["support"] = "Vous devez saisir un type de support ou le choisir dans la liste déroulante.<br>";
                     }                     
                 }
                 
                 if(empty(trim($_POST["description"]))) {
-                    $msgErreur.= "Vous devez saisir une description en français. <br>";
-                }
-
-                if(empty(trim($_POST["description_anglais"]))) {
-                    $msgErreur.= "Vous devez saisir une description en anglais. <br>";
+                    $listeMsgErreur["description"] = "Vous devez saisir une description en français. <br>";
                 }
                               
                 if($_POST["id_categorie"] == "choix") {
-                     $msgErreur.= "Vous devez choisir une catégorie dans la liste. <br>";
+                     $listeMsgErreur["categorie"] = "Vous devez choisir une catégorie dans la liste. <br>";
                 }
                 
                 if($_POST["id_artiste"] == "choix") {
-                     $msgErreur.= "Vous devez choisir un artiste dans la liste. <br>";
+                     $listeMsgErreur["artiste"] = "Vous devez choisir un artiste dans la liste. <br>";
                 }
                 
                 if(empty(trim($_POST["parc"])) && empty(trim($_POST["batiment"])) && empty(trim($_POST["adresse"]))) {
-					$msgErreur.= "Vous devez saisir un parc, un bâtiment ou une adresse civique<br>";
+					$listeMsgErreur["parc"] = "Vous devez saisir un parc, un bâtiment ou une adresse civique<br>";
                 }
                 
                 if(empty(trim($_POST["coordonnee_latitude"]))) {
-                    $msgErreur.= "Vous devez saisir une coordonnée pour la latitude.<br>";                               
+                    $listeMsgErreur["coordonnee_latitude"] = "Vous devez saisir une coordonnée pour la latitude.<br>";                               
                 }
                 
                 if(empty(trim($_POST["coordonnee_longitude"]))) {
-                    $msgErreur.= "Vous devez saisir une coordonnée pour la longitude.<br>";
+                    $listeMsgErreur["coordonnee_longitude"] = "Vous devez saisir une coordonnée pour la longitude.<br>";
                 }
+                
+                if($_POST["id_arrondissement"] == "choix") {
+                     $listeMsgErreur["arrondissement"] = "Vous devez choisir un arrondissement dans la liste. <br>";
+                }               
                
                 /*//vérifier si un fichier a été envoyé
                 if($_FILES)
@@ -226,10 +246,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                     {
                         $msgErreur.= "Vous devez choisir un fichier.<br>";
                     }
-                }*/
-                
+                }*/              
 				// Si le message d'erreur est vide on lance l'ajout ou la modification, sinon on recharge le formulaire de saisie.
-				if($msgErreur == ""){
+				if(($listeMsgErreur["titre"] == "") && ($listeMsgErreur["support"] == "") && ($listeMsgErreur["description"] == "") && ($listeMsgErreur["categorie"] == "") &&
+                  ($listeMsgErreur["artiste"] == "") && ($listeMsgErreur["parc"] == "") && ($listeMsgErreur["coordonnee_latitude"] == "") && ($listeMsgErreur["coordonnee_longitude"] == "") && ($listeMsgErreur["arrondissement"] == "")){
                     // Affectation des données à traiter pour un ajout ou une modification.
 					$aData = Array();
 					foreach($_POST as $cle=>$value){
@@ -250,7 +270,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				else{
                     if($requete->url_elements[0] == "ajouter")
                     {
-                        $this->getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
+                        $this->getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur,$listeMsgErreur);
                     }
 					else
                     {
@@ -290,9 +310,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
 	}
 
-	protected function getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
+	protected function getFormAjout($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur,$listeMsgErreur){
 		$oVue = new AdminVue();
-		$oVue->getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur);
+		$oVue->getFormAjoutOeuvre($liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur,$listeMsgErreur);
 	}
 
 	protected function getFormMod($aData, $liste_artiste,$liste_categorie,$liste_support,$liste_arrondissement,$msgErreur){
@@ -301,14 +321,18 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	}
 	
 	// Section Supprimer Oeuvres
-	protected function supOeuvre($aData){
+	protected function supOeuvre($string){
 		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->deleteOeuvre($aData);
+/*        $oArtisteOeuvre = new ArtisteOeuvre();
+        $oOeuvreMateriaux = new OeuvreMateriaux();
+        $oOeuvreTechnique = new OeuvreTechnique();
+        $oArtisteOeuvre->supprimerOeuvreArtiste($string);
+        $oOeuvreMateriaux->supprimerOeuvreMateriaux($string);
+        $oOeuvreTechnique->supprimerOeuvreTechnique($string);*/
+		$aOeuvre = $oOeuvre->deleteOeuvre($string);
 	}
 
 	protected function ArrayToString($aData){
-		
-		if($msgErreur == ""){
 			$premier = true;
 
 			foreach($aData as $id){
@@ -321,16 +345,18 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				$premier = false;
 			}
 			return $res;
-		}
 	}
+    
 	protected function AjouterData($aData){
 
         $oTraitementDonnees = new TraitementDonnees();
+        $oMateriaux = new Materiaux();
+        $oTechnique = new Technique();
         $oArtisteOeuvre = new ArtisteOeuvre();
         $oOeuvreMateriaux = new OeuvreMateriaux();
         $oOeuvreTechnique = new OeuvreTechnique();
         
-        $aData['id_arrondissement'] = intval($aData['arrondissement']);
+        $aData['id_arrondissement'] = intval($aData['id_arrondissement']);
         $aData['id_endroit'] = $oTraitementDonnees->traiterEndroit($aData);
 
         if($aData['id_support'] == "choix")
@@ -342,21 +368,40 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         {
             $aData['id_oeuvre'] = $oTraitementDonnees->traiterOeuvre($aData);
         }
+
+        $donnees = $oMateriaux->verifierMateriauxFrancaisExistant($aData['materiaux_francais']);
+        if($donnees == 0)
+        {
+             if($oMateriaux->ajouterMateriaux($aData['materiaux_francais'],$aData['materiaux_anglais']))
+             {
+                  $donnees = $oMateriaux->getDernierEnregistrement();
+                  $id_materiaux = $donnees['dernier'];
+             }            
+        }
+        else
+        {
+             $id_materiaux = $donnees['id_materiaux'];
+        }
         
-        $tab_id_materiaux = $oTraitementDonnees->traiterMateriaux($aData['materiaux_francais'],$aData['materiaux_anglais']);
-        $tab_id_technique = $oTraitementDonnees->traiterTechnique($aData['technique_francais'],$aData['technique_anglais']);
-        
+        $donnees = $oTechnique->verifierTechniqueFrancaisExistant($aData['technique_francais']);
+        if($donnees == 0)
+        {
+             if($oTechnique->ajouterTechnique($aData['technique_francais'],$aData['technique_anglais']))
+             {
+                  $donnees = $oTechnique->getDernierEnregistrement();
+                  $id_technique = $donnees['dernier'];
+             }            
+        }
+        else
+        {
+             $id_technique = $donnees['id_technique'];
+        }        
+
         if($aData['id_oeuvre'] > 0)
         {
             $oArtisteOeuvre->ajouterArtisteOeuvre($aData['id_artiste'],$aData['id_oeuvre']);
-            for($i = 0; $i < count($tab_id_materiaux); $i++)
-            {
-                $oOeuvreMateriaux->ajouterOeuvreMateriaux($aData['id_oeuvre'],$tab_id_materiaux[$i]);
-            }
-            for($i = 0; $i < count($tab_id_technique); $i++)
-            {
-                $oOeuvreTechnique->ajouterOeuvreTechnique($aData['id_oeuvre'],$tab_id_technique[$i]);
-            }
+            $oOeuvreMateriaux->ajouterOeuvreMateriaux($aData['id_oeuvre'],$id_materiaux);
+            $oOeuvreTechnique->ajouterOeuvreTechnique($aData['id_oeuvre'],$id_technique);
             /*
             $nomDossier = "../img/oeuvres/no".$aData['id_oeuvre'];
             mkdir($nomDossier, 0777); */

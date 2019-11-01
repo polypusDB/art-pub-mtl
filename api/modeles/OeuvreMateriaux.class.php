@@ -68,5 +68,13 @@ class OeuvreMateriaux extends Modele {
         
 		return $resQuery;        
     }
+    
+	public function supprimerOeuvreMateriaux($id_oeuvre){
+		$query = "DELETE ". self::TABLE_OEUVRE_MATERIAUX ."
+		$id_oeuvre";
+
+		echo $query;
+		// $resQuery = $this->_db->query($query); 
+	}
 	
 }
