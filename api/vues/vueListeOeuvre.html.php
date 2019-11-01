@@ -76,7 +76,7 @@
 				</div>
 			</div>	
 		</div>
-		<input type="button" value="filrer" class="btnFiltre"/>
+		<input type="button" value="filtrer" class="btnFiltre"/>
 	</div>
 	
 	<section class="oeuvres flex wrap parent">

@@ -296,7 +296,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     color: #E26F39;
     font-size: xx-large;
 }
-.uneOeuvre > .retour{
+.uneOeuvre > .retour, section .retour{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -305,7 +305,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     height: 48px;
     justify-content: flex-end;
 }
-.uneOeuvre > .retour a{
+.uneOeuvre > .retour a, section .retour a{
     text-decoration: none;
     padding-left: 10px;
 }
@@ -400,6 +400,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     margin-top: 10%;
     border: 1px solid #81CEC5;
     padding: 20px;
+    margin-top: 1%;
 }
 .form-comment h2{
     text-transform: uppercase;
