@@ -114,11 +114,11 @@ section h2{
     height: auto;
 }
 
-.map img{
+section.map.parcourMap img{
     margin-top: 10%;
     width: 100%;
     height: auto;
-     border-bottom: solid 6px #E26F39;
+    border-bottom: solid 6px #E26F39;
 }
 
 section.oeuvres.parcour .texte{

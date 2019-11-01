@@ -36,7 +36,7 @@
             Le parcours présenté ici vous invite à arpenter les quartiers centraux à la découverte de quelques-unes d’entre elles. Votre expérience débutera au métro Sherbrooke et vous mènera au Square Victoria. Vous pourrez le faire à pied, en vélo ou en transport en commun. Mieux vaut se chausser d’une bonne paire de souliers de marche.
             </p>
         </section>
-        <section class="map">
+        <section class="map parcourMap">
             <img  src="/art-pub-mtl/img/cartes/map_parcours1.jpg" alt="">
         </section>
     </section>

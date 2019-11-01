@@ -100,12 +100,14 @@
     padding-left: 3%;
     border-left: solid 6px #E26F39;
     color: black;
+    text-transform: inherit; 
 }
 .contenuUne h2{
     color: #E26F39;
     font-size: 35px;
     font-weight: 600;
     text-transform: uppercase;
+    text-align: left;
 }
 .contenuUne .subTitreUne{
     font-size: 25px;
@@ -135,7 +137,7 @@
 }
 
 .artiste div .listeArtiste{
-    padding-top: 3%;
+    padding-top: 0;
 }
 
 .artiste .listeArtiste a{
@@ -176,7 +178,9 @@
     font-size: 1.2em;
     color: white; 
     text-align: center;
-    font-weight: 600;   
+    font-weight: 600;  
+    margin-top: 2%;
+    text-transform: inherit; 
 }
 
 .listeParcours{

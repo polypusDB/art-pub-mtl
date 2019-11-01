@@ -4,7 +4,7 @@
             <h1>À Propos</h1>
         </div>
         <div class="img-page">
-            <img src="../img/placeholder_640_480.jpg" alt="Art Public Montreal">
+            <img src="../img/apropos.jpg" alt="Art Public Montreal">
         </div>
         <h2 class="titre-page">Art Public Montréal</h2>
         <p class="proposTexte">

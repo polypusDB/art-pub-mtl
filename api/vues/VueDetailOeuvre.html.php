@@ -106,7 +106,7 @@
 			?>
 		</div>
 		<div class="titreComment">Laisse ton commentaire ou tes questions ici!</div>
-		<div>
+		<div class="contCommentIci">
 			<?php
 				if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["nom_connexion"] != ""){
 					?>
@@ -125,25 +125,23 @@
 			?>
 		</div>
 	</div>
-	<div class = "map"></div>
-
-
+	<div class="map"></div>
 	<script>
 		function initMap() {
-				// The location of Uluru
-				let long = document.querySelector(".longitude").innerHTML;
-				let lati = document.querySelector(".latitude").innerHTML;
-				long = parseFloat(long);
-				lati = parseFloat(lati);
-				var uluru = {lat: lati, lng: long};
-				// The map, centered at Uluru
-				var map = new google.maps.Map(
-				document.querySelector('.map'), {zoom: 15, center: uluru}); // rajouter le style pour la carte ici comme ceci : ({zoom: 15, center: uluru , RAJOUTER LA BALISE STYLE ICI});)
-				// The marker, positioned at Uluru
-				var marker = new google.maps.Marker({position: uluru, map: map});
+			// The location of Uluru
+			let long = document.querySelector(".longitude").innerHTML;
+			let lati = document.querySelector(".latitude").innerHTML;
+			long = parseFloat(long);
+			lati = parseFloat(lati);
+			var uluru = {lat: lati, lng: long};
+			// The map, centered at Uluru
+			var map = new google.maps.Map(
+			document.querySelector('.map'), {zoom: 15, center: uluru}); // rajouter le style pour la carte ici comme ceci : ({zoom: 15, center: uluru , RAJOUTER LA BALISE STYLE ICI});)
+			// The marker, positioned at Uluru
+			var marker = new google.maps.Marker({position: uluru, map: map});
 		}
 	</script>
-	<!-- <script async defer
+	<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXx618pZgGovbT1ZNDB7y22Ulx9-4CLqs&callback=initMap">
-	</script> -->
+	</script>
 </section>
