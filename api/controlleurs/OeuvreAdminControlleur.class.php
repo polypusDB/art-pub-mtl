@@ -81,7 +81,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 $liste_materiaux = $oOeuvreMateriaux->getOeuvreMateriauxByIdOeuvre($aData['id_oeuvre']);
                 $materiaux_francais = "";
                 $materiaux_anglais = "";
-                if(count($liste_materiaux) > 0)
+                if($liste_materiaux != 0)
                 {
                     foreach($liste_materiaux as $element)
                     {
@@ -97,7 +97,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 $liste_technique = $oOeuvreTechnique->getOeuvreTechniqueByIdOeuvre($aData['id_oeuvre']);
                 $technique_francais = "";
                 $technique_anglais = "";
-                if(count($liste_technique) > 0)
+                if($liste_technique != 0)
                 {
                     foreach($liste_technique as $element)
                     {
@@ -323,12 +323,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	// Section Supprimer Oeuvres
 	protected function supOeuvre($string){
 		$oOeuvre = new Oeuvre();
-        $oArtisteOeuvre = new ArtisteOeuvre();
+/*        $oArtisteOeuvre = new ArtisteOeuvre();
         $oOeuvreMateriaux = new OeuvreMateriaux();
         $oOeuvreTechnique = new OeuvreTechnique();
         $oArtisteOeuvre->supprimerOeuvreArtiste($string);
         $oOeuvreMateriaux->supprimerOeuvreMateriaux($string);
-        $oOeuvreTechnique->supprimerOeuvreTechnique($string);
+        $oOeuvreTechnique->supprimerOeuvreTechnique($string);*/
 		$aOeuvre = $oOeuvre->deleteOeuvre($string);
 	}
 
@@ -356,7 +356,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         $oOeuvreMateriaux = new OeuvreMateriaux();
         $oOeuvreTechnique = new OeuvreTechnique();
         
-        $aData['id_arrondissement'] = intval($aData['arrondissement']);
+        $aData['id_arrondissement'] = intval($aData['id_arrondissement']);
         $aData['id_endroit'] = $oTraitementDonnees->traiterEndroit($aData);
 
         if($aData['id_support'] == "choix")
@@ -369,8 +369,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             $aData['id_oeuvre'] = $oTraitementDonnees->traiterOeuvre($aData);
         }
 
-        $donnees = $oMateriaux->verifierMateriauxFrancaisExistant($materiauxFrancais);
-        if(count($donnees) == 0)
+        $donnees = $oMateriaux->verifierMateriauxFrancaisExistant($aData['materiaux_francais']);
+        if($donnees == 0)
         {
              if($oMateriaux->ajouterMateriaux($aData['materiaux_francais'],$aData['materiaux_anglais']))
              {
@@ -383,8 +383,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
              $id_materiaux = $donnees['id_materiaux'];
         }
         
-        $donnees = $oTechnique->verifierTechniqueFrancaisExistant($techniqueFrancais);
-        if(count($donnees) == 0)
+        $donnees = $oTechnique->verifierTechniqueFrancaisExistant($aData['technique_francais']);
+        if($donnees == 0)
         {
              if($oTechnique->ajouterTechnique($aData['technique_francais'],$aData['technique_anglais']))
              {

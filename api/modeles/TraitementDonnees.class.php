@@ -38,7 +38,7 @@ class TraitementDonnees extends Modele {
         $id_endroit = 0;
 
         $donnees = $oEndroit->verifierEndroitExistant($aData);
-        if(count($donnees) == 0)
+        if($donnees == 0)
         {           
             if($oEndroit->ajouterEndroit($aData))
             {
@@ -251,7 +251,7 @@ class TraitementDonnees extends Modele {
         $id_oeuvre = 0;
         
         $donnees = $oOeuvre->verifierOeuvreExistant($aData['titre']);
-        if(count($donnees) == 0)
+        if($donnees == 0)
         {
             if($oOeuvre->AjouterOeuvre($aData))
             {
