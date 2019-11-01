@@ -1,4 +1,7 @@
 window.addEventListener("load", function(){
+    /**
+     * liens pour deleter les artistes
+     */
     if(document.querySelector(".adminSearchArtiste") != undefined){
         let btnOui = document.querySelector(".oui");
         let btnNon = document.querySelector(".non");

@@ -1,14 +1,15 @@
 <?php
 /**
- * Class Oeuvre
+ * Class Connection
  * 
- * @author Jonathan Martel
+ * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
  * @update 2014-09-11
+ * @update 2019-10-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
- * 
+ * Cette classe sert à gérer les connections dans la base de données. 
  * 
  */
 class Connection extends Modele {		
@@ -17,7 +18,6 @@ class Connection extends Modele {
 	 * @access public
 	 * @return Array
 	 */
-	
     public function getConnectionUser($user, $mdp){
         $oFiltrerChamp = new FiltrerChamp();
 		$user = $oFiltrerChamp->FiltrerChamps($user);
@@ -48,7 +48,12 @@ class Connection extends Modele {
     }
 
 
-    
+    /**
+	 * Retourne les information de l'utilisateur connecté
+	 * @access public
+     * @param aData tableau de données de la connection
+	 * @return Array
+	 */
     public function inscription($aData){
         extract($aData);
         $oFiltrerChamp = new FiltrerChamp();

@@ -91,11 +91,11 @@
 						<div data-idCommentaire="<?=$id_commentaire ?>" class="unCommentaire">
 							<p><?=$nom_connexion ?></p>
 							<p><?=$texte ?></p>
-							<p data-idcommentairesig="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>"><i class="fab fa-font-awesome-flag" data-signaler ="true"></i></p>
+							<p data-idcommentairesig="<?=$id_commentaire ?>" class="signaler<?php if($signaler ==1){ echo " signalerON"; } ?>"><i class="fab fa-font-awesome-flag" data-signaler ="true" data-idcommentairesig="<?=$id_commentaire ?>"></i></p>
 							<?php
 								if($userConnect == $nom_connexion){
 								?>
-									<p data-idcommentairesup="<?=$id_commentaire ?>"class="suprimer"><i class="fas fa-trash" data-supprimer ="true"></i></p>
+									<p data-idcommentairesup="<?=$id_commentaire ?>"class="suprimer"><i class="fas fa-trash" data-supprimer ="true" ></i></p>
 								<?php
 								}
 							?>

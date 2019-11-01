@@ -1,4 +1,7 @@
 window.addEventListener("load", function(){
+    /**
+     * liens pour deleter les oeuvres
+     */
     if(document.querySelector(".MessageOeuvre")){
         let btnOui = document.querySelector(".oui");
         let btnNon = document.querySelector(".non");

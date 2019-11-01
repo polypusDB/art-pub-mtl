@@ -23,7 +23,7 @@ class Oeuvre extends Modele {
 	 * @return Array
 	 * @TODO Modifier le query afin de tenir compte des oeuvres à plusieurs artistes.
 	 */
-	public function getListe($filtre = "", $limit = 20) 
+	public function getListe($filtre = "", $limit = '20') 
 	{
 
 		
@@ -39,8 +39,7 @@ class Oeuvre extends Modele {
         JOIN arrondissement a
         ON a.id_arrondissement = endroit.id_arrondissement
 		JOIN oeuvre_materiaux om
-		on om.id_oeuvre = oeuvre.id_oeuvre
-		$filtre 
+		on om.id_oeuvre = oeuvre.id_oeuvre $filtre 
 		group by oeuvre.id_oeuvre
 		ORDER BY oeuvre.titre
 		limit $limit";
@@ -78,7 +77,7 @@ class Oeuvre extends Modele {
 			}
 		}
 
-		// echo $query;
+		
 		return $res;
 	}
 
@@ -133,6 +132,7 @@ class Oeuvre extends Modele {
 			}
 		}
 		return $res;
+		
 	}
 	
 	
