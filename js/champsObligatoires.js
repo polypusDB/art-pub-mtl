@@ -1,6 +1,8 @@
 window.addEventListener("load", function(){
       
-
+/**
+ * Gestion des champs obligatoires en js pour les artistes
+ */
     if(document.querySelector(".modArtiste") || document.querySelector(".ajoutArtiste")){
         let parent = document.querySelector(".message");
         let btn = document.querySelector(".btn");

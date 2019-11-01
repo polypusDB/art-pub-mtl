@@ -1,27 +1,33 @@
 <?php
 /**
- * Class Oeuvre
+ * Class filtres
  * 
- * @author Jonathan Martel
+ * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0
  * @update 2014-09-11
+ * @update 2019-10-10
  * @license Creative Commons BY-NC 3.0 (Licence Creative Commons Attribution - Pas d’utilisation commerciale 3.0 non transposé)
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
- * 
+ * Cette classe sert à gérer les oeuvres dans la base de données. 
  * 
  */
 class Filtre extends Modele {		
 	/**
-	 * Retourne les information de l'utilisateur connecté
+	 * Crée une string qui est ajouter au bout du select dans le modele oeuvre pour filtrer
 	 * @access public
 	 * @return Array
+     * @param arron arrondissements pour filtrer
+     * @param materiaux materiaux pour filtrer
+     * @param categories categories pour filtrer
+     * @param recherche recherche par titre
+     * @param limit limit le nombre d'objet retourner
 	 */
-	
-    public function OeuvreFiltre($arron, $materiaux, $categories, $recherche, $limit){
+    public function OeuvreFiltre($arron, $materiaux, $categories, $recherche, $limit=20){
 
-
-        $DerItem = count($arron);
+        /**
+         * détecte les éléments avant pour rajouter des éléments "AND OR ()"
+         */
         $elemAvant = false;
         $elemMatAvant = false;
         $elemCatAvant = false;
@@ -34,11 +40,11 @@ class Filtre extends Modele {
 
         $res= "WHERE";
         $i = 0;
-
+        // arrondissement
         foreach($arron as $arr){
             $elemAvant = true;
             $arr = $arr->id;
-            if(++$i === $DerItem){
+            if(++$i === 1){
                 $res .= "( a.id_arrondissement = ". $arr;
             }
             else{
@@ -47,20 +53,18 @@ class Filtre extends Modele {
 
         }
         if($elemAvant == true){
-            $res .= ") ";
+            $res .= ")";
         }
 
-        
-        $DerItemMat = count($materiaux);
+        // materiaux
         $y = 0;
-
         foreach($materiaux as $mat){
             if($elemAvant == true){
                 $res .= " AND ";
                 $elemAvant == false;
             }
             $mat = $mat->id_mat;
-            if(++$y === $DerItemMat){
+            if(++$y === 1){
                 $res .= "( om.id_materiaux = ". $mat;
             }
             else{
@@ -70,11 +74,10 @@ class Filtre extends Modele {
         }
 
         if($elemMatAvant == true){
-            $res .= ") ";
+            $res .= ")";
         }
 
-
-        $DerItemCat = count($categories);
+        // catégories
         $z = 0;
         foreach($categories as $cat){
             if($elemMatAvant == true || $elemAvant == true){
@@ -83,7 +86,7 @@ class Filtre extends Modele {
                 $elemAvant = false;
             }
             $cat = $cat->id_cat;
-            if(++$z === $DerItemCat){
+            if(++$z === 1){
                 $res .= "( oeuvre.id_categorie = ". $cat;
             }
             else{
@@ -92,11 +95,10 @@ class Filtre extends Modele {
             $elemCatAvant = true;
         }
         if($elemCatAvant == true){
-            $res .= ") ";
+            $res .= ")";
         }
 
-
-        // ICI NEW ÉTAPE
+        // recherche
         if($recherche != ""){
             $elemRecherche = true;
             if($elemCatAvant == true || $elemMatAvant == true || $elemAvant == true){
@@ -112,20 +114,19 @@ class Filtre extends Modele {
             $res = "";
         }
 
-
-        // echo json_encode($res);
-
-
-
         $oOeuvre = new Oeuvre();
         $aOeuvre = $oOeuvre->getListe($res, $limit);
 
-        $aOeuvre = json_encode($aOeuvre);
-        echo $aOeuvre;
-
-        
+        echo json_encode($aOeuvre);
     }
 
+    	/**
+	 * Crée une string qui est ajouter au bout du select dans le modele oeuvre pour filtrer
+	 * @access public
+	 * @return Array
+     * @param rec recherche par titre
+     * @param limit limit le nombre d'objet retourner
+	 */
     public function filtrerArtisteAdmin($rec = "", $limit = 500){
         
         if($rec != ""){
@@ -140,7 +141,13 @@ class Filtre extends Modele {
         $aArtiste = $oArtiste->getListe($res, $limit);
         echo json_encode($aArtiste);
     }
-
+    /**
+	 * Crée une string qui est ajouter au bout du select dans le modele oeuvre pour filtrer
+	 * @access public
+	 * @return Array
+     * @param rec recherche par titre
+     * @param limit limit le nombre d'objet retourner
+	 */
     public function filtrerOeuvreAdmin($rec , $limit){
         if($rec != ""){
             $res = "WHERE ";
@@ -155,12 +162,17 @@ class Filtre extends Modele {
         echo json_encode($aOeuvre);
     }
 
-
+    /**
+	 * Crée une string qui est ajouter au bout du select dans le modele oeuvre pour filtrer
+	 * @access public
+	 * @return Array
+     * @param rec recherche par titre
+     * @param limit limit le nombre d'objet retourner
+	 */
     public function filtrerArtiste($rec, $limit){
         if($rec != ""){
             $res = "WHERE ";
             $res .= "artiste.nom like '%$rec%' OR artiste.prenom like '%$rec%' OR artiste.nom_collectif like '%$rec%'";
-
         }
         else{
             $res = "";

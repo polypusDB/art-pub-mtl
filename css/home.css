@@ -1,76 +1,135 @@
-/*caroussel --------------------------*/
+/*Caroussel --------------------------*/ 
 .caroussel{
     position: relative;
     width: 100%;
     height: auto; 
+    overflow: hidden;
 }
-
-.caroussel img{
-    height: auto;
+.C-carrousel{
+    width: 100%;
+    overflow: hidden;
+}
+.C-carrousel li, .C-carrousel img {
+    display: block;
     width: 100%;
 }
-
-.caroussel div {
-    position: absolute;
-    right:0;
-    bottom: 50px;
+.C-carrousel ul {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: nowrap;
+    width: 600%;
+    position: relative;
+    animation-name: defilement;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes defilement {
+    0%    { left:     0; }              16%     { left:     0; }
+    16.8%  { left: -100%; }             32.8%   { left: -100%; }
+    33.6%  { left: -200%; }             49.6%   { left: -200%; }
+    50.4%  { left: -300%; }             66.4%   { left: -300%; }
+    67.2%  { left: -400%; }             83.2%   { left: -400%; }
+    84%    { left: -500%; }             99%     { left: -500%; opacity: 1}
+    99.5%  { left: -500%; opacity: 0}   99.501% { left: 0    ; opacity: 0}
+    100%    { left:     0; opacity: 1}
 }
 
-.caroussel div h1 {
+/* Image et texte du caroussel ----------------------------------------------------- */
+.C-contPerso{
+    width: auto;
+    position: absolute;
+    bottom: -4%;
+    left: 10%;
+}
+.C-btOeuvres{
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,8);
+    text-align: center;
+    font-size: 90px;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 600;
+    width: 80%;
+    margin: 0 auto;
+}
+.C-btOeuvres a{
     color: white;
 }
-
-.caroussel h2{
-    background-color: white;
-    padding: 2%;
+.C-btOeuvres a:hover{
+    color: rgb(255, 245, 194);
+}
+.C-perso{
+    width: 70%;
+    margin: 0 auto;
 }
 
 /* section À LA UNE ------------------------*/
 .une{
-    padding: 10%;
+    padding: 10% 0;
+    display: flex;
 }
-
+.ImgUne{
+    width: 50%;
+}
+.ImgUne img{
+    width: 100%;
+}
 .une .BlocUne{
     display: flex;
-    align-items: center;
-   
-    
+    flex-direction: column;
+    margin-left: 5%;
+    padding-right: 5%;
+    width: 50%;
+}
+.titreUne{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10%;
 }
 .une h1{
     text-transform: uppercase;
     font-size: 50px;
     color:#E26F39;
-    letter-spacing: 3px;
-/*    border-right: solid 8px #E26F39;*/
-    flex-wrap: nowrap;
-    width: 180px;
+    min-width: 180px;
+    line-height: 50px;
 }
-
 .texteUne{
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     text-align: left;
     padding-left: 3%;
     border-left: solid 6px #E26F39;
+    color: black;
 }
-
+.contenuUne h2{
+    color: #E26F39;
+    font-size: 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.contenuUne .subTitreUne{
+    font-size: 25px;
+}
+.contenuUne .btnArtiste{
+    text-transform: uppercase;
+    background-color: #F3D331;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    color: white;
+    width: 50%;
+    padding: 15px;
+    margin-top: 5%;
+    text-align: center;
+}
+.contenuUne .btnArtiste:hover{
+    background-color: #F9DB45;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
 .une p{
     padding-top:5%;
 }
 
-.btnArtiste{
-    background-color: #F9DB45;
-    color: white;
-}
 
-.btnArtiste:hover{
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-
-/*section Artiste --------------------------*/
+/*section Parcours --------------------------*/
 .artiste{
     background-color: #81CEC5;
 }
@@ -80,16 +139,37 @@
 }
 
 .artiste .listeArtiste a{
-    text-decoration: underline;
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
 }
 
 .artiste .listeArtiste a:hover{
+    color: rgb(178, 247, 239);
     text-decoration: none;
+}
+
+.artiste i{
+    font-size: 13px;
+    color: rgb(178, 247, 239);   
 }
 
 .artiste h1{
     color: white;
-    font-weight: 400; 
+    font-weight: 300; 
+    font-size: 18px;
+    text-align: center;
+}
+
+.artiste h1 a{
+    font-size: 75%;
+    color: white;
+    text-decoration: none;
+}
+
+.artiste h1 a:hover{
+    text-decoration: none;
+    color: rgb(211, 255, 251);
 }
 
 .artiste h2{
@@ -98,17 +178,6 @@
     text-align: center;
     font-weight: 600;   
 }
-
-.artiste a{
-    color: white;
-    font-weight: 600;
-} 
-
-.artiste a:hover{
-    text-decoration: underline;
-} 
-
-/*Artiste à l'honneur --------------------------*/
 
 .listeParcours{
    display: flex;
@@ -142,8 +211,8 @@
     width: 100%;
     margin-bottom: 0;
     filter: brightness(100%);
-     -webkit-filter: brightness(100%);
-     transition: 0.5s;
+    -webkit-filter: brightness(100%);
+    transition: 0.5s;
 }
 
 .honneur h2{
@@ -158,15 +227,21 @@
 .contenu.bouton{
     padding-top: 10px;
     min-height: 0;
+    margin: 4% auto;
+    padding-bottom: 0;
+    justify-content: center;
 }
 
 .btnVisite{
     color: white;
     background-color: #81CEC5;
-    justify-content: flex-end;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-transform: uppercase;
 }
 
-.btnVisite:hover{
+a .btnVisite:hover{
+    background-color: #8FE3DA;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -175,8 +250,14 @@
 .apm p{
     text-align: center;
 }
+
+.propos{
+    font-size: 80%;
+    color: darkgrey;
+}
+
 .apm, .artiste{
-    padding: 10%;
+    padding: 3% 6%;
 }
 
 .apm h1, .apm h1 a{
@@ -196,12 +277,58 @@
 }
 
 
+
+/* media queries: desktop --------------------------------------------------*/
+@media screen and (max-width:1400px){
+    .C-btOeuvres {
+        font-size: 70px;
+    }
+    .C-perso img{
+        width: 90%;
+    }
+}
+@media screen and (max-width:1024px){
+    .C-btOeuvres {
+        font-size: 60px;
+    }
+    .C-contPerso {
+        left: 0;
+    }
+}
+@media screen and (max-width:768px){
+    .C-contPerso {
+        left: 0;
+    }
+    .C-btOeuvres {
+        font-size: 50px;
+    }
+    .contenuUne .btnArtiste {
+        width: 80%;
+    }
+    .une p {
+        font-size: 15px;
+    }
+    .une h1 {
+        font-size: 40px;
+        min-width: 120px;
+        line-height: 40px;
+    }
+    .texteUne {
+        font-size: 14px;
+    }
+}
 /* media queries: mobile --------------------------------------------------*/
 @media screen and (max-width:667px){
     
     /*section à propos --------------------------*/
     .caroussel{
         margin-top: 80px;
+    }
+    .C-contPerso {
+        left: 0;
+    }
+    .C-btOeuvres {
+        font-size: 23px;
     }
     .apm div h1{
         margin: 3% 0% 3% 0%;
@@ -210,20 +337,44 @@
         font-size: 70%;
         color: darkgrey;
     }
-    
+    .une{
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+    }
     .une h1{
-    font-size: 30px;
-    width: 250px;
+        font-size: 40px;
+        min-width: 120px;
     }
-    
+    .ImgUne {
+        display: none;
+    }
+    .une .BlocUne {
+        width: 100%;
+        padding-right: 0;
+        width: 90%;
+    }
     .texteUne{
-    font-weight: 600;
-    font-size: 16px;
-    text-align: left;
-    padding-left: 3%;
-    border-left: solid 5px #E26F39;
+        font-size: 15px;
     }
-    
+    .contenuUne h2 {
+        font-size: 25px;
+    }
+    .contenuUne .subTitreUne {
+        font-size: 19px;
+    }
+    .une p {
+        font-size: 14px;
+        max-height: 125px;
+        overflow: hidden;
+    }
+    .contenuUne .btnArtiste {
+        width: 100%;
+        padding: 15px;
+        margin: 5% auto;
+    }
+    .btnVisite{
+        width: 100%;
+    }
     .honneur{
     display: inherit;
     height: 10%;
@@ -231,10 +382,18 @@
     position: relative;
     margin-bottom: 0;
     }
-    
     .honneur a{
     height: 130px;
     width: 100%;
     }
+    .apm, .artiste{
+        padding: 10%;
+    }
 }
 
+@media screen and (max-width:320px){
+    .C-btOeuvres {
+        font-size: 21px;
+        width: 100%;
+    }
+}

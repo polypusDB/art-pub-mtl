@@ -22,6 +22,8 @@ class Artiste extends Modele {
 	 */
 	public function getListe($filtre = "", $limit = 20) 
 	{
+		$oFiltrerChamp = new FiltrerChamp();
+		$limit = $oFiltrerChamp->FiltrerChamps($limit);
 		$res = Array();
 		$query = "select * from ". self::TABLE_ARTISTE . " $filtre 
 		group by artiste.id_artiste
@@ -49,6 +51,9 @@ class Artiste extends Modele {
 	 */
 	public function getArtiste($id) 
 	{
+		
+		$oFiltrerChamp = new FiltrerChamp();
+		$id = $oFiltrerChamp->FiltrerChamps($id);
 		$res = Array();
 		if($mrResultat = $this->_db->query("select * from ". self::TABLE_ARTISTE." where id_artiste=". $id))
 		{
@@ -63,6 +68,8 @@ class Artiste extends Modele {
 	 * @param int $id Identifiant de l'artiste à supprimer
 	 */
 	public function deleteArtiste($res){
+		$oFiltrerChamp = new FiltrerChamp();
+		$res = $oFiltrerChamp->FiltrerChamps($res);
 		$query = "DELETE FROM artiste $res";
 		$res = $this->_db->query($query);
 	}
@@ -75,6 +82,11 @@ class Artiste extends Modele {
 	 */  
 	public function AjouterArtiste($aData){
 		extract($aData);
+		$oFiltrerChamp = new FiltrerChamp();
+		$nom = $oFiltrerChamp->FiltrerChamps($nom);
+		$prenom = $oFiltrerChamp->FiltrerChamps($prenom);
+		$nom_collectif = $oFiltrerChamp->FiltrerChamps($nom_collectif);
+		$biographie = $oFiltrerChamp->FiltrerChamps($biographie);
 		$query = "INSERT INTO artiste (nom, prenom, nom_collectif, biographie)
 		VALUES ('$nom','$prenom', '$nom_collectif','$biographie')";
 		$this->_db->query($query);
@@ -87,6 +99,12 @@ class Artiste extends Modele {
 	 */ 
 	public function modifierArtiste($aData){
 		extract($aData);
+		$oFiltrerChamp = new FiltrerChamp();
+		$nom = $oFiltrerChamp->FiltrerChamps($nom);
+		$prenom = $oFiltrerChamp->FiltrerChamps($prenom);
+		$nom_collectif = $oFiltrerChamp->FiltrerChamps($nom_collectif);
+		$biographie = $oFiltrerChamp->FiltrerChamps($biographie);
+		$id = $oFiltrerChamp->FiltrerChamps($id);
 		$query = "UPDATE artiste
 		SET nom = '$nom',
 		prenom = '$prenom',
@@ -106,7 +124,11 @@ class Artiste extends Modele {
     public function verifierArtisteExistant($aData)
     {
 		$res = Array();
-        extract($aData);
+		extract($aData);
+		$oFiltrerChamp = new FiltrerChamp();
+		$nom = $oFiltrerChamp->FiltrerChamps($nom);
+		$prenom = $oFiltrerChamp->FiltrerChamps($prenom);
+		$nom_collectif = $oFiltrerChamp->FiltrerChamps($nom_collectif);
 		if($mrResultat = $this->_db->query("select * from ". self::TABLE_ARTISTE." where nom = '".$nom."' and prenom = '".$prenom."' and nom_collectif = '".$nom_collectif."'"))
 		{
 			$res = $mrResultat->fetch_assoc();

@@ -1,6 +1,20 @@
 .contenu.parcours{
-    min-height: 0%;
-    padding-bottom: 0%;
+    padding-bottom: 10%;
+}
+
+.caroussel.parcour{
+    height: 450px;
+}
+
+.caroussel.parcour img{
+    width: 100%;
+}
+
+section h2{
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    margin-top: 5%;
 }
 
 .contenu.caracteristiques{
@@ -8,7 +22,6 @@
     justify-content: space-between;
     padding-top: 7%;
     height: 80px;
-    
 }
 
 .contenu.caracteristiques div{
@@ -50,6 +63,12 @@
     width: 100%;
     height: 200px;
     margin-bottom: 0;
+}
+
+.affichageListe img:hover{
+    filter: brightness(60%);
+    -webkit-filter: brightness(60%);
+    transition: 0.5s;
 }
 
 
@@ -102,8 +121,25 @@
      border-bottom: solid 6px #E26F39;
 }
 
+section.oeuvres.parcour .texte{
+    width: 45%;
+    margin-right: 3%;
+}
+
+section.oeuvres.parcour .dummy{
+    overflow: visible;
+}
+
 
 @media screen and (max-width:667px){
+    .caroussel.parcour {
+        height: 200px;
+        margin-top: 0;
+    }
+
+    .contenu.parcours {
+        padding-bottom: 30%;
+    }
     
     .affichageListe{
     height: 320px;
@@ -124,7 +160,14 @@
     }
     
     .indicateurParcours{
-    margin-top: 0px;
+        padding: 6%;
+        margin-top: 0px;
+        font-size: 15px;
+    }
+
+    section.oeuvres.parcour .texte{
+        width: 100%;
+        margin-right: 0;
     }
 }
 
