@@ -158,6 +158,7 @@ window.addEventListener("load", function(){
             xhr.open("POST", "/art-pub-mtl/api/filtre");
             xhr.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
+                    console.log(xhr.responseText);
                     let oeuvres  = JSON.parse(xhr.responseText);
                     
                     afficherListe(oeuvres);

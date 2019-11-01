@@ -1,7 +1,6 @@
 <?php
 /**
  * Class AdminControlleur
- * Gère la page d'accueil
  * 
  * @author Saul Turbide, Marie-C Renou, Angela sanchez, Michel Plamondon
  * @version 1.0

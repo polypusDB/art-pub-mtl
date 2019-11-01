@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="/art-pub-mtl/css/adminmain.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/entete-footer.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/art-pub-mtl/css/formulaires.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="/art-pub-mtl/css/messageDelete.css" type="text/css" media="screen">
+
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
@@ -22,6 +24,8 @@
         <script src="/art-pub-mtl/js/filtreAdminArtiste.js"></script>
         <script src="/art-pub-mtl/js/filtreAdminOeuvre.js"></script>
         <script src="/art-pub-mtl/js/champsObligatoires.js"></script>
+        <script src="/art-pub-mtl/js/lienDelete.js"></script>
+        <script src="/art-pub-mtl/js/lienDeleteArtiste.js"></script>
 
     </head>
     

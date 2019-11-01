@@ -396,9 +396,13 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     margin-bottom: 40px;
 }
 .list-comment div{
+    display: flex;
     margin-bottom: 10px;
     padding: 5px;
+    flex-wrap: wrap;
 }
+
+
 .list-comment div:nth-child(even){
     background-color: #f1f1f1;
 }
@@ -406,7 +410,20 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     font-weight: 600;
     text-transform: uppercase;
     color: #81CEC5;
+    width: 100%;
 }
+
+.list-comment div p:nth-child(2){
+    width: 86%;
+    max-width: 86%;
+    padding: 0.5% 2%;
+}
+.list-comment div p{
+    width: 6%;
+    padding: 0.5% 2%;
+    font-size: 110%;
+}
+
 .titreComment{
     color: black;
     margin-bottom: 10px;
@@ -416,6 +433,7 @@ input[type=text], input[type=url], input[type=email], input[type=password], inpu
     margin-left: 5px;
     margin-top: 5px;
 }
+
 
 
 
