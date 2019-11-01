@@ -49,7 +49,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "sup"){
 			if(isset($_SESSION["utilisateur"]) && $_SESSION["utilisateur"]["type_acces"] == "admin"){
 				$aData[] = $requete->url_elements[1];
-				$string = $this->ArrayToString($aData);
+                $string = $this->ArrayToString($aData);
+                echo "fuck";
 				$this->supOeuvre($string);
 				header("Location:/art-pub-mtl/api/OeuvreAdmin");
 			}
@@ -138,7 +139,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	 * @param Requete $requete Le paramètre reçu est un objet Requete.
 	 */ 
 	public function postAction(Requete $requete){
-		
 		//Validation supprimer avec le Checkbox
 		if (isset($_POST['supp'])) {
 			$msgErreur ="";

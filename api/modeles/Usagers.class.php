@@ -26,7 +26,13 @@ class Usagers extends Modele {
 		return $res;
     }
 
+
     public function deleteUsager($res){
+
+    $oFiltrerChamp = new FiltrerChamp();
+
+    $res = $oFiltrerChamp->FiltrerChamps($res);
+
 		$query = "DELETE FROM usager $res";
 		$res = $this->_db->query($query);
 		echo $query;
@@ -37,7 +43,10 @@ class Usagers extends Modele {
     }
 
     public function getUsager($id){
-      // echo "yayayaya";
+
+      $oFiltrerChamp = new FiltrerChamp();
+      $id = $oFiltrerChamp->FiltrerChamps($id);
+
       $query = "SELECT * 
       FROM usager
       WHERE id_usager = $id";
@@ -60,7 +69,12 @@ class Usagers extends Modele {
       return($usager);
     }
 
+
+
+
 }
+
+
 
 
 

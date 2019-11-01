@@ -1,0 +1,52 @@
+.fond{
+    display: none;
+    background-color: black;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.fond.ouvert{
+    display: block;
+}
+
+.contenuMessage{
+    background-color: #fefefe;
+    margin: 25% auto; /* 15% from the top and centered */
+    padding: 20px 0 0 0;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 900px;
+}
+
+.btnOptions{
+    display: flex;
+}
+
+.btnOptions p{
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+}
+
+.oui{
+    background-color: #F3D331;
+}
+.oui:hover{
+    background-color: rgb(245, 226, 135);
+}
+
+.non{
+    background-color: #E26F39;
+}
+.non:hover{
+    background-color: rgb(245, 146, 100);
+}
+
+.texte{
+    padding: 20px;
+}
